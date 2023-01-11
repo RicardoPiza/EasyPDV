@@ -1,6 +1,11 @@
-﻿using EasyPDV.Entities;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using EasyPDV.Entities;
 using Npgsql;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace EasyPDV.DAO {
@@ -9,12 +14,12 @@ namespace EasyPDV.DAO {
         public ProdutoDAO() {
             dao.Connection();
         }
-        public NpgsqlCommand ReadAll() {
+        public NpgsqlCommand Read() {
             NpgsqlCommand cmd;
             try {
-                cmd = new NpgsqlCommand("" +
+                cmd = new NpgsqlCommand(
                     "SELECT id AS \"ID\", nome AS \"Nome do produto\", " +
-                    "preco AS \"Preço\" FROM produto " +
+                    "preco AS \"Preço\", imagem as Imagem FROM produto " +
                     "ORDER by id", dao.Connection());
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -22,14 +27,57 @@ namespace EasyPDV.DAO {
             }
             return cmd;
         }
+        public List<Produto> ReadAll() {
+            List<Produto> list = new List<Produto>();
+            NpgsqlCommand cmd;
+            try {
+                cmd = new NpgsqlCommand(
+                    "SELECT id, nome, preco from produto", dao.Connection());
+                NpgsqlDataReader reader =cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Produto p = new Produto();
+                        p.ID = (int)reader.GetInt16(0);
+                        p.Nome = reader.GetString(1);
+                        p.Preco = (double)reader.GetDouble(2);
+                        list.Add(p);
+                    }
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            return list;
+        }
+        public Image Imagem(Produto p) {
+            NpgsqlCommand cmd;
+            Image imagem = null;
+            try {
+                cmd = new NpgsqlCommand("" +
+                    $"SELECT imagem FROM produto where id = {p.ID}", dao.Connection());
+                    byte[] productImageByte = cmd.ExecuteScalar() as byte[];
+                    if (productImageByte != null) {
+                        using (MemoryStream productImageStream = new System.IO.MemoryStream(productImageByte)) {
+                            ImageConverter imageConverter = new System.Drawing.ImageConverter();
+                            imagem = imageConverter.ConvertFrom(productImageByte) as System.Drawing.Image;
+                            imagem = System.Drawing.Image.FromStream(productImageStream);
+                    }
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            return imagem;
+        }
         public void Insert(Produto p) {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
-                    "INSERT INTO Produto(Nome, Preco) " +
-                    $"VALUES(@n, @p)", dao.Connection());
+                    "INSERT INTO Produto(nome, preco, imagem) " +
+                    $"VALUES(@n, @p,@i)", dao.Connection());
                 cmd.Parameters.AddWithValue("n", p.Nome);
                 cmd.Parameters.AddWithValue("p", p.Preco);
+                cmd.Parameters.AddWithValue("i", File.OpenRead(p.Imagem));
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

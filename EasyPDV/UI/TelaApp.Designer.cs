@@ -26,6 +26,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.acrescentarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,20 +52,20 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.siticoneContextMenuStrip1 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.siticoneContextMenuStrip2 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.richTextBox3 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.btnRealizar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.meioPagamentoBox = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +101,29 @@
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.cadastrarToolStripMenuItem.Text = "Visualizar produtos";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
+            // 
+            // vendasToolStripMenuItem
+            // 
+            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelarVendaToolStripMenuItem,
+            this.visualizarVendasToolStripMenuItem});
+            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.vendasToolStripMenuItem.Text = "Vendas";
+            // 
+            // cancelarVendaToolStripMenuItem
+            // 
+            this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
+            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.cancelarVendaToolStripMenuItem.Text = "Visualizar canceladas";
+            this.cancelarVendaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVendaToolStripMenuItem_Click);
+            // 
+            // visualizarVendasToolStripMenuItem
+            // 
+            this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
+            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
+            this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -171,7 +197,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(475, 103);
+            this.label1.Location = new System.Drawing.Point(475, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 24);
             this.label1.TabIndex = 6;
@@ -184,7 +210,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(490, 558);
+            this.label2.Location = new System.Drawing.Point(490, 490);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 7;
@@ -215,7 +241,7 @@
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(772, 111);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(772, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -224,6 +250,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(660, 660);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // button16
             // 
@@ -346,6 +373,61 @@
             this.button6.Click += new System.EventHandler(this.button6_Click);
             this.button6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
             // 
+            // button5
+            // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(3, 168);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(159, 159);
+            this.button5.TabIndex = 4;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(498, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(159, 159);
+            this.button4.TabIndex = 3;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(333, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(159, 159);
+            this.button3.TabIndex = 2;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(168, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(159, 159);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 159);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -361,7 +443,7 @@
             this.richTextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.richTextBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox1.Location = new System.Drawing.Point(347, 140);
+            this.richTextBox1.Location = new System.Drawing.Point(347, 72);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.richTextBox1.Multiline = true;
             this.richTextBox1.Name = "richTextBox1";
@@ -416,7 +498,7 @@
             this.richTextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.richTextBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox3.Location = new System.Drawing.Point(347, 598);
+            this.richTextBox3.Location = new System.Drawing.Point(347, 530);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.richTextBox3.Multiline = true;
             this.richTextBox3.Name = "richTextBox3";
@@ -440,11 +522,11 @@
             this.btnCancel.FillColor = System.Drawing.Color.Transparent;
             this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(1220, 802);
+            this.btnCancel.Location = new System.Drawing.Point(1220, 734);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(209, 57);
             this.btnCancel.TabIndex = 15;
-            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.Text = "Limpar";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancel_MouseMove);
             // 
@@ -461,7 +543,7 @@
             this.btnRealizar.FillColor = System.Drawing.Color.Transparent;
             this.btnRealizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRealizar.ForeColor = System.Drawing.Color.Black;
-            this.btnRealizar.Location = new System.Drawing.Point(772, 802);
+            this.btnRealizar.Location = new System.Drawing.Point(772, 734);
             this.btnRealizar.Name = "btnRealizar";
             this.btnRealizar.Size = new System.Drawing.Size(234, 57);
             this.btnRealizar.TabIndex = 16;
@@ -469,87 +551,54 @@
             this.btnRealizar.Click += new System.EventHandler(this.btnRealizar_Click_1);
             this.btnRealizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRealizar_MouseMove);
             // 
-            // vendasToolStripMenuItem
+            // meioPagamentoBox
             // 
-            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cancelarVendaToolStripMenuItem,
-            this.visualizarVendasToolStripMenuItem});
-            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
-            this.vendasToolStripMenuItem.Text = "Vendas";
+            this.meioPagamentoBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.meioPagamentoBox.BackColor = System.Drawing.Color.Transparent;
+            this.meioPagamentoBox.BorderColor = System.Drawing.Color.Transparent;
+            this.meioPagamentoBox.BorderRadius = 20;
+            this.meioPagamentoBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.meioPagamentoBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.meioPagamentoBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.meioPagamentoBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.meioPagamentoBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.meioPagamentoBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.meioPagamentoBox.ItemHeight = 30;
+            this.meioPagamentoBox.Items.AddRange(new object[] {
+            "Cartão",
+            "Dinheiro"});
+            this.meioPagamentoBox.Location = new System.Drawing.Point(479, 755);
+            this.meioPagamentoBox.MaxLength = 2;
+            this.meioPagamentoBox.Name = "meioPagamentoBox";
+            this.meioPagamentoBox.Size = new System.Drawing.Size(218, 36);
+            this.meioPagamentoBox.TabIndex = 17;
             // 
-            // cancelarVendaToolStripMenuItem
+            // label3
             // 
-            this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
-            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
-            this.cancelarVendaToolStripMenuItem.Text = "Cancelar Venda";
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(490, 728);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(207, 24);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Meio de pagamento";
             // 
-            // visualizarVendasToolStripMenuItem
+            // btnRefresh
             // 
-            this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
-            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
-            this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
-            this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click);
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::EasyPDV.Properties.Resources.cake;
-            this.button5.Location = new System.Drawing.Point(3, 168);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(159, 159);
-            this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
-            // 
-            // button4
-            // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::EasyPDV.Properties.Resources.Sorvete;
-            this.button4.Location = new System.Drawing.Point(498, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 159);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
-            // 
-            // button3
-            // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::EasyPDV.Properties.Resources.Desenho_Coca_Cola_PNG;
-            this.button3.Location = new System.Drawing.Point(333, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 159);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            this.button3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::EasyPDV.Properties.Resources.Ilustração_Cerveja_PNG;
-            this.button2.Location = new System.Drawing.Point(168, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 159);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::EasyPDV.Properties.Resources.pastel;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 159);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh;
+            this.btnRefresh.Location = new System.Drawing.Point(1438, 663);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(43, 40);
+            this.btnRefresh.TabIndex = 19;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
             // 
             // TelaApp
             // 
@@ -557,7 +606,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(211)))), ((int)(((byte)(251)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1594, 897);
+            this.ClientSize = new System.Drawing.Size(1594, 761);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.meioPagamentoBox);
             this.Controls.Add(this.btnRealizar);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.richTextBox3);
@@ -624,6 +676,9 @@
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelarVendaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarVendasToolStripMenuItem;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox meioPagamentoBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

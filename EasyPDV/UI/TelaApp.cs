@@ -9,12 +9,15 @@ using EasyPDV.UI;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using ClosedXML;
 
 namespace EasyPDV {
     public partial class TelaApp : Form {
         public double Total { get; set; }
         VendaDAO vendaDAO = new VendaDAO();
         Venda venda = new Venda();
+        Produto produto= new Produto();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
         public TelaApp() {
             InitializeComponent();
         }
@@ -22,6 +25,29 @@ namespace EasyPDV {
         private void Form1_Load(object sender, EventArgs e) {
             label1.BackColor = Color.Transparent;
             label2.BackColor = Color.Transparent;
+            List<Button> btn = new List<Button>();
+            List<Produto> produtos = new List<Produto>();
+            btn = tableLayoutPanel1.Controls.OfType<Button>().ToList();
+            btn.Reverse();
+            produtos = produtoDAO.ReadAll();            
+            for (int i = 0; i < produtos.Count; i++) {
+                produto.ID = produtos[i].ID;
+                btn[i].Image = produtoDAO.Imagem(produto);
+                string name = produtos[i].Nome;
+                double preco = produtos[i].Preco;
+                btn[i].Click += (s2, e2) => SomaProdutos(s2, e2,name,preco);
+                btn[i].Invalidate();
+            }
+        }
+        public void SomaProdutos(object sender, EventArgs e, string nome, double preco) {
+            richTextBox3.Text = string.Empty;
+            richTextBox1.Text += nome +"..........."+ preco+"R$\t\t";
+            Total += preco;
+            richTextBox3.Text += Total;
+        }
+
+        private void TelaApp_Click(object sender, EventArgs e) {
+            throw new NotImplementedException();
         }
 
         private void button9_Click(object sender, EventArgs e) {
@@ -29,32 +55,15 @@ namespace EasyPDV {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            richTextBox3.Text = string.Empty;
-            richTextBox3.Text = string.Empty;
-            richTextBox1.Text += "Pastel .... " + 7 + "R$\t\t";
-            Total += 7;
-            richTextBox3.Text += Total.ToString("F2") + "R$";
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            richTextBox3.Text = string.Empty;
-            richTextBox1.Text += "Cerveja .... " + 5 + "R$\t\t";
-            Total += 5;
-            richTextBox3.Text += Total.ToString("F2") + "R$";
         }
 
         private void button3_Click(object sender, EventArgs e) {
-            richTextBox3.Text = string.Empty;
-            richTextBox1.AppendText("Coca-cola .... " + 4 + "R$\t\t");
-            Total += 4;
-            richTextBox3.Text += Total.ToString("F2") + "R$";
         }
 
         private void button4_Click(object sender, EventArgs e) {
-            richTextBox3.Text = string.Empty;
-            richTextBox1.Text += "Sorvete .... " + 4 + "R$\t\t";
-            Total += 4;
-            richTextBox3.Text += Total.ToString("F2") + "R$";
         }
 
         private void button6_Click(object sender, EventArgs e) {
@@ -66,10 +75,6 @@ namespace EasyPDV {
         }
 
         private void button5_Click(object sender, EventArgs e) {
-            richTextBox3.Text = string.Empty;
-            richTextBox1.Text += "Bolo .... " + 4 + "R$\t\t";
-            Total += 4;
-            richTextBox3.Text += Total.ToString("F2") + "R$";
         }
 
         private void button12_Click(object sender, EventArgs e) {
@@ -141,8 +146,19 @@ namespace EasyPDV {
         }
 
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e) {
-            TelaCadastroProduto tc = new TelaCadastroProduto();
-            tc.Show();
+
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Tela Cadastro Produto") { 
+                    isOpen= true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                TelaCadastroProduto tc = new TelaCadastroProduto();
+                tc.Show();
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e) {
@@ -162,18 +178,58 @@ namespace EasyPDV {
             venda.DataVenda = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             venda.ValorVenda = Total;
             venda.Produtos = listaProdutos;
-            foreach (string line in listaProdutos) {
-                DialogResult res = MessageBox.Show(line.Replace("\t", "") + "\n", "Realizar venda", MessageBoxButtons.OKCancel);
-                if (res == DialogResult.OK) {
-                    vendaDAO.InsertVenda(venda);
-                    richTextBox1.Text = string.Empty;
-                    richTextBox3.Text = string.Empty;
+            venda.MeioPagamento = meioPagamentoBox.Text;
+            if (meioPagamentoBox.Text != "") {
+                foreach (string line in listaProdutos) {
+                    DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
+                    if (res == DialogResult.OK) {
+                        vendaDAO.InsertVenda(venda);
+                        richTextBox1.Text = string.Empty;
+                        richTextBox3.Text = string.Empty;
+                        MessageBox.Show("Venda Realizada com sucesso!");
+                    }
                 }
+            } else {
+                MessageBox.Show("Escolha o meio de pagamento");
             }
         }
         private void visualizarVendasToolStripMenuItem_Click(object sender, EventArgs e) {
-            TelaVendas tv = new TelaVendas();
-            tv.Show();
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Vendas") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                TelaVendas tv = new TelaVendas();
+                tv.Show();
+            }
+            
+        }
+
+        private void cancelarVendaToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Vendas Canceladas") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                TelaVendasCanceladas tvc = new TelaVendasCanceladas();
+                tvc.Show();
+            }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            Application.Restart();
         }
     }
 }

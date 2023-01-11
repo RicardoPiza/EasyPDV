@@ -10,6 +10,7 @@ namespace EasyPDV.Entities {
         public List<string> Produtos { get; set; }
         public double ValorVenda { get; set; }
         public string DataVenda { get; set; }
+        public string MeioPagamento { get; set; }
 
         public Venda() {
         }

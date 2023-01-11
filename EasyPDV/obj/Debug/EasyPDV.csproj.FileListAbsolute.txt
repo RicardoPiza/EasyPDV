@@ -88,3 +88,11 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CoreCompile
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CopyComplete
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.exe
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.pdb
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.dll
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ExcelNumberFormat.dll
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.pdb
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.xml
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ExcelNumberFormat.xml
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaVendasCanceladas.resources

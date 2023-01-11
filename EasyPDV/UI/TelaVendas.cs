@@ -2,13 +2,8 @@
 using EasyPDV.Entities;
 using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using ClosedXML.Excel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
@@ -34,7 +29,7 @@ namespace EasyPDV.UI {
             dt = new DataTable();
             adpt.Fill(dt);
             vendasGridView1.DataSource= dt;
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i <= 4; i++) {
                 vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
@@ -49,23 +44,34 @@ namespace EasyPDV.UI {
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e) {
-            
-            //string path = "";
-            //if (fbd.ShowDialog() == DialogResult.OK) {
-            //    path = fbd.SelectedPath;
-            //}
-            //XLWorkbook wb = new XLWorkbook();
-            //var ws = wb.Worksheets.Add(dt, "NFS-e");
-            //ws.Columns().AdjustToContents();
-            //if (path != "") {
-            //    wb.SaveAs(@path + "\\Relatório Confronto NFS-e " + DateTime.Now.ToString("MM-yyyy") + ".xlsx");
-            //    MessageBox.Show("Relatório Salvo");
-            //    this.Close();
-            //}
+            string path = "";
+            if (fbd.ShowDialog() == DialogResult.OK) {
+                path = fbd.SelectedPath;
+            }
+            XLWorkbook wb = new XLWorkbook();
+            var ws = wb.Worksheets.Add(dt, "Vendas");
+            ws.Columns().AdjustToContents();
+            if (path != "") {
+                wb.SaveAs(@path + "\\Relatório Vendas Realizadas " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                MessageBox.Show($"Relatório Salvo em {path}");
+                this.Close();
+            }
         }
 
         private void btnCancelarVenda_MouseMove(object sender, MouseEventArgs e) {
             btnCancelarVenda.Cursor = Cursors.Hand;
+            btnRelatorio.Cursor = Cursors.Hand;
+        }
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            ListarVendas();
+        }
+
+        private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
+            btnRefresh.Cursor = Cursors.Hand;
+        }
+
+        private void vendasGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
         }
     }
 }

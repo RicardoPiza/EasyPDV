@@ -35,6 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -95,13 +104,16 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DAO\VendaCanceladaDAO.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\Venda.cs" />
+    <Compile Include="Entities\VendaCancelada.cs" />
     <Compile Include="UI\TelaApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +134,12 @@
     <Compile Include="UI\TelaVendas.Designer.cs">
       <DependentUpon>TelaVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\TelaVendasCanceladas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TelaVendasCanceladas.Designer.cs">
+      <DependentUpon>TelaVendasCanceladas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\TypeHelper.cs" />
     <EmbeddedResource Include="UI\TelaApp.resx">
       <DependentUpon>TelaApp.cs</DependentUpon>
@@ -141,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TelaVendas.resx">
       <DependentUpon>TelaVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TelaVendasCanceladas.resx">
+      <DependentUpon>TelaVendasCanceladas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -173,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
