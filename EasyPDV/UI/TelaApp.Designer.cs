@@ -565,6 +565,7 @@
             this.meioPagamentoBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.meioPagamentoBox.ItemHeight = 30;
             this.meioPagamentoBox.Items.AddRange(new object[] {
+            "",
             "Cartão",
             "Dinheiro"});
             this.meioPagamentoBox.Location = new System.Drawing.Point(479, 755);

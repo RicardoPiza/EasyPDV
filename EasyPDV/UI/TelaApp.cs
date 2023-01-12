@@ -18,6 +18,8 @@ namespace EasyPDV {
         Venda venda = new Venda();
         Produto produto= new Produto();
         ProdutoDAO produtoDAO = new ProdutoDAO();
+        List<string> ListaDeProdutosVendidos = new List<string>();
+        List<int> ListaIDProdutos = new List<int>();
         public TelaApp() {
             InitializeComponent();
         }
@@ -33,17 +35,26 @@ namespace EasyPDV {
             for (int i = 0; i < produtos.Count; i++) {
                 produto.ID = produtos[i].ID;
                 btn[i].Image = produtoDAO.Imagem(produto);
+                int id = produto.ID;
                 string name = produtos[i].Nome;
                 double preco = produtos[i].Preco;
-                btn[i].Click += (s2, e2) => SomaProdutos(s2, e2,name,preco);
+                btn[i].Click += (s2, e2) => SomaProdutos(s2, e2,name,preco, id);
                 btn[i].Invalidate();
             }
         }
-        public void SomaProdutos(object sender, EventArgs e, string nome, double preco) {
+        public void SomaProdutos(object sender, EventArgs e, string nome, double preco,int id) {
             richTextBox3.Text = string.Empty;
-            richTextBox1.Text += nome +"..........."+ preco+"R$\t\t";
+            richTextBox1.Text += nome + "............."+ preco + "R$\t\t";
+            ListaDeProdutosVendidos.Add(nome + "..........." + preco + "R$\t\t");
+            ListaIDProdutos.Add(id);
             Total += preco;
             richTextBox3.Text += Total;
+        }
+        public void SubtrairProdutoEstoque() {
+            foreach(int item in ListaIDProdutos) {
+                produtoDAO.SubtraiEstoque(item);
+            }
+            ListaIDProdutos.Clear();
         }
 
         private void TelaApp_Click(object sender, EventArgs e) {
@@ -146,7 +157,6 @@ namespace EasyPDV {
         }
 
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e) {
-
             bool isOpen = false;
             foreach (Form f in Application.OpenForms) {
                 if (f.Text == "Tela Cadastro Produto") { 
@@ -179,18 +189,26 @@ namespace EasyPDV {
             venda.ValorVenda = Total;
             venda.Produtos = listaProdutos;
             venda.MeioPagamento = meioPagamentoBox.Text;
-            if (meioPagamentoBox.Text != "") {
-                foreach (string line in listaProdutos) {
-                    DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
-                    if (res == DialogResult.OK) {
-                        vendaDAO.InsertVenda(venda);
-                        richTextBox1.Text = string.Empty;
-                        richTextBox3.Text = string.Empty;
-                        MessageBox.Show("Venda Realizada com sucesso!");
+            if (richTextBox1.Text != "" || richTextBox3.Text != "") {
+                if (meioPagamentoBox.Text != "") {
+                    foreach (string line in listaProdutos) {
+                        DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
+                        if (res == DialogResult.OK) {
+                            vendaDAO.InsertVenda(venda);
+                            SubtrairProdutoEstoque();                            
+                            foreach (string produto in ListaDeProdutosVendidos) {
+                            }
+                            richTextBox1.Text = string.Empty;
+                            richTextBox3.Text = string.Empty;
+                            meioPagamentoBox.Text = "";
+                            MessageBox.Show("Venda Realizada com sucesso!");
+                        }
                     }
+                } else {
+                    MessageBox.Show("Escolha o meio de pagamento!","Meio de pagamento",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             } else {
-                MessageBox.Show("Escolha o meio de pagamento");
+                MessageBox.Show("Nenhum produto selecionado!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         private void visualizarVendasToolStripMenuItem_Click(object sender, EventArgs e) {

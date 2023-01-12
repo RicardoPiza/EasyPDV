@@ -30,20 +30,23 @@ namespace EasyPDV.UI {
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e) {
-            ProdutoDAO pd = new ProdutoDAO();
-            Produto p = new Produto();
             p.Nome = textBox1.Text;
             p.Imagem = siticoneTextBox1.Text;
             double num;
+            int num2;
             if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "") {
-                p.Preco= double.Parse(textBox2.Text);
-                pd.Insert(p);
-                MessageBox.Show("Cadastro efetuado!");
+                p.Preco = double.Parse(textBox2.Text);
+            
             } else {
                 MessageBox.Show(
-                    "Preencha TODOS os campos. Campo Preço deve ser um numero");
+                    "Preencha TODOS os campos. Campo Preço e Estoque devem ser um numeros");
             }
-            textBox1.Text= string.Empty;
+            if (int.TryParse(txtEstoque.Text, out num2) && txtEstoque.Text != "") {
+                p.QtdEstoque = int.Parse(txtEstoque.Text);
+                produto.Insert(p);
+                MessageBox.Show("Cadastro efetuado!");
+                textBox1.Text = string.Empty;
+            }
             textBox2.Text= string.Empty;
             ListarProdutos();
         }
@@ -53,7 +56,7 @@ namespace EasyPDV.UI {
             adpt.Fill(dt);
             dataGridView1.DataSource = dt;
             dataGridView1.MultiSelect = false;
-            for (int i = 0; i <=3; i++) {
+            for (int i = 0; i <=4; i++) {
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             foreach (DataGridViewRow row in dataGridView1.Rows) {
@@ -85,6 +88,7 @@ namespace EasyPDV.UI {
             p.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
             p.Nome = dataGridView1.SelectedCells[1].Value.ToString();
             p.Preco = double.Parse(dataGridView1.SelectedCells[2].Value.ToString());
+            p.QtdEstoque= int.Parse(dataGridView1.SelectedCells[4].Value.ToString());
             produto.Update(p);
             MessageBox.Show("Produto alterado com sucesso");
         }
@@ -109,6 +113,10 @@ namespace EasyPDV.UI {
 
         private void siticoneTextBox1_TextChanged(object sender, EventArgs e) {
 
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            ListarProdutos();
         }
     }
 }

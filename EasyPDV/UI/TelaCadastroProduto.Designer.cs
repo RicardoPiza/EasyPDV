@@ -39,6 +39,9 @@
             this.siticoneTextBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCaminho = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.txtEstoque = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +49,7 @@
             // 
             this.lblProdNome.AutoSize = true;
             this.lblProdNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdNome.Location = new System.Drawing.Point(15, 752);
+            this.lblProdNome.Location = new System.Drawing.Point(8, 704);
             this.lblProdNome.Name = "lblProdNome";
             this.lblProdNome.Size = new System.Drawing.Size(69, 22);
             this.lblProdNome.TabIndex = 0;
@@ -56,7 +59,7 @@
             // 
             this.lblProdPreco.AutoSize = true;
             this.lblProdPreco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdPreco.Location = new System.Drawing.Point(14, 801);
+            this.lblProdPreco.Location = new System.Drawing.Point(7, 753);
             this.lblProdPreco.Name = "lblProdPreco";
             this.lblProdPreco.Size = new System.Drawing.Size(70, 22);
             this.lblProdPreco.TabIndex = 1;
@@ -66,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(211, 682);
+            this.label1.Location = new System.Drawing.Point(210, 648);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 22);
             this.label1.TabIndex = 4;
@@ -85,7 +88,7 @@
             this.btnCadastrar.FillColor = System.Drawing.Color.Transparent;
             this.btnCadastrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrar.ForeColor = System.Drawing.Color.Black;
-            this.btnCadastrar.Location = new System.Drawing.Point(464, 729);
+            this.btnCadastrar.Location = new System.Drawing.Point(651, 681);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(221, 45);
             this.btnCadastrar.TabIndex = 17;
@@ -122,12 +125,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(12, 70);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
             this.dataGridView1.MinimumSize = new System.Drawing.Size(474, 302);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 60;
-            this.dataGridView1.Size = new System.Drawing.Size(673, 593);
+            this.dataGridView1.Size = new System.Drawing.Size(860, 562);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,7 +178,7 @@
             this.btnExcluir.FillColor = System.Drawing.Color.Transparent;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Black;
-            this.btnExcluir.Location = new System.Drawing.Point(193, 903);
+            this.btnExcluir.Location = new System.Drawing.Point(389, 903);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(221, 45);
             this.btnExcluir.TabIndex = 20;
@@ -195,7 +198,7 @@
             this.btnAlterar.FillColor = System.Drawing.Color.Transparent;
             this.btnAlterar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.Color.Black;
-            this.btnAlterar.Location = new System.Drawing.Point(464, 903);
+            this.btnAlterar.Location = new System.Drawing.Point(651, 903);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(221, 45);
             this.btnAlterar.TabIndex = 21;
@@ -215,7 +218,7 @@
             this.textBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox2.Location = new System.Drawing.Point(109, 785);
+            this.textBox2.Location = new System.Drawing.Point(108, 737);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '\0';
@@ -236,7 +239,7 @@
             this.textBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox1.Location = new System.Drawing.Point(109, 736);
+            this.textBox1.Location = new System.Drawing.Point(108, 688);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
@@ -257,7 +260,7 @@
             this.siticoneTextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.siticoneTextBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneTextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox1.Location = new System.Drawing.Point(109, 831);
+            this.siticoneTextBox1.Location = new System.Drawing.Point(108, 786);
             this.siticoneTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.siticoneTextBox1.Name = "siticoneTextBox1";
             this.siticoneTextBox1.PasswordChar = '\0';
@@ -271,7 +274,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 847);
+            this.label3.Location = new System.Drawing.Point(7, 802);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 22);
             this.label3.TabIndex = 24;
@@ -289,19 +292,65 @@
             this.btnCaminho.FillColor = System.Drawing.Color.Transparent;
             this.btnCaminho.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCaminho.ForeColor = System.Drawing.Color.Black;
-            this.btnCaminho.Location = new System.Drawing.Point(464, 831);
+            this.btnCaminho.Location = new System.Drawing.Point(650, 786);
             this.btnCaminho.Name = "btnCaminho";
             this.btnCaminho.Size = new System.Drawing.Size(51, 38);
             this.btnCaminho.TabIndex = 26;
             this.btnCaminho.Text = "...";
             this.btnCaminho.Click += new System.EventHandler(this.btnCaminho_Click);
             // 
+            // txtEstoque
+            // 
+            this.txtEstoque.BorderRadius = 18;
+            this.txtEstoque.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEstoque.DefaultText = "";
+            this.txtEstoque.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtEstoque.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtEstoque.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtEstoque.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtEstoque.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtEstoque.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoque.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtEstoque.Location = new System.Drawing.Point(108, 834);
+            this.txtEstoque.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEstoque.Name = "txtEstoque";
+            this.txtEstoque.PasswordChar = '\0';
+            this.txtEstoque.PlaceholderText = "Quantidade";
+            this.txtEstoque.SelectedText = "";
+            this.txtEstoque.Size = new System.Drawing.Size(123, 38);
+            this.txtEstoque.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(7, 850);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 22);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Estoque:";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh;
+            this.btnRefresh.Location = new System.Drawing.Point(11, 915);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(38, 34);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // TelaCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
-            this.ClientSize = new System.Drawing.Size(697, 961);
+            this.ClientSize = new System.Drawing.Size(884, 961);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.txtEstoque);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCaminho);
             this.Controls.Add(this.siticoneTextBox1);
             this.Controls.Add(this.label3);
@@ -316,9 +365,9 @@
             this.Controls.Add(this.lblProdPreco);
             this.Controls.Add(this.lblProdNome);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(713, 1000);
+            this.MaximumSize = new System.Drawing.Size(900, 1000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(713, 1000);
+            this.MinimumSize = new System.Drawing.Size(900, 1000);
             this.Name = "TelaCadastroProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Produto";
@@ -344,5 +393,8 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
         private System.Windows.Forms.Label label3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCaminho;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtEstoque;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

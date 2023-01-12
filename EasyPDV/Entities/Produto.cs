@@ -10,6 +10,7 @@ namespace EasyPDV.Entities {
         public double Preco { get; set; }
         public string Nome { get; set; }
         public string Imagem { get; set; }
+        public int QtdEstoque { get; set; }
 
         public Produto() { 
         }
