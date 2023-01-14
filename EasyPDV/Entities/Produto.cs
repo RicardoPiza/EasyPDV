@@ -11,6 +11,7 @@ namespace EasyPDV.Entities {
         public string Nome { get; set; }
         public string Imagem { get; set; }
         public int QtdEstoque { get; set; }
+        public int QtdVendida { get; set; }
 
         public Produto() { 
         }

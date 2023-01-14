@@ -2,16 +2,7 @@
 using EasyPDV.Entities;
 using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Odbc;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
@@ -77,7 +68,7 @@ namespace EasyPDV.UI {
 
         private void btnExcluir_Click(object sender, EventArgs e) {
             p.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            DialogResult = MessageBox.Show("Confirma exclusão?","Excluir produto",MessageBoxButtons.OKCancel);
+            DialogResult = MessageBox.Show("Confirma exclusão?","Excluir produto",MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (DialogResult == DialogResult.OK) {
                 produto.Delete(p);
                 ListarProdutos();
@@ -117,6 +108,14 @@ namespace EasyPDV.UI {
 
         private void btnRefresh_Click(object sender, EventArgs e) {
             ListarProdutos();
+        }
+
+        private void btnCaminho_MouseMove(object sender, MouseEventArgs e) {
+            btnCaminho.Cursor = Cursors.Hand;
+        }
+
+        private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
+            btnRefresh.Cursor = Cursors.Hand;
         }
     }
 }

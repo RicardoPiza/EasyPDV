@@ -96,3 +96,4 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ExcelNumberFormat.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaVendasCanceladas.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaFatura.resources

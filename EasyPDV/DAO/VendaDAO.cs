@@ -31,7 +31,7 @@ namespace EasyPDV.DAO {
             try {
 
                 cmd = new NpgsqlCommand(
-                    "SELECT id AS ID, data_venda AS \"Data da venda\", produtos[1] AS \"Produtos\", " +
+                    "SELECT id AS ID, data_venda AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
                     "valor_venda AS \"Valor total da venda (R$)\", meio_pagamento as \"Meio de pagamento\" " +
                     "FROM venda " +
                     "ORDER BY id", dao.Connection());

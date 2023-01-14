@@ -128,6 +128,12 @@
     <Compile Include="UI\TelaCadastroProduto.Designer.cs">
       <DependentUpon>TelaCadastroProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\TelaFatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TelaFatura.Designer.cs">
+      <DependentUpon>TelaFatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TelaVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="UI\TelaCadastroProduto.resx">
       <DependentUpon>TelaCadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TelaFatura.resx">
+      <DependentUpon>TelaFatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TelaVendas.resx">
       <DependentUpon>TelaVendas.cs</DependentUpon>

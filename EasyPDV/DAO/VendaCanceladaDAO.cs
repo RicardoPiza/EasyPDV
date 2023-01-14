@@ -1,9 +1,6 @@
-﻿using Npgsql;
+﻿using EasyPDV.Entities;
+using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPDV.DAO {
@@ -16,7 +13,7 @@ namespace EasyPDV.DAO {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
-                    "SELECT id AS ID, data_venda AS \"Data da venda\", produtos[1] AS \"Produtos\", " +
+                    "SELECT id AS ID, data_venda AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
                     "valor_venda AS \"Valor total da venda (R$)\" , meio_pagamento as \"Meio de pagamento\"" +
                     "FROM venda_cancelada " +
                     "ORDER BY id", dao.Connection());
@@ -25,6 +22,17 @@ namespace EasyPDV.DAO {
                 return null;
             }
             return cmd;
+        }
+        public void DeleteVendaCancelada(VendaCancelada vc) {
+            try {
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"DELETE FROM venda_cancelada " +
+                    $"where id = {vc.ID}", dao.Connection());
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
