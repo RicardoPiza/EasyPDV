@@ -77,7 +77,7 @@ namespace EasyPDV {
         }
 
         private void btnRealizar_Click_1(object sender, EventArgs e) {
-            List<string> listaProdutosBanco = AdVendaBanco();
+            List<string> listaProdutosBanco = AdicionarListaVendaBanco();
             venda.DataVenda = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             venda.ValorVenda = Total;
             venda.Produtos = listaProdutosBanco;
@@ -107,7 +107,7 @@ namespace EasyPDV {
                 MessageBox.Show("Nenhum produto selecionado!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private List<string> AdVendaBanco() {
+        private List<string> AdicionarListaVendaBanco() {
             List<string> listaProdutosBanco = new List<string>();
             foreach (var item in listViewProdutos.Items) {
                 listaProdutosBanco.Add(item.ToString());
