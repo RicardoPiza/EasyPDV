@@ -56,6 +56,7 @@ namespace EasyPDV.UI {
                 MessageBox.Show($"Relatório Salvo em {path}");
                 this.Close();
             }
+            System.Diagnostics.Process.Start(@path + "\\Relatório Vendas Realizadas " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
         }
 
         private void btnCancelarVenda_MouseMove(object sender, MouseEventArgs e) {

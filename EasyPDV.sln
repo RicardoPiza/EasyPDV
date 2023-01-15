@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPDV", "EasyPDV\EasyPDV.csproj", "{B22C453F-EE80-4E02-8150-9C8BEBF77A30}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EasyPDV-Setup", "EasyPDV-Setup\EasyPDV-Setup.vdproj", "{4A4F94BC-A617-4EA3-8C54-7C94DC3C6963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{B22C453F-EE80-4E02-8150-9C8BEBF77A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B22C453F-EE80-4E02-8150-9C8BEBF77A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B22C453F-EE80-4E02-8150-9C8BEBF77A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4F94BC-A617-4EA3-8C54-7C94DC3C6963}.Debug|Any CPU.ActiveCfg = Debug
+		{4A4F94BC-A617-4EA3-8C54-7C94DC3C6963}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,9 +26,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferirFaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +60,9 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listViewProdutos = new System.Windows.Forms.ListView();
+            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem,
+            this.vendasToolStripMenuItem,
             this.faturaToolStripMenuItem,
             this.caixaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -84,8 +85,7 @@
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrarToolStripMenuItem,
-            this.vendasToolStripMenuItem});
+            this.cadastrarToolStripMenuItem});
             this.produtosToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
             this.produtosToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
@@ -97,29 +97,6 @@
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.cadastrarToolStripMenuItem.Text = "Visualizar produtos";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
-            // 
-            // vendasToolStripMenuItem
-            // 
-            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cancelarVendaToolStripMenuItem,
-            this.visualizarVendasToolStripMenuItem});
-            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
-            this.vendasToolStripMenuItem.Text = "Vendas";
-            // 
-            // cancelarVendaToolStripMenuItem
-            // 
-            this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
-            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
-            this.cancelarVendaToolStripMenuItem.Text = "Visualizar canceladas";
-            this.cancelarVendaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVendaToolStripMenuItem_Click);
-            // 
-            // visualizarVendasToolStripMenuItem
-            // 
-            this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
-            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
-            this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
-            this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click);
             // 
             // faturaToolStripMenuItem
             // 
@@ -178,7 +155,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(349, 557);
+            this.label2.Location = new System.Drawing.Point(364, 557);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 7;
@@ -450,6 +427,7 @@
             this.richTextBox3.SelectedText = "";
             this.richTextBox3.Size = new System.Drawing.Size(387, 50);
             this.richTextBox3.TabIndex = 14;
+            this.richTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnCancel
             // 
@@ -489,7 +467,7 @@
             this.btnRealizar.Name = "btnRealizar";
             this.btnRealizar.Size = new System.Drawing.Size(234, 57);
             this.btnRealizar.TabIndex = 16;
-            this.btnRealizar.Text = "Realiza Venda";
+            this.btnRealizar.Text = "Realizar Venda";
             this.btnRealizar.Click += new System.EventHandler(this.btnRealizar_Click_1);
             this.btnRealizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRealizar_MouseMove);
             // 
@@ -547,10 +525,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1045, 864);
+            this.label4.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(893, 853);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(312, 15);
+            this.label4.Size = new System.Drawing.Size(483, 23);
             this.label4.TabIndex = 20;
             this.label4.Text = "Desenvolvido por Ricardo Piza - pizricardo@gmail.com";
             // 
@@ -568,6 +546,32 @@
             this.listViewProdutos.TabIndex = 21;
             this.listViewProdutos.UseCompatibleStateImageBehavior = false;
             this.listViewProdutos.View = System.Windows.Forms.View.Tile;
+            // 
+            // vendasToolStripMenuItem
+            // 
+            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelarVendaToolStripMenuItem,
+            this.visualizarVendasToolStripMenuItem});
+            this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
+            this.vendasToolStripMenuItem.Text = "Vendas";
+            // 
+            // cancelarVendaToolStripMenuItem
+            // 
+            this.cancelarVendaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
+            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.cancelarVendaToolStripMenuItem.Text = "Visualizar canceladas";
+            this.cancelarVendaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVendaToolStripMenuItem_Click_1);
+            // 
+            // visualizarVendasToolStripMenuItem
+            // 
+            this.visualizarVendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
+            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
+            this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click_1);
             // 
             // TelaApp
             // 
@@ -637,14 +641,14 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox richTextBox3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancel;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnRealizar;
-        private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelarVendaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem visualizarVendasToolStripMenuItem;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox meioPagamentoBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewProdutos;
+        private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cancelarVendaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visualizarVendasToolStripMenuItem;
     }
 }
 

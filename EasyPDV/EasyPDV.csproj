@@ -107,13 +107,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\DAO.cs" />
-    <Compile Include="DAO\ProdutoDAO.cs" />
-    <Compile Include="DAO\VendaCanceladaDAO.cs" />
-    <Compile Include="DAO\VendaDAO.cs" />
-    <Compile Include="Entities\Produto.cs" />
-    <Compile Include="Entities\Venda.cs" />
-    <Compile Include="Entities\VendaCancelada.cs" />
+    <Compile Include="Model\DAO.cs" />
+    <Compile Include="Model\ProdutoDAO.cs" />
+    <Compile Include="Model\VendaCanceladaDAO.cs" />
+    <Compile Include="Model\VendaDAO.cs" />
+    <Compile Include="Model\VendaIndividualDAO.cs" />
+    <Compile Include="Data\Produto.cs" />
+    <Compile Include="Data\Venda.cs" />
+    <Compile Include="Data\VendaCancelada.cs" />
+    <Compile Include="Data\VendaIndividual.cs" />
     <Compile Include="UI\TelaApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\dust.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\dust %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

@@ -49,42 +49,38 @@ namespace EasyPDV {
         }
         public void SomaProdutos(object sender, EventArgs e, string nome, double preco, int id) {
             richTextBox3.Text = string.Empty;
-            string descricaoCompra = nome +"............  R$"+ preco ;
+            string descricaoCompra = nome +"........ R$"+ preco ;
             if (!list.Contains(nome)) {
                 list.Add(nome);
-                listViewProdutos.Text = descricaoCompra;
                 listViewProdutos.Items.Add(descricaoCompra);
                 ListaQtdVendidos.Add(1);
             } else {
                 for (int i = 0; i < list.Count; i++) {
                     if (listViewProdutos.Items[i].Text.Contains(nome)){
                         ListaQtdVendidos[i] += 1;
-                        listViewProdutos.Items[i].Text = descricaoCompra +"   x"+ ListaQtdVendidos[i];
+                        listViewProdutos.Items[i].Text = nome + "........ R$" + preco * ListaQtdVendidos[i]+ " | Qtd = x"+ ListaQtdVendidos[i];
                     }
                 }
             }
-            ListaDeProdutosVendidos.Add(nome + " | R$" + preco);
+            ListaDeProdutosVendidos.Add(nome + "," + preco);
             ListaIDProdutos.Add(id);
             Total += preco;
-            richTextBox3.Text += Total;
+            richTextBox3.Text += Total.ToString("F2");
         }
-
         public void SubtrairProdutoEstoque() {
             foreach (int item in ListaIDProdutos) {
                 produtoDAO.SubtraiEstoque(item);
             }
             ListaIDProdutos.Clear();
         }
-
         private void btnRealizar_Click_1(object sender, EventArgs e) {
-            List<string> listaProdutosBanco = AdicionarListaVendaBanco();
             venda.DataVenda = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             venda.ValorVenda = Total;
-            venda.Produtos = listaProdutosBanco;
+            venda.Produtos = AdicionarListaVendaBanco();
             venda.MeioPagamento = meioPagamentoBox.Text;
             foreach (string item in ListaDeProdutosVendidos) {
                 //Aqui será implementado o código de impressão de fichas
-                //Para cada item na lista uma ficha impressa
+                //Para cada item na lista, uma ficha impressa
             }
             if (listViewProdutos.Text != "" || richTextBox3.Text != "") {
                 if (meioPagamentoBox.Text != "") {
@@ -92,6 +88,7 @@ namespace EasyPDV {
                     if (res == DialogResult.OK) {
                         vendaDAO.InsertVenda(venda);
                         SubtrairProdutoEstoque();
+                        AdicionarProdutoIndividual();
                         listViewProdutos.Clear();
                         ListaQtdVendidos.Clear();
                         list.Clear();
@@ -114,69 +111,60 @@ namespace EasyPDV {
             }
             return listaProdutosBanco;
         }
+        private void AdicionarProdutoIndividual() {
+            VendaIndividual vendaIndividual = new VendaIndividual();
+            VendaIndividualDAO vendaIndividualDAO = new VendaIndividualDAO();
+            foreach (string item in ListaDeProdutosVendidos) {
+                vendaIndividual.DataVenda = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+                string[] prodSplit = item.Split(',');
+                vendaIndividual.Produto = prodSplit[0];
+                vendaIndividual.ValorVenda = double.Parse(prodSplit[1].Trim());
+                vendaIndividual.MeioPagamento = meioPagamentoBox.Text;
+                vendaIndividualDAO.InsertVendaIndividual(vendaIndividual);
+            }
+        }
         private void TelaApp_Click(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
-
         private void button9_Click(object sender, EventArgs e) {
-
         }
-
         private void button1_Click(object sender, EventArgs e) {
         }
-
         private void button2_Click(object sender, EventArgs e) {
         }
-
         private void button3_Click(object sender, EventArgs e) {
         }
-
         private void button4_Click(object sender, EventArgs e) {
         }
-
         private void button6_Click(object sender, EventArgs e) {
 
         }
-
         private void button7_Click(object sender, EventArgs e) {
-
         }
-
         private void button5_Click(object sender, EventArgs e) {
         }
-
         private void button12_Click(object sender, EventArgs e) {
-
         }
-
         private void button8_Click(object sender, EventArgs e) {
-
         }
-
         private void button11_Click(object sender, EventArgs e) {
 
         }
-
         private void button10_Click(object sender, EventArgs e) {
 
         }
-
         private void button13_Click(object sender, EventArgs e) {
 
         }
-
         private void button14_Click(object sender, EventArgs e) {
 
         }
-
         private void button15_Click(object sender, EventArgs e) {
 
         }
-
         private void button16_Click(object sender, EventArgs e) {
 
         }
-
         private void button12_MouseMove(object sender, MouseEventArgs e) {
             button1.Cursor = Cursors.Hand;
             button2.Cursor = Cursors.Hand;
@@ -195,24 +183,16 @@ namespace EasyPDV {
             button15.Cursor = Cursors.Hand;
             button16.Cursor = Cursors.Hand;
         }
-
         private void label1_Click(object sender, EventArgs e) {
 
         }
-
-        private void btnRealizar_Click(object sender, EventArgs e) {
-
-        }
-
         private void btnCancel_MouseMove(object sender, MouseEventArgs e) {
             btnCancel.Cursor = Cursors.Hand;
 
         }
-
         private void btnRealizar_MouseMove(object sender, MouseEventArgs e) {
             btnRealizar.Cursor = Cursors.Hand;
         }
-
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e) {
             bool isOpen = false;
             foreach (Form f in Application.OpenForms) {
@@ -226,11 +206,7 @@ namespace EasyPDV {
                 TelaCadastroProduto tc = new TelaCadastroProduto();
                 tc.Show();
             }
-        }
-
-        private void listProdutos_TextChanged(object sender, EventArgs e) {
-        }
-
+        }       
         private void siticoneContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 
         }
@@ -241,49 +217,15 @@ namespace EasyPDV {
             list.Clear();
             Total = 0;
         }
-        private void visualizarVendasToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Vendas") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                TelaVendas tv = new TelaVendas();
-                tv.Show();
-            }
-
-        }
-
-        private void cancelarVendaToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Vendas Canceladas") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                TelaVendasCanceladas tvc = new TelaVendasCanceladas();
-                tvc.Show();
-            }
-        }
-
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
 
         }
-
         private void btnRefresh_Click(object sender, EventArgs e) {
             Application.Restart();
         }
-
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
         }
-
         private void conferirFaturaToolStripMenuItem_Click(object sender, EventArgs e) {
             bool isOpen = false;
             foreach (Form f in Application.OpenForms) {
@@ -298,6 +240,33 @@ namespace EasyPDV {
                 telaFatura.Show();
             }
         }
-
+        private void cancelarVendaToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Vendas Canceladas") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                TelaVendasCanceladas tvc = new TelaVendasCanceladas();
+                tvc.Show();
+            }
+        }
+        private void visualizarVendasToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Vendas") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                TelaVendas tv = new TelaVendas();
+                tv.Show();
+            }
+        }
     }
 }
