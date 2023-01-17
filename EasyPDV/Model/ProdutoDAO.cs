@@ -11,9 +11,6 @@ using System.Windows.Forms;
 namespace EasyPDV.DAO {
     internal class ProdutoDAO {
         DAO dao = new DAO();
-        public ProdutoDAO() {
-            dao.Connection();
-        }
         public NpgsqlCommand Read() {
             NpgsqlCommand cmd;
             try {
@@ -25,6 +22,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return cmd;
         }
         public List<Produto> ReadAll() {
@@ -47,6 +45,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return list;
         }
         public Image BuscarImagem(Produto p) {
@@ -67,6 +66,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return imagem;
         }
         public void Insert(Produto p) {
@@ -83,6 +83,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
         public void Update(Produto p) {
             try {
@@ -98,6 +99,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
         public void Delete(Produto p) {
             try {
@@ -109,6 +111,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
         public void SubtraiEstoque(int id) {
             try {
@@ -120,6 +123,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
     }
 }

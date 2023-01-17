@@ -6,9 +6,6 @@ using System.Windows.Forms;
 namespace EasyPDV.DAO {
     internal class VendaCanceladaDAO {
         DAO dao= new DAO();
-        public VendaCanceladaDAO() {
-            dao.Connection();
-        }
         public NpgsqlCommand ReadVendaCancelada() {
             NpgsqlCommand cmd;
             try {
@@ -21,6 +18,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return cmd;
         }
         public void DeleteVendaCancelada(VendaCancelada vc) {
@@ -33,6 +31,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
     }
 }

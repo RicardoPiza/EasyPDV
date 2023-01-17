@@ -8,9 +8,6 @@ using System;
 namespace EasyPDV.DAO {
     internal class VendaIndividualDAO {
         DAO dao = new DAO();
-        public VendaIndividualDAO() {
-            dao.Connection();
-        }
 
         public void InsertVendaIndividual(VendaIndividual vendaIndividual) {
             try {
@@ -26,6 +23,7 @@ namespace EasyPDV.DAO {
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
+            dao.Connection().Close();
         }
         public NpgsqlCommand ReadVendasIndividuais() {
             NpgsqlCommand cmd;
@@ -38,6 +36,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return cmd;
         }
         public double ReadTotalVendasIndividuais() {
@@ -57,6 +56,7 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return 0;
             }
+            dao.Connection().Close();
             return value;
         }
         public void Delete() {
@@ -68,6 +68,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
     }
 }

@@ -6,9 +6,6 @@ using System.Windows.Forms;
 namespace EasyPDV.DAO {
     internal class VendaDAO {
         DAO dao = new DAO();
-        public VendaDAO() {
-            dao.Connection();
-        }
 
         public void InsertVenda(Venda v) {
             try {
@@ -24,11 +21,11 @@ namespace EasyPDV.DAO {
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
+            dao.Connection().Close();
         }
         public NpgsqlCommand ReadVenda() {
             NpgsqlCommand cmd;
             try {
-
                 cmd = new NpgsqlCommand(
                     "SELECT id AS ID, data_venda AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
                     "valor_venda AS \"Valor total da venda (R$)\", meio_pagamento as \"Meio de pagamento\" " +
@@ -38,11 +35,12 @@ namespace EasyPDV.DAO {
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            dao.Connection().Close();
             return cmd;
         }
         public void DeleteVenda(Venda v) {
             try {
-                NpgsqlCommand cmd;
+                NpgsqlCommand cmd; 
                 cmd = new NpgsqlCommand(
                     $"DELETE FROM venda " +
                     $"where id = {v.ID}", dao.Connection());
@@ -50,6 +48,7 @@ namespace EasyPDV.DAO {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+            dao.Connection().Close();
         }
 
     }
