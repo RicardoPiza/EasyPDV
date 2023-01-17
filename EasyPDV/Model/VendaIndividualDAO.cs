@@ -54,6 +54,7 @@ namespace EasyPDV.DAO {
                     }
                 }
             } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
                 return 0;
             }
             return value;

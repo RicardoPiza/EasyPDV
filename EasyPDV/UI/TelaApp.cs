@@ -6,6 +6,7 @@ using EasyPDV.UI;
 using System.Linq;
 using System.Collections.Generic;
 using Color = System.Drawing.Color;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace EasyPDV {
     public partial class TelaApp : Form {
@@ -32,19 +33,20 @@ namespace EasyPDV {
             label2.BackColor = Color.Transparent;
         }
         private void CarregaBotoes() {
-            List<Button> btn = new List<Button>();
+            List<Button> botoesProdutos = new List<Button>();
             List<Produto> produtos = new List<Produto>();
-            btn = tableLayoutPanel1.Controls.OfType<Button>().ToList();
-            btn.Reverse();
+            botoesProdutos = tableLayoutPanel1.Controls.OfType<Button>().ToList();
+            int totalBotoes = botoesProdutos.Count();
+            botoesProdutos.Reverse();
             produtos = produtoDAO.ReadAll();
             for (int i = 0; i < produtos.Count; i++) {
                 produto.ID = produtos[i].ID;
-                btn[i].Image = produtoDAO.Imagem(produto);
+                botoesProdutos[i].Image = produtoDAO.BuscarImagem(produto);
                 int id = produto.ID;
                 string name = produtos[i].Nome;
                 double preco = produtos[i].Preco;
-                btn[i].Click += (s2, e2) => SomaProdutos(s2, e2, name, preco, id);
-                btn[i].Invalidate();
+                botoesProdutos[i].Click += (s2, e2) => SomaProdutos(s2, e2, name, preco, id);
+                botoesProdutos[i].Invalidate();
             }
         }
         public void SomaProdutos(object sender, EventArgs e, string nome, double preco, int id) {
@@ -56,13 +58,13 @@ namespace EasyPDV {
                 ListaQtdVendidos.Add(1);
             } else {
                 for (int i = 0; i < list.Count; i++) {
-                    if (listViewProdutos.Items[i].Text.Contains(nome)){
+                    if (listViewProdutos.Items[i].Text.Contains(nome.ToString())){
                         ListaQtdVendidos[i] += 1;
                         listViewProdutos.Items[i].Text = nome + "........ R$" + preco * ListaQtdVendidos[i]+ " | Qtd = x"+ ListaQtdVendidos[i];
                     }
                 }
             }
-            ListaDeProdutosVendidos.Add(nome + "," + preco);
+            ListaDeProdutosVendidos.Add(nome + "|" + preco);
             ListaIDProdutos.Add(id);
             Total += preco;
             richTextBox3.Text += Total.ToString("F2");
@@ -116,7 +118,7 @@ namespace EasyPDV {
             VendaIndividualDAO vendaIndividualDAO = new VendaIndividualDAO();
             foreach (string item in ListaDeProdutosVendidos) {
                 vendaIndividual.DataVenda = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-                string[] prodSplit = item.Split(',');
+                string[] prodSplit = item.Split('|');
                 vendaIndividual.Produto = prodSplit[0];
                 vendaIndividual.ValorVenda = double.Parse(prodSplit[1].Trim());
                 vendaIndividual.MeioPagamento = meioPagamentoBox.Text;

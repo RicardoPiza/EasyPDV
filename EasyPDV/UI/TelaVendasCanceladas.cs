@@ -5,6 +5,8 @@ using Npgsql;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using ToolTip = System.Windows.Forms.ToolTip;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EasyPDV.UI {
     public partial class TelaVendasCanceladas : Form {
@@ -13,6 +15,7 @@ namespace EasyPDV.UI {
         VendaCanceladaDAO vendaCanceladaDAO = new VendaCanceladaDAO();
         FolderBrowserDialog fbd= new FolderBrowserDialog();
         VendaCancelada vendaCancelada = new VendaCancelada();
+        ToolTip toolTip = new ToolTip();
         public TelaVendasCanceladas() {
             InitializeComponent();
         }
@@ -56,6 +59,8 @@ namespace EasyPDV.UI {
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
             btnRelatorio.Cursor = Cursors.Hand;
+            toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
+            toolTip.SetToolTip(btnRefresh, "Atualizar vendas");
         }
 
         private void label2_Click(object sender, EventArgs e) {

@@ -67,6 +67,7 @@ namespace EasyPDV.UI {
 
         private void button1_Click(object sender, EventArgs e) {
             vendaIndividualDAO.Delete();
+            CarregaVendas();
         }
 
         private void button1_MouseMove(object sender, MouseEventArgs e) {

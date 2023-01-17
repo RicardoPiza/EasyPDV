@@ -572,6 +572,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -1478,7 +1486,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasyPDV-Setup"
         "ProductCode" = "8:{4287050E-B91E-4651-AE1C-4751C75B711E}"
-        "PackageCode" = "8:{EE262A36-069C-45A7-B70B-800A6426E673}"
+        "PackageCode" = "8:{B3220863-8857-4628-9D91-B4A7D8158824}"
         "UpgradeCode" = "8:{30426460-4C2E-4507-B44D-D2A4A313B438}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -1491,7 +1499,7 @@
         "ARPHELPLINK" = "8:"
         "Title" = "8:EasyPDV-Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:EasyDev"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"

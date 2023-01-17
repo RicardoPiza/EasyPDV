@@ -12,6 +12,7 @@ namespace EasyPDV.UI {
         ProdutoDAO produto = new ProdutoDAO(); 
         Produto p = new Produto();
         OpenFileDialog ofd = new OpenFileDialog();
+        ToolTip toolTip = new ToolTip();
         public TelaCadastroProduto() {
             InitializeComponent();
         }
@@ -116,6 +117,7 @@ namespace EasyPDV.UI {
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
+            toolTip.SetToolTip(btnRefresh, "Atualizar produtos");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace EasyPDV.UI {
         VendaDAO vendaDAO = new VendaDAO();
         Venda venda = new Venda();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
+        ToolTip toolTip= new ToolTip();
         public TelaVendas() {
             InitializeComponent();
         }
@@ -69,6 +70,8 @@ namespace EasyPDV.UI {
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
+            toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
+            toolTip.SetToolTip(btnRefresh, "Atualizar vendas");
         }
 
         private void vendasGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {

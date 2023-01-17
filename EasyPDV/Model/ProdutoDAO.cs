@@ -49,7 +49,7 @@ namespace EasyPDV.DAO {
             }
             return list;
         }
-        public Image Imagem(Produto p) {
+        public Image BuscarImagem(Produto p) {
             NpgsqlCommand cmd;
             Image imagem = null;
             try {
