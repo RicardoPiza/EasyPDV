@@ -8,24 +8,24 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
-    public partial class TelaFatura : Form {
+    public partial class FrmIncome : Form {
         NpgsqlDataAdapter adpt;
-        VendaIndividualDAO vendaIndividualDAO = new VendaIndividualDAO();
+        IndividualSaleDAO individualSale = new IndividualSaleDAO();
         DataTable dt;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip = new ToolTip();
-        public TelaFatura() {
+        public FrmIncome() {
             InitializeComponent();
         }
 
-        private void TelaFatura_Load(object sender, EventArgs e) {
-            TelaApp telaApp= new TelaApp();
-            lblFatura.Text = telaApp.TotalCaixa.ToString();
-            CarregaVendas();
-            MostraTotal();
+        private void FrmIncome_Load(object sender, EventArgs e) {
+            FrmApp telaApp= new FrmApp();
+            lblFatura.Text = telaApp._CashierTotal.ToString();
+            LoadSales();
+            ShowTotal();
         }
-        public void CarregaVendas() { 
-            adpt = new NpgsqlDataAdapter(vendaIndividualDAO.ReadVendasIndividuais());
+        public void LoadSales() { 
+            adpt = new NpgsqlDataAdapter(individualSale.ReadIndividualSale());
             dt = new DataTable();
             adpt.Fill(dt);
             vendasGridView1.DataSource= dt;
@@ -33,11 +33,11 @@ namespace EasyPDV.UI {
                 vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
-        public void MostraTotal() {
-            lblTotalFatura.Text = vendaIndividualDAO.ReadTotalVendasIndividuais().ToString();    
+        public void ShowTotal() {
+            lblTotalFatura.Text = individualSale.ReadTotalIndividualSale().ToString();    
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e) {
+        private void btnReport_Click(object sender, EventArgs e) {
             try {
                 string path = "";
                 if (fbd.ShowDialog() == DialogResult.OK) {
@@ -45,7 +45,7 @@ namespace EasyPDV.UI {
                 }
                 XLWorkbook wb = new XLWorkbook();
                 var ws = wb.Worksheets.Add(dt, "Relatório fatura");
-                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + vendaIndividualDAO.ReadTotalVendasIndividuais();
+                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSale.ReadTotalIndividualSale();
                 ws.Columns().AdjustToContents();
                 ws.RangeUsed().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
                 if (path != "") {
@@ -61,13 +61,13 @@ namespace EasyPDV.UI {
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            CarregaVendas();
-            MostraTotal();
+            LoadSales();
+            ShowTotal();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            vendaIndividualDAO.Delete();
-            CarregaVendas();
+            individualSale.DeleteAllIndividualSale();
+            LoadSales();
         }
 
         private void button1_MouseMove(object sender, MouseEventArgs e) {

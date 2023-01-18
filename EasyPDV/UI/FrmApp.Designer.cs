@@ -1,5 +1,5 @@
 ﻿namespace EasyPDV {
-    partial class TelaApp {
+    partial class FrmApp {
         /// <summary>
         /// Variável de designer necessária.
         /// </summary>
@@ -23,7 +23,7 @@
         /// o conteúdo deste método com o editor de código.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaApp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApp));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -502,7 +502,7 @@
             this.btnRealizar.Size = new System.Drawing.Size(196, 48);
             this.btnRealizar.TabIndex = 16;
             this.btnRealizar.Text = "Realizar Venda";
-            this.btnRealizar.Click += new System.EventHandler(this.btnRealizar_Click_1);
+            this.btnRealizar.Click += new System.EventHandler(this.btnMakeSale_Click_1);
             this.btnRealizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRealizar_MouseMove);
             // 
             // label3
@@ -595,7 +595,7 @@
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
-            // TelaApp
+            // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(211)))), ((int)(((byte)(251)))));
@@ -615,7 +615,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1000, 716);
-            this.Name = "TelaApp";
+            this.Name = "FrmApp";
             this.Text = "EasyPDV Sistema de ponto de venta para festas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);

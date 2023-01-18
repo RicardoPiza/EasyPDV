@@ -9,22 +9,22 @@ using ToolTip = System.Windows.Forms.ToolTip;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EasyPDV.UI {
-    public partial class TelaVendasCanceladas : Form {
+    public partial class FrmCancelledSale : Form {
         DataTable dt;
         NpgsqlDataAdapter adpt;
-        VendaCanceladaDAO vendaCanceladaDAO = new VendaCanceladaDAO();
+        CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
         FolderBrowserDialog fbd= new FolderBrowserDialog();
-        VendaCancelada vendaCancelada = new VendaCancelada();
+        CancelledSale cancelledSale = new CancelledSale();
         ToolTip toolTip = new ToolTip();
-        public TelaVendasCanceladas() {
+        public FrmCancelledSale() {
             InitializeComponent();
         }
 
-        private void vendasGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void salesGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
-        public void ListarCanceladas() {
-            adpt = new NpgsqlDataAdapter(vendaCanceladaDAO.ReadVendaCancelada());
+        public void ListCancelledSales() {
+            adpt = new NpgsqlDataAdapter(cancelledSaleDAO.ReadCancelledSale());
             dt = new DataTable();
             adpt.Fill(dt);
             vendasGridView1.DataSource = dt;
@@ -33,11 +33,11 @@ namespace EasyPDV.UI {
             }
         }
 
-        private void TelaVendasCanceladas_Load(object sender, EventArgs e) {
-            ListarCanceladas();
+        private void FrmCancelledSale_Load(object sender, EventArgs e) {
+            ListCancelledSales();
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e) {
+        private void btnReport_Click(object sender, EventArgs e) {
             string path = "";
             if (fbd.ShowDialog() == DialogResult.OK) {
                 path = fbd.SelectedPath;
@@ -53,7 +53,7 @@ namespace EasyPDV.UI {
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            ListarCanceladas();
+            ListCancelledSales();
         }
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
@@ -67,13 +67,13 @@ namespace EasyPDV.UI {
 
         }
 
-        private void btnCancelarVenda_Click(object sender, EventArgs e) {
+        private void btnSaleCancel_Click(object sender, EventArgs e) {
             DialogResult res = MessageBox.Show("Tem Certeza que deseja remover esta venda?\n" +
                 "É uma venda cancelada e seus dados serão totalmente perdidos!", "Cancelar venda", MessageBoxButtons.OKCancel,MessageBoxIcon.Stop);
             if (res == DialogResult.OK) {
-                vendaCancelada.ID = int.Parse(vendasGridView1.SelectedCells[0].Value.ToString());
-                vendaCanceladaDAO.DeleteVendaCancelada(vendaCancelada);
-                ListarCanceladas();
+                cancelledSale.ID = int.Parse(vendasGridView1.SelectedCells[0].Value.ToString());
+                cancelledSaleDAO.DeleteCancelledSale(cancelledSale);
+                ListCancelledSales();
             }
         }
     }

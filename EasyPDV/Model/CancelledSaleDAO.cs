@@ -4,9 +4,9 @@ using System;
 using System.Windows.Forms;
 
 namespace EasyPDV.DAO {
-    internal class VendaCanceladaDAO {
+    internal class CancelledSaleDAO {
         DAO dao= new DAO();
-        public NpgsqlCommand ReadVendaCancelada() {
+        public NpgsqlCommand ReadCancelledSale() {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
@@ -21,12 +21,12 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public void DeleteVendaCancelada(VendaCancelada vc) {
+        public void DeleteCancelledSale(CancelledSale cancelledSale) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     $"DELETE FROM venda_cancelada " +
-                    $"where id = {vc.ID}", dao.Connection());
+                    $"where id = {cancelledSale.ID}", dao.Connection());
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

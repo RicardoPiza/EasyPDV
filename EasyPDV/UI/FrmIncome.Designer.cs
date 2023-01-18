@@ -1,5 +1,5 @@
 ﻿namespace EasyPDV.UI {
-    partial class TelaFatura {
+    partial class FrmIncome {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaFatura));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIncome));
             this.label1 = new System.Windows.Forms.Label();
             this.lblFatura = new System.Windows.Forms.Label();
             this.vendasGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
@@ -177,7 +177,7 @@
             this.btnRelatorio.Size = new System.Drawing.Size(35, 45);
             this.btnRelatorio.TabIndex = 28;
             this.btnRelatorio.UseVisualStyleBackColor = true;
-            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            this.btnRelatorio.Click += new System.EventHandler(this.btnReport_Click);
             this.btnRelatorio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
             // 
             // TelaFatura
@@ -197,7 +197,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaFatura";
             this.Text = "Fatura do dia";
-            this.Load += new System.EventHandler(this.TelaFatura_Load);
+            this.Load += new System.EventHandler(this.FrmIncome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -6,14 +6,14 @@ using System.Data;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
-    public partial class TelaCadastroProduto : Form {
-        NpgsqlDataAdapter adpt;
-        DataTable dt;
-        ProdutoDAO produto = new ProdutoDAO(); 
-        Produto p = new Produto();
+    public partial class FrmInsertProduct : Form {
+        NpgsqlDataAdapter _adpt;
+        DataTable _dt;
+        ProductDAO productDAO = new ProductDAO(); 
+        Product product = new Product();
         OpenFileDialog ofd = new OpenFileDialog();
         ToolTip toolTip = new ToolTip();
-        public TelaCadastroProduto() {
+        public FrmInsertProduct() {
             InitializeComponent();
         }
 
@@ -21,32 +21,32 @@ namespace EasyPDV.UI {
 
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e) {
-            p.Nome = textBox1.Text;
-            p.Imagem = siticoneTextBox1.Text;
+        private void btnRegister_Click(object sender, EventArgs e) {
+            product.Name = textBox1.Text;
+            product.Image = siticoneTextBox1.Text;
             double num;
             int num2;
             if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "") {
-                p.Preco = double.Parse(textBox2.Text);
+                product.Price = double.Parse(textBox2.Text);
             
             } else {
                 MessageBox.Show(
                     "Preencha TODOS os campos. Campo Preço e Estoque devem ser um numeros");
             }
-            if (int.TryParse(txtEstoque.Text, out num2) && txtEstoque.Text != "") {
-                p.QtdEstoque = int.Parse(txtEstoque.Text);
-                produto.Insert(p);
+            if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "") {
+                product.StockQuantity = int.Parse(txtStock.Text);
+                productDAO.Insert(product);
                 MessageBox.Show("Cadastro efetuado!");
                 textBox1.Text = string.Empty;
             }
             textBox2.Text= string.Empty;
-            ListarProdutos();
+            ShowProductList();
         }
-        public void ListarProdutos() {
-            adpt = new NpgsqlDataAdapter(produto.Read());
-            dt = new DataTable();
-            adpt.Fill(dt);
-            dataGridView1.DataSource = dt;
+        public void ShowProductList() {
+            _adpt = new NpgsqlDataAdapter(productDAO.Read());
+            _dt = new DataTable();
+            _adpt.Fill(_dt);
+            dataGridView1.DataSource = _dt;
             dataGridView1.MultiSelect = false;
             for (int i = 0; i <=4; i++) {
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -56,8 +56,8 @@ namespace EasyPDV.UI {
             }
         }
 
-        private void TelaCadastroProduto_Load(object sender, EventArgs e) {
-            ListarProdutos();
+        private void FrmInsertProduct_Load(object sender, EventArgs e) {
+            ShowProductList();
         }
 
         private void label2_Click(object sender, EventArgs e) {
@@ -67,28 +67,28 @@ namespace EasyPDV.UI {
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e) {
-            p.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
+        private void btnDelete_Click(object sender, EventArgs e) {
+            product.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
             DialogResult = MessageBox.Show("Confirma exclusão?","Excluir produto",MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (DialogResult == DialogResult.OK) {
-                produto.Delete(p);
-                ListarProdutos();
+                productDAO.DeleteProduct(product);
+                ShowProductList();
             }
         }
 
-        private void btnAlterar_Click(object sender, EventArgs e) {
-            p.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            p.Nome = dataGridView1.SelectedCells[1].Value.ToString();
-            p.Preco = double.Parse(dataGridView1.SelectedCells[2].Value.ToString());
-            p.QtdEstoque= int.Parse(dataGridView1.SelectedCells[4].Value.ToString());
-            produto.Update(p);
+        private void btnUpdate_Click(object sender, EventArgs e) {
+            product.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
+            product.Name = dataGridView1.SelectedCells[1].Value.ToString();
+            product.Price = double.Parse(dataGridView1.SelectedCells[2].Value.ToString());
+            product.StockQuantity= int.Parse(dataGridView1.SelectedCells[4].Value.ToString());
+            productDAO.Update(product);
             MessageBox.Show("Produto alterado com sucesso");
         }
 
-        private void btnCadastrar_MouseMove(object sender, MouseEventArgs e) {
-            btnCadastrar.Cursor = Cursors.Hand;
-            btnExcluir.Cursor = Cursors.Hand;
-            btnAlterar.Cursor = Cursors.Hand;
+        private void btnInsert_MouseMove(object sender, MouseEventArgs e) {
+            btnInsert.Cursor = Cursors.Hand;
+            btnDelete.Cursor = Cursors.Hand;
+            btnUpdate.Cursor = Cursors.Hand;
         }
 
         private void label1_Click(object sender, EventArgs e) {
@@ -108,11 +108,11 @@ namespace EasyPDV.UI {
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            ListarProdutos();
+            ShowProductList();
         }
 
         private void btnCaminho_MouseMove(object sender, MouseEventArgs e) {
-            btnCaminho.Cursor = Cursors.Hand;
+            btnPath.Cursor = Cursors.Hand;
         }
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {

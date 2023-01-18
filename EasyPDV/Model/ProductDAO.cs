@@ -9,7 +9,7 @@ using System.IO;
 using System.Windows.Forms;
 
 namespace EasyPDV.DAO {
-    internal class ProdutoDAO {
+    internal class ProductDAO {
         DAO dao = new DAO();
         public NpgsqlCommand Read() {
             NpgsqlCommand cmd;
@@ -25,8 +25,8 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public List<Produto> ReadAll() {
-            List<Produto> list = new List<Produto>();
+        public List<Product> ReadAll() {
+            List<Product> list = new List<Product>();
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
@@ -34,10 +34,10 @@ namespace EasyPDV.DAO {
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows) {
                     while (reader.Read()) {
-                        Produto p = new Produto();
+                        Product p = new Product();
                         p.ID = (int)reader.GetInt16(0);
-                        p.Nome = reader.GetString(1);
-                        p.Preco = (double)reader.GetDouble(2);
+                        p.Name = reader.GetString(1);
+                        p.Price = (double)reader.GetDouble(2);
                         list.Add(p);
                     }
                 }
@@ -48,18 +48,18 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return list;
         }
-        public Image BuscarImagem(Produto p) {
+        public Image BuscarImagem(Product product) {
             NpgsqlCommand cmd;
-            Image imagem = null;
+            Image image = null;
             try {
                 cmd = new NpgsqlCommand("" +
-                    $"SELECT imagem FROM produto where id = {p.ID}", dao.Connection());
+                    $"SELECT imagem FROM produto where id = {product.ID}", dao.Connection());
                 byte[] productImageByte = cmd.ExecuteScalar() as byte[];
                 if (productImageByte != null) {
                     using (MemoryStream productImageStream = new System.IO.MemoryStream(productImageByte)) {
                         ImageConverter imageConverter = new System.Drawing.ImageConverter();
-                        imagem = imageConverter.ConvertFrom(productImageByte) as System.Drawing.Image;
-                        imagem = System.Drawing.Image.FromStream(productImageStream);
+                        image = imageConverter.ConvertFrom(productImageByte) as System.Drawing.Image;
+                        image = System.Drawing.Image.FromStream(productImageStream);
                     }
                 }
             } catch (Exception ex) {
@@ -67,41 +67,41 @@ namespace EasyPDV.DAO {
                 return null;
             }
             dao.Connection().Close();
-            return imagem;
+            return image;
         }
-        public void Insert(Produto p) {
+        public void Insert(Product product) {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
                     "INSERT INTO Produto(nome, preco, imagem, estoque) " +
                     $"VALUES(@n, @p,@i,@e)", dao.Connection());
-                cmd.Parameters.AddWithValue("n", p.Nome);
-                cmd.Parameters.AddWithValue("p", p.Preco);
-                cmd.Parameters.AddWithValue("i", File.OpenRead(p.Imagem));
-                cmd.Parameters.AddWithValue("e", p.QtdEstoque);
+                cmd.Parameters.AddWithValue("n", product.Name);
+                cmd.Parameters.AddWithValue("p", product.Price);
+                cmd.Parameters.AddWithValue("i", File.OpenRead(product.Image));
+                cmd.Parameters.AddWithValue("e", product.StockQuantity);
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
             dao.Connection().Close();
         }
-        public void Update(Produto p) {
+        public void Update(Product product) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     "UPDATE produto " +
                     "SET nome = @n, preco = @p, estoque = @e" +
-                    $" WHERE id = {p.ID}", dao.Connection());
-                cmd.Parameters.AddWithValue("n", p.Nome);
-                cmd.Parameters.AddWithValue("p", p.Preco);
-                cmd.Parameters.AddWithValue("e", p.QtdEstoque);
+                    $" WHERE id = {product.ID}", dao.Connection());
+                cmd.Parameters.AddWithValue("n", product.Name);
+                cmd.Parameters.AddWithValue("p", product.Price);
+                cmd.Parameters.AddWithValue("e", product.StockQuantity);
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
             dao.Connection().Close();
         }
-        public void Delete(Produto p) {
+        public void DeleteProduct(Product p) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
@@ -113,7 +113,7 @@ namespace EasyPDV.DAO {
             }
             dao.Connection().Close();
         }
-        public void SubtraiEstoque(int id) {
+        public void SubtractStock(int id) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(

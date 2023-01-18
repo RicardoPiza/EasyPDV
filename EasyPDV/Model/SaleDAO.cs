@@ -4,26 +4,26 @@ using System;
 using System.Windows.Forms;
 
 namespace EasyPDV.DAO {
-    internal class VendaDAO {
+    internal class SaleDAO {
         DAO dao = new DAO();
 
-        public void InsertVenda(Venda v) {
+        public void InsertSale(Sale sale) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
                     "INSERT INTO venda(valor_venda, data_venda, produtos, meio_pagamento)" +
                     " VALUES (@vv, @dv, @p, @mp)", dao.Connection());
-                cmd.Parameters.AddWithValue("vv", v.ValorVenda);
-                cmd.Parameters.AddWithValue("dv", DateTime.Parse(v.DataVenda));
-                cmd.Parameters.AddWithValue("p", v.Produtos);
-                cmd.Parameters.AddWithValue("mp", v.MeioPagamento);
+                cmd.Parameters.AddWithValue("vv", sale.SalePrice);
+                cmd.Parameters.AddWithValue("dv", DateTime.Parse(sale.SaleDate));
+                cmd.Parameters.AddWithValue("p", sale.Products);
+                cmd.Parameters.AddWithValue("mp", sale.PaymentMethod);
                 cmd.ExecuteNonQuery();
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
             dao.Connection().Close();
         }
-        public NpgsqlCommand ReadVenda() {
+        public NpgsqlCommand ReadSale() {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
@@ -38,12 +38,12 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public void DeleteVenda(Venda v) {
+        public void DeleteSale(Sale sale) {
             try {
                 NpgsqlCommand cmd; 
                 cmd = new NpgsqlCommand(
                     $"DELETE FROM venda " +
-                    $"where id = {v.ID}", dao.Connection());
+                    $"where id = {sale.ID}", dao.Connection());
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

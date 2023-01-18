@@ -108,49 +108,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DAO.cs" />
-    <Compile Include="Model\ProdutoDAO.cs" />
-    <Compile Include="Model\VendaCanceladaDAO.cs" />
-    <Compile Include="Model\VendaDAO.cs" />
-    <Compile Include="Model\VendaIndividualDAO.cs" />
-    <Compile Include="Data\Produto.cs" />
-    <Compile Include="Data\Venda.cs" />
-    <Compile Include="Data\VendaCancelada.cs" />
-    <Compile Include="Data\VendaIndividual.cs" />
-    <Compile Include="UI\TelaApp.cs">
+    <Compile Include="Model\ProductDAO.cs" />
+    <Compile Include="Model\CancelledSaleDAO.cs" />
+    <Compile Include="Model\SaleDAO.cs" />
+    <Compile Include="Model\IndividualSaleDAO.cs" />
+    <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\Sale.cs" />
+    <Compile Include="Data\CancelledSale.cs" />
+    <Compile Include="Data\IndividualSale.cs" />
+    <Compile Include="UI\FrmApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaApp.Designer.cs">
-      <DependentUpon>TelaApp.cs</DependentUpon>
+    <Compile Include="UI\FrmApp.Designer.cs">
+      <DependentUpon>FrmApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="EasyPDV-App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\TelaCadastroProduto.cs">
+    <Compile Include="UI\FrmInsertProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaCadastroProduto.Designer.cs">
-      <DependentUpon>TelaCadastroProduto.cs</DependentUpon>
+    <Compile Include="UI\FrmInsertProduct.Designer.cs">
+      <DependentUpon>FrmInsertProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TelaFatura.cs">
+    <Compile Include="UI\FrmIncome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaFatura.Designer.cs">
-      <DependentUpon>TelaFatura.cs</DependentUpon>
+    <Compile Include="UI\FrmIncome.Designer.cs">
+      <DependentUpon>FrmIncome.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TelaVendas.cs">
+    <Compile Include="UI\FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaVendas.Designer.cs">
-      <DependentUpon>TelaVendas.cs</DependentUpon>
+    <Compile Include="UI\FrmSale.Designer.cs">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TelaVendasCanceladas.cs">
+    <Compile Include="UI\FrmCancelledSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaVendasCanceladas.Designer.cs">
-      <DependentUpon>TelaVendasCanceladas.cs</DependentUpon>
+    <Compile Include="UI\FrmCancelledSale.Designer.cs">
+      <DependentUpon>FrmCancelledSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\TypeHelper.cs" />
-    <EmbeddedResource Include="UI\TelaApp.resx">
-      <DependentUpon>TelaApp.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmApp.resx">
+      <DependentUpon>FrmApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,17 +162,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\TelaCadastroProduto.resx">
-      <DependentUpon>TelaCadastroProduto.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmInsertProduct.resx">
+      <DependentUpon>FrmInsertProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TelaFatura.resx">
-      <DependentUpon>TelaFatura.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmIncome.resx">
+      <DependentUpon>FrmIncome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TelaVendas.resx">
-      <DependentUpon>TelaVendas.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmSale.resx">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TelaVendasCanceladas.resx">
-      <DependentUpon>TelaVendasCanceladas.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmCancelledSale.resx">
+      <DependentUpon>FrmCancelledSale.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

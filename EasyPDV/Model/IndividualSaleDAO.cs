@@ -6,26 +6,26 @@ using System.Windows.Forms;
 using System;
 
 namespace EasyPDV.DAO {
-    internal class VendaIndividualDAO {
+    internal class IndividualSaleDAO {
         DAO dao = new DAO();
 
-        public void InsertVendaIndividual(VendaIndividual vendaIndividual) {
+        public void InsertIndividualSale(IndividualSale individualSale) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
                     "INSERT INTO venda_individual(data, produto, valor, meio_pagamento)" +
                     " VALUES (@dv, @p, @v, @mp)", dao.Connection());
-                cmd.Parameters.AddWithValue("v", vendaIndividual.ValorVenda);
-                cmd.Parameters.AddWithValue("dv", DateTime.Parse(vendaIndividual.DataVenda));
-                cmd.Parameters.AddWithValue("p", vendaIndividual.Produto);
-                cmd.Parameters.AddWithValue("mp", vendaIndividual.MeioPagamento);
+                cmd.Parameters.AddWithValue("v", individualSale.SalePrice);
+                cmd.Parameters.AddWithValue("dv", DateTime.Parse(individualSale.SaleDate));
+                cmd.Parameters.AddWithValue("p", individualSale.Product);
+                cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
             dao.Connection().Close();
         }
-        public NpgsqlCommand ReadVendasIndividuais() {
+        public NpgsqlCommand ReadIndividualSale() {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
@@ -39,7 +39,7 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public double ReadTotalVendasIndividuais() {
+        public double ReadTotalIndividualSale() {
             NpgsqlCommand cmd;
             double value = 0;
             try {
@@ -59,7 +59,7 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return value;
         }
-        public void Delete() {
+        public void DeleteAllIndividualSale() {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(

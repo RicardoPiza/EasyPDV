@@ -7,14 +7,14 @@ using System.Data;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
-    public partial class TelaVendas : Form {
-        NpgsqlDataAdapter adpt;
-        DataTable dt;
-        VendaDAO vendaDAO = new VendaDAO();
-        Venda venda = new Venda();
+    public partial class FrmSale : Form {
+        NpgsqlDataAdapter _adpt;
+        DataTable _dt;
+        SaleDAO saleDAO = new SaleDAO();
+        Sale sale = new Sale();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip= new ToolTip();
-        public TelaVendas() {
+        public FrmSale() {
             InitializeComponent();
         }
 
@@ -22,35 +22,35 @@ namespace EasyPDV.UI {
 
         }
 
-        private void TelaVendas_Load(object sender, EventArgs e) {
-            ListarVendas();
+        private void FrmSale_Load(object sender, EventArgs e) {
+            ShowSales();
         }
-        public void ListarVendas() { 
-            adpt = new NpgsqlDataAdapter(vendaDAO.ReadVenda());
-            dt = new DataTable();
-            adpt.Fill(dt);
-            vendasGridView1.DataSource= dt;
+        public void ShowSales() { 
+            _adpt = new NpgsqlDataAdapter(saleDAO.ReadSale());
+            _dt = new DataTable();
+            _adpt.Fill(_dt);
+            salesGridView1.DataSource= _dt;
             for (int i = 0; i <= 4; i++) {
-                vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                salesGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
-        private void btnCancelarVenda_Click(object sender, EventArgs e) {
+        private void btnDeleteSale_Click(object sender, EventArgs e) {
             DialogResult res = MessageBox.Show("Tem Certeza que deseja cancelar esta venda?", "Cancelar venda", MessageBoxButtons.OKCancel);
             if (res == DialogResult.OK) {
-                venda.ID = int.Parse(vendasGridView1.SelectedCells[0].Value.ToString());
-                vendaDAO.DeleteVenda(venda);
-                ListarVendas();
+                sale.ID = int.Parse(salesGridView1.SelectedCells[0].Value.ToString());
+                saleDAO.DeleteSale(sale);
+                ShowSales();
             }
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e) {
+        private void btnReport_Click(object sender, EventArgs e) {
             string path = "";
             if (fbd.ShowDialog() == DialogResult.OK) {
                 path = fbd.SelectedPath;
             }
             XLWorkbook wb = new XLWorkbook();
-            var ws = wb.Worksheets.Add(dt, "Vendas");
+            var ws = wb.Worksheets.Add(_dt, "Vendas");
             ws.Columns().AdjustToContents();
             if (path != "") {
                 wb.SaveAs(@path + "\\Relatório Vendas Realizadas " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
@@ -61,16 +61,16 @@ namespace EasyPDV.UI {
         }
 
         private void btnCancelarVenda_MouseMove(object sender, MouseEventArgs e) {
-            btnCancelarVenda.Cursor = Cursors.Hand;
-            btnRelatorio.Cursor = Cursors.Hand;
+            btnDeleteVenda.Cursor = Cursors.Hand;
+            btnReport.Cursor = Cursors.Hand;
         }
         private void btnRefresh_Click(object sender, EventArgs e) {
-            ListarVendas();
+            ShowSales();
         }
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
-            toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
+            toolTip.SetToolTip(btnReport, "Gerar relatório");
             toolTip.SetToolTip(btnRefresh, "Atualizar vendas");
         }
 

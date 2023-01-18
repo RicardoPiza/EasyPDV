@@ -1,5 +1,5 @@
 ﻿namespace EasyPDV.UI {
-    partial class TelaCadastroProduto {
+    partial class FrmInsertProduct {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,21 +26,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroProduto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInsertProduct));
             this.lblProdNome = new System.Windows.Forms.Label();
             this.lblProdPreco = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCadastrar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnInsert = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.dataGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnExcluir = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.btnAlterar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnDelete = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnUpdate = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.textBox2 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.textBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.siticoneTextBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnCaminho = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.txtEstoque = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.btnPath = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.txtStock = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,23 +82,23 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCadastrar.BorderRadius = 25;
-            this.btnCadastrar.BorderThickness = 1;
-            this.btnCadastrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCadastrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCadastrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCadastrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCadastrar.FillColor = System.Drawing.Color.Transparent;
-            this.btnCadastrar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.ForeColor = System.Drawing.Color.Black;
-            this.btnCadastrar.Location = new System.Drawing.Point(651, 681);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(221, 45);
-            this.btnCadastrar.TabIndex = 17;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
-            this.btnCadastrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCadastrar_MouseMove);
+            this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInsert.BorderRadius = 25;
+            this.btnInsert.BorderThickness = 1;
+            this.btnInsert.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnInsert.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnInsert.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnInsert.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnInsert.FillColor = System.Drawing.Color.Transparent;
+            this.btnInsert.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsert.ForeColor = System.Drawing.Color.Black;
+            this.btnInsert.Location = new System.Drawing.Point(651, 681);
+            this.btnInsert.Name = "btnCadastrar";
+            this.btnInsert.Size = new System.Drawing.Size(221, 45);
+            this.btnInsert.TabIndex = 17;
+            this.btnInsert.Text = "Cadastrar";
+            this.btnInsert.Click += new System.EventHandler(this.btnRegister_Click);
+            this.btnInsert.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnInsert_MouseMove);
             // 
             // dataGridView1
             // 
@@ -176,43 +176,43 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcluir.BorderRadius = 25;
-            this.btnExcluir.BorderThickness = 1;
-            this.btnExcluir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnExcluir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnExcluir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnExcluir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExcluir.FillColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.Color.Black;
-            this.btnExcluir.Location = new System.Drawing.Point(389, 903);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(221, 45);
-            this.btnExcluir.TabIndex = 20;
-            this.btnExcluir.Text = "Excluir selecionado";
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            this.btnExcluir.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCadastrar_MouseMove);
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.BorderRadius = 25;
+            this.btnDelete.BorderThickness = 1;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.Location = new System.Drawing.Point(389, 903);
+            this.btnDelete.Name = "btnExcluir";
+            this.btnDelete.Size = new System.Drawing.Size(221, 45);
+            this.btnDelete.TabIndex = 20;
+            this.btnDelete.Text = "Excluir selecionado";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnInsert_MouseMove);
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAlterar.BorderRadius = 25;
-            this.btnAlterar.BorderThickness = 1;
-            this.btnAlterar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAlterar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAlterar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAlterar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAlterar.FillColor = System.Drawing.Color.Transparent;
-            this.btnAlterar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.ForeColor = System.Drawing.Color.Black;
-            this.btnAlterar.Location = new System.Drawing.Point(651, 903);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(221, 45);
-            this.btnAlterar.TabIndex = 21;
-            this.btnAlterar.Text = "Alterar selecionado";
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            this.btnAlterar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCadastrar_MouseMove);
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUpdate.BorderRadius = 25;
+            this.btnUpdate.BorderThickness = 1;
+            this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdate.FillColor = System.Drawing.Color.Transparent;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(651, 903);
+            this.btnUpdate.Name = "btnAlterar";
+            this.btnUpdate.Size = new System.Drawing.Size(221, 45);
+            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.Text = "Alterar selecionado";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnInsert_MouseMove);
             // 
             // textBox2
             // 
@@ -294,45 +294,45 @@
             // 
             // btnCaminho
             // 
-            this.btnCaminho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCaminho.BorderRadius = 18;
-            this.btnCaminho.BorderThickness = 1;
-            this.btnCaminho.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCaminho.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCaminho.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCaminho.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCaminho.FillColor = System.Drawing.Color.Transparent;
-            this.btnCaminho.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaminho.ForeColor = System.Drawing.Color.Black;
-            this.btnCaminho.Location = new System.Drawing.Point(433, 786);
-            this.btnCaminho.Name = "btnCaminho";
-            this.btnCaminho.Size = new System.Drawing.Size(51, 38);
-            this.btnCaminho.TabIndex = 26;
-            this.btnCaminho.Text = "...";
-            this.btnCaminho.Click += new System.EventHandler(this.btnCaminho_Click);
-            this.btnCaminho.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCaminho_MouseMove);
+            this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPath.BorderRadius = 18;
+            this.btnPath.BorderThickness = 1;
+            this.btnPath.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPath.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPath.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPath.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPath.FillColor = System.Drawing.Color.Transparent;
+            this.btnPath.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPath.ForeColor = System.Drawing.Color.Black;
+            this.btnPath.Location = new System.Drawing.Point(433, 786);
+            this.btnPath.Name = "btnCaminho";
+            this.btnPath.Size = new System.Drawing.Size(51, 38);
+            this.btnPath.TabIndex = 26;
+            this.btnPath.Text = "...";
+            this.btnPath.Click += new System.EventHandler(this.btnCaminho_Click);
+            this.btnPath.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCaminho_MouseMove);
             // 
             // txtEstoque
             // 
-            this.txtEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtEstoque.BorderRadius = 18;
-            this.txtEstoque.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEstoque.DefaultText = "";
-            this.txtEstoque.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtEstoque.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtEstoque.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEstoque.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEstoque.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEstoque.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstoque.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEstoque.Location = new System.Drawing.Point(108, 834);
-            this.txtEstoque.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtEstoque.Name = "txtEstoque";
-            this.txtEstoque.PasswordChar = '\0';
-            this.txtEstoque.PlaceholderText = "Quantidade";
-            this.txtEstoque.SelectedText = "";
-            this.txtEstoque.Size = new System.Drawing.Size(123, 38);
-            this.txtEstoque.TabIndex = 28;
+            this.txtStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtStock.BorderRadius = 18;
+            this.txtStock.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStock.DefaultText = "";
+            this.txtStock.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtStock.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtStock.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStock.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStock.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStock.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStock.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStock.Location = new System.Drawing.Point(108, 834);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStock.Name = "txtEstoque";
+            this.txtStock.PasswordChar = '\0';
+            this.txtStock.PlaceholderText = "Quantidade";
+            this.txtStock.SelectedText = "";
+            this.txtStock.Size = new System.Drawing.Size(123, 38);
+            this.txtStock.TabIndex = 28;
             // 
             // label4
             // 
@@ -366,18 +366,18 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
             this.ClientSize = new System.Drawing.Size(884, 961);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.txtEstoque);
+            this.Controls.Add(this.txtStock);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnCaminho);
+            this.Controls.Add(this.btnPath);
             this.Controls.Add(this.siticoneTextBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.btnAlterar);
-            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnCadastrar);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblProdPreco);
             this.Controls.Add(this.lblProdNome);
@@ -386,7 +386,7 @@
             this.Name = "TelaCadastroProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Produto";
-            this.Load += new System.EventHandler(this.TelaCadastroProduto_Load);
+            this.Load += new System.EventHandler(this.FrmInsertProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -398,17 +398,17 @@
         private System.Windows.Forms.Label lblProdNome;
         private System.Windows.Forms.Label lblProdPreco;
         private System.Windows.Forms.Label label1;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton btnCadastrar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnInsert;
         private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton btnExcluir;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAlterar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnDelete;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnUpdate;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox textBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox textBox1;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
         private System.Windows.Forms.Label label3;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton btnCaminho;
-        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtEstoque;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnPath;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtStock;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRefresh;
     }

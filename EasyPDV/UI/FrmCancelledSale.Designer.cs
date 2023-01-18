@@ -1,5 +1,5 @@
 ﻿namespace EasyPDV.UI {
-    partial class TelaVendasCanceladas {
+    partial class FrmCancelledSale {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaVendasCanceladas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCancelledSale));
             this.label2 = new System.Windows.Forms.Label();
             this.vendasGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.btnRelatorio = new System.Windows.Forms.Button();
@@ -109,7 +109,7 @@
             this.vendasGridView1.ThemeStyle.RowsStyle.Height = 22;
             this.vendasGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.vendasGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.vendasGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vendasGridView1_CellContentClick);
+            this.vendasGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.salesGridView1_CellContentClick);
             // 
             // btnRelatorio
             // 
@@ -121,7 +121,7 @@
             this.btnRelatorio.Size = new System.Drawing.Size(35, 45);
             this.btnRelatorio.TabIndex = 25;
             this.btnRelatorio.UseVisualStyleBackColor = true;
-            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            this.btnRelatorio.Click += new System.EventHandler(this.btnReport_Click);
             this.btnRelatorio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
             // btnRefresh
@@ -155,7 +155,7 @@
             this.btnCancelarVenda.Size = new System.Drawing.Size(246, 45);
             this.btnCancelarVenda.TabIndex = 28;
             this.btnCancelarVenda.Text = "Excluir selecionado";
-            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
+            this.btnCancelarVenda.Click += new System.EventHandler(this.btnSaleCancel_Click);
             // 
             // TelaVendasCanceladas
             // 
@@ -172,7 +172,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "TelaVendasCanceladas";
             this.Text = "Vendas Canceladas";
-            this.Load += new System.EventHandler(this.TelaVendasCanceladas_Load);
+            this.Load += new System.EventHandler(this.FrmCancelledSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

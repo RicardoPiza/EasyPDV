@@ -79,10 +79,7 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\System.Threading.Tasks.Ext
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\System.ValueTuple.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.AssemblyReference.cache
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.SuggestedBindingRedirects.cache
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.TelaApp.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.Properties.Resources.resources
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaCadastroProduto.resources
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaVendas.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.GenerateResource.cache
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CoreCompileInputs.cache
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CopyComplete
@@ -95,5 +92,8 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.pdb
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ClosedXML.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ExcelNumberFormat.xml
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaVendasCanceladas.resources
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.TelaFatura.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.FrmApp.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmInsertProduct.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmIncome.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmSale.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCancelledSale.resources
