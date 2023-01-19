@@ -53,13 +53,13 @@ namespace EasyPDV.DAO {
                     }
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "\nNenhuma ocorrencia de venda até o momento");
                 return 0;
             }
             dao.Connection().Close();
             return value;
         }
-        public void DeleteAllIndividualSale() {
+        public void DeleteAllIndividualSales() {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(

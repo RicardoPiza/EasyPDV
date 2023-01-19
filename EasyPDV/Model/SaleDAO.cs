@@ -38,12 +38,12 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public void DeleteSale(Sale sale) {
+        public void DeleteVenda(Sale v) {
             try {
                 NpgsqlCommand cmd; 
                 cmd = new NpgsqlCommand(
                     $"DELETE FROM venda " +
-                    $"where id = {sale.ID}", dao.Connection());
+                    $"where id = {v.ID}", dao.Connection());
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

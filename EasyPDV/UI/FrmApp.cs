@@ -1,8 +1,12 @@
 ﻿using EasyPDV.DAO;
 using EasyPDV.Entities;
 using EasyPDV.UI;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
@@ -32,9 +36,9 @@ namespace EasyPDV {
             label2.BackColor = Color.Transparent;
         }
         private void LoadButtons() {
-            List<Button> _btnProducts = new List<Button>();
+            List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
             List<Product> _Products = new List<Product>();
-            _btnProducts = tableLayoutPanel1.Controls.OfType<Button>().ToList();
+            _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
             int totalBotoes = _btnProducts.Count();
             _btnProducts.Reverse();
             _Products = _productDAO.ReadAll();
@@ -48,24 +52,27 @@ namespace EasyPDV {
                 _btnProducts[i].Invalidate();
             }
         }
-        public void ProductSum(object sender, EventArgs e, string nome, double preco, int id) {
+        public void ProductSum(object sender, EventArgs e, string name, double price, int id) {
             richTextBox3.Text = string.Empty;
-            string descricaoCompra = nome +"........ R$"+ preco ;
-            if (!_SupportList.Contains(nome)) {
-                _SupportList.Add(nome);
-                listViewProdutos.Items.Add(descricaoCompra);
+            string descricaoCompra = name +"........ R$"+ price ;
+            if (!_SupportList.Contains(name)) {
+                _SupportList.Add(name);
+                _listViewProducts.Items.Add(descricaoCompra);
                 _SoldQuantityList.Add(1);
             } else {
                 for (int i = 0; i < _SupportList.Count; i++) {
-                    if (listViewProdutos.Items[i].Text.Contains(nome.ToString())){
+                    if (_listViewProducts.Items[i].Text.Substring(0,10).Equals(descricaoCompra.Substring(0,10))){
                         _SoldQuantityList[i] += 1;
-                        listViewProdutos.Items[i].Text = nome + "........ R$" + preco * _SoldQuantityList[i]+ " | Qtd = x"+ _SoldQuantityList[i];
+                        descricaoCompra = name +
+                        "........ R$" + price * _SoldQuantityList[i] +
+                        " | Qtd = x" + _SoldQuantityList[i];
+                        _listViewProducts.Items[i].Text = descricaoCompra;
                     }
                 }
             }
-            _SoldProductsList.Add(nome + "|" + preco);
+            _SoldProductsList.Add(name + "|" + price);
             _ProductIDList.Add(id);
-            _Total += preco;
+            _Total += price;
             richTextBox3.Text += _Total.ToString("F2");
         }
         public void SubtractStockProduct() {
@@ -83,14 +90,14 @@ namespace EasyPDV {
                 //Aqui será implementado o código de impressão de fichas
                 //Para cada item na lista, uma ficha impressa
             }
-            if (listViewProdutos.Text != "" || richTextBox3.Text != "") {
+            if (_listViewProducts.Text != "" || richTextBox3.Text != "") {
                 if (meioPagamentoBox.Text != "") {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
                     if (res == DialogResult.OK) {
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
                         AddIndividualProduct();
-                        listViewProdutos.Clear();
+                        _listViewProducts.Clear();
                         _SoldQuantityList.Clear();
                         _SupportList.Clear();
                         richTextBox3.Text = string.Empty;
@@ -107,7 +114,7 @@ namespace EasyPDV {
         }
         private List<string> DBSaleAddList() {
             List<string> listaProdutosBanco = new List<string>();
-            foreach (var item in listViewProdutos.Items) {
+            foreach (var item in _listViewProducts.Items) {
                 listaProdutosBanco.Add(item.ToString());
             }
             return listaProdutosBanco;
@@ -213,7 +220,7 @@ namespace EasyPDV {
         }
         private void btnCancel_Click(object sender, EventArgs e) {
             richTextBox3.Text = string.Empty;
-            listViewProdutos.Clear();
+            _listViewProducts.Clear();
             _SoldQuantityList.Clear();
             _SupportList.Clear();
             _Total = 0;

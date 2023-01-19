@@ -14,5 +14,12 @@ namespace EasyPDV.Entities {
 
         public Sale() {
         }
+        public Sale(int iD, List<string> products, double salePrice, string saleDate, string paymentMethod) {
+            ID = iD;
+            Products = products;
+            SalePrice = salePrice;
+            SaleDate = saleDate;
+            PaymentMethod = paymentMethod;
+        }
     }
 }

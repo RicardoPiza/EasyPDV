@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
 using EasyPDV.DAO;
 using Npgsql;
 using System;
@@ -23,6 +22,7 @@ namespace EasyPDV.UI {
             lblFatura.Text = telaApp._CashierTotal.ToString();
             LoadSales();
             ShowTotal();
+            Invalidate();
         }
         public void LoadSales() { 
             adpt = new NpgsqlDataAdapter(individualSale.ReadIndividualSale());
@@ -63,11 +63,13 @@ namespace EasyPDV.UI {
         private void btnRefresh_Click(object sender, EventArgs e) {
             LoadSales();
             ShowTotal();
+            Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            individualSale.DeleteAllIndividualSale();
+            individualSale.DeleteAllIndividualSales();
             LoadSales();
+            Invalidate();
         }
 
         private void button1_MouseMove(object sender, MouseEventArgs e) {
@@ -77,6 +79,10 @@ namespace EasyPDV.UI {
             toolTip.SetToolTip(button1, "Limpar as ocorrências de fatura");
             toolTip.SetToolTip(btnRefresh, "Atualizar tabela");
             toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
         }
     }
 }

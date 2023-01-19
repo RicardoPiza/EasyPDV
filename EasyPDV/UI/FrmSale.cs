@@ -39,7 +39,7 @@ namespace EasyPDV.UI {
             DialogResult res = MessageBox.Show("Tem Certeza que deseja cancelar esta venda?", "Cancelar venda", MessageBoxButtons.OKCancel);
             if (res == DialogResult.OK) {
                 sale.ID = int.Parse(salesGridView1.SelectedCells[0].Value.ToString());
-                saleDAO.DeleteSale(sale);
+                saleDAO.DeleteVenda(sale);
                 ShowSales();
             }
         }

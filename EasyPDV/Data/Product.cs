@@ -14,5 +14,12 @@ namespace EasyPDV.Entities {
 
         public Product() { 
         }
+        public Product(int iD, double price, string name, string image, int stockQuantity) {
+            ID = iD;
+            Price = price;
+            Name = name;
+            Image = image;
+            StockQuantity = stockQuantity;
+        }
     }
 }
