@@ -4,9 +4,6 @@ using EasyPDV.UI;
 using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
@@ -17,7 +14,7 @@ namespace EasyPDV {
         public double _CashierTotal { get; set; }
 
         SaleDAO _saleDao = new SaleDAO();
-        Sale _sale = new Sale();
+        RegularSale _sale = new RegularSale();
         Product _product = new Product();
         ProductDAO _productDAO = new ProductDAO();
         List<string> _SoldProductsList = new List<string>();
@@ -26,10 +23,10 @@ namespace EasyPDV {
         List<string> _SupportList = new List<string>();
         public FrmApp() {
             InitializeComponent();
-            ColorLabels();
-            LoadButtons();
         }
         private void Form1_Load(object sender, EventArgs e) {
+            ColorLabels();
+            LoadButtons();
         }
         private void ColorLabels() {
             label1.BackColor = Color.Transparent;

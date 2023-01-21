@@ -38,6 +38,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button16 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button15 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button14 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button13 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button12 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button11 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button10 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button9 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button8 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button7 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button6 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button5 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button4 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button3 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button2 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneContextMenuStrip1 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.siticoneContextMenuStrip2 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.richTextBox3 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
@@ -49,22 +65,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button2 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button3 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button4 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button5 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button6 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button7 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button8 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button9 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button10 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button11 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button12 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button13 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button14 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button15 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button16 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -184,7 +185,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(190, 552);
+            this.label2.Location = new System.Drawing.Point(190, 550);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 7;
@@ -225,6 +226,358 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 472);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // button16
+            // 
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button16.BorderRadius = 15;
+            this.button16.BorderThickness = 1;
+            this.button16.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button16.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button16.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button16.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button16.FillColor = System.Drawing.Color.Transparent;
+            this.button16.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button16.ForeColor = System.Drawing.Color.White;
+            this.button16.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button16.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button16.ImageSize = new System.Drawing.Size(64, 64);
+            this.button16.Location = new System.Drawing.Point(405, 357);
+            this.button16.Name = "button16";
+            this.button16.PressedDepth = 50;
+            this.button16.Size = new System.Drawing.Size(128, 112);
+            this.button16.TabIndex = 31;
+            this.button16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button15
+            // 
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.BorderRadius = 15;
+            this.button15.BorderThickness = 1;
+            this.button15.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button15.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button15.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button15.FillColor = System.Drawing.Color.Transparent;
+            this.button15.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button15.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button15.ImageSize = new System.Drawing.Size(64, 64);
+            this.button15.Location = new System.Drawing.Point(271, 357);
+            this.button15.Name = "button15";
+            this.button15.PressedDepth = 50;
+            this.button15.Size = new System.Drawing.Size(128, 112);
+            this.button15.TabIndex = 30;
+            this.button15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button14
+            // 
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button14.BorderRadius = 15;
+            this.button14.BorderThickness = 1;
+            this.button14.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button14.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button14.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button14.FillColor = System.Drawing.Color.Transparent;
+            this.button14.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button14.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button14.ImageSize = new System.Drawing.Size(64, 64);
+            this.button14.Location = new System.Drawing.Point(137, 357);
+            this.button14.Name = "button14";
+            this.button14.PressedDepth = 50;
+            this.button14.Size = new System.Drawing.Size(128, 112);
+            this.button14.TabIndex = 29;
+            this.button14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.BorderRadius = 15;
+            this.button13.BorderThickness = 1;
+            this.button13.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button13.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button13.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button13.FillColor = System.Drawing.Color.Transparent;
+            this.button13.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button13.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button13.ImageSize = new System.Drawing.Size(64, 64);
+            this.button13.Location = new System.Drawing.Point(3, 357);
+            this.button13.Name = "button13";
+            this.button13.PressedDepth = 50;
+            this.button13.Size = new System.Drawing.Size(128, 112);
+            this.button13.TabIndex = 28;
+            this.button13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.BorderRadius = 15;
+            this.button12.BorderThickness = 1;
+            this.button12.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button12.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button12.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button12.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button12.FillColor = System.Drawing.Color.Transparent;
+            this.button12.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button12.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button12.ImageSize = new System.Drawing.Size(64, 64);
+            this.button12.Location = new System.Drawing.Point(405, 239);
+            this.button12.Name = "button12";
+            this.button12.PressedDepth = 50;
+            this.button12.Size = new System.Drawing.Size(128, 112);
+            this.button12.TabIndex = 27;
+            this.button12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button11
+            // 
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.BorderRadius = 15;
+            this.button11.BorderThickness = 1;
+            this.button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button11.FillColor = System.Drawing.Color.Transparent;
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button11.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button11.ImageSize = new System.Drawing.Size(64, 64);
+            this.button11.Location = new System.Drawing.Point(271, 239);
+            this.button11.Name = "button11";
+            this.button11.PressedDepth = 50;
+            this.button11.Size = new System.Drawing.Size(128, 112);
+            this.button11.TabIndex = 26;
+            this.button11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.BorderRadius = 15;
+            this.button10.BorderThickness = 1;
+            this.button10.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button10.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button10.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button10.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button10.FillColor = System.Drawing.Color.Transparent;
+            this.button10.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button10.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button10.ImageSize = new System.Drawing.Size(64, 64);
+            this.button10.Location = new System.Drawing.Point(137, 239);
+            this.button10.Name = "button10";
+            this.button10.PressedDepth = 50;
+            this.button10.Size = new System.Drawing.Size(128, 112);
+            this.button10.TabIndex = 25;
+            this.button10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button9
+            // 
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.BorderRadius = 15;
+            this.button9.BorderThickness = 1;
+            this.button9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button9.FillColor = System.Drawing.Color.Transparent;
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button9.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button9.ImageSize = new System.Drawing.Size(64, 64);
+            this.button9.Location = new System.Drawing.Point(3, 239);
+            this.button9.Name = "button9";
+            this.button9.PressedDepth = 50;
+            this.button9.Size = new System.Drawing.Size(128, 112);
+            this.button9.TabIndex = 24;
+            this.button9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button8
+            // 
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.BorderRadius = 15;
+            this.button8.BorderThickness = 1;
+            this.button8.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button8.FillColor = System.Drawing.Color.Transparent;
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button8.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button8.ImageSize = new System.Drawing.Size(64, 64);
+            this.button8.Location = new System.Drawing.Point(405, 121);
+            this.button8.Name = "button8";
+            this.button8.PressedDepth = 50;
+            this.button8.Size = new System.Drawing.Size(128, 112);
+            this.button8.TabIndex = 23;
+            this.button8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button7
+            // 
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.BorderRadius = 15;
+            this.button7.BorderThickness = 1;
+            this.button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button7.FillColor = System.Drawing.Color.Transparent;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button7.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button7.ImageSize = new System.Drawing.Size(64, 64);
+            this.button7.Location = new System.Drawing.Point(271, 121);
+            this.button7.Name = "button7";
+            this.button7.PressedDepth = 50;
+            this.button7.Size = new System.Drawing.Size(128, 112);
+            this.button7.TabIndex = 22;
+            this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button6
+            // 
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.BorderRadius = 15;
+            this.button6.BorderThickness = 1;
+            this.button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button6.FillColor = System.Drawing.Color.Transparent;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button6.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button6.ImageSize = new System.Drawing.Size(64, 64);
+            this.button6.Location = new System.Drawing.Point(137, 121);
+            this.button6.Name = "button6";
+            this.button6.PressedDepth = 50;
+            this.button6.Size = new System.Drawing.Size(128, 112);
+            this.button6.TabIndex = 21;
+            this.button6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.BorderRadius = 15;
+            this.button5.BorderThickness = 1;
+            this.button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button5.FillColor = System.Drawing.Color.Transparent;
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button5.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button5.ImageSize = new System.Drawing.Size(64, 64);
+            this.button5.Location = new System.Drawing.Point(3, 121);
+            this.button5.Name = "button5";
+            this.button5.PressedDepth = 50;
+            this.button5.Size = new System.Drawing.Size(128, 112);
+            this.button5.TabIndex = 20;
+            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.BorderRadius = 15;
+            this.button4.BorderThickness = 1;
+            this.button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button4.FillColor = System.Drawing.Color.Transparent;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button4.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button4.ImageSize = new System.Drawing.Size(64, 64);
+            this.button4.Location = new System.Drawing.Point(405, 3);
+            this.button4.Name = "button4";
+            this.button4.PressedDepth = 50;
+            this.button4.Size = new System.Drawing.Size(128, 112);
+            this.button4.TabIndex = 19;
+            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.BorderRadius = 15;
+            this.button3.BorderThickness = 1;
+            this.button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button3.FillColor = System.Drawing.Color.Transparent;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button3.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button3.ImageSize = new System.Drawing.Size(64, 64);
+            this.button3.Location = new System.Drawing.Point(271, 3);
+            this.button3.Name = "button3";
+            this.button3.PressedDepth = 50;
+            this.button3.Size = new System.Drawing.Size(128, 112);
+            this.button3.TabIndex = 18;
+            this.button3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.BorderRadius = 15;
+            this.button2.BorderThickness = 1;
+            this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button2.FillColor = System.Drawing.Color.Transparent;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button2.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button2.ImageSize = new System.Drawing.Size(64, 64);
+            this.button2.Location = new System.Drawing.Point(137, 3);
+            this.button2.Name = "button2";
+            this.button2.PressedDepth = 50;
+            this.button2.Size = new System.Drawing.Size(128, 112);
+            this.button2.TabIndex = 17;
+            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.BorderRadius = 15;
+            this.button1.BorderThickness = 1;
+            this.button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button1.FillColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button1.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button1.ImageSize = new System.Drawing.Size(64, 64);
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.PressedDepth = 50;
+            this.button1.Size = new System.Drawing.Size(128, 112);
+            this.button1.TabIndex = 16;
+            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button12_MouseMove);
             // 
             // siticoneContextMenuStrip1
             // 
@@ -270,7 +623,7 @@
             this.richTextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.richTextBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox3.Location = new System.Drawing.Point(47, 584);
+            this.richTextBox3.Location = new System.Drawing.Point(47, 585);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.richTextBox3.Multiline = true;
             this.richTextBox3.Name = "richTextBox3";
@@ -321,9 +674,9 @@
             this.btnRealizar.FillColor = System.Drawing.Color.Transparent;
             this.btnRealizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRealizar.ForeColor = System.Drawing.Color.Black;
-            this.btnRealizar.Location = new System.Drawing.Point(348, 26);
+            this.btnRealizar.Location = new System.Drawing.Point(348, 33);
             this.btnRealizar.Name = "btnRealizar";
-            this.btnRealizar.Size = new System.Drawing.Size(182, 48);
+            this.btnRealizar.Size = new System.Drawing.Size(182, 45);
             this.btnRealizar.TabIndex = 16;
             this.btnRealizar.Text = "Realizar Venda";
             this.btnRealizar.Click += new System.EventHandler(this.btnMakeSale_Click_1);
@@ -335,9 +688,9 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 0);
+            this.label3.Location = new System.Drawing.Point(43, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(207, 23);
+            this.label3.Size = new System.Drawing.Size(207, 24);
             this.label3.TabIndex = 18;
             this.label3.Text = "Meio de pagamento";
             // 
@@ -358,7 +711,7 @@
             "",
             "Cartão",
             "Dinheiro"});
-            this.meioPagamentoBox.Location = new System.Drawing.Point(67, 38);
+            this.meioPagamentoBox.Location = new System.Drawing.Point(67, 42);
             this.meioPagamentoBox.MaxLength = 2;
             this.meioPagamentoBox.Name = "meioPagamentoBox";
             this.meioPagamentoBox.Size = new System.Drawing.Size(159, 36);
@@ -370,16 +723,16 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.07246F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.92754F));
-            this.tableLayoutPanel3.Controls.Add(this.meioPagamentoBox, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnRealizar, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.meioPagamentoBox, 0, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(452, 547);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.66234F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.33766F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(533, 77);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(533, 81);
             this.tableLayoutPanel3.TabIndex = 23;
             // 
             // btnRefresh
@@ -389,7 +742,7 @@
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(988, 498);
+            this.btnRefresh.Location = new System.Drawing.Point(988, 501);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(43, 40);
             this.btnRefresh.TabIndex = 19;
@@ -418,262 +771,6 @@
             this.btnCancel.TabIndex = 15;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancel_MouseMove);
-            // 
-            // button1
-            // 
-            this.button1.BorderThickness = 1;
-            this.button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button1.FillColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageSize = new System.Drawing.Size(64, 64);
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 112);
-            this.button1.TabIndex = 16;
-            // 
-            // button2
-            // 
-            this.button2.BorderThickness = 1;
-            this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button2.FillColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.ImageSize = new System.Drawing.Size(64, 64);
-            this.button2.Location = new System.Drawing.Point(137, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 112);
-            this.button2.TabIndex = 17;
-            // 
-            // button3
-            // 
-            this.button3.BorderThickness = 1;
-            this.button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button3.FillColor = System.Drawing.Color.Transparent;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.ImageSize = new System.Drawing.Size(64, 64);
-            this.button3.Location = new System.Drawing.Point(271, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 112);
-            this.button3.TabIndex = 18;
-            // 
-            // button4
-            // 
-            this.button4.BorderThickness = 1;
-            this.button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button4.FillColor = System.Drawing.Color.Transparent;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.ImageSize = new System.Drawing.Size(64, 64);
-            this.button4.Location = new System.Drawing.Point(405, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 112);
-            this.button4.TabIndex = 19;
-            // 
-            // button5
-            // 
-            this.button5.BorderThickness = 1;
-            this.button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button5.FillColor = System.Drawing.Color.Transparent;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.ImageSize = new System.Drawing.Size(64, 64);
-            this.button5.Location = new System.Drawing.Point(3, 121);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 112);
-            this.button5.TabIndex = 20;
-            // 
-            // button6
-            // 
-            this.button6.BorderThickness = 1;
-            this.button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button6.FillColor = System.Drawing.Color.Transparent;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.ImageSize = new System.Drawing.Size(64, 64);
-            this.button6.Location = new System.Drawing.Point(137, 121);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(128, 112);
-            this.button6.TabIndex = 21;
-            // 
-            // button7
-            // 
-            this.button7.BorderThickness = 1;
-            this.button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button7.FillColor = System.Drawing.Color.Transparent;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.ImageSize = new System.Drawing.Size(64, 64);
-            this.button7.Location = new System.Drawing.Point(271, 121);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 112);
-            this.button7.TabIndex = 22;
-            // 
-            // button8
-            // 
-            this.button8.BorderThickness = 1;
-            this.button8.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button8.FillColor = System.Drawing.Color.Transparent;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.ImageSize = new System.Drawing.Size(64, 64);
-            this.button8.Location = new System.Drawing.Point(405, 121);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(128, 112);
-            this.button8.TabIndex = 23;
-            // 
-            // button9
-            // 
-            this.button9.BorderThickness = 1;
-            this.button9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button9.FillColor = System.Drawing.Color.Transparent;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.ImageSize = new System.Drawing.Size(64, 64);
-            this.button9.Location = new System.Drawing.Point(3, 239);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(128, 112);
-            this.button9.TabIndex = 24;
-            // 
-            // button10
-            // 
-            this.button10.BorderThickness = 1;
-            this.button10.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button10.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button10.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button10.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button10.FillColor = System.Drawing.Color.Transparent;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.ImageSize = new System.Drawing.Size(64, 64);
-            this.button10.Location = new System.Drawing.Point(137, 239);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(128, 112);
-            this.button10.TabIndex = 25;
-            // 
-            // button11
-            // 
-            this.button11.BorderThickness = 1;
-            this.button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button11.FillColor = System.Drawing.Color.Transparent;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.ImageSize = new System.Drawing.Size(64, 64);
-            this.button11.Location = new System.Drawing.Point(271, 239);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(128, 112);
-            this.button11.TabIndex = 26;
-            // 
-            // button12
-            // 
-            this.button12.BorderThickness = 1;
-            this.button12.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button12.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button12.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button12.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button12.FillColor = System.Drawing.Color.Transparent;
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.ImageSize = new System.Drawing.Size(64, 64);
-            this.button12.Location = new System.Drawing.Point(405, 239);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(128, 112);
-            this.button12.TabIndex = 27;
-            // 
-            // button13
-            // 
-            this.button13.BorderThickness = 1;
-            this.button13.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button13.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button13.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button13.FillColor = System.Drawing.Color.Transparent;
-            this.button13.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.ImageSize = new System.Drawing.Size(64, 64);
-            this.button13.Location = new System.Drawing.Point(3, 357);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(128, 112);
-            this.button13.TabIndex = 28;
-            // 
-            // button14
-            // 
-            this.button14.BorderThickness = 1;
-            this.button14.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button14.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button14.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button14.FillColor = System.Drawing.Color.Transparent;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageSize = new System.Drawing.Size(64, 64);
-            this.button14.Location = new System.Drawing.Point(137, 357);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(128, 112);
-            this.button14.TabIndex = 29;
-            // 
-            // button15
-            // 
-            this.button15.BorderThickness = 1;
-            this.button15.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button15.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button15.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button15.FillColor = System.Drawing.Color.Transparent;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.ImageSize = new System.Drawing.Size(64, 64);
-            this.button15.Location = new System.Drawing.Point(271, 357);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(128, 112);
-            this.button15.TabIndex = 30;
-            // 
-            // button16
-            // 
-            this.button16.BorderThickness = 1;
-            this.button16.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button16.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button16.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button16.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button16.FillColor = System.Drawing.Color.Transparent;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.ImageSize = new System.Drawing.Size(64, 64);
-            this.button16.Location = new System.Drawing.Point(405, 357);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(128, 112);
-            this.button16.TabIndex = 31;
             // 
             // FrmApp
             // 
@@ -753,6 +850,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton button3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button1;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
     }
 }
 

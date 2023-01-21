@@ -7,7 +7,7 @@ namespace EasyPDV.DAO {
     internal class SaleDAO {
         DAO dao = new DAO();
 
-        public void InsertSale(Sale sale) {
+        public void InsertSale(RegularSale sale) {
             try {
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
@@ -38,7 +38,7 @@ namespace EasyPDV.DAO {
             dao.Connection().Close();
             return cmd;
         }
-        public void DeleteVenda(Sale v) {
+        public void DeleteVenda(RegularSale v) {
             try {
                 NpgsqlCommand cmd; 
                 cmd = new NpgsqlCommand(

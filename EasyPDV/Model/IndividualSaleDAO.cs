@@ -29,8 +29,8 @@ namespace EasyPDV.DAO {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
-                    "select produto as \"Produto\", count(produto) as \"Total\"," +
-                    "sum(valor) AS \"Total Produtos(R$)\" " +
+                    "select produto as \"Produto\", count(produto) as \"Total vendido\"," +
+                    "sum(valor) AS \"Fatura do produto(R$)\" " +
                     "from venda_individual group by produto ", dao.Connection());
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

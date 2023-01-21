@@ -604,6 +604,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -1485,23 +1493,23 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasyPDV-Setup"
-        "ProductCode" = "8:{4287050E-B91E-4651-AE1C-4751C75B711E}"
-        "PackageCode" = "8:{B3220863-8857-4628-9D91-B4A7D8158824}"
+        "ProductCode" = "8:{32887C19-CDD8-4854-8F2B-00574A9E53E0}"
+        "PackageCode" = "8:{C61A93B8-C1F5-4541-BB4C-866A6219B487}"
         "UpgradeCode" = "8:{30426460-4C2E-4507-B44D-D2A4A313B438}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:0.8.4.1"
+        "Manufacturer" = "8:EasyDev"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/RicardoPiza/EasyPDV"
         "Title" = "8:EasyPDV-Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:EasyDev"
+        "ARPCONTACT" = "8:Ricardo Piza"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:Point of sale system, with friendly UI and easy to use."
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"

@@ -11,7 +11,7 @@ namespace EasyPDV.UI {
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         SaleDAO saleDAO = new SaleDAO();
-        Sale sale = new Sale();
+        RegularSale sale = new RegularSale();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip= new ToolTip();
         public FrmSale() {

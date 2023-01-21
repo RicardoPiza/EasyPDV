@@ -1,5 +1,7 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing;
 using EasyPDV.DAO;
+using EasyPDV.Entities;
 using Npgsql;
 using System;
 using System.Data;
@@ -9,7 +11,7 @@ using System.Windows.Forms;
 namespace EasyPDV.UI {
     public partial class FrmIncome : Form {
         NpgsqlDataAdapter adpt;
-        IndividualSaleDAO individualSale = new IndividualSaleDAO();
+        IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         DataTable dt;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip = new ToolTip();
@@ -18,23 +20,24 @@ namespace EasyPDV.UI {
         }
 
         private void FrmIncome_Load(object sender, EventArgs e) {
-            FrmApp telaApp= new FrmApp();
+            FrmApp telaApp = new FrmApp();
             lblFatura.Text = telaApp._CashierTotal.ToString();
             LoadSales();
             ShowTotal();
             Invalidate();
+            SetChart();
         }
-        public void LoadSales() { 
-            adpt = new NpgsqlDataAdapter(individualSale.ReadIndividualSale());
+        public void LoadSales() {
+            adpt = new NpgsqlDataAdapter(individualSaleDAO.ReadIndividualSale());
             dt = new DataTable();
             adpt.Fill(dt);
-            vendasGridView1.DataSource= dt;
+            vendasGridView1.DataSource = dt;
             for (int i = 0; i <= 2; i++) {
                 vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
         public void ShowTotal() {
-            lblTotalFatura.Text = individualSale.ReadTotalIndividualSale().ToString();    
+            lblTotalFatura.Text = individualSaleDAO.ReadTotalIndividualSale().ToString();
         }
 
         private void btnReport_Click(object sender, EventArgs e) {
@@ -45,7 +48,7 @@ namespace EasyPDV.UI {
                 }
                 XLWorkbook wb = new XLWorkbook();
                 var ws = wb.Worksheets.Add(dt, "Relatório fatura");
-                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSale.ReadTotalIndividualSale();
+                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSaleDAO.ReadTotalIndividualSale();
                 ws.Columns().AdjustToContents();
                 ws.RangeUsed().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
                 if (path != "") {
@@ -53,7 +56,7 @@ namespace EasyPDV.UI {
                     MessageBox.Show($"Relatório Salvo em {path}");
                     this.Close();
                     System.Diagnostics.Process.Start(@path + "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
-                }        
+                }
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
                 throw;
@@ -67,21 +70,33 @@ namespace EasyPDV.UI {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            individualSale.DeleteAllIndividualSales();
+            individualSaleDAO.DeleteAllIndividualSales();
             LoadSales();
             Invalidate();
         }
 
         private void button1_MouseMove(object sender, MouseEventArgs e) {
-            button1.Cursor= Cursors.Hand;
+            button1.Cursor = Cursors.Hand;
             btnRefresh.Cursor = Cursors.Hand;
             btnRelatorio.Cursor = Cursors.Hand;
             toolTip.SetToolTip(button1, "Limpar as ocorrências de fatura");
             toolTip.SetToolTip(btnRefresh, "Atualizar tabela");
             toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
         }
+        public void SetChart(){
+            IndividualSale IndividualSale = new IndividualSale();
+            string x;
+            double y = 0;
+            for (int i = 0; i < vendasGridView1.Rows.Count; i++) { 
+                x = vendasGridView1.Rows[i].Cells[0].Value.ToString();
+                y = double.Parse(vendasGridView1.Rows[i].Cells[1].Value.ToString());
+                chart1.Series[0].Points.AddXY(x, y);
+                chart1.Series[0].AxisLabel= x;
+            }
 
-        private void label1_Click(object sender, EventArgs e) {
+        }
+
+        private void chart1_Click(object sender, EventArgs e) {
 
         }
     }
