@@ -39,6 +39,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(469, 14);
             this.label2.Name = "label2";
@@ -114,32 +115,35 @@
             // btnRelatorio
             // 
             this.btnRelatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRelatorio.BackColor = System.Drawing.Color.Transparent;
             this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRelatorio.Image = global::EasyPDV.Properties.Resources.excel;
             this.btnRelatorio.Location = new System.Drawing.Point(12, 504);
             this.btnRelatorio.Name = "btnRelatorio";
             this.btnRelatorio.Size = new System.Drawing.Size(35, 45);
             this.btnRelatorio.TabIndex = 25;
-            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.UseVisualStyleBackColor = false;
             this.btnRelatorio.Click += new System.EventHandler(this.btnReport_Click);
             this.btnRelatorio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh1;
             this.btnRefresh.Location = new System.Drawing.Point(53, 504);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(35, 45);
             this.btnRefresh.TabIndex = 27;
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
             // btnCancelarVenda
             // 
             this.btnCancelarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarVenda.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelarVenda.BorderRadius = 25;
             this.btnCancelarVenda.BorderThickness = 1;
             this.btnCancelarVenda.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -157,20 +161,23 @@
             this.btnCancelarVenda.Text = "Excluir selecionado";
             this.btnCancelarVenda.Click += new System.EventHandler(this.btnSaleCancel_Click);
             // 
-            // TelaVendasCanceladas
+            // FrmCancelledSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
+            this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1189, 561);
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.vendasGridView1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "TelaVendasCanceladas";
+            this.Name = "FrmCancelledSale";
             this.Text = "Vendas Canceladas";
             this.Load += new System.EventHandler(this.FrmCancelledSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).EndInit();

@@ -50,6 +50,7 @@
             // 
             this.lblProdNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProdNome.AutoSize = true;
+            this.lblProdNome.BackColor = System.Drawing.Color.Transparent;
             this.lblProdNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdNome.Location = new System.Drawing.Point(8, 704);
             this.lblProdNome.Name = "lblProdNome";
@@ -61,6 +62,7 @@
             // 
             this.lblProdPreco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProdPreco.AutoSize = true;
+            this.lblProdPreco.BackColor = System.Drawing.Color.Transparent;
             this.lblProdPreco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdPreco.Location = new System.Drawing.Point(7, 753);
             this.lblProdPreco.Name = "lblProdPreco";
@@ -72,6 +74,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(210, 648);
             this.label1.Name = "label1";
@@ -80,9 +83,10 @@
             this.label1.Text = "Insira os dados do produto";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnCadastrar
+            // btnInsert
             // 
             this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInsert.BackColor = System.Drawing.Color.Transparent;
             this.btnInsert.BorderRadius = 25;
             this.btnInsert.BorderThickness = 1;
             this.btnInsert.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -93,7 +97,7 @@
             this.btnInsert.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsert.ForeColor = System.Drawing.Color.Black;
             this.btnInsert.Location = new System.Drawing.Point(651, 681);
-            this.btnInsert.Name = "btnCadastrar";
+            this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(221, 45);
             this.btnInsert.TabIndex = 17;
             this.btnInsert.Text = "Cadastrar";
@@ -166,6 +170,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(350, 28);
             this.label2.Name = "label2";
@@ -174,9 +179,10 @@
             this.label2.Text = "Lista de produtos";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // btnExcluir
+            // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
             this.btnDelete.BorderRadius = 25;
             this.btnDelete.BorderThickness = 1;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -187,16 +193,17 @@
             this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.Location = new System.Drawing.Point(389, 903);
-            this.btnDelete.Name = "btnExcluir";
+            this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(221, 45);
             this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Excluir selecionado";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnInsert_MouseMove);
             // 
-            // btnAlterar
+            // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
             this.btnUpdate.BorderRadius = 25;
             this.btnUpdate.BorderThickness = 1;
             this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -207,7 +214,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.Location = new System.Drawing.Point(651, 903);
-            this.btnUpdate.Name = "btnAlterar";
+            this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(221, 45);
             this.btnUpdate.TabIndex = 21;
             this.btnUpdate.Text = "Alterar selecionado";
@@ -217,6 +224,7 @@
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox2.BackColor = System.Drawing.Color.Transparent;
             this.textBox2.BorderRadius = 18;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.DefaultText = "";
@@ -239,6 +247,7 @@
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox1.BackColor = System.Drawing.Color.Transparent;
             this.textBox1.BorderRadius = 18;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.DefaultText = "";
@@ -261,6 +270,7 @@
             // siticoneTextBox1
             // 
             this.siticoneTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.siticoneTextBox1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneTextBox1.BorderRadius = 18;
             this.siticoneTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.siticoneTextBox1.DefaultText = "";
@@ -285,6 +295,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(7, 802);
             this.label3.Name = "label3";
@@ -292,9 +303,10 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Imagem:";
             // 
-            // btnCaminho
+            // btnPath
             // 
             this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPath.BackColor = System.Drawing.Color.Transparent;
             this.btnPath.BorderRadius = 18;
             this.btnPath.BorderThickness = 1;
             this.btnPath.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -305,16 +317,17 @@
             this.btnPath.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPath.ForeColor = System.Drawing.Color.Black;
             this.btnPath.Location = new System.Drawing.Point(433, 786);
-            this.btnPath.Name = "btnCaminho";
+            this.btnPath.Name = "btnPath";
             this.btnPath.Size = new System.Drawing.Size(51, 38);
             this.btnPath.TabIndex = 26;
             this.btnPath.Text = "...";
             this.btnPath.Click += new System.EventHandler(this.btnCaminho_Click);
             this.btnPath.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCaminho_MouseMove);
             // 
-            // txtEstoque
+            // txtStock
             // 
             this.txtStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtStock.BackColor = System.Drawing.Color.Transparent;
             this.txtStock.BorderRadius = 18;
             this.txtStock.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStock.DefaultText = "";
@@ -327,7 +340,7 @@
             this.txtStock.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtStock.Location = new System.Drawing.Point(108, 834);
             this.txtStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtStock.Name = "txtEstoque";
+            this.txtStock.Name = "txtStock";
             this.txtStock.PasswordChar = '\0';
             this.txtStock.PlaceholderText = "Quantidade";
             this.txtStock.SelectedText = "";
@@ -338,6 +351,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(7, 850);
             this.label4.Name = "label4";
@@ -348,6 +362,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh;
@@ -355,15 +370,17 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(38, 34);
             this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
-            // TelaCadastroProduto
+            // FrmInsertProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
+            this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure3;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(884, 961);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtStock);
@@ -381,9 +398,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblProdPreco);
             this.Controls.Add(this.lblProdNome);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 800);
-            this.Name = "TelaCadastroProduto";
+            this.Name = "FrmInsertProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Produto";
             this.Load += new System.EventHandler(this.FrmInsertProduct_Load);

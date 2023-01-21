@@ -35,11 +35,11 @@
             this.vendasGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.lblTotalFatura = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
@@ -129,6 +130,7 @@
             // 
             this.lblTotalFatura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalFatura.AutoSize = true;
+            this.lblTotalFatura.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalFatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalFatura.Location = new System.Drawing.Point(1233, 601);
             this.lblTotalFatura.Name = "lblTotalFatura";
@@ -139,51 +141,13 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1122, 601);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 37);
             this.label2.TabIndex = 22;
             this.label2.Text = "Total:";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::EasyPDV.Properties.Resources.dust__1_;
-            this.button1.Location = new System.Drawing.Point(101, 601);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 45);
-            this.button1.TabIndex = 30;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh1;
-            this.btnRefresh.Location = new System.Drawing.Point(60, 601);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(35, 45);
-            this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
-            // 
-            // btnRelatorio
-            // 
-            this.btnRelatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorio.Image = global::EasyPDV.Properties.Resources.excel;
-            this.btnRelatorio.Location = new System.Drawing.Point(19, 601);
-            this.btnRelatorio.Name = "btnRelatorio";
-            this.btnRelatorio.Size = new System.Drawing.Size(35, 45);
-            this.btnRelatorio.TabIndex = 28;
-            this.btnRelatorio.UseVisualStyleBackColor = true;
-            this.btnRelatorio.Click += new System.EventHandler(this.btnReport_Click);
-            this.btnRelatorio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
             // 
             // chart1
             // 
@@ -230,6 +194,7 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.0293F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.9707F));
@@ -242,11 +207,55 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1365, 532);
             this.tableLayoutPanel1.TabIndex = 32;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::EasyPDV.Properties.Resources.dust__1_;
+            this.button1.Location = new System.Drawing.Point(101, 601);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 45);
+            this.button1.TabIndex = 30;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh1;
+            this.btnRefresh.Location = new System.Drawing.Point(60, 601);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(35, 45);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRelatorio.BackColor = System.Drawing.Color.Transparent;
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Image = global::EasyPDV.Properties.Resources.excel;
+            this.btnRelatorio.Location = new System.Drawing.Point(19, 601);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(35, 45);
+            this.btnRelatorio.TabIndex = 28;
+            this.btnRelatorio.UseVisualStyleBackColor = false;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnReport_Click);
+            this.btnRelatorio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            // 
             // FrmIncome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
+            this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1390, 655);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.button1);
@@ -258,6 +267,7 @@
             this.Controls.Add(this.lblFatura);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmIncome";
             this.Text = "Fatura do dia";

@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 using Color = System.Drawing.Color;
+using System.Drawing;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
@@ -28,6 +30,7 @@ namespace EasyPDV {
             ColorLabels();
             LoadButtons();
         }
+
         private void ColorLabels() {
             label1.BackColor = Color.Transparent;
             label2.BackColor = Color.Transparent;

@@ -38,6 +38,7 @@ namespace EasyPDV.UI {
         }
 
         private void btnReport_Click(object sender, EventArgs e) {
+            string fileName = "\\Relatório Vendas Canceladas " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
             string path = "";
             if (fbd.ShowDialog() == DialogResult.OK) {
                 path = fbd.SelectedPath;
@@ -46,8 +47,9 @@ namespace EasyPDV.UI {
             var ws = wb.Worksheets.Add(dt, "Vendas Canceladas");
             ws.Columns().AdjustToContents();
             if (path != "") {
-                wb.SaveAs(@path + "\\Relatório Vendas Canceladas " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                wb.SaveAs(@path + fileName);
                 MessageBox.Show($"Relatório Salvo em {path}");
+                System.Diagnostics.Process.Start(@path + fileName);
                 this.Close();
             }
         }

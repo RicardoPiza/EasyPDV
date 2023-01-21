@@ -20,13 +20,18 @@ namespace EasyPDV.UI {
         }
 
         private void FrmIncome_Load(object sender, EventArgs e) {
-            FrmApp telaApp = new FrmApp();
-            lblFatura.Text = telaApp._CashierTotal.ToString();
+            TotalText();
             LoadSales();
             ShowTotal();
             Invalidate();
             SetChart();
         }
+
+        private void TotalText() {
+            FrmApp telaApp = new FrmApp();
+            lblFatura.Text = telaApp._CashierTotal.ToString();
+        }
+
         public void LoadSales() {
             adpt = new NpgsqlDataAdapter(individualSaleDAO.ReadIndividualSale());
             dt = new DataTable();
@@ -42,6 +47,7 @@ namespace EasyPDV.UI {
 
         private void btnReport_Click(object sender, EventArgs e) {
             try {
+                string fileName = "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
                 string path = "";
                 if (fbd.ShowDialog() == DialogResult.OK) {
                     path = fbd.SelectedPath;
@@ -55,7 +61,7 @@ namespace EasyPDV.UI {
                     wb.SaveAs(@path + "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
                     MessageBox.Show($"Relatório Salvo em {path}");
                     this.Close();
-                    System.Diagnostics.Process.Start(@path + "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                    System.Diagnostics.Process.Start(@path + fileName);
                 }
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -67,6 +73,8 @@ namespace EasyPDV.UI {
             LoadSales();
             ShowTotal();
             Invalidate();
+            ClearChart();
+            SetChart();
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -83,17 +91,21 @@ namespace EasyPDV.UI {
             toolTip.SetToolTip(btnRefresh, "Atualizar tabela");
             toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
         }
-        public void SetChart(){
+        public void SetChart() {
             IndividualSale IndividualSale = new IndividualSale();
             string x;
             double y = 0;
-            for (int i = 0; i < vendasGridView1.Rows.Count; i++) { 
-                x = vendasGridView1.Rows[i].Cells[0].Value.ToString();
-                y = double.Parse(vendasGridView1.Rows[i].Cells[1].Value.ToString());
-                chart1.Series[0].Points.AddXY(x, y);
-                chart1.Series[0].AxisLabel= x;
+                for (int i = 0; i < vendasGridView1.Rows.Count; i++) {
+                    x = vendasGridView1.Rows[i].Cells[0].Value.ToString();
+                    y = double.Parse(vendasGridView1.Rows[i].Cells[1].Value.ToString());
+                    chart1.Series[0].Points.AddXY(x, y);
+                    chart1.Series[0].AxisLabel = x;
+                }
+        }
+        private void ClearChart() {
+            foreach (var series in chart1.Series) {
+                series.Points.Clear();
             }
-
         }
 
         private void chart1_Click(object sender, EventArgs e) {

@@ -63,6 +63,56 @@ namespace EasyPDV.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _012_Tempting_Azure {
+            get {
+                object obj = ResourceManager.GetObject("012 Tempting Azure", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _012_Tempting_Azure1 {
+            get {
+                object obj = ResourceManager.GetObject("012 Tempting Azure1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _012_Tempting_Azure2 {
+            get {
+                object obj = ResourceManager.GetObject("012 Tempting Azure2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _012_Tempting_Azure3 {
+            get {
+                object obj = ResourceManager.GetObject("012 Tempting Azure3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _012_Tempting_Azure4 {
+            get {
+                object obj = ResourceManager.GetObject("012 Tempting Azure4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cake {
             get {
                 object obj = ResourceManager.GetObject("cake", resourceCulture);
@@ -136,6 +186,16 @@ namespace EasyPDV.Properties {
         internal static System.Drawing.Bitmap excel {
             get {
                 object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient {
+            get {
+                object obj = ResourceManager.GetObject("gradient", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

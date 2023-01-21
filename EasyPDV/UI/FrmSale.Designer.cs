@@ -35,7 +35,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // vendasGridView1
+            // salesGridView1
             // 
             this.salesGridView1.AllowUserToAddRows = false;
             this.salesGridView1.AllowUserToDeleteRows = false;
@@ -69,7 +69,7 @@
             this.salesGridView1.Location = new System.Drawing.Point(12, 43);
             this.salesGridView1.MinimumSize = new System.Drawing.Size(474, 302);
             this.salesGridView1.MultiSelect = false;
-            this.salesGridView1.Name = "vendasGridView1";
+            this.salesGridView1.Name = "salesGridView1";
             this.salesGridView1.ReadOnly = true;
             this.salesGridView1.RowHeadersVisible = false;
             this.salesGridView1.RowHeadersWidth = 60;
@@ -103,6 +103,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(461, 18);
             this.label2.Name = "label2";
@@ -111,9 +112,10 @@
             this.label2.Text = "Lista de Vendas Realizadas";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // btnCancelarVenda
+            // btnDeleteVenda
             // 
             this.btnDeleteVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteVenda.BackColor = System.Drawing.Color.Transparent;
             this.btnDeleteVenda.BorderRadius = 25;
             this.btnDeleteVenda.BorderThickness = 1;
             this.btnDeleteVenda.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -124,7 +126,7 @@
             this.btnDeleteVenda.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteVenda.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteVenda.Location = new System.Drawing.Point(931, 502);
-            this.btnDeleteVenda.Name = "btnCancelarVenda";
+            this.btnDeleteVenda.Name = "btnDeleteVenda";
             this.btnDeleteVenda.PressedColor = System.Drawing.Color.White;
             this.btnDeleteVenda.Size = new System.Drawing.Size(246, 45);
             this.btnDeleteVenda.TabIndex = 21;
@@ -132,46 +134,51 @@
             this.btnDeleteVenda.Click += new System.EventHandler(this.btnDeleteSale_Click);
             this.btnDeleteVenda.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancelarVenda_MouseMove);
             // 
-            // btnRelatorio
+            // btnReport
             // 
             this.btnReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReport.BackColor = System.Drawing.Color.Transparent;
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReport.Image = global::EasyPDV.Properties.Resources.excel;
             this.btnReport.Location = new System.Drawing.Point(12, 502);
-            this.btnReport.Name = "btnRelatorio";
+            this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(35, 45);
             this.btnReport.TabIndex = 22;
-            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.UseVisualStyleBackColor = false;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             this.btnReport.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancelarVenda_MouseMove);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh1;
             this.btnRefresh.Location = new System.Drawing.Point(53, 502);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(35, 45);
             this.btnRefresh.TabIndex = 28;
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
-            // TelaVendas
+            // FrmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
+            this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure4;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1189, 559);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnDeleteVenda);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.salesGridView1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1205, 598);
-            this.Name = "TelaVendas";
+            this.Name = "FrmSale";
             this.Text = "Vendas";
             this.Load += new System.EventHandler(this.FrmSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView1)).EndInit();

@@ -217,6 +217,12 @@
   <ItemGroup>
     <None Include="Assets\dust %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\gradient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\012 Tempting Azure.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
