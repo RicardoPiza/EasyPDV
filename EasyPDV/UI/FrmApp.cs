@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using Color = System.Drawing.Color;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.Data.SqlClient;
+using System.Text;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
@@ -22,6 +25,7 @@ namespace EasyPDV {
         List<string> _SoldProductsList = new List<string>();
         List<int> _SoldQuantityList = new List<int>();
         List<int> _ProductIDList = new List<int>();
+        ToolTip tp = new ToolTip();
         List<string> _SupportList = new List<string>();
         public FrmApp() {
             InitializeComponent();
@@ -45,6 +49,9 @@ namespace EasyPDV {
             for (int i = 0; i < _Products.Count; i++) {
                 _product.ID = _Products[i].ID;
                 _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
+                _btnProducts[i].Text= _Products[i].Name;
+                _btnProducts[i].TextAlign= HorizontalAlignment.Center;
+                tp.SetToolTip(_btnProducts[i], _Products[i].Name);
                 int id = _product.ID;
                 string name = _Products[i].Name;
                 double preco = _Products[i].Price;
@@ -54,19 +61,19 @@ namespace EasyPDV {
         }
         public void ProductSum(object sender, EventArgs e, string name, double price, int id) {
             richTextBox3.Text = string.Empty;
-            string descricaoCompra = name +"........ R$"+ price ;
+            string saleDescription = name +"........ R$"+ price ;
             if (!_SupportList.Contains(name)) {
                 _SupportList.Add(name);
-                _listViewProducts.Items.Add(descricaoCompra);
+                _listViewProducts.Items.Add(saleDescription);
                 _SoldQuantityList.Add(1);
             } else {
                 for (int i = 0; i < _SupportList.Count; i++) {
-                    if (_listViewProducts.Items[i].Text.Substring(0,10).Equals(descricaoCompra.Substring(0,10))){
+                    if (_listViewProducts.Items[i].Text.Substring(0,10).Equals(saleDescription.Substring(0,10))){
                         _SoldQuantityList[i] += 1;
-                        descricaoCompra = name +
+                        saleDescription = name +
                         "........ R$" + price * _SoldQuantityList[i] +
                         " | Qtd = x" + _SoldQuantityList[i];
-                        _listViewProducts.Items[i].Text = descricaoCompra;
+                        _listViewProducts.Items[i].Text = saleDescription;
                     }
                 }
             }
@@ -81,25 +88,50 @@ namespace EasyPDV {
             }
             _ProductIDList.Clear();
         }
+
+        public void Background() {
+            LinearGradientBrush brush = new LinearGradientBrush(
+            new Point(0, 0),
+            new Point(0, this.Height),
+            Color.FromArgb(255, 255, 255),
+            Color.FromArgb(192, 192, 192));
+            brush.LinearColors = new Color[] { Color.Red, Color.Yellow, Color.Green };
+            this.BackgroundImage = new Bitmap(this.Width, this.Height);
+            using (Graphics g = Graphics.FromImage(this.BackgroundImage)) {
+                g.FillRectangle(brush, this.ClientRectangle);
+            }
+        }
+        public void Print(string s) {
+            PrintDialog pd = new PrintDialog();
+            pd.PrinterSettings = new PrinterSettings();
+            if (DialogResult.OK == pd.ShowDialog(this)) {
+                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
+            }
+        }
+
         private void btnMakeSale_Click_1(object sender, EventArgs e) {
             _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             _sale.SalePrice = _Total;
             _sale.Products = DBSaleAddList();
             _sale.PaymentMethod = meioPagamentoBox.Text;
-            foreach (string item in _SoldProductsList) {
-                //Aqui será implementado o código de impressão de fichas
-                //Para cada item na lista, uma ficha impressa
-            }
             if (_listViewProducts.Text != "" || richTextBox3.Text != "") {
                 if (meioPagamentoBox.Text != "") {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
                     if (res == DialogResult.OK) {
+                        foreach (string item in _SoldProductsList) {
+                            //Aqui será implementado o código de impressão de fichas
+                            //Para cada item na lista, uma ficha impressa
+                            string[] product = item.Split('|');
+                            Print("\n Produto: " + product[0] +"\n Preço: " + "R$" + product[1] + 
+                                  "\n Método pagam.: "+meioPagamentoBox.Text+ "\n\n\n\n\n\n");
+                        }
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
                         AddIndividualProduct();
                         _listViewProducts.Clear();
                         _SoldQuantityList.Clear();
                         _SupportList.Clear();
+                        _SoldProductsList.Clear();
                         richTextBox3.Text = string.Empty;
                         meioPagamentoBox.Text = "";
                         _Total = 0;
@@ -130,48 +162,6 @@ namespace EasyPDV {
                 individualSale.PaymentMethod = meioPagamentoBox.Text;
                 individualSaleDAO.InsertIndividualSale(individualSale);
             }
-        }
-        private void TelaApp_Click(object sender, EventArgs e) {
-            throw new NotImplementedException();
-        }
-        private void button9_Click(object sender, EventArgs e) {
-        }
-        private void button1_Click(object sender, EventArgs e) {
-        }
-        private void button2_Click(object sender, EventArgs e) {
-        }
-        private void button3_Click(object sender, EventArgs e) {
-        }
-        private void button4_Click(object sender, EventArgs e) {
-        }
-        private void button6_Click(object sender, EventArgs e) {
-
-        }
-        private void button7_Click(object sender, EventArgs e) {
-        }
-        private void button5_Click(object sender, EventArgs e) {
-        }
-        private void button12_Click(object sender, EventArgs e) {
-        }
-        private void button8_Click(object sender, EventArgs e) {
-        }
-        private void button11_Click(object sender, EventArgs e) {
-
-        }
-        private void button10_Click(object sender, EventArgs e) {
-
-        }
-        private void button13_Click(object sender, EventArgs e) {
-
-        }
-        private void button14_Click(object sender, EventArgs e) {
-
-        }
-        private void button15_Click(object sender, EventArgs e) {
-
-        }
-        private void button16_Click(object sender, EventArgs e) {
-
         }
         private void button12_MouseMove(object sender, MouseEventArgs e) {
             button1.Cursor = Cursors.Hand;
@@ -275,6 +265,10 @@ namespace EasyPDV {
                 FrmSale tv = new FrmSale();
                 tv.Show();
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e) {
+            
         }
     }
 }
