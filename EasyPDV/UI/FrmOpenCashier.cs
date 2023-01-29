@@ -27,25 +27,29 @@ namespace EasyPDV.UI {
         private void btnOpenCashier_Click(object sender, EventArgs e) {
             DialogResult dialogResult = MessageBox.Show("Confirma abertura?", "Abertura Caixa", MessageBoxButtons.OKCancel);
             if (dialogResult == DialogResult.OK) {
-                cashier.Number = int.Parse(txtCashier.Text);
-                cashier.InitialBalance = int.Parse(txtBalance.Text);
-                cashier.Responsible = txtResponsible.Text;
-                cashier.EventName = txtEventName.Text;
-                cashier.Date = DateTime.Now;
-                cashier.Status = true;
-                cashierDAO.OpenCashier(cashier);
-                MessageBox.Show("Caixa aberto");
-                Print(txtEventName.Text +
-                      "\n -----------------\n" +
-                      " ABERTURA DE CAIXA\n" +
-                      " -----------------\n" +
-                      "\n\nCaixa: "+txtCashier.Text +
-                      "\nData: "+DateTime.Now.ToString("d") +
-                      "\nResp.: "+txtResponsible.Text+
-                      "\nSaldo: "+txtBalance.Text
-                      );
-                this.Dispose();
-                Application.Restart();
+                if (cashierDAO.IsCashierOpen() == false) {
+                    cashier.Number = int.Parse(txtCashier.Text);
+                    cashier.InitialBalance = int.Parse(txtBalance.Text);
+                    cashier.Responsible = txtResponsible.Text;
+                    cashier.EventName = txtEventName.Text;
+                    cashier.Date = DateTime.Now;
+                    cashier.Status = true;
+                    cashierDAO.OpenCashier(cashier);
+                    MessageBox.Show("Caixa aberto");
+                    Print(txtEventName.Text +
+                          "\n -----------------" +
+                          "\n ABERTURA DE CAIXA\n" +
+                          " -----------------\n" +
+                          "\n\nCaixa: " + txtCashier.Text +
+                          "\nData: " + DateTime.Now.ToString("d") +
+                          "\nResp.: " + txtResponsible.Text +
+                          "\nSaldo: " + txtBalance.Text
+                          );
+                    this.Dispose();
+                    Application.Restart();
+                } else {
+                    MessageBox.Show("Caixa já se encontra aberto!");
+                }
             }
         }
 

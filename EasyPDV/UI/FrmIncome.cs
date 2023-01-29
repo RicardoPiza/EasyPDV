@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Drawing;
 using EasyPDV.Model;
 using EasyPDV.Entities;
 using Npgsql;

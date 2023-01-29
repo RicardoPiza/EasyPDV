@@ -33,8 +33,12 @@
             this.faturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferirFaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fecharCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sangriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.históricoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,6 +70,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.txtEventName = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -147,12 +152,28 @@
             // caixaToolStripMenuItem
             // 
             this.caixaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioToolStripMenuItem,
+            this.abrirCaixaToolStripMenuItem,
             this.fecharCaixaToolStripMenuItem,
-            this.abrirCaixaToolStripMenuItem});
+            this.sangriaToolStripMenuItem});
             this.caixaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
             this.caixaToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
             this.caixaToolStripMenuItem.Text = "Caixa";
+            // 
+            // relatórioToolStripMenuItem
+            // 
+            this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.relatórioToolStripMenuItem.Text = "Relatório";
+            this.relatórioToolStripMenuItem.Click += new System.EventHandler(this.relatórioToolStripMenuItem_Click);
+            // 
+            // abrirCaixaToolStripMenuItem
+            // 
+            this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
+            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // fecharCaixaToolStripMenuItem
             // 
@@ -161,12 +182,28 @@
             this.fecharCaixaToolStripMenuItem.Text = "Fechar caixa";
             this.fecharCaixaToolStripMenuItem.Click += new System.EventHandler(this.fecharCaixaToolStripMenuItem_Click);
             // 
-            // abrirCaixaToolStripMenuItem
+            // sangriaToolStripMenuItem
             // 
-            this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
-            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
-            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
+            this.sangriaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.retiradaToolStripMenuItem,
+            this.históricoToolStripMenuItem});
+            this.sangriaToolStripMenuItem.Name = "sangriaToolStripMenuItem";
+            this.sangriaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.sangriaToolStripMenuItem.Text = "Sangria";
+            // 
+            // retiradaToolStripMenuItem
+            // 
+            this.retiradaToolStripMenuItem.Name = "retiradaToolStripMenuItem";
+            this.retiradaToolStripMenuItem.Size = new System.Drawing.Size(308, 26);
+            this.retiradaToolStripMenuItem.Text = "Realizar Sangria/Reforço";
+            this.retiradaToolStripMenuItem.Click += new System.EventHandler(this.retiradaToolStripMenuItem_Click);
+            // 
+            // históricoToolStripMenuItem
+            // 
+            this.históricoToolStripMenuItem.Name = "históricoToolStripMenuItem";
+            this.históricoToolStripMenuItem.Size = new System.Drawing.Size(308, 26);
+            this.históricoToolStripMenuItem.Text = "Histórico ";
+            this.históricoToolStripMenuItem.Click += new System.EventHandler(this.históricoToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -863,6 +900,17 @@
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancel_MouseMove);
             // 
+            // txtEventName
+            // 
+            this.txtEventName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtEventName.AutoSize = true;
+            this.txtEventName.BackColor = System.Drawing.Color.Transparent;
+            this.txtEventName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventName.Location = new System.Drawing.Point(415, 22);
+            this.txtEventName.Name = "txtEventName";
+            this.txtEventName.Size = new System.Drawing.Size(0, 24);
+            this.txtEventName.TabIndex = 24;
+            // 
             // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -870,6 +918,7 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1075, 677);
+            this.Controls.Add(this.txtEventName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this._listViewProducts);
             this.Controls.Add(this.label4);
@@ -908,8 +957,6 @@
         private System.Windows.Forms.ToolStripMenuItem faturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conferirFaturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem caixaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fecharCaixaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -944,6 +991,13 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton button12;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button8;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button4;
+        private System.Windows.Forms.Label txtEventName;
+        private System.Windows.Forms.ToolStripMenuItem sangriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem retiradaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem históricoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fecharCaixaToolStripMenuItem;
     }
 }
 

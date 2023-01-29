@@ -11,12 +11,12 @@ using Color = System.Drawing.Color;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
-using System.ComponentModel;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
         public double _Total { get; set; }
         public double _CashierTotal { get; set; }
+        public static string EventName { get; set; }
 
         SaleDAO _saleDao = new SaleDAO();
         RegularSale _sale = new RegularSale();
@@ -27,12 +27,15 @@ namespace EasyPDV {
         List<int> _ProductIDList = new List<int>();
         ToolTip tp = new ToolTip();
         List<string> _SupportList = new List<string>();
+        CashierDAO cashierDAO = new CashierDAO();
         public FrmApp() {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e) {
             ColorLabels();
             LoadButtons();
+            string[] eventName = txtEventName.Text.Split('-');
+            EventName = eventName[0];
         }
 
         private void ColorLabels() {
@@ -40,8 +43,9 @@ namespace EasyPDV {
             label2.BackColor = Color.Transparent;
         }
         private void LoadButtons() {
-            CashierDAO cashierDAO = new CashierDAO();
             if (cashierDAO.IsCashierOpen() == true) {
+                txtEventName.Text = cashierDAO.ReturnEventName()+" - "+DateTime.Now.ToString("d");
+                txtEventName.Visible=true;
                 List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
                 List<Product> _Products = new List<Product>();
                 _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
@@ -82,7 +86,7 @@ namespace EasyPDV {
                     }
                 }
             }
-            _SoldProductsList.Add(name + "|" + price.ToString("F2", CultureInfo.InvariantCulture));
+            _SoldProductsList.Add(name + "|" + price.ToString("F2"));
             _ProductIDList.Add(id);
             _Total += price;
             richTextBox3.Text += _Total.ToString("F2");
@@ -128,11 +132,11 @@ namespace EasyPDV {
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
                             Print(
-                                "Festa NSR Fátima\n\n " +
+                                cashierDAO.ReturnEventName()+"\n\n " +
                                 DateTime.Now.ToString("d") + "\n" +
-                                "\nItem: " + product[0].ToUpper() +
-                                "\nPreço: " + "R$" + product[1] +
-                                "\nPagamento: " + paymentMethod.Text + "\n\n\n\n\n"
+                                "\n" + product[0].ToUpper() +
+                                "\nR$" + product[1] +
+                                "\n" + paymentMethod.Text + "\n\n\n\n\n"
                                 );
                         }
                         _saleDao.InsertSale(_sale);
@@ -302,8 +306,54 @@ namespace EasyPDV {
             if (dialogResult == DialogResult.OK) {
                 CashierDAO cashierDAO = new CashierDAO();
                 cashierDAO.CloseCashier();
-                Application.Exit();
+                Application.Restart();
             }
         }
+
+        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Relatório de aberturas") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                FrmCashierReport frmCashierReport = new FrmCashierReport();
+                frmCashierReport.Show();
+            }
+        }
+
+        private void retiradaToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Sangria de caixa") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                FrmCashierBleed frmCashierBleed = new FrmCashierBleed();
+                frmCashierBleed.Show();
+            }
+        }
+
+        private void históricoToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Histórico de movimentação") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                FrmCashierBleedReport frmCashierBleedReport = new FrmCashierBleedReport();
+                frmCashierBleedReport.Show();
+            }
+        }
+    
     }
 }

@@ -55,10 +55,40 @@ namespace EasyPDV.Model {
                 } catch (Exception) {
                     throw;
                 }
+                dao.Connection().Close();
             } else {
                 MessageBox.Show("Caixa já está fechado!");
             }
 
+        }
+        public string ReturnEventName() {
+            string eventName = "";
+            NpgsqlCommand cmd;
+            try {
+                cmd = new NpgsqlCommand("select evento from caixa where id = " + cashier.ID, dao.Connection());
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        eventName= reader.GetString(0);
+                    }
+                }
+            } catch(Exception ex) {
+                throw;
+            }
+            dao.Connection().Close();
+            return eventName;
+        }
+        public NpgsqlCommand ReadAll() {
+            NpgsqlCommand cmd;
+            try {
+                cmd = new NpgsqlCommand("Select id as \"ID\", evento as Evento, numero as \"Número do caixa\", " +
+                    "saldo_inicial as \"Saldo Inicial\", responsavel as \"Responsável\", " +
+                    "case status when 'false' then 'fechado' else 'aberto' end as \"Status do caixa\" from caixa ", dao.Connection());
+            } catch (Exception ex) {
+                throw;
+            }
+            dao.Connection().Close();
+            return cmd;
         }
     }
 }
