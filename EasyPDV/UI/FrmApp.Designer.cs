@@ -61,7 +61,7 @@
             this._listViewProducts = new System.Windows.Forms.ListView();
             this.btnRealizar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.meioPagamentoBox = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.paymentMethod = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
@@ -159,12 +159,14 @@
             this.fecharCaixaToolStripMenuItem.Name = "fecharCaixaToolStripMenuItem";
             this.fecharCaixaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.fecharCaixaToolStripMenuItem.Text = "Fechar caixa";
+            this.fecharCaixaToolStripMenuItem.Click += new System.EventHandler(this.fecharCaixaToolStripMenuItem_Click);
             // 
             // abrirCaixaToolStripMenuItem
             // 
             this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
             this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -780,30 +782,30 @@
             this.label3.TabIndex = 18;
             this.label3.Text = "Meio de pagamento";
             // 
-            // meioPagamentoBox
+            // paymentMethod
             // 
-            this.meioPagamentoBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.meioPagamentoBox.BackColor = System.Drawing.Color.Transparent;
-            this.meioPagamentoBox.BorderColor = System.Drawing.Color.Transparent;
-            this.meioPagamentoBox.BorderRadius = 15;
-            this.meioPagamentoBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.meioPagamentoBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.meioPagamentoBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.meioPagamentoBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.meioPagamentoBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.meioPagamentoBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.meioPagamentoBox.ItemHeight = 30;
-            this.meioPagamentoBox.Items.AddRange(new object[] {
+            this.paymentMethod.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.paymentMethod.BackColor = System.Drawing.Color.Transparent;
+            this.paymentMethod.BorderColor = System.Drawing.Color.Transparent;
+            this.paymentMethod.BorderRadius = 15;
+            this.paymentMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.paymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paymentMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.paymentMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.paymentMethod.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.paymentMethod.ItemHeight = 30;
+            this.paymentMethod.Items.AddRange(new object[] {
             "",
             "Cartão crédito",
             "Cartão débito",
             "Dinheiro",
             "Pix"});
-            this.meioPagamentoBox.Location = new System.Drawing.Point(73, 42);
-            this.meioPagamentoBox.MaxLength = 2;
-            this.meioPagamentoBox.Name = "meioPagamentoBox";
-            this.meioPagamentoBox.Size = new System.Drawing.Size(183, 36);
-            this.meioPagamentoBox.TabIndex = 17;
+            this.paymentMethod.Location = new System.Drawing.Point(73, 42);
+            this.paymentMethod.MaxLength = 2;
+            this.paymentMethod.Name = "paymentMethod";
+            this.paymentMethod.Size = new System.Drawing.Size(183, 36);
+            this.paymentMethod.TabIndex = 17;
             // 
             // tableLayoutPanel3
             // 
@@ -814,7 +816,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.92754F));
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnRealizar, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.meioPagamentoBox, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.paymentMethod, 0, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(419, 547);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
@@ -921,7 +923,7 @@
         private System.Windows.Forms.ToolStripMenuItem visualizarVendasToolStripMenuItem;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnRealizar;
         private System.Windows.Forms.Label label3;
-        private Siticone.Desktop.UI.WinForms.SiticoneComboBox meioPagamentoBox;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox paymentMethod;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnRefresh;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancel;

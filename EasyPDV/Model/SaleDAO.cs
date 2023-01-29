@@ -3,7 +3,7 @@ using Npgsql;
 using System;
 using System.Windows.Forms;
 
-namespace EasyPDV.DAO {
+namespace EasyPDV.Model {
     internal class SaleDAO {
         DAO dao = new DAO();
 

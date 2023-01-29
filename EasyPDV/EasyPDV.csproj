@@ -108,7 +108,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Cashier.cs" />
     <Compile Include="Entities\Sale.cs" />
+    <Compile Include="Model\CashierDAO.cs" />
     <Compile Include="Model\DAO.cs" />
     <Compile Include="Model\ProductDAO.cs" />
     <Compile Include="Model\CancelledSaleDAO.cs" />
@@ -137,6 +139,12 @@
     </Compile>
     <Compile Include="UI\FrmIncome.Designer.cs">
       <DependentUpon>FrmIncome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmOpenCashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmOpenCashier.Designer.cs">
+      <DependentUpon>FrmOpenCashier.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmSale.cs">
       <SubType>Form</SubType>
@@ -170,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmIncome.resx">
       <DependentUpon>FrmIncome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmOpenCashier.resx">
+      <DependentUpon>FrmOpenCashier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>

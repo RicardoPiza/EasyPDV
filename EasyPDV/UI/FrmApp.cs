@@ -1,4 +1,4 @@
-﻿using EasyPDV.DAO;
+﻿using EasyPDV.Model;
 using EasyPDV.Entities;
 using EasyPDV.UI;
 using Siticone.Desktop.UI.WinForms;
@@ -10,8 +10,8 @@ using System.Drawing.Drawing2D;
 using Color = System.Drawing.Color;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Data.SqlClient;
-using System.Text;
+using System.Globalization;
+using System.ComponentModel;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
@@ -40,44 +40,49 @@ namespace EasyPDV {
             label2.BackColor = Color.Transparent;
         }
         private void LoadButtons() {
-            List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
-            List<Product> _Products = new List<Product>();
-            _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
-            int totalBotoes = _btnProducts.Count();
-            _btnProducts.Reverse();
-            _Products = _productDAO.ReadAll();
-            for (int i = 0; i < _Products.Count; i++) {
-                _product.ID = _Products[i].ID;
-                _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
-                _btnProducts[i].Text= _Products[i].Name;
-                _btnProducts[i].TextAlign= HorizontalAlignment.Center;
-                tp.SetToolTip(_btnProducts[i], _Products[i].Name);
-                int id = _product.ID;
-                string name = _Products[i].Name;
-                double preco = _Products[i].Price;
-                _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, preco, id);
-                _btnProducts[i].Invalidate();
+            CashierDAO cashierDAO = new CashierDAO();
+            if (cashierDAO.IsCashierOpen() == true) {
+                List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
+                List<Product> _Products = new List<Product>();
+                _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
+                int totalBotoes = _btnProducts.Count();
+                _btnProducts.Reverse();
+                _Products = _productDAO.ReadAll();
+                for (int i = 0; i < _Products.Count; i++) {
+                    _product.ID = _Products[i].ID;
+                    _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
+                    _btnProducts[i].Text = _Products[i].Name;
+                    _btnProducts[i].TextAlign = HorizontalAlignment.Center;
+                    tp.SetToolTip(_btnProducts[i], _Products[i].Name);
+                    int id = _product.ID;
+                    string name = _Products[i].Name;
+                    double price = _Products[i].Price;
+                    _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
+                    _btnProducts[i].Invalidate();
+                }
+            } else {
+                MessageBox.Show("Antes de começar os trabalhos. O caixa precisa estar aberto.");
             }
         }
         public void ProductSum(object sender, EventArgs e, string name, double price, int id) {
             richTextBox3.Text = string.Empty;
-            string saleDescription = name +"........ R$"+ price ;
+            string saleDescription = name + "........ R$" + price;
             if (!_SupportList.Contains(name)) {
                 _SupportList.Add(name);
                 _listViewProducts.Items.Add(saleDescription);
                 _SoldQuantityList.Add(1);
             } else {
                 for (int i = 0; i < _SupportList.Count; i++) {
-                    if (_listViewProducts.Items[i].Text.Substring(0,10).Equals(saleDescription.Substring(0,10))){
+                    if (_listViewProducts.Items[i].Text.Substring(0, 10).Equals(saleDescription.Substring(0, 10))) {
                         _SoldQuantityList[i] += 1;
                         saleDescription = name +
-                        "........ R$" + price * _SoldQuantityList[i] +
+                        "........ R$" + (price * _SoldQuantityList[i]).ToString("F2", CultureInfo.InvariantCulture) +
                         " | Qtd = x" + _SoldQuantityList[i];
                         _listViewProducts.Items[i].Text = saleDescription;
                     }
                 }
             }
-            _SoldProductsList.Add(name + "|" + price);
+            _SoldProductsList.Add(name + "|" + price.ToString("F2", CultureInfo.InvariantCulture));
             _ProductIDList.Add(id);
             _Total += price;
             richTextBox3.Text += _Total.ToString("F2");
@@ -113,17 +118,22 @@ namespace EasyPDV {
             _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             _sale.SalePrice = _Total;
             _sale.Products = DBSaleAddList();
-            _sale.PaymentMethod = meioPagamentoBox.Text;
+            _sale.PaymentMethod = paymentMethod.Text;
             if (_listViewProducts.Text != "" || richTextBox3.Text != "") {
-                if (meioPagamentoBox.Text != "") {
+                if (paymentMethod.Text != "") {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
                     if (res == DialogResult.OK) {
                         foreach (string item in _SoldProductsList) {
                             //Aqui será implementado o código de impressão de fichas
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
-                            Print("\n Produto: " + product[0] +"\n Preço: " + "R$" + product[1] + 
-                                  "\n Método pagam.: "+meioPagamentoBox.Text+ "\n\n\n\n\n\n");
+                            Print(
+                                "Festa NSR Fátima\n\n " +
+                                DateTime.Now.ToString("d") + "\n" +
+                                "\nItem: " + product[0].ToUpper() +
+                                "\nPreço: " + "R$" + product[1] +
+                                "\nPagamento: " + paymentMethod.Text + "\n\n\n\n\n"
+                                );
                         }
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
@@ -133,7 +143,7 @@ namespace EasyPDV {
                         _SupportList.Clear();
                         _SoldProductsList.Clear();
                         richTextBox3.Text = string.Empty;
-                        meioPagamentoBox.Text = "";
+                        paymentMethod.Text = "";
                         _Total = 0;
                         MessageBox.Show("Venda Realizada com sucesso!");
                     }
@@ -159,7 +169,7 @@ namespace EasyPDV {
                 string[] prodSplit = item.Split('|');
                 individualSale.Product = prodSplit[0];
                 individualSale.SalePrice = double.Parse(prodSplit[1].Trim());
-                individualSale.PaymentMethod = meioPagamentoBox.Text;
+                individualSale.PaymentMethod = paymentMethod.Text;
                 individualSaleDAO.InsertIndividualSale(individualSale);
             }
         }
@@ -204,7 +214,7 @@ namespace EasyPDV {
                 FrmInsertProduct tc = new FrmInsertProduct();
                 tc.Show();
             }
-        }       
+        }
         private void siticoneContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 
         }
@@ -213,6 +223,7 @@ namespace EasyPDV {
             _listViewProducts.Clear();
             _SoldQuantityList.Clear();
             _SupportList.Clear();
+            _SoldProductsList.Clear();
             _Total = 0;
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
@@ -268,7 +279,31 @@ namespace EasyPDV {
         }
 
         private void button8_Click(object sender, EventArgs e) {
-            
+
+        }
+
+        private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Abrir caixa") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                FrmOpenCashier tv = new FrmOpenCashier();
+                tv.Show();
+            }
+        }
+
+        private void fecharCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
+            DialogResult dialogResult = MessageBox.Show("Confirma fechamento?", "Fechar caixa", MessageBoxButtons.OKCancel);
+            if (dialogResult == DialogResult.OK) {
+                CashierDAO cashierDAO = new CashierDAO();
+                cashierDAO.CloseCashier();
+                Application.Exit();
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace EasyPDV.DAO {
+namespace EasyPDV.Model {
     internal class ProductDAO {
         DAO dao = new DAO();
         public NpgsqlCommand Read() {
@@ -52,7 +52,7 @@ namespace EasyPDV.DAO {
             NpgsqlCommand cmd;
             Image image = null;
             try {
-                cmd = new NpgsqlCommand("" +
+                cmd = new NpgsqlCommand(
                     $"SELECT imagem FROM produto where id = {product.ID}", dao.Connection());
                 byte[] productImageByte = cmd.ExecuteScalar() as byte[];
                 if (productImageByte != null) {

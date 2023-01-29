@@ -40,9 +40,8 @@ public class RawPrinterHelper {
         IntPtr hPrinter = new IntPtr(0);
         DOCINFOA di = new DOCINFOA();
         bool bSuccess = false; // Assume failure unless you specifically succeed.
-
         di.pDocName = "My C#.NET RAW Document";
-        di.pDataType = "RAW";
+        di.pDataType = "TEXT";
 
         // Open the printer.
         if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero)) {

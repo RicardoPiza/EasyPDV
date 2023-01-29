@@ -1,6 +1,6 @@
 ﻿using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Drawing;
-using EasyPDV.DAO;
+using EasyPDV.Model;
 using EasyPDV.Entities;
 using Npgsql;
 using System;

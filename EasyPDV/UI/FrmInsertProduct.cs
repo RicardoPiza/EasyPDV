@@ -1,4 +1,4 @@
-﻿using EasyPDV.DAO;
+﻿using EasyPDV.Model;
 using EasyPDV.Entities;
 using Npgsql;
 using System;

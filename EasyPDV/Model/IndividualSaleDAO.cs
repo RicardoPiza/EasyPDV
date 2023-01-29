@@ -5,7 +5,7 @@ using Npgsql;
 using System.Windows.Forms;
 using System;
 
-namespace EasyPDV.DAO {
+namespace EasyPDV.Model {
     internal class IndividualSaleDAO {
         DAO dao = new DAO();
 
