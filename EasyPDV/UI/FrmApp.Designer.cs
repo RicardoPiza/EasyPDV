@@ -172,7 +172,7 @@
             // 
             this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
             this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Text = "Abrir caixa";
             this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // fecharCaixaToolStripMenuItem

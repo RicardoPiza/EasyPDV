@@ -19,18 +19,11 @@ namespace EasyPDV.UI {
         }
 
         private void FrmIncome_Load(object sender, EventArgs e) {
-            TotalText();
             LoadSales();
             ShowTotal();
             Invalidate();
             SetChart();
         }
-
-        private void TotalText() {
-            FrmApp telaApp = new FrmApp();
-            lblFatura.Text = telaApp._CashierTotal.ToString();
-        }
-
         public void LoadSales() {
             adpt = new NpgsqlDataAdapter(individualSaleDAO.ReadIndividualSale());
             dt = new DataTable();
@@ -45,6 +38,10 @@ namespace EasyPDV.UI {
         }
 
         private void btnReport_Click(object sender, EventArgs e) {
+            MakeReport();
+        }
+
+        private void MakeReport() {
             try {
                 string fileName = "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
                 string path = "";
@@ -77,9 +74,19 @@ namespace EasyPDV.UI {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            individualSaleDAO.DeleteAllIndividualSales();
-            LoadSales();
-            Invalidate();
+            DialogResult dialogResult= DialogResult.OK;
+            dialogResult = MessageBox.Show("Esses dados serão excluídos permanentemente.\nDeseja tirar um relatório antes de exclui-los?",
+                "Excluir dados", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.No) {
+                individualSaleDAO.DeleteAllIndividualSales();
+                LoadSales();
+                Invalidate();
+            } else if (dialogResult == DialogResult.Yes) { 
+                MakeReport();
+                individualSaleDAO.DeleteAllIndividualSales(); 
+                LoadSales();
+                Invalidate();
+            }
         }
 
         private void button1_MouseMove(object sender, MouseEventArgs e) {

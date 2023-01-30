@@ -8,7 +8,7 @@ namespace EasyPDV.UI {
     public partial class FrmCashierBleed : Form {
         CashierBleed cashierBleed = new CashierBleed();
         CashierBleedDAO cashierBleedDao = new CashierBleedDAO();
-        CashierDAO cashierDAO = new CashierDAO();
+        CashierOpenDAO cashierDAO = new CashierOpenDAO();
 
         public FrmCashierBleed() {
             InitializeComponent();
@@ -23,25 +23,30 @@ namespace EasyPDV.UI {
             dialogResult = MessageBox.Show("Confirma movimentação do caixa?", "Confirmar realização", MessageBoxButtons.OKCancel);
             if (dialogResult == DialogResult.OK) {
                 if (comboBleed.Text != "") {
-                    cashierBleed.Number = int.Parse(txtCashier.Text);
-                    cashierBleed.Date = DateTime.Now;
-                    cashierBleed.Responsible = txtResponsible.Text;
-                    cashierBleed.Value = double.Parse(txtValue.Text);
-                    cashierBleed.EventName = FrmApp.EventName;
-                    cashierBleed.Type = comboBleed.Text;
-                    cashierBleed.Description = txtDescription.Text;
-                    cashierBleedDao.BeginMovimentation(cashierBleed);
-                    MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Print(FrmApp.EventName +
-                          "\n -----------------" +
-                          "\n     " + comboBleed.Text.ToUpper() + "\n" +
-                          " -----------------\n" +
-                          "\n\nCaixa: " + txtCashier.Text +
-                          "\nData: " + DateTime.Now.ToString("d") +
-                          "\nResp.: " + txtResponsible.Text +
-                          "\nDescrição.: " + txtDescription.Text +
-                          "\nValor: " + txtValue.Text
-                          );
+                    if (cashierDAO.IsCashierOpen() == true) {
+                        cashierBleed.Number = int.Parse(txtCashier.Text);
+                        cashierBleed.Date = DateTime.Now;
+                        cashierBleed.Responsible = txtResponsible.Text;
+                        cashierBleed.Value = double.Parse(txtValue.Text);
+                        cashierBleed.EventName = FrmApp.EventName;
+                        cashierBleed.Type = comboBleed.Text;
+                        cashierBleed.Description = txtDescription.Text;
+                        cashierBleedDao.BeginMovimentation(cashierBleed);
+                        MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        Print(FrmApp.EventName +
+                              "\n -----------------" +
+                              "\n     " + comboBleed.Text.ToUpper() + "\n" +
+                              " -----------------\n" +
+                              "\n\nCaixa: " + txtCashier.Text +
+                              "\nData: " + DateTime.Now.ToString("d") +
+                              "\nResp.: " + txtResponsible.Text +
+                              "\nDescrição: " + txtDescription.Text +
+                              "\nValor: R$" + txtValue.Text
+                              );
+                    } else {
+                        MessageBox.Show("O caixa se encontra fechado! Abra-o para concluir a operação",
+                            "Abra o caixa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 } else {
                     MessageBox.Show("Escolha o tipo de movimentação");
                 }

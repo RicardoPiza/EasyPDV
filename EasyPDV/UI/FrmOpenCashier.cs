@@ -6,8 +6,8 @@ using System.Windows.Forms;
 
 namespace EasyPDV.UI {
     public partial class FrmOpenCashier : Form {
-        Cashier cashier = new Cashier();
-        CashierDAO cashierDAO = new CashierDAO();
+        CashierOpen cashier = new CashierOpen();
+        CashierOpenDAO cashierDAO = new CashierOpenDAO();
         RawPrinterHelper rawPrinter = new RawPrinterHelper();
         public FrmOpenCashier() {
             InitializeComponent();

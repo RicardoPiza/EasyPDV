@@ -14,8 +14,7 @@ using System.Globalization;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
-        public double _Total { get; set; }
-        public double _CashierTotal { get; set; }
+        public double _SaleTotal { get; set; }
         public static string EventName { get; set; }
 
         SaleDAO _saleDao = new SaleDAO();
@@ -27,7 +26,7 @@ namespace EasyPDV {
         List<int> _ProductIDList = new List<int>();
         ToolTip tp = new ToolTip();
         List<string> _SupportList = new List<string>();
-        CashierDAO cashierDAO = new CashierDAO();
+        CashierOpenDAO cashierDAO = new CashierOpenDAO();
         public FrmApp() {
             InitializeComponent();
         }
@@ -88,8 +87,8 @@ namespace EasyPDV {
             }
             _SoldProductsList.Add(name + "|" + price.ToString("F2"));
             _ProductIDList.Add(id);
-            _Total += price;
-            richTextBox3.Text += _Total.ToString("F2");
+            _SaleTotal += price;
+            richTextBox3.Text += _SaleTotal.ToString("F2");
         }
         public void SubtractStockProduct() {
             foreach (int item in _ProductIDList) {
@@ -120,7 +119,7 @@ namespace EasyPDV {
 
         private void btnMakeSale_Click_1(object sender, EventArgs e) {
             _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-            _sale.SalePrice = _Total;
+            _sale.SalePrice = _SaleTotal;
             _sale.Products = DBSaleAddList();
             _sale.PaymentMethod = paymentMethod.Text;
             if (_listViewProducts.Text != "" || richTextBox3.Text != "") {
@@ -148,7 +147,7 @@ namespace EasyPDV {
                         _SoldProductsList.Clear();
                         richTextBox3.Text = string.Empty;
                         paymentMethod.Text = "";
-                        _Total = 0;
+                        _SaleTotal = 0;
                         MessageBox.Show("Venda Realizada com sucesso!");
                     }
                 } else {
@@ -228,7 +227,7 @@ namespace EasyPDV {
             _SoldQuantityList.Clear();
             _SupportList.Clear();
             _SoldProductsList.Clear();
-            _Total = 0;
+            _SaleTotal = 0;
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
 
@@ -302,10 +301,24 @@ namespace EasyPDV {
         }
 
         private void fecharCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
-            DialogResult dialogResult = MessageBox.Show("Confirma fechamento?", "Fechar caixa", MessageBoxButtons.OKCancel);
+            DialogResult dialogResult = MessageBox.Show("Certifique-se de tirar todos os relatórios antes de fechar o caixa.\n\nConfirma fechamento?",
+                "Fechar caixa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.OK) {
-                CashierDAO cashierDAO = new CashierDAO();
+                IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
+                CashierOpenDAO cashierDAO = new CashierOpenDAO();
+                CashierBleed cashierBleed = new CashierBleed();
+                cashierDAO.ReadSome(cashierBleed);
                 cashierDAO.CloseCashier();
+                Print(EventName +
+                          "\n ------------------" +
+                          "\n  FECHAMENTO CAIXA\n" +
+                          " ------------------\n" +
+                          "\n\nCaixa: " + cashierBleed.Number +
+                          "\nData: " + DateTime.Now.ToString("d") +
+                          "\nResp.: " + cashierBleed.Responsible +
+                          "\nSaldo inicial:\nR$" + cashierBleed.Value.ToString("F2") +
+                          "\nSaldo final:\nR$"+ (individualSaleDAO.ReadTotalIndividualSale() + cashierBleed.Value).ToString("F2")
+                          );
                 Application.Restart();
             }
         }

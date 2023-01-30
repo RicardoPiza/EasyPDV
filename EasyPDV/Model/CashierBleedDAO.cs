@@ -2,6 +2,7 @@
 using EasyPDV.Entities;
 using Npgsql;
 using System;
+using System.Windows.Forms;
 
 namespace EasyPDV.Model {
     internal class CashierBleedDAO {
@@ -36,6 +37,17 @@ namespace EasyPDV.Model {
             }
             dao.Connection().Close();
             return cmd;
+        }
+        public void DeleteAllBleedCashier() {
+            try {
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"DELETE FROM sangria", dao.Connection());
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            dao.Connection().Close();
         }
     }
 }

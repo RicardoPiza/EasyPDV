@@ -109,10 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cashier.cs" />
+    <Compile Include="Entities\CashierOpen.cs" />
     <Compile Include="Entities\CashierBleed.cs" />
     <Compile Include="Entities\Sale.cs" />
     <Compile Include="Model\CashierBleedDAO.cs" />
-    <Compile Include="Model\CashierDAO.cs" />
+    <Compile Include="Model\CashierOpenDAO.cs" />
     <Compile Include="Model\DAO.cs" />
     <Compile Include="Model\ProductDAO.cs" />
     <Compile Include="Model\CancelledSaleDAO.cs" />

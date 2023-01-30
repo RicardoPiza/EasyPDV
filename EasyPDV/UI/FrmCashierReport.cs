@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EasyPDV.UI {
     public partial class FrmCashierReport : Form {
-        CashierDAO cashierDAO = new CashierDAO();
+        CashierOpenDAO cashierDAO = new CashierOpenDAO();
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -52,6 +52,16 @@ namespace EasyPDV.UI {
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
             btnReport.Cursor = Cursors.Hand;
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            DialogResult dialogResult = new DialogResult();
+            dialogResult = MessageBox.Show("Certifique-se de ter um relatório antes de apagar essas informações",
+                "Apagar informações", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.OK) {
+                cashierDAO.DeleteAllClosedCashier();
+                LoadCashier();
+            }
         }
     }
 }
