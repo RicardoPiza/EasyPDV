@@ -6,12 +6,15 @@ using System.Windows.Forms;
 
 namespace EasyPDV.Model {
     internal class CashierBleedDAO {
-        DAO dao = new DAO();
+        string connectionString = DAO.ConnectionString;
+        NpgsqlConnection connection;
         public void BeginMovimentation(CashierBleed cashierBleed) {
+            connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
+                connection.Open();
                 cmd = new NpgsqlCommand("INSERT INTO sangria(evento, tipo_movimentacao, responsavel, data, " +
-                        "numero_caixa, descricao, valor) VALUES(@ev, @t,@resp,@d,@nc,@desc,@v)", dao.Connection());
+                            "numero_caixa, descricao, valor) VALUES(@ev, @t,@resp,@d,@nc,@desc,@v)", connection);
                 cmd.Parameters.AddWithValue("ev", cashierBleed.EventName);
                 cmd.Parameters.AddWithValue("t", cashierBleed.Type);
                 cmd.Parameters.AddWithValue("resp", cashierBleed.Responsible);
@@ -21,33 +24,40 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("v", cashierBleed.Value);
                 cmd.ExecuteNonQuery();
             } catch (System.Exception) {
-
                 throw;
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
         }
+
         public NpgsqlCommand ReadAll() {
+            connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
-                cmd = new NpgsqlCommand("Select id as \"ID\", evento as \"Evento\", tipo_movimentacao as \"Tipo movimentação\", responsavel as"+
-                "\"Responsável\", data as \"Data\", numero_caixa as \"Número do caixa\", descricao as \"Descrição\","+
-                " valor as \"Valor\" from sangria", dao.Connection());
+                connection.Open();
+                cmd = new NpgsqlCommand("Select id as \"ID\", evento as \"Evento\", tipo_movimentacao as \"Tipo movimentação\", responsavel as" +
+                    "\"Responsável\", data as \"Data\", numero_caixa as \"Número do caixa\", descricao as \"Descrição\"," +
+                    " valor as \"Valor\" from sangria", connection);
             } catch (Exception) {
                 throw;
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
             return cmd;
         }
+
         public void DeleteAllBleedCashier() {
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
             try {
-                NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
-                    $"DELETE FROM sangria", dao.Connection());
+                    $"DELETE FROM sangria", connection);
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
         }
     }
 }

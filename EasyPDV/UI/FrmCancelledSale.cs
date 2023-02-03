@@ -28,6 +28,7 @@ namespace EasyPDV.UI {
             dt = new DataTable();
             adpt.Fill(dt);
             vendasGridView1.DataSource = dt;
+            vendasGridView1.MultiSelect= true;
             for (int i = 0; i <= 4; i++) {
                 vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -73,8 +74,12 @@ namespace EasyPDV.UI {
             DialogResult res = MessageBox.Show("Tem Certeza que deseja remover esta venda?\n" +
                 "É uma venda cancelada e seus dados serão totalmente perdidos!", "Cancelar venda", MessageBoxButtons.OKCancel,MessageBoxIcon.Stop);
             if (res == DialogResult.OK) {
-                cancelledSale.ID = int.Parse(vendasGridView1.SelectedCells[0].Value.ToString());
-                cancelledSaleDAO.DeleteCancelledSale(cancelledSale);
+                foreach (DataGridViewRow row in vendasGridView1.Rows) {
+                    if (row.Selected) {
+                        cancelledSale.ID = int.Parse(row.Cells[0].Value.ToString());
+                        cancelledSaleDAO.DeleteCancelledSale(cancelledSale);
+                    }
+                }
                 ListCancelledSales();
             }
         }

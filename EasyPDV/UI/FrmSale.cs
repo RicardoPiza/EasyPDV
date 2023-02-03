@@ -5,6 +5,7 @@ using System;
 using ClosedXML.Excel;
 using System.Data;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace EasyPDV.UI {
     public partial class FrmSale : Form {
@@ -30,6 +31,7 @@ namespace EasyPDV.UI {
             _dt = new DataTable();
             _adpt.Fill(_dt);
             salesGridView1.DataSource= _dt;
+            salesGridView1.MultiSelect= true;
             for (int i = 0; i <= 4; i++) {
                 salesGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -38,8 +40,13 @@ namespace EasyPDV.UI {
         private void btnDeleteSale_Click(object sender, EventArgs e) {
             DialogResult res = MessageBox.Show("Tem Certeza que deseja cancelar esta venda?", "Cancelar venda", MessageBoxButtons.OKCancel);
             if (res == DialogResult.OK) {
-                sale.ID = int.Parse(salesGridView1.SelectedCells[0].Value.ToString());
-                saleDAO.DeleteVenda(sale);
+                foreach (DataGridViewRow row in salesGridView1.Rows) {
+                    if (row.Selected) {
+                        sale.ID = int.Parse(row.Cells[0].Value.ToString());
+                        saleDAO.DeleteVenda(sale);
+                        Thread.Sleep(300);
+                    }
+                }
                 ShowSales();
             }
         }

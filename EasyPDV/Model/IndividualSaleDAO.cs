@@ -1,51 +1,60 @@
-﻿
-
-using EasyPDV.Entities;
+﻿using EasyPDV.Entities;
 using Npgsql;
 using System.Windows.Forms;
 using System;
 
 namespace EasyPDV.Model {
     internal class IndividualSaleDAO {
-        DAO dao = new DAO();
+        string connectionString = DAO.ConnectionString;
+        NpgsqlConnection connection;
 
         public void InsertIndividualSale(IndividualSale individualSale) {
+            connection = new NpgsqlConnection(connectionString);
             try {
+                connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
                     "INSERT INTO venda_individual(data, produto, valor, meio_pagamento)" +
-                    " VALUES (@dv, @p, @v, @mp)", dao.Connection());
+                    " VALUES (@dv, @p, @v, @mp)", connection);
                 cmd.Parameters.AddWithValue("v", individualSale.SalePrice);
                 cmd.Parameters.AddWithValue("dv", DateTime.Parse(individualSale.SaleDate));
                 cmd.Parameters.AddWithValue("p", individualSale.Product);
                 cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
-            } catch (Exception e) {
-                MessageBox.Show(e.Message);
+            } catch (Exception ex) {
+                throw;
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
         }
+
         public NpgsqlCommand ReadIndividualSale() {
+            connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
+                connection.Open();
                 cmd = new NpgsqlCommand(
                     "select produto as \"Produto\", count(produto) as \"Total vendido\"," +
                     "sum(valor) AS \"Fatura do produto(R$)\" " +
-                    "from venda_individual group by produto ", dao.Connection());
+                    "from venda_individual group by produto ", connection);
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
                 return null;
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
             return cmd;
         }
+
         public double ReadTotalIndividualSale() {
+            connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             double value = 0;
             try {
+                connection.Open();
                 cmd = new NpgsqlCommand(
                     "select sum(valor) as Total " +
-                    "from venda_individual ", dao.Connection());
+                    "from venda_individual ", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows) {
                     while (reader.Read()) {
@@ -55,20 +64,26 @@ namespace EasyPDV.Model {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message + "\nNenhuma ocorrencia de venda até o momento");
                 return 0;
+            } finally { 
+                connection.Close();
             }
-            dao.Connection().Close();
             return value;
         }
+
         public void DeleteAllIndividualSales() {
-            try {
+            connection = new NpgsqlConnection(connectionString);
+                try {
+                connection.Open();
                 NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand(
-                    $"DELETE FROM venda_individual", dao.Connection());
-                cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                    cmd = new NpgsqlCommand(
+                        $"DELETE FROM venda_individual", connection);
+                    cmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
+            
         }
     }
 }

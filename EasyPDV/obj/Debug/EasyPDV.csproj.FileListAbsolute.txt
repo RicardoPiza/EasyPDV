@@ -78,7 +78,6 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\System.Threading.Channels.
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\System.ValueTuple.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.AssemblyReference.cache
-C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.SuggestedBindingRedirects.cache
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.Properties.Resources.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.GenerateResource.cache
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CoreCompileInputs.cache
@@ -101,3 +100,4 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmOpenCashier.
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierReport.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierBleed.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierBleedReport.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.SuggestedBindingRedirects.cache

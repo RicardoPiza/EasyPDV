@@ -5,50 +5,62 @@ using System.Windows.Forms;
 
 namespace EasyPDV.Model {
     internal class SaleDAO {
-        DAO dao = new DAO();
+        string connectionString = DAO.ConnectionString;
+        NpgsqlConnection connection;
 
         public void InsertSale(RegularSale sale) {
+            connection = new NpgsqlConnection(connectionString);
             try {
-                NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand("" +
-                    "INSERT INTO venda(valor_venda, data_venda, produtos, meio_pagamento)" +
-                    " VALUES (@vv, @dv, @p, @mp)", dao.Connection());
-                cmd.Parameters.AddWithValue("vv", sale.SalePrice);
-                cmd.Parameters.AddWithValue("dv", DateTime.Parse(sale.SaleDate));
-                cmd.Parameters.AddWithValue("p", sale.Products);
-                cmd.Parameters.AddWithValue("mp", sale.PaymentMethod);
-                cmd.ExecuteNonQuery();
-            } catch (Exception e) {
-                MessageBox.Show(e.Message);
+                    NpgsqlCommand cmd;
+                    cmd = new NpgsqlCommand("" +
+                        "INSERT INTO venda(valor_venda, data_venda, produtos, meio_pagamento)" +
+                        " VALUES (@vv, @dv, @p, @mp)", connection);
+                    cmd.Parameters.AddWithValue("vv", sale.SalePrice);
+                    cmd.Parameters.AddWithValue("dv", DateTime.Parse(sale.SaleDate));
+                    cmd.Parameters.AddWithValue("p", sale.Products);
+                    cmd.Parameters.AddWithValue("mp", sale.PaymentMethod);
+                    cmd.ExecuteNonQuery();
+                } catch (Exception e) {
+                    MessageBox.Show(e.Message);
+                } finally { 
+                connection.Close();
             }
-            dao.Connection().Close();
-        }
+            }
+        
         public NpgsqlCommand ReadSale() {
+            connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
+                connection.Open();
                 cmd = new NpgsqlCommand(
                     "SELECT id AS ID, data_venda AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
                     "valor_venda AS \"Valor total da venda (R$)\", meio_pagamento as \"Meio de pagamento\" " +
                     "FROM venda " +
-                    "ORDER BY id", dao.Connection());
+                    "ORDER BY id", connection);
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
                 return null;
+            } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
-            return cmd;
-        }
+                return cmd;
+            }
+        
         public void DeleteVenda(RegularSale v) {
+            connection = new NpgsqlConnection(connectionString);
             try {
-                NpgsqlCommand cmd; 
-                cmd = new NpgsqlCommand(
-                    $"DELETE FROM venda " +
-                    $"where id = {v.ID}", dao.Connection());
-                cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                connection.Open();
+                    NpgsqlCommand cmd;
+                    cmd = new NpgsqlCommand(
+                        $"DELETE FROM venda " +
+                        $"where id = {v.ID}", connection);
+                    cmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                } finally {
+                connection.Close();
             }
-            dao.Connection().Close();
+            
         }
 
     }
