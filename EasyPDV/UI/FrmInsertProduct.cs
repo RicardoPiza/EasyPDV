@@ -9,7 +9,7 @@ namespace EasyPDV.UI {
     public partial class FrmInsertProduct : Form {
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
-        ProductDAO productDAO = new ProductDAO(); 
+        ProductDAO productDAO = new ProductDAO();
         Product product = new Product();
         OpenFileDialog ofd = new OpenFileDialog();
         ToolTip toolTip = new ToolTip();
@@ -24,11 +24,12 @@ namespace EasyPDV.UI {
         private void btnRegister_Click(object sender, EventArgs e) {
             product.Name = textBox1.Text;
             product.Image = siticoneTextBox1.Text;
+            product.Status = "ativado";
             double num;
             int num2;
             if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "") {
                 product.Price = double.Parse(textBox2.Text);
-            
+
             } else {
                 MessageBox.Show(
                     "Preencha TODOS os campos. Campo Preço e Estoque devem ser um numeros");
@@ -39,16 +40,16 @@ namespace EasyPDV.UI {
                 MessageBox.Show("Cadastro efetuado!");
                 textBox1.Text = string.Empty;
             }
-            textBox2.Text= string.Empty;
+            textBox2.Text = string.Empty;
             ShowProductList();
         }
         public void ShowProductList() {
-            _adpt = new NpgsqlDataAdapter(productDAO.Read());
+            _adpt = new NpgsqlDataAdapter(productDAO.Read(productStatus.Text.ToLower()));
             _dt = new DataTable();
             _adpt.Fill(_dt);
             dataGridView1.DataSource = _dt;
             dataGridView1.MultiSelect = false;
-            for (int i = 0; i <=4; i++) {
+            for (int i = 0; i <= 5; i++) {
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             foreach (DataGridViewRow row in dataGridView1.Rows) {
@@ -58,6 +59,7 @@ namespace EasyPDV.UI {
 
         private void FrmInsertProduct_Load(object sender, EventArgs e) {
             ShowProductList();
+            dataGridView1.MultiSelect = true;
         }
 
         private void label2_Click(object sender, EventArgs e) {
@@ -69,7 +71,7 @@ namespace EasyPDV.UI {
 
         private void btnDelete_Click(object sender, EventArgs e) {
             product.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            DialogResult = MessageBox.Show("Confirma exclusão?","Excluir produto",MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            DialogResult = MessageBox.Show("Confirma exclusão?", "Excluir produto", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (DialogResult == DialogResult.OK) {
                 productDAO.DeleteProduct(product);
                 ShowProductList();
@@ -77,12 +79,18 @@ namespace EasyPDV.UI {
         }
 
         private void btnUpdate_Click(object sender, EventArgs e) {
-            product.ID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            product.Name = dataGridView1.SelectedCells[1].Value.ToString();
-            product.Price = double.Parse(dataGridView1.SelectedCells[2].Value.ToString());
-            product.StockQuantity= int.Parse(dataGridView1.SelectedCells[4].Value.ToString());
-            productDAO.Update(product);
-            MessageBox.Show("Produto alterado com sucesso");
+            DialogResult = MessageBox.Show("Salvar alteração?", "Alteração", MessageBoxButtons.OKCancel);
+            if (DialogResult == DialogResult.OK) {
+                foreach (DataGridViewRow row in dataGridView1.Rows) {
+                    product.ID = int.Parse(row.Cells[0].Value.ToString());
+                    product.Name = row.Cells[1].Value.ToString();
+                    product.Price = double.Parse(row.Cells[2].Value.ToString());
+                    product.StockQuantity = int.Parse(row.Cells[4].Value.ToString());
+                    product.Description = row.Cells[5].Value.ToString();
+                    productDAO.Update(product);
+                }
+                MessageBox.Show("Produto alterado com sucesso");
+            }
         }
 
         private void btnInsert_MouseMove(object sender, MouseEventArgs e) {
@@ -118,6 +126,44 @@ namespace EasyPDV.UI {
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
             toolTip.SetToolTip(btnRefresh, "Atualizar produtos");
+        }
+
+        private void siticoneButton1_Click(object sender, EventArgs e) {
+            DialogResult dialogResult = new DialogResult();
+            if (productStatus.Text == "Desativado") {
+                dialogResult = MessageBox.Show("Ativar Produto?", "Ativar", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK) {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
+                        Product product = new Product();
+                        product.ID = int.Parse(row.Cells[0].Value.ToString());
+                        product.Status = productDAO.ReadStatus(product);
+                        if (product.Status == "desativado") {
+                            productDAO.ChangeStatus(product);
+                        }
+                    }
+                    MessageBox.Show("Ativado");
+                    ShowProductList();
+                }
+            } else if (productStatus.Text == "Ativado") {
+                dialogResult = MessageBox.Show("Desativar Produto?", "Desativar", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK) {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
+                        Product product = new Product();
+                        product.ID = int.Parse(row.Cells[0].Value.ToString());
+                        product.Status = productDAO.ReadStatus(product);
+                        if (product.Status == "ativado") {
+                            productDAO.ChangeStatus(product);
+                        }
+                    }
+                    MessageBox.Show("Desativado");
+                    ShowProductList();
+                }
+            }
+        }
+
+        private void productStatus_SelectedIndexChanged(object sender, EventArgs e) {
+            ShowProductList();
+            dataGridView1.MultiSelect = true;
         }
     }
 }

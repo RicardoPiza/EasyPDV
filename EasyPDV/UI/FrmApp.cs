@@ -41,7 +41,7 @@ namespace EasyPDV {
             label1.BackColor = Color.Transparent;
             label2.BackColor = Color.Transparent;
         }
-        private void LoadButtons() {
+        public void LoadButtons() {
             if (cashierDAO.IsCashierOpen() == true) {
                 txtEventName.Text = cashierDAO.ReturnEventName()+" - "+DateTime.Now.ToString("d");
                 txtEventName.Visible=true;
@@ -53,15 +53,19 @@ namespace EasyPDV {
                 _Products = _productDAO.ReadAll();
                 for (int i = 0; i < _Products.Count; i++) {
                     _product.ID = _Products[i].ID;
-                    _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
-                    _btnProducts[i].Text = _Products[i].Name;
-                    _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                    tp.SetToolTip(_btnProducts[i], _Products[i].Name);
-                    int id = _product.ID;
-                    string name = _Products[i].Name;
-                    double price = _Products[i].Price;
-                    _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
-                    _btnProducts[i].Invalidate();
+                    if (_productDAO.ReadStatus(_product) == "ativado") {
+                        _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
+                        _btnProducts[i].Text = _Products[i].Name;
+                        _btnProducts[i].TextAlign = HorizontalAlignment.Center;
+                        tp.SetToolTip(_btnProducts[i], _Products[i].Name);
+                        int id = _product.ID;
+                        string name = _Products[i].Name;
+                        double price = _Products[i].Price;
+                        _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
+                        _btnProducts[i].Invalidate();
+                    } else {
+                        _btnProducts.RemoveAt(i);
+                    }
                 }
             } else {
                 MessageBox.Show("Antes de começar os trabalhos. O caixa precisa estar aberto.");
@@ -133,9 +137,7 @@ namespace EasyPDV {
                             Print(
                                 cashierDAO.ReturnEventName()+"\n\n " +
                                 DateTime.Now.ToString("d") + "\n" +
-                                "\n" + product[0].ToUpper() +
-                                "\nR$" + product[1] +
-                                "\n" + paymentMethod.Text + "\n\n\n\n\n"
+                                "\n" + product[0].ToUpper() +"\n\n\n"
                                 );
                         }
                         _saleDao.InsertSale(_sale);
@@ -309,6 +311,7 @@ namespace EasyPDV {
                 CashierBleed cashierBleed = new CashierBleed();
                 cashierDAO.ReadSome(cashierBleed);
                 cashierDAO.CloseCashier();
+                individualSaleDAO.DeleteAllIndividualSales();
                 Print(EventName +
                           "\n ------------------" +
                           "\n  FECHAMENTO CAIXA\n" +

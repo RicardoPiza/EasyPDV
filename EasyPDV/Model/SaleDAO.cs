@@ -11,7 +11,8 @@ namespace EasyPDV.Model {
         public void InsertSale(RegularSale sale) {
             connection = new NpgsqlConnection(connectionString);
             try {
-                    NpgsqlCommand cmd;
+                connection.Open();
+                NpgsqlCommand cmd;
                     cmd = new NpgsqlCommand("" +
                         "INSERT INTO venda(valor_venda, data_venda, produtos, meio_pagamento)" +
                         " VALUES (@vv, @dv, @p, @mp)", connection);

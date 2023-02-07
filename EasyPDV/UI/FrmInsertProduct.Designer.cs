@@ -43,6 +43,8 @@
             this.txtStock = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.productStatus = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +194,7 @@
             this.btnDelete.FillColor = System.Drawing.Color.Transparent;
             this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(389, 903);
+            this.btnDelete.Location = new System.Drawing.Point(424, 903);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(221, 45);
             this.btnDelete.TabIndex = 20;
@@ -217,7 +219,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(221, 45);
             this.btnUpdate.TabIndex = 21;
-            this.btnUpdate.Text = "Alterar selecionado";
+            this.btnUpdate.Text = "Salvar alterações";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             this.btnUpdate.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnInsert_MouseMove);
             // 
@@ -374,6 +376,50 @@
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             this.btnRefresh.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRefresh_MouseMove);
             // 
+            // siticoneButton1
+            // 
+            this.siticoneButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.siticoneButton1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneButton1.BorderRadius = 25;
+            this.siticoneButton1.BorderThickness = 1;
+            this.siticoneButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.siticoneButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.siticoneButton1.FillColor = System.Drawing.Color.Transparent;
+            this.siticoneButton1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneButton1.ForeColor = System.Drawing.Color.Black;
+            this.siticoneButton1.Location = new System.Drawing.Point(197, 903);
+            this.siticoneButton1.Name = "siticoneButton1";
+            this.siticoneButton1.Size = new System.Drawing.Size(221, 45);
+            this.siticoneButton1.TabIndex = 30;
+            this.siticoneButton1.Text = "Ativar/Desativar";
+            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
+            // 
+            // productStatus
+            // 
+            this.productStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.productStatus.BackColor = System.Drawing.Color.Transparent;
+            this.productStatus.BorderColor = System.Drawing.Color.Transparent;
+            this.productStatus.BorderRadius = 15;
+            this.productStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.productStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.productStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.productStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.productStatus.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.productStatus.ItemHeight = 30;
+            this.productStatus.Items.AddRange(new object[] {
+            "Ativado",
+            "Desativado"});
+            this.productStatus.Location = new System.Drawing.Point(689, 23);
+            this.productStatus.MaxLength = 2;
+            this.productStatus.Name = "productStatus";
+            this.productStatus.Size = new System.Drawing.Size(183, 36);
+            this.productStatus.StartIndex = 0;
+            this.productStatus.TabIndex = 31;
+            this.productStatus.SelectedIndexChanged += new System.EventHandler(this.productStatus_SelectedIndexChanged);
+            // 
             // FrmInsertProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +428,8 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(884, 961);
+            this.Controls.Add(this.productStatus);
+            this.Controls.Add(this.siticoneButton1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.label4);
@@ -429,5 +477,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtStock;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRefresh;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox productStatus;
     }
 }

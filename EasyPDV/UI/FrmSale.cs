@@ -44,7 +44,6 @@ namespace EasyPDV.UI {
                     if (row.Selected) {
                         sale.ID = int.Parse(row.Cells[0].Value.ToString());
                         saleDAO.DeleteVenda(sale);
-                        Thread.Sleep(300);
                     }
                 }
                 ShowSales();

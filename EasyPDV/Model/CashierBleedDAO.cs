@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using EasyPDV.Entities;
 using Npgsql;
 using System;
@@ -6,6 +7,7 @@ using System.Windows.Forms;
 
 namespace EasyPDV.Model {
     internal class CashierBleedDAO {
+        DAO dao = new DAO();
         string connectionString = DAO.ConnectionString;
         NpgsqlConnection connection;
         public void BeginMovimentation(CashierBleed cashierBleed) {
@@ -14,7 +16,7 @@ namespace EasyPDV.Model {
             try {
                 connection.Open();
                 cmd = new NpgsqlCommand("INSERT INTO sangria(evento, tipo_movimentacao, responsavel, data, " +
-                            "numero_caixa, descricao, valor) VALUES(@ev, @t,@resp,@d,@nc,@desc,@v)", connection);
+                            "numero_caixa, descricao, valor) VALUES(@ev, @t,@resp,@d,@nc,@desc,@v)", dao.Connection());
                 cmd.Parameters.AddWithValue("ev", cashierBleed.EventName);
                 cmd.Parameters.AddWithValue("t", cashierBleed.Type);
                 cmd.Parameters.AddWithValue("resp", cashierBleed.Responsible);
@@ -37,7 +39,7 @@ namespace EasyPDV.Model {
                 connection.Open();
                 cmd = new NpgsqlCommand("Select id as \"ID\", evento as \"Evento\", tipo_movimentacao as \"Tipo movimentação\", responsavel as" +
                     "\"Responsável\", data as \"Data\", numero_caixa as \"Número do caixa\", descricao as \"Descrição\"," +
-                    " valor as \"Valor\" from sangria", connection);
+                    " valor as \"Valor\" from sangria", dao.Connection());
             } catch (Exception) {
                 throw;
             } finally {
@@ -51,7 +53,7 @@ namespace EasyPDV.Model {
             NpgsqlCommand cmd;
             try {
                 cmd = new NpgsqlCommand(
-                    $"DELETE FROM sangria", connection);
+                    $"DELETE FROM sangria", dao.Connection());
                 cmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

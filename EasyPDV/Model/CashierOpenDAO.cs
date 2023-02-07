@@ -3,15 +3,13 @@ using Npgsql;
 using System.Windows.Forms;
 using System;
 using EasyPDV.Entities;
-using System.Collections.Generic;
 
 namespace EasyPDV.Model {
     internal class CashierOpenDAO {
         string connectionString = DAO.ConnectionString;
-        NpgsqlConnection connection;
         CashierOpen cashier = new CashierOpen();
         public void OpenCashier(CashierOpen cashier) {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
 
@@ -26,15 +24,15 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("d", cashier.Date);
                 cmd.Parameters.AddWithValue("st", cashier.Status);
                 cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            } catch (Exception) {
+                throw;
             } finally {
                 connection.Close();
             }
         }
 
         public bool IsCashierOpen() {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             bool isOpen = false;
             NpgsqlCommand cmd;
             try {
@@ -51,12 +49,14 @@ namespace EasyPDV.Model {
                 }
             } catch (Exception) {
                 throw;
+            } finally {
+                connection.Close();
             }
             return isOpen;
         }
 
         public void CloseCashier() {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             try {
                 connection.Open();
                 if (IsCashierOpen() == true) {
@@ -77,7 +77,7 @@ namespace EasyPDV.Model {
             }
         }
         public string ReturnEventName() {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string eventName = "";
             NpgsqlCommand cmd;
             try {
@@ -89,7 +89,7 @@ namespace EasyPDV.Model {
                         eventName = reader.GetString(0);
                     }
                 }
-            } catch (Exception ex) {
+            } catch (Exception) {
                 throw;
             } finally {
                 connection.Close();
@@ -98,7 +98,7 @@ namespace EasyPDV.Model {
         }
 
         public NpgsqlCommand ReadAll() {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
                 connection.Open();
@@ -114,7 +114,7 @@ namespace EasyPDV.Model {
         }
 
         public void DeleteAllClosedCashier() {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             try {
                 connection.Open();
                 NpgsqlCommand cmd;
@@ -129,7 +129,7 @@ namespace EasyPDV.Model {
         }
 
         public void ReadSome(CashierBleed cashierBleed) {
-            connection = new NpgsqlConnection(connectionString);
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             try {
 
