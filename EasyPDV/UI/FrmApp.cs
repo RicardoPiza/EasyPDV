@@ -22,6 +22,7 @@ namespace EasyPDV {
         Product _product = new Product();
         ProductDAO _productDAO = new ProductDAO();
         List<string> _SoldProductsList = new List<string>();
+        List<string> _SoldProductsListToDB = new List<string>();
         List<int> _SoldQuantityList = new List<int>();
         List<int> _ProductIDList = new List<int>();
         ToolTip tp = new ToolTip();
@@ -42,7 +43,7 @@ namespace EasyPDV {
             label2.BackColor = Color.Transparent;
         }
         public void LoadButtons() {
-            if (cashierDAO.IsCashierOpen() == true) {
+            if (cashierDAO.IsCashierOpen()) {
                 txtEventName.Text = cashierDAO.ReturnEventName()+" - "+DateTime.Now.ToString("d");
                 txtEventName.Visible=true;
                 List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
@@ -53,18 +54,17 @@ namespace EasyPDV {
                 _Products = _productDAO.ReadAll();
                 for (int i = 0; i < _Products.Count; i++) {
                     _product.ID = _Products[i].ID;
+                    _Products[i].Description = _productDAO.GetDesc(_product);
                     if (_productDAO.ReadStatus(_product) == "ativado") {
                         _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
                         _btnProducts[i].Text = _Products[i].Name;
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                        tp.SetToolTip(_btnProducts[i], _Products[i].Name);
+                        tp.SetToolTip(_btnProducts[i], _Products[i].Description);
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
                         _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
                         _btnProducts[i].Invalidate();
-                    } else {
-                        _btnProducts.RemoveAt(i);
                     }
                 }
             } else {
@@ -90,6 +90,7 @@ namespace EasyPDV {
                 }
             }
             _SoldProductsList.Add(name + "|" + price.ToString("F2"));
+            _SoldProductsListToDB.Add(name);
             _ProductIDList.Add(id);
             _SaleTotal += price;
             richTextBox3.Text += _SaleTotal.ToString("F2");
@@ -124,7 +125,7 @@ namespace EasyPDV {
         private void btnMakeSale_Click_1(object sender, EventArgs e) {
             _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             _sale.SalePrice = _SaleTotal;
-            _sale.Products = DBSaleAddList();
+            _sale.Products = _SoldProductsListToDB;
             _sale.PaymentMethod = paymentMethod.Text;
             if (_listViewProducts.Text != "" || richTextBox3.Text != "") {
                 if (paymentMethod.Text != "") {
@@ -147,6 +148,7 @@ namespace EasyPDV {
                         _SoldQuantityList.Clear();
                         _SupportList.Clear();
                         _SoldProductsList.Clear();
+                        _SoldProductsListToDB.Clear();
                         richTextBox3.Text = string.Empty;
                         paymentMethod.Text = "";
                         _SaleTotal = 0;

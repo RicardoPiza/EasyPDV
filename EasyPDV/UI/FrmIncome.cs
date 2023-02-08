@@ -73,27 +73,9 @@ namespace EasyPDV.UI {
             SetChart();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            DialogResult dialogResult= DialogResult.OK;
-            dialogResult = MessageBox.Show("Esses dados serão excluídos permanentemente.\nDeseja tirar um relatório antes de exclui-los?",
-                "Excluir dados", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.No) {
-                individualSaleDAO.DeleteAllIndividualSales();
-                LoadSales();
-                Invalidate();
-            } else if (dialogResult == DialogResult.Yes) { 
-                MakeReport();
-                individualSaleDAO.DeleteAllIndividualSales(); 
-                LoadSales();
-                Invalidate();
-            }
-        }
-
         private void button1_MouseMove(object sender, MouseEventArgs e) {
-            button1.Cursor = Cursors.Hand;
             btnRefresh.Cursor = Cursors.Hand;
             btnRelatorio.Cursor = Cursors.Hand;
-            toolTip.SetToolTip(button1, "Limpar as ocorrências de fatura");
             toolTip.SetToolTip(btnRefresh, "Atualizar tabela");
             toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
         }

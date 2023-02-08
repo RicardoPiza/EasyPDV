@@ -12,6 +12,8 @@ namespace EasyPDV.UI {
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         SaleDAO saleDAO = new SaleDAO();
+        IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
+        IndividualSale individualSale = new IndividualSale();
         RegularSale sale = new RegularSale();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip= new ToolTip();
@@ -43,7 +45,11 @@ namespace EasyPDV.UI {
                 foreach (DataGridViewRow row in salesGridView1.Rows) {
                     if (row.Selected) {
                         sale.ID = int.Parse(row.Cells[0].Value.ToString());
-                        saleDAO.DeleteVenda(sale);
+                        saleDAO.DeleteSale(sale);
+                        string[] itemsInList = row.Cells[2].Value.ToString().Split(',');
+                        for (int i = 0; i < itemsInList.Length; i++) {
+                            individualSaleDAO.DeleteIndividualSale(itemsInList[i]);
+                        }
                     }
                 }
                 ShowSales();

@@ -47,7 +47,7 @@ namespace EasyPDV.Model {
                 return cmd;
             }
         
-        public void DeleteVenda(RegularSale v) {
+        public void DeleteSale(RegularSale v) {
             connection = new NpgsqlConnection(connectionString);
             try {
                 connection.Open();

@@ -195,5 +195,27 @@ namespace EasyPDV.Model {
             }
             return status;
         }
+        public string GetDesc(Product p) {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            string desc = "";
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"SELECT descricao from produto where id= {p.ID}", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        desc = reader.GetString(0);
+                    }
+                }
+            } catch (Exception) {
+                return null;
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return desc;
+        }
     }
 }

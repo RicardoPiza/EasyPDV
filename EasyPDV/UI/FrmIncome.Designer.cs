@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).BeginInit();
@@ -206,20 +205,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1365, 532);
             this.tableLayoutPanel1.TabIndex = 32;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::EasyPDV.Properties.Resources.dust__1_;
-            this.button1.Location = new System.Drawing.Point(101, 601);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 45);
-            this.button1.TabIndex = 30;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
-            // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -257,7 +242,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1390, 655);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.label2);
@@ -287,7 +271,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnRelatorio;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }

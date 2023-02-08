@@ -61,8 +61,8 @@ namespace EasyPDV.Model {
                         value = (double)reader.GetDouble(0);
                     }
                 }
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message + "\nNenhuma ocorrencia de venda até o momento");
+            } catch (Exception) {
+                MessageBox.Show("\nNenhuma ocorrencia de venda até o momento");
                 return 0;
             } finally { 
                 connection.Close();
@@ -83,7 +83,20 @@ namespace EasyPDV.Model {
                 } finally {
                 connection.Close();
             }
-            
+        }
+        public void DeleteIndividualSale(string individualSale) {
+            connection = new NpgsqlConnection(connectionString);
+            try {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"delete from venda_individual where id = (Select id from venda_individual where produto = '{individualSale}' LIMIT 1)", connection);
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            } finally {
+                connection.Close();
+            }
         }
     }
 }
