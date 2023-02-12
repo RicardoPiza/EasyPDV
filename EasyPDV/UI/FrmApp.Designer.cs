@@ -78,7 +78,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(131)))), ((int)(((byte)(176)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem,
             this.vendasToolStripMenuItem,
@@ -211,7 +211,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(172, 40);
+            this.label1.Location = new System.Drawing.Point(172, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 24);
             this.label1.TabIndex = 6;
@@ -224,7 +224,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(190, 550);
+            this.label2.Location = new System.Drawing.Point(190, 575);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 7;
@@ -255,7 +255,7 @@
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(419, 49);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(419, 74);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -746,8 +746,9 @@
             this.richTextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.richTextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.richTextBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.ForeColor = System.Drawing.Color.Black;
             this.richTextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox3.Location = new System.Drawing.Point(47, 585);
+            this.richTextBox3.Location = new System.Drawing.Point(47, 610);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.richTextBox3.Multiline = true;
             this.richTextBox3.Name = "richTextBox3";
@@ -765,7 +766,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label4.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 654);
+            this.label4.Location = new System.Drawing.Point(0, 704);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(483, 23);
             this.label4.TabIndex = 20;
@@ -776,10 +777,10 @@
             this._listViewProducts.Anchor = System.Windows.Forms.AnchorStyles.None;
             this._listViewProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._listViewProducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._listViewProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this._listViewProducts.ForeColor = System.Drawing.Color.Black;
             this._listViewProducts.GridLines = true;
             this._listViewProducts.HideSelection = false;
-            this._listViewProducts.Location = new System.Drawing.Point(47, 72);
+            this._listViewProducts.Location = new System.Drawing.Point(47, 97);
             this._listViewProducts.Name = "_listViewProducts";
             this._listViewProducts.Size = new System.Drawing.Size(345, 392);
             this._listViewProducts.TabIndex = 21;
@@ -830,7 +831,7 @@
             this.paymentMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.paymentMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.paymentMethod.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.paymentMethod.ForeColor = System.Drawing.Color.Black;
             this.paymentMethod.ItemHeight = 30;
             this.paymentMethod.Items.AddRange(new object[] {
             "",
@@ -854,7 +855,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnRealizar, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.paymentMethod, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(419, 547);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(419, 572);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.66234F));
@@ -870,7 +871,7 @@
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::EasyPDV.Properties.Resources.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(1020, 501);
+            this.btnRefresh.Location = new System.Drawing.Point(1020, 526);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(43, 40);
             this.btnRefresh.TabIndex = 19;
@@ -893,7 +894,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.Image = global::EasyPDV.Properties.Resources.dust1;
             this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(332, 470);
+            this.btnCancel.Location = new System.Drawing.Point(332, 495);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(60, 68);
             this.btnCancel.TabIndex = 15;
@@ -906,7 +907,7 @@
             this.txtEventName.AutoSize = true;
             this.txtEventName.BackColor = System.Drawing.Color.Transparent;
             this.txtEventName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEventName.Location = new System.Drawing.Point(415, 22);
+            this.txtEventName.Location = new System.Drawing.Point(415, 47);
             this.txtEventName.Name = "txtEventName";
             this.txtEventName.Size = new System.Drawing.Size(0, 24);
             this.txtEventName.TabIndex = 24;
@@ -917,7 +918,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(211)))), ((int)(((byte)(251)))));
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1075, 677);
+            this.ClientSize = new System.Drawing.Size(1075, 727);
             this.Controls.Add(this.txtEventName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this._listViewProducts);
@@ -934,7 +935,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1000, 716);
+            this.MinimumSize = new System.Drawing.Size(1000, 766);
             this.Name = "FrmApp";
             this.Text = "EasyPDV Sistema de ponto de venta para festas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

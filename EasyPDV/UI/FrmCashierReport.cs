@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EasyPDV.UI {
     public partial class FrmCashierReport : Form {
-        CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        CashierOpenDAO _cashierDAO = new CashierOpenDAO();
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -16,10 +16,13 @@ namespace EasyPDV.UI {
         }
 
         private void FrmCashierReport_Load(object sender, EventArgs e) {
-            LoadCashier();
+            LoadCashier(); 
+            btnRefresh.Cursor = Cursors.Hand;
+            btnReport.Cursor = Cursors.Hand;
+            button1.Cursor= Cursors.Hand;
         }
         private void LoadCashier() {
-            _adpt = new NpgsqlDataAdapter(cashierDAO.ReadAll());
+            _adpt = new NpgsqlDataAdapter(_cashierDAO.ReadAll());
             _dt = new DataTable();
             _adpt.Fill(_dt);
             cashierGridView.DataSource = _dt;
@@ -50,8 +53,8 @@ namespace EasyPDV.UI {
         }
 
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
-            btnRefresh.Cursor = Cursors.Hand;
-            btnReport.Cursor = Cursors.Hand;
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -59,7 +62,7 @@ namespace EasyPDV.UI {
             dialogResult = MessageBox.Show("Certifique-se de ter um relatório antes de apagar essas informações",
                 "Apagar informações", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.OK) {
-                cashierDAO.DeleteAllClosedCashier();
+                _cashierDAO.DeleteAllClosedCashier();
                 LoadCashier();
             }
         }

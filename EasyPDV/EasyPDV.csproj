@@ -179,6 +179,9 @@
     <Compile Include="UI\FrmCancelledSale.Designer.cs">
       <DependentUpon>FrmCancelledSale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\CustomToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\RawPrinterHelper.cs" />
     <Compile Include="Utils\TypeHelper.cs" />
     <EmbeddedResource Include="UI\FrmApp.resx">

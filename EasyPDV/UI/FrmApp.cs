@@ -6,11 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using Color = System.Drawing.Color;
 using System.Drawing;
+using Font = System.Drawing.Font;
 using System.Drawing.Printing;
 using System.Globalization;
+using EasyPDV.Utils;
+using DocumentFormat.OpenXml.Spreadsheet;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ToolTip = System.Windows.Forms.ToolTip;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
@@ -25,9 +29,10 @@ namespace EasyPDV {
         List<string> _SoldProductsListToDB = new List<string>();
         List<int> _SoldQuantityList = new List<int>();
         List<int> _ProductIDList = new List<int>();
-        ToolTip tp = new ToolTip();
+        ToolTip toolTip = new ToolTip();
         List<string> _SupportList = new List<string>();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        CustomToolTip customToolTip = new CustomToolTip();
         public FrmApp() {
             InitializeComponent();
         }
@@ -36,6 +41,7 @@ namespace EasyPDV {
             LoadButtons();
             string[] eventName = txtEventName.Text.Split('-');
             EventName = eventName[0];
+            CursorAnimation();
         }
 
         private void ColorLabels() {
@@ -54,26 +60,27 @@ namespace EasyPDV {
                 _Products = _productDAO.ReadAll();
                 for (int i = 0; i < _Products.Count; i++) {
                     _product.ID = _Products[i].ID;
-                    _Products[i].Description = _productDAO.GetDesc(_product);
+                    _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;                   
                     if (_productDAO.ReadStatus(_product) == "ativado") {
                         _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
                         _btnProducts[i].Text = _Products[i].Name;
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                        tp.SetToolTip(_btnProducts[i], _Products[i].Description);
+                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
                         _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
                         _btnProducts[i].Invalidate();
-                    }
+                    } 
                 }
             } else {
                 MessageBox.Show("Antes de começar os trabalhos. O caixa precisa estar aberto.");
             }
         }
+
         public void ProductSum(object sender, EventArgs e, string name, double price, int id) {
             richTextBox3.Text = string.Empty;
-            string saleDescription = name + "........ R$" + price;
+            string saleDescription = name + "........ R$" + price.ToString("F2");
             if (!_SupportList.Contains(name)) {
                 _SupportList.Add(name);
                 _listViewProducts.Items.Add(saleDescription);
@@ -83,7 +90,7 @@ namespace EasyPDV {
                     if (_listViewProducts.Items[i].Text.Substring(0, 10).Equals(saleDescription.Substring(0, 10))) {
                         _SoldQuantityList[i] += 1;
                         saleDescription = name +
-                        "........ R$" + (price * _SoldQuantityList[i]).ToString("F2", CultureInfo.InvariantCulture) +
+                        "........ R$" + (price * _SoldQuantityList[i]).ToString("F2") +
                         " | Qtd = x" + _SoldQuantityList[i];
                         _listViewProducts.Items[i].Text = saleDescription;
                     }
@@ -95,6 +102,7 @@ namespace EasyPDV {
             _SaleTotal += price;
             richTextBox3.Text += _SaleTotal.ToString("F2");
         }
+
         public void SubtractStockProduct() {
             foreach (int item in _ProductIDList) {
                 _productDAO.SubtractStock(item);
@@ -102,18 +110,6 @@ namespace EasyPDV {
             _ProductIDList.Clear();
         }
 
-        public void Background() {
-            LinearGradientBrush brush = new LinearGradientBrush(
-            new Point(0, 0),
-            new Point(0, this.Height),
-            Color.FromArgb(255, 255, 255),
-            Color.FromArgb(192, 192, 192));
-            brush.LinearColors = new Color[] { Color.Red, Color.Yellow, Color.Green };
-            this.BackgroundImage = new Bitmap(this.Width, this.Height);
-            using (Graphics g = Graphics.FromImage(this.BackgroundImage)) {
-                g.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
         public void Print(string s) {
             PrintDialog pd = new PrintDialog();
             pd.PrinterSettings = new PrinterSettings();
@@ -161,13 +157,7 @@ namespace EasyPDV {
                 MessageBox.Show("Nenhum produto selecionado!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private List<string> DBSaleAddList() {
-            List<string> listaProdutosBanco = new List<string>();
-            foreach (var item in _listViewProducts.Items) {
-                listaProdutosBanco.Add(item.ToString());
-            }
-            return listaProdutosBanco;
-        }
+
         private void AddIndividualProduct() {
             IndividualSale individualSale = new IndividualSale();
             IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
@@ -180,7 +170,8 @@ namespace EasyPDV {
                 individualSaleDAO.InsertIndividualSale(individualSale);
             }
         }
-        private void button12_MouseMove(object sender, MouseEventArgs e) {
+
+        private void CursorAnimation() {
             button1.Cursor = Cursors.Hand;
             button2.Cursor = Cursors.Hand;
             button3.Cursor = Cursors.Hand;
@@ -197,6 +188,9 @@ namespace EasyPDV {
             button14.Cursor = Cursors.Hand;
             button15.Cursor = Cursors.Hand;
             button16.Cursor = Cursors.Hand;
+        }
+        private void button12_MouseMove(object sender, MouseEventArgs e) {
+            
         }
         private void label1_Click(object sender, EventArgs e) {
 
