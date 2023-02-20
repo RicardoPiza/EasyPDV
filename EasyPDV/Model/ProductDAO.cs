@@ -98,7 +98,6 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("s", product.Status);
                 cmd.ExecuteNonQuery();
             } catch (Exception) {
-                throw;
             } finally {
                 connection.Close();
             }

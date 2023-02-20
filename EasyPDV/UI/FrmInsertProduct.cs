@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Globalization;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace EasyPDV.UI {
     public partial class FrmInsertProduct : Form {
@@ -28,19 +29,19 @@ namespace EasyPDV.UI {
             product.Status = "ativado";
             double num;
             int num2;
-            if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "") {
+            if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "" && siticoneTextBox1.Text != "") {
                 product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));
-
+                if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "") {
+                    product.StockQuantity = int.Parse(txtStock.Text);
+                    productDAO.Insert(product);
+                    MessageBox.Show("Cadastro efetuado!");
+                    textBox1.Text = string.Empty;
+                }
             } else {
                 MessageBox.Show(
-                    "Preencha TODOS os campos. Campo Preço e Estoque devem ser um numeros");
+                    "Preencha TODOS os campos. Campo Preço e Estoque devem ser numeral");
             }
-            if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "") {
-                product.StockQuantity = int.Parse(txtStock.Text);
-                productDAO.Insert(product);
-                MessageBox.Show("Cadastro efetuado!");
-                textBox1.Text = string.Empty;
-            }
+           
             textBox2.Text = string.Empty;
             ShowProductList();
         }
