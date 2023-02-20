@@ -10,6 +10,8 @@ namespace EasyPDV.UI {
         CashierBleed cashierBleed = new CashierBleed();
         CashierBleedDAO cashierBleedDao = new CashierBleedDAO();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        IndividualSale individualSale = new IndividualSale();
+        IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
 
         public FrmCashierBleed() {
             InitializeComponent();
@@ -33,6 +35,16 @@ namespace EasyPDV.UI {
                         cashierBleed.Type = comboBleed.Text;
                         cashierBleed.Description = txtDescription.Text;
                         cashierBleedDao.BeginMovimentation(cashierBleed);
+                        individualSale.SaleDate = DateTime.Now.ToString("d");
+                        if (comboBleed.Text == "Reforço") {
+                            individualSale.SalePrice = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
+                        }
+                        else {
+                            individualSale.SalePrice = - double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
+                        }
+                        individualSale.Product = comboBleed.Text;
+                        individualSale.PaymentMethod = string.Empty;
+                        individualSaleDAO.InsertIndividualSale(individualSale);
                         MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         Print(FrmApp.EventName +
                               "\n -----------------" +

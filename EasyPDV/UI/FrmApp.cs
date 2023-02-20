@@ -314,8 +314,6 @@ namespace EasyPDV {
                 cashierOpenDAO.ReadSome(cashierBleed);
                 double totalSales = individualSaleDAO.ReadTotalIndividualSale();
                 double initialBalance = cashierOpenDAO.InitialBalance();
-                double reinforcement = cashierBleedDAO.TotalReinforcement();
-                double withdraw = cashierBleedDAO.TotalWithdraw();
                 Print(EventName +
                           "\n ------------------" +
                           "\n  FECHAMENTO CAIXA\n" +
@@ -323,8 +321,8 @@ namespace EasyPDV {
                           "\n\nCaixa: " + cashierBleed.Number +
                           "\nData: " + DateTime.Now.ToString("d") +
                           "\nResp.: " + cashierBleed.Responsible +
-                          "\nSaldo inicial:\nR$" + cashierBleed.Value.ToString("F2") +
-                          "\nSaldo final:\nR$"+ (totalSales + initialBalance + reinforcement - withdraw).ToString("F2")
+                          "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
+                          "\nSaldo final:\nR$"+ (totalSales).ToString("F2")
                           );
                 cashierOpenDAO.CloseCashier();
                 saleDAO.DeleteAllSales();

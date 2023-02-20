@@ -67,12 +67,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.paymentMethod = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtChange = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.lblChange = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.txtEventName = new System.Windows.Forms.Label();
-            this.lblChange = new System.Windows.Forms.Label();
-            this.txtChange = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -870,6 +870,45 @@
             this.tableLayoutPanel3.TabIndex = 23;
             this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
+            // txtChange
+            // 
+            this.txtChange.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtChange.BackColor = System.Drawing.Color.Transparent;
+            this.txtChange.BorderColor = System.Drawing.Color.Transparent;
+            this.txtChange.BorderRadius = 20;
+            this.txtChange.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChange.DefaultText = "";
+            this.txtChange.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtChange.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtChange.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChange.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChange.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChange.ForeColor = System.Drawing.Color.Black;
+            this.txtChange.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChange.Location = new System.Drawing.Point(90, 90);
+            this.txtChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChange.Multiline = true;
+            this.txtChange.Name = "txtChange";
+            this.txtChange.PasswordChar = '\0';
+            this.txtChange.PlaceholderText = "Valor a ser trocado";
+            this.txtChange.SelectedText = "";
+            this.txtChange.Size = new System.Drawing.Size(149, 37);
+            this.txtChange.TabIndex = 25;
+            this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChange.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
+            // 
+            // lblChange
+            // 
+            this.lblChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblChange.AutoSize = true;
+            this.lblChange.BackColor = System.Drawing.Color.Transparent;
+            this.lblChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.Location = new System.Drawing.Point(598, 105);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(0, 24);
+            this.lblChange.TabIndex = 26;
+            // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -917,45 +956,6 @@
             this.txtEventName.Name = "txtEventName";
             this.txtEventName.Size = new System.Drawing.Size(0, 24);
             this.txtEventName.TabIndex = 24;
-            // 
-            // lblChange
-            // 
-            this.lblChange.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblChange.AutoSize = true;
-            this.lblChange.BackColor = System.Drawing.Color.Transparent;
-            this.lblChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(465, 93);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(0, 24);
-            this.lblChange.TabIndex = 26;
-            // 
-            // txtChange
-            // 
-            this.txtChange.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtChange.BackColor = System.Drawing.Color.Transparent;
-            this.txtChange.BorderColor = System.Drawing.Color.Transparent;
-            this.txtChange.BorderRadius = 20;
-            this.txtChange.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtChange.DefaultText = "";
-            this.txtChange.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtChange.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtChange.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtChange.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtChange.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChange.ForeColor = System.Drawing.Color.Black;
-            this.txtChange.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtChange.Location = new System.Drawing.Point(90, 86);
-            this.txtChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChange.Multiline = true;
-            this.txtChange.Name = "txtChange";
-            this.txtChange.PasswordChar = '\0';
-            this.txtChange.PlaceholderText = "Valor a ser trocado";
-            this.txtChange.SelectedText = "";
-            this.txtChange.Size = new System.Drawing.Size(149, 37);
-            this.txtChange.TabIndex = 25;
-            this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtChange.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
             // 
             // FrmApp
             // 

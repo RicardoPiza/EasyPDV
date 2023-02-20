@@ -10,6 +10,8 @@ namespace EasyPDV.UI {
         CashierOpen cashier = new CashierOpen();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
         RawPrinterHelper rawPrinter = new RawPrinterHelper();
+        IndividualSale individualSale = new IndividualSale();
+        IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         public FrmOpenCashier() {
             InitializeComponent();
         }
@@ -40,6 +42,11 @@ namespace EasyPDV.UI {
                         cashier.Date = DateTime.Now;
                         cashier.Status = true;
                         cashierDAO.OpenCashier(cashier);
+                        individualSale.SaleDate = DateTime.Now.ToString("d");
+                        individualSale.SalePrice = double.Parse(txtBalance.Text.ToString(CultureInfo.InvariantCulture));
+                        individualSale.Product = "Valor abertura caixa";
+                        individualSale.PaymentMethod = string.Empty;
+                        individualSaleDAO.InsertIndividualSale(individualSale);
                         MessageBox.Show("Caixa aberto");
                         Print(txtEventName.Text +
                               "\n -----------------" +
