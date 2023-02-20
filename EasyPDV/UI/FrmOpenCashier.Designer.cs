@@ -217,6 +217,7 @@
             this.DoubleBuffered = true;
             this.Name = "FrmOpenCashier";
             this.Text = "Abrir caixa";
+            this.Load += new System.EventHandler(this.FrmOpenCashier_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

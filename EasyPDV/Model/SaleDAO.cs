@@ -61,7 +61,20 @@ namespace EasyPDV.Model {
                 } finally {
                 connection.Close();
             }
-            
+        }
+        public void DeleteAllSales() {
+            connection = new NpgsqlConnection(connectionString);
+            try {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"DELETE FROM venda ", connection);
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            } finally {
+                connection.Close();
+            }
         }
 
     }

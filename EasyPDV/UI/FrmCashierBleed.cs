@@ -2,6 +2,7 @@
 using EasyPDV.Model;
 using System;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace EasyPDV.UI {
@@ -27,7 +28,7 @@ namespace EasyPDV.UI {
                         cashierBleed.Number = int.Parse(txtCashier.Text);
                         cashierBleed.Date = DateTime.Now;
                         cashierBleed.Responsible = txtResponsible.Text;
-                        cashierBleed.Value = double.Parse(txtValue.Text);
+                        cashierBleed.Value = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
                         cashierBleed.EventName = FrmApp.EventName;
                         cashierBleed.Type = comboBleed.Text;
                         cashierBleed.Description = txtDescription.Text;

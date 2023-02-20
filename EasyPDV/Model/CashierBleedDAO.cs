@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office.Word;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using EasyPDV.Entities;
 using Npgsql;
@@ -60,6 +61,48 @@ namespace EasyPDV.Model {
             } finally {
                 connection.Close();
             }
+        }
+        public double TotalReinforcement() { 
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            double reinf = 0;
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"select sum(valor) from sangria s where s.tipo_movimentacao = 'Reforço'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        reinf = reader.GetDouble(0);
+                    }
+                }
+            } catch (Exception) {
+                reinf= 0;
+            } finally {
+                connection.Close();
+            }
+            return reinf;
+        }
+        public double TotalWithdraw() {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            double withdraw = 0;
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"select sum(valor) from sangria s where s.tipo_movimentacao = 'Retirada'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        withdraw = reader.GetDouble(0);
+                    }
+                }
+            } catch (Exception) {
+                withdraw= 0;
+            } finally {
+                connection.Close();
+            }
+            return withdraw;
         }
     }
 }

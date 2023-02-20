@@ -32,18 +32,21 @@ namespace EasyPDV {
         ToolTip toolTip = new ToolTip();
         List<string> _SupportList = new List<string>();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
-        CustomToolTip customToolTip = new CustomToolTip();
         public FrmApp() {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e) {
             ColorLabels();
+            HiddeStuff();
             LoadButtons();
             string[] eventName = txtEventName.Text.Split('-');
             EventName = eventName[0];
             CursorAnimation();
         }
-
+        public void HiddeStuff() { 
+            txtChange.Visible = false;
+            lblChange.Visible = false;
+        }
         private void ColorLabels() {
             label1.BackColor = Color.Transparent;
             label2.BackColor = Color.Transparent;
@@ -303,11 +306,16 @@ namespace EasyPDV {
                 "Fechar caixa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.OK) {
                 IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
-                CashierOpenDAO cashierDAO = new CashierOpenDAO();
+                CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
                 CashierBleed cashierBleed = new CashierBleed();
-                cashierDAO.ReadSome(cashierBleed);
-                cashierDAO.CloseCashier();
-                individualSaleDAO.DeleteAllIndividualSales();
+                CashierBleedDAO cashierBleedDAO = new CashierBleedDAO();
+                SaleDAO saleDAO = new SaleDAO();
+                CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
+                cashierOpenDAO.ReadSome(cashierBleed);
+                double totalSales = individualSaleDAO.ReadTotalIndividualSale();
+                double initialBalance = cashierOpenDAO.InitialBalance();
+                double reinforcement = cashierBleedDAO.TotalReinforcement();
+                double withdraw = cashierBleedDAO.TotalWithdraw();
                 Print(EventName +
                           "\n ------------------" +
                           "\n  FECHAMENTO CAIXA\n" +
@@ -316,8 +324,13 @@ namespace EasyPDV {
                           "\nData: " + DateTime.Now.ToString("d") +
                           "\nResp.: " + cashierBleed.Responsible +
                           "\nSaldo inicial:\nR$" + cashierBleed.Value.ToString("F2") +
-                          "\nSaldo final:\nR$"+ (individualSaleDAO.ReadTotalIndividualSale() + cashierBleed.Value).ToString("F2")
+                          "\nSaldo final:\nR$"+ (totalSales + initialBalance + reinforcement - withdraw).ToString("F2")
                           );
+                cashierOpenDAO.CloseCashier();
+                saleDAO.DeleteAllSales();
+                cancelledSaleDAO.DeleteAllCancelledSales();
+                cashierBleedDAO.DeleteAllBleedCashier();
+                individualSaleDAO.DeleteAllIndividualSales();
                 Application.Restart();
             }
         }
@@ -366,6 +379,30 @@ namespace EasyPDV {
                 frmCashierBleedReport.Show();
             }
         }
-    
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void paymentMethod_SelectedIndexChanged(object sender, EventArgs e) {
+            if (paymentMethod.Text == "Dinheiro") {
+                txtChange.Visible = true;
+                lblChange.Visible = true;
+                lblChange.Text = "";
+                txtChange.Clear();
+            }
+            else {
+                txtChange.Visible = false;
+                lblChange.Visible = false;
+            }
+        }
+
+        private void txtChange_TextChanged(object sender, EventArgs e) {
+            if (richTextBox3.Text != "" && txtChange.Text != "") {
+                double change = double.Parse(txtChange.Text);
+                double total = double.Parse(richTextBox3.Text);
+                lblChange.Text = "Troco: "+(change - total).ToString("F2");
+            }
+        }
     }
 }

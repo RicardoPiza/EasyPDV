@@ -71,6 +71,8 @@
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.txtEventName = new System.Windows.Forms.Label();
+            this.lblChange = new System.Windows.Forms.Label();
+            this.txtChange = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -844,6 +846,7 @@
             this.paymentMethod.Name = "paymentMethod";
             this.paymentMethod.Size = new System.Drawing.Size(183, 36);
             this.paymentMethod.TabIndex = 17;
+            this.paymentMethod.SelectedIndexChanged += new System.EventHandler(this.paymentMethod_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -852,17 +855,20 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.07246F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.92754F));
+            this.tableLayoutPanel3.Controls.Add(this.txtChange, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnRealizar, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.paymentMethod, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblChange, 1, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(419, 572);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.66234F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.33766F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(601, 81);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(601, 129);
             this.tableLayoutPanel3.TabIndex = 23;
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // btnRefresh
             // 
@@ -911,6 +917,45 @@
             this.txtEventName.Name = "txtEventName";
             this.txtEventName.Size = new System.Drawing.Size(0, 24);
             this.txtEventName.TabIndex = 24;
+            // 
+            // lblChange
+            // 
+            this.lblChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblChange.AutoSize = true;
+            this.lblChange.BackColor = System.Drawing.Color.Transparent;
+            this.lblChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.Location = new System.Drawing.Point(465, 93);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(0, 24);
+            this.lblChange.TabIndex = 26;
+            // 
+            // txtChange
+            // 
+            this.txtChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtChange.BackColor = System.Drawing.Color.Transparent;
+            this.txtChange.BorderColor = System.Drawing.Color.Transparent;
+            this.txtChange.BorderRadius = 20;
+            this.txtChange.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChange.DefaultText = "";
+            this.txtChange.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtChange.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtChange.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChange.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChange.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChange.ForeColor = System.Drawing.Color.Black;
+            this.txtChange.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChange.Location = new System.Drawing.Point(90, 86);
+            this.txtChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChange.Multiline = true;
+            this.txtChange.Name = "txtChange";
+            this.txtChange.PasswordChar = '\0';
+            this.txtChange.PlaceholderText = "Valor a ser trocado";
+            this.txtChange.SelectedText = "";
+            this.txtChange.Size = new System.Drawing.Size(149, 37);
+            this.txtChange.TabIndex = 25;
+            this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChange.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
             // 
             // FrmApp
             // 
@@ -999,6 +1044,8 @@
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fecharCaixaToolStripMenuItem;
+        private System.Windows.Forms.Label lblChange;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtChange;
     }
 }
 

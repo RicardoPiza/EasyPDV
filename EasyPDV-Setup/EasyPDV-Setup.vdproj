@@ -123,6 +123,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5D461755C0CE434F8294C82BA007C8FB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6A385C22C51C9886BFDCA3B0516A2F80"
         "OwnerKey" = "8:_A5D186592FF246CD88C2C91CF3EBEFF5"
         "MsmSig" = "8:_UNDEFINED"
@@ -245,12 +251,6 @@
         {
         "MsmKey" = "8:_AD93B3FFAA33A2C463878D87E6010C7C"
         "OwnerKey" = "8:_0A60CA86F8FA641941A98A564DD9500D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AEE25AD2439C46469930A335A447BC33"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -921,6 +921,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D461755C0CE434F8294C82BA007C8FB"
+            {
+            "SourcePath" = "8:..\\EasyPDV\\Assets\\point-of-sale.ico"
+            "TargetName" = "8:point-of-sale.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_E993EAC8D7CB4B0BB4295AF742882B51"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6A385C22C51C9886BFDCA3B0516A2F80"
             {
             "AssemblyRegister" = "3:1"
@@ -1167,26 +1187,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AEE25AD2439C46469930A335A447BC33"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\point-of-sale.ico"
-            "TargetName" = "8:point-of-sale.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_E993EAC8D7CB4B0BB4295AF742882B51"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CC0A3BCF0DA0AEFB64733B34DF34B37C"
@@ -1493,15 +1493,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasyPDV-Setup"
-        "ProductCode" = "8:{4A11B6E6-A670-408D-AC71-10D792660CC7}"
-        "PackageCode" = "8:{E7F3431B-1BA4-4E03-B6AC-2209D2C149F4}"
+        "ProductCode" = "8:{4ABAE891-9361-4C05-8505-D56CCF083EBC}"
+        "PackageCode" = "8:{D2929300-2DCA-4E83-A9EC-D13E4427D94F}"
         "UpgradeCode" = "8:{30426460-4C2E-4507-B44D-D2A4A313B438}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1"
+        "ProductVersion" = "8:1.2"
         "Manufacturer" = "8:EasyDev"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/RicardoPiza/EasyPDV"
@@ -1614,7 +1614,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1E0E6ED0CDF1442C855FFD8BF26D5141"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_299ED27B7E2849348444EADB5F9F42F9"
             {
             "Name" = "8:EasyPDV"
             "Arguments" = "8:"
@@ -1625,7 +1625,7 @@
             "Target" = "8:_A5D186592FF246CD88C2C91CF3EBEFF5"
             "Folder" = "8:_EB16408CABDF42548C82C3184A504079"
             "WorkingFolder" = "8:_E993EAC8D7CB4B0BB4295AF742882B51"
-            "Icon" = "8:_AEE25AD2439C46469930A335A447BC33"
+            "Icon" = "8:_5D461755C0CE434F8294C82BA007C8FB"
             "Feature" = "8:"
             }
         }

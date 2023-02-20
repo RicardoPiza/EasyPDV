@@ -30,7 +30,27 @@ namespace EasyPDV.Model {
                 connection.Close();
             }
         }
-
+        public double InitialBalance() {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            double ini = 0;
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"SELECT saldo_inicial from caixa where status = true", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        ini = reader.GetDouble(0);
+                    }
+                }
+            } catch (Exception) {
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return ini;
+        }
         public bool IsCashierOpen() {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             bool isOpen = false;
@@ -105,7 +125,7 @@ namespace EasyPDV.Model {
                 cmd = new NpgsqlCommand("Select id as \"ID\", evento as Evento, numero as \"Número do caixa\", " +
                     "saldo_inicial as \"Saldo Inicial\", responsavel as \"Responsável\", " +
                     "case status when 'false' then 'fechado' else 'aberto' end as \"Status do caixa\" from caixa ", connection);
-            } catch (Exception ex) {
+            } catch (Exception) {
                 throw;
             } finally {
                 connection.Close();
@@ -145,8 +165,8 @@ namespace EasyPDV.Model {
                         cashierBleed.Value = reader.GetDouble(2);
                     }
                 }
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            } catch (Exception) {
+                throw;
             } finally {
                 connection.Close();
             }

@@ -245,6 +245,7 @@
             this.textBox2.SelectedText = "";
             this.textBox2.Size = new System.Drawing.Size(123, 38);
             this.textBox2.TabIndex = 22;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 

@@ -21,7 +21,7 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("p", individualSale.Product);
                 cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
+            } catch (Exception) {
                 throw;
             } finally {
                 connection.Close();

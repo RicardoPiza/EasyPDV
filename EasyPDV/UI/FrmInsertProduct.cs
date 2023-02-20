@@ -4,6 +4,7 @@ using Npgsql;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace EasyPDV.UI {
     public partial class FrmInsertProduct : Form {
@@ -28,7 +29,7 @@ namespace EasyPDV.UI {
             double num;
             int num2;
             if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "") {
-                product.Price = double.Parse(textBox2.Text);
+                product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));
 
             } else {
                 MessageBox.Show(
@@ -164,6 +165,11 @@ namespace EasyPDV.UI {
         private void productStatus_SelectedIndexChanged(object sender, EventArgs e) {
             ShowProductList();
             dataGridView1.MultiSelect = true;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
