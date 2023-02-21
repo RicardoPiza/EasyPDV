@@ -270,7 +270,7 @@
             this.textBox1.Size = new System.Drawing.Size(305, 38);
             this.textBox1.TabIndex = 23;
             // 
-            // siticoneTextBox1
+            // txtImagePath
             // 
             this.txtImagePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtImagePath.BackColor = System.Drawing.Color.Transparent;
@@ -286,7 +286,7 @@
             this.txtImagePath.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtImagePath.Location = new System.Drawing.Point(108, 786);
             this.txtImagePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtImagePath.Name = "siticoneTextBox1";
+            this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.PasswordChar = '\0';
             this.txtImagePath.PlaceholderText = "Caminho da imagem";
             this.txtImagePath.SelectedText = "";
@@ -453,6 +453,7 @@
             this.Name = "FrmInsertProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Produto";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmInsertProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

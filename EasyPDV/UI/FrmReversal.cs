@@ -1,7 +1,5 @@
 ﻿using EasyPDV.Model;
-using Npgsql;
 using System;
-using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using EasyPDV.Entities;
@@ -12,7 +10,7 @@ namespace EasyPDV.UI {
         ProductDAO productDAO = new ProductDAO();
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         IndividualSale individualSale = new IndividualSale();
-        double price;
+        Product product = new Product();
         public FrmReversal() {
             InitializeComponent();
         }
@@ -55,28 +53,47 @@ namespace EasyPDV.UI {
 
         private void btnChange_Click(object sender, EventArgs e) {
             DialogResult dialogResult = MessageBox.Show("Confirma ação?", "Realizar Troca/Estorno", MessageBoxButtons.OKCancel);
-
-            if (dialogResult == DialogResult.OK) {
-                string[] splitProductChange = comboProductChange.Text.Split('|');
-                string[] splitProduct = comboProduct.Text.Split('|');
-                if (actionCombo.Text == "Trocar") {
+            if (actionCombo.Text == "Trocar") { 
+                if (dialogResult == DialogResult.OK && comboProductChange.Text != "" && comboProduct.Text != "") {
+                    string[] splitProductChange = comboProductChange.Text.Split('|');
+                    string[] splitProduct = comboProduct.Text.Split('|');
                     individualSale.Product = splitProductChange[0].Trim();
                     individualSale.SaleDate = DateTime.Now.ToString("d");
                     individualSale.SalePrice = double.Parse(splitProductChange[1].Trim());
                     individualSale.PaymentMethod = "Troca ou estorno";
                     individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim());
                     individualSaleDAO.InsertIndividualSale(individualSale);
+                    product.Name = splitProduct[0].Trim();
+                    productDAO.SumStock(product);
+                    product.Name = splitProductChange[0].Trim();
+                    product.ID = productDAO.GetID(product);
+                    productDAO.SubtractStock(product);
                 }
-                else if (actionCombo.Text == "Estornar") {
+                else {
+                    MessageBox.Show("Preencha todos os campos corretamente!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                } 
+            }
+            if (actionCombo.Text == "Estornar") {
+                if (dialogResult == DialogResult.OK && comboProduct.Text != "") {
+                    string[] splitProduct = comboProduct.Text.Split('|');
                     individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim());
+                    product.Name = splitProduct[0].Trim();
+                    productDAO.SumStock(product);
                 }
-                comboProduct.Items.Clear();
-                comboProductChange.Items.Clear();
-                PopulateCombos();
-            } 
+                else {
+                    MessageBox.Show("Preencha o item a trocar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            comboProduct.Items.Clear();
+            comboProductChange.Items.Clear();
+            PopulateCombos();
         }
 
         private void comboProduct_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void comboProductChange_SelectedIndexChanged(object sender, EventArgs e) {
 
         }
     }

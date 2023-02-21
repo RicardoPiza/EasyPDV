@@ -139,20 +139,56 @@ namespace EasyPDV.Model {
             }
         }
 
-        public void SubtractStock(int id) {
+        public void SubtractStock(Product product) {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             try {
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     "UPDATE produto SET estoque = estoque - 1 " +
-                    $"WHERE id = {id}", connection);
+                    $"WHERE id = {product.ID}", connection);
                 cmd.ExecuteNonQuery();
             } catch (Exception) {
                 throw;
             } finally {
                 connection.Close();
             }
+        }
+        public void SumStock(Product product) {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            try {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    "UPDATE produto SET estoque = estoque + 1 " +
+                    $"WHERE nome = '{product.Name}'", connection);
+                cmd.ExecuteNonQuery();
+            } catch (Exception) {
+                throw;
+            } finally {
+                connection.Close();
+            }
+        }
+        public int CheckStock(Product product) {
+            int productStockQuantity = 0;
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            try {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"SELECT estoque from produto where nome = '{product.Name}'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) { 
+                        productStockQuantity = reader.GetInt32(0);
+                    }
+                }
+                    } catch (Exception) {
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return productStockQuantity;
         }
         public void ChangeStatus(Product p) {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
@@ -236,6 +272,27 @@ namespace EasyPDV.Model {
                 connection.Close();
             }
             return price;
+        }
+        public int GetID(Product p) {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            int id = 0;
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"SELECT id from produto where nome = '{p.Name}' limit 1", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        id = reader.GetInt32(0);
+                    }
+                }
+            } catch (Exception) {
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return id;
         }
     }
 }

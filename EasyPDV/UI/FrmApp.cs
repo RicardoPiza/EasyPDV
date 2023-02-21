@@ -110,7 +110,9 @@ namespace EasyPDV {
 
         public void SubtractStockProduct() {
             foreach (int item in _ProductIDList) {
-                _productDAO.SubtractStock(item);
+                Product product = new Product();
+                product.ID = item;
+                _productDAO.SubtractStock(product);
             }
             _ProductIDList.Clear();
         }
@@ -124,6 +126,7 @@ namespace EasyPDV {
         }
 
         private void btnMakeSale_Click_1(object sender, EventArgs e) {
+            ProductDAO productDAO = new ProductDAO();
             _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             _sale.SalePrice = _SaleTotal;
             _sale.Products = _SoldProductsListToDB;
@@ -132,15 +135,28 @@ namespace EasyPDV {
                 if (paymentMethod.Text != "") {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
                     if (res == DialogResult.OK) {
+                        Product p = new Product();
+                        List<string> endingProducts = new List<string>();
                         foreach (string item in _SoldProductsList) {
                             //Aqui será implementado o código de impressão de fichas
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
                             Print(
                                 cashierDAO.ReturnEventName() + "\n\n " +
-                                DateTime.Now.ToString("d") + "\n" +
+                                DateTime.Now.ToString("d") + "\n\n" +
                                 "\n" + product[0].ToUpper() + "\n\n\n"
                                 );
+                            p.Name = product[0];
+                            if (productDAO.CheckStock(p) <= 50) {
+                                endingProducts.Add(p.Name);
+                            }
+                        }
+                        List<string> products = endingProducts.Distinct().ToList();
+                        if (products.Count > 0) {
+                            foreach (string item in products) {
+                                p.Name = item;
+                                MessageBox.Show($"Atenção, restam apenas {productDAO.CheckStock(p)} {p.Name}(s)");
+                            }
                         }
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
