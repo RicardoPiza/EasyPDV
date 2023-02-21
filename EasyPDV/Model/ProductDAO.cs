@@ -55,7 +55,7 @@ namespace EasyPDV.Model {
             }
             return list;
         }
-        public Image BuscarImagem(Product product) {
+        public Image GrabImage(Product product) {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             Image image = null;
@@ -215,6 +215,27 @@ namespace EasyPDV.Model {
                 connection.Close();
             }
             return desc;
+        }
+        public double GetPrice(Product p) {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            double price = 0;
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"SELECT preco from produto where nome = '{p.Name}' limit 1", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        price = reader.GetDouble(0);
+                    }
+                }
+            } catch (Exception) {
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return price;
         }
     }
 }

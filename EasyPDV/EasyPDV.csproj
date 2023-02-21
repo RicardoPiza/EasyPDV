@@ -167,6 +167,12 @@
     <Compile Include="UI\FrmOpenCashier.Designer.cs">
       <DependentUpon>FrmOpenCashier.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmReversal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReversal.Designer.cs">
+      <DependentUpon>FrmReversal.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmOpenCashier.resx">
       <DependentUpon>FrmOpenCashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmReversal.resx">
+      <DependentUpon>FrmReversal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>

@@ -2,6 +2,7 @@
 using Npgsql;
 using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
 
 namespace EasyPDV.Model {
     internal class IndividualSaleDAO {
@@ -97,6 +98,30 @@ namespace EasyPDV.Model {
             } finally {
                 connection.Close();
             }
+        }
+        public List<Product> ReadSoldProducts() {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            List<Product> list = new List<Product>();
+            NpgsqlCommand cmd;
+            try {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        "select produto from venda_individual group by produto ", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Product p = new Product();
+                        p.Name = reader.GetString(0);
+                        list.Add(p);
+                    }
+                }
+            } catch (Exception) {
+                return null;
+                throw;
+            } finally {
+                connection.Close();
+            }
+            return list;
         }
     }
 }

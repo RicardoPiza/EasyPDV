@@ -101,3 +101,4 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierRepor
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierBleed.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCashierBleedReport.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.SuggestedBindingRedirects.cache
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmReversal.resources

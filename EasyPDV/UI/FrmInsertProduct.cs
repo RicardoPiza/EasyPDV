@@ -25,11 +25,11 @@ namespace EasyPDV.UI {
 
         private void btnRegister_Click(object sender, EventArgs e) {
             product.Name = textBox1.Text;
-            product.Image = siticoneTextBox1.Text;
+            product.Image = txtImagePath.Text;
             product.Status = "ativado";
             double num;
             int num2;
-            if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "" && siticoneTextBox1.Text != "") {
+            if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "" && txtImagePath.Text != "") {
                 product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));
                 if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "") {
                     product.StockQuantity = int.Parse(txtStock.Text);
@@ -107,13 +107,13 @@ namespace EasyPDV.UI {
 
         private void btnCaminho_Click(object sender, EventArgs e) {
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.Substring(ofd.FileName.Length - 3) == "png") {
-                siticoneTextBox1.Text = ofd.FileName;
+                txtImagePath.Text = ofd.FileName;
             } else {
                 MessageBox.Show("O arquivo deve ser uma imagem .PNG de no máximo 140x140 pixels");
             }
         }
 
-        private void siticoneTextBox1_TextChanged(object sender, EventArgs e) {
+        private void txtImagePath_TextChanged(object sender, EventArgs e) {
 
         }
 

@@ -37,7 +37,7 @@
             this.btnUpdate = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.textBox2 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.textBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
-            this.siticoneTextBox1 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.txtImagePath = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnPath = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.txtStock = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
@@ -272,27 +272,27 @@
             // 
             // siticoneTextBox1
             // 
-            this.siticoneTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.siticoneTextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneTextBox1.BorderRadius = 18;
-            this.siticoneTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox1.DefaultText = "";
-            this.siticoneTextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneTextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox1.Location = new System.Drawing.Point(108, 786);
-            this.siticoneTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.siticoneTextBox1.Name = "siticoneTextBox1";
-            this.siticoneTextBox1.PasswordChar = '\0';
-            this.siticoneTextBox1.PlaceholderText = "Caminho da imagem";
-            this.siticoneTextBox1.SelectedText = "";
-            this.siticoneTextBox1.Size = new System.Drawing.Size(305, 38);
-            this.siticoneTextBox1.TabIndex = 25;
-            this.siticoneTextBox1.TextChanged += new System.EventHandler(this.siticoneTextBox1_TextChanged);
+            this.txtImagePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtImagePath.BackColor = System.Drawing.Color.Transparent;
+            this.txtImagePath.BorderRadius = 18;
+            this.txtImagePath.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtImagePath.DefaultText = "";
+            this.txtImagePath.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtImagePath.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtImagePath.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImagePath.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImagePath.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImagePath.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImagePath.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImagePath.Location = new System.Drawing.Point(108, 786);
+            this.txtImagePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtImagePath.Name = "siticoneTextBox1";
+            this.txtImagePath.PasswordChar = '\0';
+            this.txtImagePath.PlaceholderText = "Caminho da imagem";
+            this.txtImagePath.SelectedText = "";
+            this.txtImagePath.Size = new System.Drawing.Size(305, 38);
+            this.txtImagePath.TabIndex = 25;
+            this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
             // 
             // label3
             // 
@@ -435,7 +435,7 @@
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnPath);
-            this.Controls.Add(this.siticoneTextBox1);
+            this.Controls.Add(this.txtImagePath);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
@@ -472,7 +472,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnUpdate;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox textBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox textBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtImagePath;
         private System.Windows.Forms.Label label3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnPath;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtStock;

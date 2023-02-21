@@ -30,6 +30,7 @@
             this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trocaDeFichaEstornoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferirFaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,8 @@
             // 
             this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarVendaToolStripMenuItem,
-            this.visualizarVendasToolStripMenuItem});
+            this.visualizarVendasToolStripMenuItem,
+            this.trocaDeFichaEstornoToolStripMenuItem});
             this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
             this.vendasToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
@@ -123,7 +125,7 @@
             // 
             this.cancelarVendaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
-            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.cancelarVendaToolStripMenuItem.Text = "Visualizar canceladas";
             this.cancelarVendaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVendaToolStripMenuItem_Click_1);
             // 
@@ -131,9 +133,16 @@
             // 
             this.visualizarVendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
-            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
             this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click_1);
+            // 
+            // trocaDeFichaEstornoToolStripMenuItem
+            // 
+            this.trocaDeFichaEstornoToolStripMenuItem.Name = "trocaDeFichaEstornoToolStripMenuItem";
+            this.trocaDeFichaEstornoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.trocaDeFichaEstornoToolStripMenuItem.Text = "Troca de ficha/Estorno";
+            this.trocaDeFichaEstornoToolStripMenuItem.Click += new System.EventHandler(this.trocaDeFichaEstornoToolStripMenuItem_Click);
             // 
             // faturaToolStripMenuItem
             // 
@@ -1046,6 +1055,7 @@
         private System.Windows.Forms.ToolStripMenuItem fecharCaixaToolStripMenuItem;
         private System.Windows.Forms.Label lblChange;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtChange;
+        private System.Windows.Forms.ToolStripMenuItem trocaDeFichaEstornoToolStripMenuItem;
     }
 }
 

@@ -43,7 +43,7 @@ namespace EasyPDV {
             EventName = eventName[0];
             CursorAnimation();
         }
-        public void HiddeStuff() { 
+        public void HiddeStuff() {
             txtChange.Visible = false;
             lblChange.Visible = false;
         }
@@ -53,8 +53,8 @@ namespace EasyPDV {
         }
         public void LoadButtons() {
             if (cashierDAO.IsCashierOpen()) {
-                txtEventName.Text = cashierDAO.ReturnEventName()+" - "+DateTime.Now.ToString("d");
-                txtEventName.Visible=true;
+                txtEventName.Text = cashierDAO.ReturnEventName() + " - " + DateTime.Now.ToString("d");
+                txtEventName.Visible = true;
                 List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
                 List<Product> _Products = new List<Product>();
                 _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
@@ -63,9 +63,9 @@ namespace EasyPDV {
                 _Products = _productDAO.ReadAll();
                 for (int i = 0; i < _Products.Count; i++) {
                     _product.ID = _Products[i].ID;
-                    _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;                   
+                    _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;
                     if (_productDAO.ReadStatus(_product) == "ativado") {
-                        _btnProducts[i].Image = _productDAO.BuscarImagem(_product);
+                        _btnProducts[i].Image = _productDAO.GrabImage(_product);
                         _btnProducts[i].Text = _Products[i].Name;
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
                         toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
@@ -74,9 +74,10 @@ namespace EasyPDV {
                         double price = _Products[i].Price;
                         _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
                         _btnProducts[i].Invalidate();
-                    } 
+                    }
                 }
-            } else {
+            }
+            else {
                 MessageBox.Show("Antes de começar os trabalhos. O caixa precisa estar aberto.");
             }
         }
@@ -88,7 +89,8 @@ namespace EasyPDV {
                 _SupportList.Add(name);
                 _listViewProducts.Items.Add(saleDescription);
                 _SoldQuantityList.Add(1);
-            } else {
+            }
+            else {
                 for (int i = 0; i < _SupportList.Count; i++) {
                     if (_listViewProducts.Items[i].Text.Substring(0, 10).Equals(saleDescription.Substring(0, 10))) {
                         _SoldQuantityList[i] += 1;
@@ -135,9 +137,9 @@ namespace EasyPDV {
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
                             Print(
-                                cashierDAO.ReturnEventName()+"\n\n " +
+                                cashierDAO.ReturnEventName() + "\n\n " +
                                 DateTime.Now.ToString("d") + "\n" +
-                                "\n" + product[0].ToUpper() +"\n\n\n"
+                                "\n" + product[0].ToUpper() + "\n\n\n"
                                 );
                         }
                         _saleDao.InsertSale(_sale);
@@ -153,10 +155,12 @@ namespace EasyPDV {
                         _SaleTotal = 0;
                         MessageBox.Show("Venda Realizada com sucesso!");
                     }
-                } else {
+                }
+                else {
                     MessageBox.Show("Escolha o meio de pagamento!", "Meio de pagamento", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-            } else {
+            }
+            else {
                 MessageBox.Show("Nenhum produto selecionado!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
@@ -193,7 +197,7 @@ namespace EasyPDV {
             button16.Cursor = Cursors.Hand;
         }
         private void button12_MouseMove(object sender, MouseEventArgs e) {
-            
+
         }
         private void label1_Click(object sender, EventArgs e) {
 
@@ -322,7 +326,7 @@ namespace EasyPDV {
                           "\nData: " + DateTime.Now.ToString("d") +
                           "\nResp.: " + cashierBleed.Responsible +
                           "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
-                          "\nSaldo final:\nR$"+ (totalSales).ToString("F2")
+                          "\nSaldo final:\nR$" + (totalSales).ToString("F2")
                           );
                 cashierOpenDAO.CloseCashier();
                 saleDAO.DeleteAllSales();
@@ -399,7 +403,22 @@ namespace EasyPDV {
             if (richTextBox3.Text != "" && txtChange.Text != "") {
                 double change = double.Parse(txtChange.Text);
                 double total = double.Parse(richTextBox3.Text);
-                lblChange.Text = "Troco: "+(change - total).ToString("F2");
+                lblChange.Text = "Troco: " + (change - total).ToString("F2");
+            }
+        }
+
+        private void trocaDeFichaEstornoToolStripMenuItem_Click(object sender, EventArgs e) {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.Text == "Estorno ou Troca") {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (isOpen == false) {
+                FrmReversal frmReversal = new FrmReversal();
+                frmReversal.Show();
             }
         }
     }
