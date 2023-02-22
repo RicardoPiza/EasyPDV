@@ -45,6 +45,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.productStatus = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.chkProductsAboutToEndWarning = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -421,6 +422,28 @@
             this.productStatus.TabIndex = 31;
             this.productStatus.SelectedIndexChanged += new System.EventHandler(this.productStatus_SelectedIndexChanged);
             // 
+            // chkProductsAboutToEndWarning
+            // 
+            this.chkProductsAboutToEndWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkProductsAboutToEndWarning.AutoSize = true;
+            this.chkProductsAboutToEndWarning.BackColor = System.Drawing.Color.Transparent;
+            this.chkProductsAboutToEndWarning.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.chkProductsAboutToEndWarning.CheckedState.BorderRadius = 0;
+            this.chkProductsAboutToEndWarning.CheckedState.BorderThickness = 0;
+            this.chkProductsAboutToEndWarning.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.chkProductsAboutToEndWarning.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProductsAboutToEndWarning.Location = new System.Drawing.Point(520, 732);
+            this.chkProductsAboutToEndWarning.Name = "chkProductsAboutToEndWarning";
+            this.chkProductsAboutToEndWarning.Size = new System.Drawing.Size(352, 22);
+            this.chkProductsAboutToEndWarning.TabIndex = 32;
+            this.chkProductsAboutToEndWarning.Text = "Avisar quando produto estiver acabando";
+            this.chkProductsAboutToEndWarning.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkProductsAboutToEndWarning.UncheckedState.BorderRadius = 0;
+            this.chkProductsAboutToEndWarning.UncheckedState.BorderThickness = 0;
+            this.chkProductsAboutToEndWarning.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkProductsAboutToEndWarning.UseVisualStyleBackColor = false;
+            this.chkProductsAboutToEndWarning.CheckedChanged += new System.EventHandler(this.chkProductsAboutToEndWarning_CheckedChanged);
+            // 
             // FrmInsertProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,6 +452,7 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(884, 961);
+            this.Controls.Add(this.chkProductsAboutToEndWarning);
             this.Controls.Add(this.productStatus);
             this.Controls.Add(this.siticoneButton1);
             this.Controls.Add(this.btnRefresh);
@@ -481,5 +505,6 @@
         private System.Windows.Forms.Button btnRefresh;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox productStatus;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox chkProductsAboutToEndWarning;
     }
 }

@@ -62,6 +62,20 @@ namespace EasyPDV.UI {
         private void FrmInsertProduct_Load(object sender, EventArgs e) {
             ShowProductList();
             dataGridView1.MultiSelect = true;
+            WarningCheckBox();
+        }
+        public void WarningCheckBox() {
+            if (FrmApp.warningProductsAboutToEnd == true) {
+                chkProductsAboutToEndWarning.Checked = true;
+            }
+        }
+        private void chkProductsAboutToEndWarning_CheckedChanged(object sender, EventArgs e) {
+            if (chkProductsAboutToEndWarning.Checked == true) {
+                FrmApp.warningProductsAboutToEnd = true;
+            }
+            else {
+                FrmApp.warningProductsAboutToEnd = false;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e) {
@@ -172,5 +186,6 @@ namespace EasyPDV.UI {
         {
 
         }
+
     }
 }

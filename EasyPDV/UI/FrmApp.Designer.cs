@@ -108,7 +108,7 @@
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.cadastrarToolStripMenuItem.Text = "Visualizar produtos";
-            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
+            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // vendasToolStripMenuItem
             // 
@@ -787,7 +787,7 @@
             // 
             this._listViewProducts.Anchor = System.Windows.Forms.AnchorStyles.None;
             this._listViewProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._listViewProducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._listViewProducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._listViewProducts.ForeColor = System.Drawing.Color.Black;
             this._listViewProducts.GridLines = true;
             this._listViewProducts.HideSelection = false;

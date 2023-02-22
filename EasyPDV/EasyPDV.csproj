@@ -188,6 +188,10 @@
     <Compile Include="Utils\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\FrmHelper.cs" />
+    <Compile Include="Utils\MyMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Utils\RawPrinterHelper.cs" />
     <Compile Include="Utils\TypeHelper.cs" />
     <EmbeddedResource Include="UI\FrmApp.resx">

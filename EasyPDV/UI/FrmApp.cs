@@ -7,14 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
-using System.Drawing;
-using Font = System.Drawing.Font;
 using System.Drawing.Printing;
-using System.Globalization;
-using EasyPDV.Utils;
-using DocumentFormat.OpenXml.Spreadsheet;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ToolTip = System.Windows.Forms.ToolTip;
+using EasyPDV.Utils;
+using System.Drawing;
 
 namespace EasyPDV {
     public partial class FrmApp : Form {
@@ -32,6 +28,9 @@ namespace EasyPDV {
         ToolTip toolTip = new ToolTip();
         List<string> _SupportList = new List<string>();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        public static bool warningProductsAboutToEnd = true;
+        int restingProductsRealNumber;
+        Font messageBoxFont = new Font("Arial", 12);
         public FrmApp() {
             InitializeComponent();
         }
@@ -55,9 +54,8 @@ namespace EasyPDV {
             if (cashierDAO.IsCashierOpen()) {
                 txtEventName.Text = cashierDAO.ReturnEventName() + " - " + DateTime.Now.ToString("d");
                 txtEventName.Visible = true;
-                List<SiticoneButton> _btnProducts = new List<SiticoneButton>();
+                List<SiticoneButton> _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
                 List<Product> _Products = new List<Product>();
-                _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
                 int totalBotoes = _btnProducts.Count();
                 _btnProducts.Reverse();
                 _Products = _productDAO.ReadAll();
@@ -66,23 +64,24 @@ namespace EasyPDV {
                     _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;
                     if (_productDAO.ReadStatus(_product) == "ativado") {
                         _btnProducts[i].Image = _productDAO.GrabImage(_product);
-                        _btnProducts[i].Text = _Products[i].Name;
+                        _btnProducts[i].Text = _Products[i].Name + "\n";
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
                         toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
                         _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
-                        _btnProducts[i].Invalidate();
                     }
                 }
+                
             }
             else {
                 MessageBox.Show("Antes de começar os trabalhos. O caixa precisa estar aberto.");
             }
         }
-
         public void ProductSum(object sender, EventArgs e, string name, double price, int id) {
+            Product product = new Product();
+            product.Name = name;
             richTextBox3.Text = string.Empty;
             string saleDescription = name + "........ R$" + price.ToString("F2");
             if (!_SupportList.Contains(name)) {
@@ -94,10 +93,16 @@ namespace EasyPDV {
                 for (int i = 0; i < _SupportList.Count; i++) {
                     if (_listViewProducts.Items[i].Text.Substring(0, 10).Equals(saleDescription.Substring(0, 10))) {
                         _SoldQuantityList[i] += 1;
+                        restingProductsRealNumber = _productDAO.CheckStock(product) - _SoldQuantityList[i];
                         saleDescription = name +
                         "........ R$" + (price * _SoldQuantityList[i]).ToString("F2") +
-                        " | Qtd = x" + _SoldQuantityList[i];
+                        " | Qtd = x" + _SoldQuantityList[i]+" | Estoque = "+ restingProductsRealNumber;
                         _listViewProducts.Items[i].Text = saleDescription;
+                        if (restingProductsRealNumber <= 0) {
+                            MessageBox.Show("Não temos mais " + name + " no estoque, se quiser, poderá continuar vendendo mas terá de repor posteriormente!\n\n",
+                                "Acabou no estoque", MessageBoxButtons.OK, MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1);
+
+                        }
                     }
                 }
             }
@@ -136,7 +141,7 @@ namespace EasyPDV {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
                     if (res == DialogResult.OK) {
                         Product p = new Product();
-                        List<string> endingProducts = new List<string>();
+                        List<string> productsAbouToEnd = new List<string>();
                         foreach (string item in _SoldProductsList) {
                             //Aqui será implementado o código de impressão de fichas
                             //Para cada item na lista, uma ficha impressa
@@ -147,15 +152,15 @@ namespace EasyPDV {
                                 "\n" + product[0].ToUpper() + "\n\n\n"
                                 );
                             p.Name = product[0];
-                            if (productDAO.CheckStock(p) <= 50) {
-                                endingProducts.Add(p.Name);
+                            if (productDAO.CheckStock(p) <= 20) {
+                                productsAbouToEnd.Add(p.Name);
                             }
                         }
-                        List<string> products = endingProducts.Distinct().ToList();
-                        if (products.Count > 0) {
+                        List<string> products = productsAbouToEnd.Distinct().ToList();
+                        if (products.Count > 0 && warningProductsAboutToEnd == true) {
                             foreach (string item in products) {
                                 p.Name = item;
-                                MessageBox.Show($"Atenção, restam apenas {productDAO.CheckStock(p)} {p.Name}(s)");
+                                MessageBox.Show($"Atenção, restam apenas {restingProductsRealNumber} {p.Name}(s)");
                             }
                         }
                         _saleDao.InsertSale(_sale);
@@ -225,20 +230,6 @@ namespace EasyPDV {
         private void btnRealizar_MouseMove(object sender, MouseEventArgs e) {
             btnRealizar.Cursor = Cursors.Hand;
         }
-        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Tela Cadastro Produto") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmInsertProduct tc = new FrmInsertProduct();
-                tc.Show();
-            }
-        }
         private void siticoneContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 
         }
@@ -259,66 +250,50 @@ namespace EasyPDV {
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e) {
             btnRefresh.Cursor = Cursors.Hand;
         }
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmInsertProduct tc = new FrmInsertProduct();
+            FrmHelper.OpenIfIsNot("Tela Cadastro Produto", tc);
+        }
         private void conferirFaturaToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form form in Application.OpenForms) {
-                if (form.Text == "Fatura do dia") {
-                    isOpen = true;
-                    form.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmIncome frmIncome = new FrmIncome();
-                frmIncome.Show();
-            }
+            FrmIncome frmIncome = new FrmIncome();
+            FrmHelper.OpenIfIsNot("Fatura do dia", frmIncome);
         }
         private void cancelarVendaToolStripMenuItem_Click_1(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Vendas Canceladas") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmCancelledSale frmCancelledSale = new FrmCancelledSale();
-                frmCancelledSale.Show();
-            }
+            FrmCancelledSale frmCancelledSale = new FrmCancelledSale();
+            FrmHelper.OpenIfIsNot("Vendas Canceladas", frmCancelledSale);
         }
         private void visualizarVendasToolStripMenuItem_Click_1(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Vendas") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmSale tv = new FrmSale();
-                tv.Show();
-            }
+            FrmSale frmSale = new FrmSale();
+            FrmHelper.OpenIfIsNot("Vendas", frmSale);
+        }
+        private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmOpenCashier frmOpenCashier = new FrmOpenCashier();
+            FrmHelper.OpenIfIsNot("Abrir caixa", frmOpenCashier);
+        }
+        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmCashierReport frmCashierReport = new FrmCashierReport();
+            FrmHelper.OpenIfIsNot("Relatório de aberturas", frmCashierReport);
+        }
+
+        private void retiradaToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmCashierBleed frmCashierBleed = new FrmCashierBleed();
+            FrmHelper.OpenIfIsNot("Sangria de caixa", frmCashierBleed);
+        }
+
+        private void históricoToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmCashierBleedReport frmCashierBleedReport = new FrmCashierBleedReport();
+            FrmHelper.OpenIfIsNot("Histórico de movimentação", frmCashierBleedReport);
+        }
+        private void trocaDeFichaEstornoToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmReversal frmReversal = new FrmReversal();
+            FrmHelper.OpenIfIsNot("Estorno ou Troca", frmReversal);
+        }
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e) {
+
         }
 
         private void button8_Click(object sender, EventArgs e) {
 
-        }
-
-        private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Abrir caixa") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmOpenCashier tv = new FrmOpenCashier();
-                tv.Show();
-            }
         }
 
         private void fecharCaixaToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -353,54 +328,6 @@ namespace EasyPDV {
             }
         }
 
-        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Relatório de aberturas") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmCashierReport frmCashierReport = new FrmCashierReport();
-                frmCashierReport.Show();
-            }
-        }
-
-        private void retiradaToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Sangria de caixa") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmCashierBleed frmCashierBleed = new FrmCashierBleed();
-                frmCashierBleed.Show();
-            }
-        }
-
-        private void históricoToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Histórico de movimentação") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmCashierBleedReport frmCashierBleedReport = new FrmCashierBleedReport();
-                frmCashierBleedReport.Show();
-            }
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e) {
-
-        }
 
         private void paymentMethod_SelectedIndexChanged(object sender, EventArgs e) {
             if (paymentMethod.Text == "Dinheiro") {
@@ -420,21 +347,6 @@ namespace EasyPDV {
                 double change = double.Parse(txtChange.Text);
                 double total = double.Parse(richTextBox3.Text);
                 lblChange.Text = "Troco: " + (change - total).ToString("F2");
-            }
-        }
-
-        private void trocaDeFichaEstornoToolStripMenuItem_Click(object sender, EventArgs e) {
-            bool isOpen = false;
-            foreach (Form f in Application.OpenForms) {
-                if (f.Text == "Estorno ou Troca") {
-                    isOpen = true;
-                    f.BringToFront();
-                    break;
-                }
-            }
-            if (isOpen == false) {
-                FrmReversal frmReversal = new FrmReversal();
-                frmReversal.Show();
             }
         }
     }
