@@ -6,15 +6,19 @@ using Npgsql;
 using System;
 using System.Windows.Forms;
 
-namespace EasyPDV.Model {
-    internal class CashierBleedDAO {
+namespace EasyPDV.Model
+{
+    internal class CashierBleedDAO
+    {
         DAO dao = new DAO();
         string connectionString = DAO.ConnectionString;
         NpgsqlConnection connection;
-        public void BeginMovimentation(CashierBleed cashierBleed) {
+        public void BeginMovimentation(CashierBleed cashierBleed)
+        {
             connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand("INSERT INTO sangria(evento, tipo_movimentacao, responsavel, data, " +
                             "numero_caixa, descricao, valor) VALUES(@ev, @t,@resp,@d,@nc,@desc,@v)", dao.Connection());
@@ -26,80 +30,112 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("desc", cashierBleed.Description);
                 cmd.Parameters.AddWithValue("v", cashierBleed.Value);
                 cmd.ExecuteNonQuery();
-            } catch (System.Exception) {
+            }
+            catch (System.Exception)
+            {
                 throw;
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
         }
 
-        public NpgsqlCommand ReadAll() {
+        public NpgsqlCommand ReadAll()
+        {
             connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand("Select id as \"ID\", evento as \"Evento\", tipo_movimentacao as \"Tipo movimentação\", responsavel as" +
                     "\"Responsável\", data as \"Data\", numero_caixa as \"Número do caixa\", descricao as \"Descrição\"," +
-                    " valor as \"Valor\" from sangria", dao.Connection());
-            } catch (Exception) {
+                    " concat('R$',valor) as \"Valor\" from sangria", dao.Connection());
+            }
+            catch (Exception)
+            {
                 throw;
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
             return cmd;
         }
 
-        public void DeleteAllBleedCashier() {
+        public void DeleteAllBleedCashier()
+        {
             connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 cmd = new NpgsqlCommand(
-                    $"DELETE FROM sangria", dao.Connection());
+                    $"truncate sangria restart identity", dao.Connection());
                 cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
         }
-        public double TotalReinforcement() { 
+        public double TotalReinforcement()
+        {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             double reinf = 0;
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand(
                         $"select sum(valor) from sangria s where s.tipo_movimentacao = 'Reforço'", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows) {
-                    while (reader.Read()) {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
                         reinf = reader.GetDouble(0);
                     }
                 }
-            } catch (Exception) {
-                reinf= 0;
-            } finally {
+            }
+            catch (Exception)
+            {
+                reinf = 0;
+            }
+            finally
+            {
                 connection.Close();
             }
             return reinf;
         }
-        public double TotalWithdraw() {
+        public double TotalWithdraw()
+        {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             double withdraw = 0;
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand(
                         $"select sum(valor) from sangria s where s.tipo_movimentacao = 'Retirada'", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows) {
-                    while (reader.Read()) {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
                         withdraw = reader.GetDouble(0);
                     }
                 }
-            } catch (Exception) {
-                withdraw= 0;
-            } finally {
+            }
+            catch (Exception)
+            {
+                withdraw = 0;
+            }
+            finally
+            {
                 connection.Close();
             }
             return withdraw;

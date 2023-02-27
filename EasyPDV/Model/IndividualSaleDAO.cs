@@ -4,14 +4,18 @@ using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 
-namespace EasyPDV.Model {
-    internal class IndividualSaleDAO {
+namespace EasyPDV.Model
+{
+    internal class IndividualSaleDAO
+    {
         string connectionString = DAO.ConnectionString;
         NpgsqlConnection connection;
 
-        public void InsertIndividualSale(IndividualSale individualSale) {
+        public void InsertIndividualSale(IndividualSale individualSale)
+        {
             connection = new NpgsqlConnection(connectionString);
-            try {
+            try
+            {
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
@@ -22,103 +26,141 @@ namespace EasyPDV.Model {
                 cmd.Parameters.AddWithValue("p", individualSale.Product);
                 cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 throw;
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
         }
 
-        public NpgsqlCommand ReadIndividualSale() {
+        public NpgsqlCommand ReadIndividualSale()
+        {
             connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand(
                     "select produto as \"Produto\", count(produto) as \"Total vendido\"," +
-                    "sum(valor) AS \"Fatura do produto(R$)\" " +
+                    "to_char(sum(valor), '9999999999999999D99') AS \"Fatura do produto(R$)\" " +
                     "from venda_individual group by produto ", connection);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
                 return null;
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
             return cmd;
         }
 
-        public double ReadTotalIndividualSale() {
+        public double ReadTotalIndividualSale()
+        {
             connection = new NpgsqlConnection(connectionString);
             NpgsqlCommand cmd;
             double value = 0;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand(
                     "select sum(valor) as Total " +
                     "from venda_individual ", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows) {
-                    while (reader.Read()) {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
                         value = (double)reader.GetDouble(0);
                     }
                 }
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 MessageBox.Show("\nNenhuma ocorrencia de venda até o momento");
                 return 0;
-            } finally { 
+            }
+            finally
+            {
                 connection.Close();
             }
             return value;
         }
 
-        public void DeleteAllIndividualSales() {
+        public void DeleteAllIndividualSales()
+        {
             connection = new NpgsqlConnection(connectionString);
-                try {
+            try
+            {
                 connection.Open();
                 NpgsqlCommand cmd;
-                    cmd = new NpgsqlCommand(
-                        $"DELETE FROM venda_individual", connection);
-                    cmd.ExecuteNonQuery();
-                } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                } finally {
+                cmd = new NpgsqlCommand(
+                    $"truncate venda_individual restart identity", connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
                 connection.Close();
             }
         }
-        public void DeleteIndividualSale(string individualSale) {
+        public void DeleteIndividualSale(string individualSale)
+        {
             connection = new NpgsqlConnection(connectionString);
-            try {
+            try
+            {
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     $"delete from venda_individual where id = (Select id from venda_individual where produto = '{individualSale}' LIMIT 1)", connection);
                 cmd.ExecuteNonQuery();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
         }
-        public List<Product> ReadSoldProducts() {
+        public List<Product> ReadSoldProducts()
+        {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             List<Product> list = new List<Product>();
             NpgsqlCommand cmd;
-            try {
+            try
+            {
                 connection.Open();
                 cmd = new NpgsqlCommand(
                         "select produto from venda_individual group by produto ", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows) {
-                    while (reader.Read()) {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
                         Product p = new Product();
                         p.Name = reader.GetString(0);
                         list.Add(p);
                     }
                 }
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 return null;
                 throw;
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
             return list;

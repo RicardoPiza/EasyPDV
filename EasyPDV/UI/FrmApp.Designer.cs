@@ -62,7 +62,6 @@
             this.siticoneContextMenuStrip1 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.siticoneContextMenuStrip2 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.richTextBox3 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this._listViewProducts = new System.Windows.Forms.ListView();
             this.btnRealizar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +73,10 @@
             this.btnCancel = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.txtEventName = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -86,7 +89,8 @@
             this.produtosToolStripMenuItem,
             this.vendasToolStripMenuItem,
             this.faturaToolStripMenuItem,
-            this.caixaToolStripMenuItem});
+            this.caixaToolStripMenuItem,
+            this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -771,18 +775,6 @@
             this.richTextBox3.TabIndex = 14;
             this.richTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label4.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 704);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(483, 23);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Desenvolvido por Ricardo Piza - pizricardo@gmail.com";
-            // 
             // _listViewProducts
             // 
             this._listViewProducts.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -966,6 +958,42 @@
             this.txtEventName.Size = new System.Drawing.Size(0, 24);
             this.txtEventName.TabIndex = 24;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Image = global::EasyPDV.Properties.Resources.easydev_logo;
+            this.label5.Location = new System.Drawing.Point(782, 708);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 16);
+            this.label5.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Image = global::EasyPDV.Properties.Resources.easydev_logo3;
+            this.label6.Location = new System.Drawing.Point(917, 593);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(158, 131);
+            this.label6.TabIndex = 0;
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sobreToolStripMenuItem});
+            this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            // 
             // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -973,10 +1001,10 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1075, 727);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtEventName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this._listViewProducts);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.label2);
@@ -984,6 +1012,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.Controls.Add(this.label6);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1018,7 +1047,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip siticoneContextMenuStrip1;
         private Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip siticoneContextMenuStrip2;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox richTextBox3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView _listViewProducts;
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelarVendaToolStripMenuItem;
@@ -1056,6 +1084,10 @@
         private System.Windows.Forms.Label lblChange;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtChange;
         private System.Windows.Forms.ToolStripMenuItem trocaDeFichaEstornoToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
     }
 }
 

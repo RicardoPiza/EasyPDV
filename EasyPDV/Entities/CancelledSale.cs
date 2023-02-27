@@ -1,7 +1,10 @@
 ﻿
-namespace EasyPDV.Entities {
-    internal class CancelledSale : Sale{
-        public CancelledSale() {
+namespace EasyPDV.Entities
+{
+    internal class CancelledSale : Sale
+    {
+        public CancelledSale()
+        {
         }
     }
 }

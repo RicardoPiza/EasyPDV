@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
 
-public static class TypeHelper {
+public static class TypeHelper
+{
     private static readonly HashSet<Type> NumericTypes = new HashSet<Type>
     {
         typeof(int),  typeof(double),  typeof(decimal),
@@ -10,7 +11,8 @@ public static class TypeHelper {
         typeof(uint), typeof(float)
     };
 
-    public static bool IsNumeric(this Type myType) {
+    public static bool IsNumeric(this Type myType)
+    {
         return NumericTypes.Contains(Nullable.GetUnderlyingType(myType) ?? myType);
     }
 }

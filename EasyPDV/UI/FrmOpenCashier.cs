@@ -5,29 +5,36 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace EasyPDV.UI {
-    public partial class FrmOpenCashier : Form {
+namespace EasyPDV.UI
+{
+    public partial class FrmOpenCashier : Form
+    {
         CashierOpen cashier = new CashierOpen();
         CashierOpenDAO cashierDAO = new CashierOpenDAO();
         RawPrinterHelper rawPrinter = new RawPrinterHelper();
         IndividualSale individualSale = new IndividualSale();
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
-        public FrmOpenCashier() {
+        public FrmOpenCashier()
+        {
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e) {
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
-        public void Print(string s) {
+        public void Print(string s)
+        {
             PrintDialog pd = new PrintDialog();
             pd.PrinterSettings = new PrinterSettings();
-            if (DialogResult.OK == pd.ShowDialog(this)) {
+            if (DialogResult.OK == pd.ShowDialog(this))
+            {
                 RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
             }
         }
 
-        private void btnOpenCashier_Click(object sender, EventArgs e) {
+        private void btnOpenCashier_Click(object sender, EventArgs e)
+        {
             DialogResult dialogResult = MessageBox.Show("Confirma abertura?", "Abertura Caixa", MessageBoxButtons.OKCancel); int num2;
             if (int.TryParse(txtCashier.Text, out num2))
             {
@@ -67,12 +74,14 @@ namespace EasyPDV.UI {
                     }
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("O caixa deve ser um número");
             }
         }
 
-        private void label4_Click(object sender, EventArgs e) {
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
 

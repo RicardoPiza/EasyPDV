@@ -32,14 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIncome));
             this.label1 = new System.Windows.Forms.Label();
             this.lblFatura = new System.Windows.Forms.Label();
-            this.vendasGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
+            this.salesGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.lblTotalFatura = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,15 +65,15 @@
             // 
             // vendasGridView1
             // 
-            this.vendasGridView1.AllowUserToAddRows = false;
-            this.vendasGridView1.AllowUserToDeleteRows = false;
-            this.vendasGridView1.AllowUserToResizeRows = false;
+            this.salesGridView1.AllowUserToAddRows = false;
+            this.salesGridView1.AllowUserToDeleteRows = false;
+            this.salesGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.vendasGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.vendasGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.salesGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.salesGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.vendasGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.vendasGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.salesGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.salesGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,9 +81,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.vendasGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.vendasGridView1.ColumnHeadersHeight = 25;
-            this.vendasGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.salesGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.salesGridView1.ColumnHeadersHeight = 25;
+            this.salesGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,39 +91,40 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.vendasGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.vendasGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.vendasGridView1.Location = new System.Drawing.Point(12, 54);
-            this.vendasGridView1.MinimumSize = new System.Drawing.Size(474, 302);
-            this.vendasGridView1.MultiSelect = false;
-            this.vendasGridView1.Name = "vendasGridView1";
-            this.vendasGridView1.ReadOnly = true;
-            this.vendasGridView1.RowHeadersVisible = false;
-            this.vendasGridView1.RowHeadersWidth = 60;
-            this.vendasGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vendasGridView1.Size = new System.Drawing.Size(873, 532);
-            this.vendasGridView1.TabIndex = 20;
-            this.vendasGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.vendasGridView1.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendasGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.vendasGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.vendasGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.vendasGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.vendasGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.vendasGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.vendasGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.vendasGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendasGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.vendasGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.vendasGridView1.ThemeStyle.HeaderStyle.Height = 25;
-            this.vendasGridView1.ThemeStyle.ReadOnly = true;
-            this.vendasGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.vendasGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.vendasGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendasGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.vendasGridView1.ThemeStyle.RowsStyle.Height = 22;
-            this.vendasGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.vendasGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.salesGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.salesGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.salesGridView1.Location = new System.Drawing.Point(12, 54);
+            this.salesGridView1.MinimumSize = new System.Drawing.Size(474, 302);
+            this.salesGridView1.MultiSelect = false;
+            this.salesGridView1.Name = "vendasGridView1";
+            this.salesGridView1.ReadOnly = true;
+            this.salesGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.salesGridView1.RowHeadersVisible = false;
+            this.salesGridView1.RowHeadersWidth = 60;
+            this.salesGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesGridView1.Size = new System.Drawing.Size(873, 532);
+            this.salesGridView1.TabIndex = 20;
+            this.salesGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.salesGridView1.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.salesGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.salesGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.salesGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.salesGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.salesGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.salesGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.salesGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.salesGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.salesGridView1.ThemeStyle.HeaderStyle.Height = 25;
+            this.salesGridView1.ThemeStyle.ReadOnly = true;
+            this.salesGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.salesGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.salesGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.salesGridView1.ThemeStyle.RowsStyle.Height = 22;
+            this.salesGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.salesGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // lblTotalFatura
             // 
@@ -246,7 +247,7 @@
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalFatura);
-            this.Controls.Add(this.vendasGridView1);
+            this.Controls.Add(this.salesGridView1);
             this.Controls.Add(this.lblFatura);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -255,7 +256,7 @@
             this.Name = "FrmIncome";
             this.Text = "Fatura do dia";
             this.Load += new System.EventHandler(this.FrmIncome_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,7 +267,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblFatura;
-        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView vendasGridView1;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView salesGridView1;
         private System.Windows.Forms.Label lblTotalFatura;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRefresh;

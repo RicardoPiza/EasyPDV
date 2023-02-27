@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EasyPDV.Entities {
-    internal abstract class Cashier {
+namespace EasyPDV.Entities
+{
+    internal abstract class Cashier
+    {
         public int ID { get; set; }
         public string EventName { get; set; }
         public int Number { get; set; }

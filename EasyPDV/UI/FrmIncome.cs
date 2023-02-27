@@ -7,65 +7,81 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace EasyPDV.UI {
-    public partial class FrmIncome : Form {
+namespace EasyPDV.UI
+{
+    public partial class FrmIncome : Form
+    {
         NpgsqlDataAdapter adpt;
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         DataTable dt;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         ToolTip toolTip = new ToolTip();
-        public FrmIncome() {
+        CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
+        public FrmIncome()
+        {
             InitializeComponent();
         }
 
-        private void FrmIncome_Load(object sender, EventArgs e) {
+        private void FrmIncome_Load(object sender, EventArgs e)
+        {
             LoadSales();
             ShowTotal();
             Invalidate();
             SetChart();
         }
-        public void LoadSales() {
+        public void LoadSales()
+        {
             adpt = new NpgsqlDataAdapter(individualSaleDAO.ReadIndividualSale());
             dt = new DataTable();
             adpt.Fill(dt);
-            vendasGridView1.DataSource = dt;
-            for (int i = 0; i <= 2; i++) {
-                vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            salesGridView1.DataSource = dt;
+            for (int i = 0; i <= 2; i++)
+            {
+                salesGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
-        public void ShowTotal() {
-            lblTotalFatura.Text = individualSaleDAO.ReadTotalIndividualSale().ToString();
+        public void ShowTotal()
+        {
+            lblTotalFatura.Text = individualSaleDAO.ReadTotalIndividualSale().ToString("F2");
         }
 
-        private void btnReport_Click(object sender, EventArgs e) {
+        private void btnReport_Click(object sender, EventArgs e)
+        {
             MakeReport();
         }
 
-        private void MakeReport() {
-            try {
-                string fileName = "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
+        public void MakeReport()
+        {
+            try
+            {
+                string fileName = "\\Relatório fatura - Caixa nº " + cashierOpenDAO.ReturnCashierNumber() + " - " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
                 string path = "";
-                if (fbd.ShowDialog() == DialogResult.OK) {
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
                     path = fbd.SelectedPath;
                 }
                 XLWorkbook wb = new XLWorkbook();
-                var ws = wb.Worksheets.Add(dt, "Relatório fatura");
+                var ws = wb.Worksheets.Add(dt, cashierOpenDAO.ReturnEventName());
                 ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSaleDAO.ReadTotalIndividualSale();
                 ws.Columns().AdjustToContents();
                 ws.RangeUsed().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
-                if (path != "") {
-                    wb.SaveAs(@path + "\\Relatório fatura " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                if (path != "")
+                {
+                    wb.SaveAs(path + fileName);
                     MessageBox.Show($"Relatório Salvo em {path}");
                     this.Close();
                     System.Diagnostics.Process.Start(@path + fileName);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
                 throw;
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e) {
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
             LoadSales();
             ShowTotal();
             Invalidate();
@@ -73,30 +89,36 @@ namespace EasyPDV.UI {
             SetChart();
         }
 
-        private void button1_MouseMove(object sender, MouseEventArgs e) {
+        private void button1_MouseMove(object sender, MouseEventArgs e)
+        {
             btnRefresh.Cursor = Cursors.Hand;
             btnRelatorio.Cursor = Cursors.Hand;
             toolTip.SetToolTip(btnRefresh, "Atualizar tabela");
             toolTip.SetToolTip(btnRelatorio, "Gerar relatório");
         }
-        public void SetChart() {
+        public void SetChart()
+        {
             IndividualSale IndividualSale = new IndividualSale();
             string x;
             double y = 0;
-                for (int i = 0; i < vendasGridView1.Rows.Count; i++) {
-                    x = vendasGridView1.Rows[i].Cells[0].Value.ToString();
-                    y = double.Parse(vendasGridView1.Rows[i].Cells[1].Value.ToString());
-                    chart1.Series[0].Points.AddXY(x, y);
-                    chart1.Series[0].AxisLabel = x;
-                }
+            for (int i = 0; i < salesGridView1.Rows.Count; i++)
+            {
+                x = salesGridView1.Rows[i].Cells[0].Value.ToString();
+                y = double.Parse(salesGridView1.Rows[i].Cells[1].Value.ToString());
+                chart1.Series[0].Points.AddXY(x, y);
+                chart1.Series[0].AxisLabel = x;
+            }
         }
-        private void ClearChart() {
-            foreach (var series in chart1.Series) {
+        private void ClearChart()
+        {
+            foreach (var series in chart1.Series)
+            {
                 series.Points.Clear();
             }
         }
 
-        private void chart1_Click(object sender, EventArgs e) {
+        private void chart1_Click(object sender, EventArgs e)
+        {
 
         }
     }

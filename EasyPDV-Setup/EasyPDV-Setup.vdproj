@@ -1494,7 +1494,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EasyPDV-Setup"
         "ProductCode" = "8:{4ABAE891-9361-4C05-8505-D56CCF083EBC}"
-        "PackageCode" = "8:{D2929300-2DCA-4E83-A9EC-D13E4427D94F}"
+        "PackageCode" = "8:{DE6C9EF1-E59C-408E-88AF-AAB94EF6ECC3}"
         "UpgradeCode" = "8:{30426460-4C2E-4507-B44D-D2A4A313B438}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

@@ -85,6 +85,7 @@
             this.txtEventName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEventName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEventName.Location = new System.Drawing.Point(203, 137);
+            this.txtEventName.MaxLength = 30;
             this.txtEventName.Name = "txtEventName";
             this.txtEventName.PasswordChar = '\0';
             this.txtEventName.PlaceholderText = "";

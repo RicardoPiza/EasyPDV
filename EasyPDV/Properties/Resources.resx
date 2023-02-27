@@ -121,17 +121,14 @@
   <data name="012 Tempting Azure1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Sorvete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Sorvete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="012 Tempting Azure" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Desenho-Coca-Cola-PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Desenho-Coca-Cola-PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="easydev-logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easydev-logo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pastel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\pastel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +136,20 @@
   <data name="gradient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\gradient.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="dust1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\dust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dust (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\dust (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ilustração-Cerveja-PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Ilustração-Cerveja-PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\cake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dust (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\dust (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="012 Tempting Azure3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,11 +157,11 @@
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dust2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\dust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Desenho-Coca-Cola-PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Desenho-Coca-Cola-PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ilustração-Cerveja-PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Ilustração-Cerveja-PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="012 Tempting Azure4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dust" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\dust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,13 +169,19 @@
   <data name="012 Tempting Azure2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="easydev-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easydev-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dust2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\dust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="dust3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\dust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="012 Tempting Azure4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\012 Tempting Azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="easydev-logo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easydev-logo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

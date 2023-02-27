@@ -5,28 +5,41 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace EasyPDV.UI {
-    public partial class FrmCashierBleed : Form {
+namespace EasyPDV.UI
+{
+    public partial class FrmCashierBleed : Form
+    {
         CashierBleed cashierBleed = new CashierBleed();
         CashierBleedDAO cashierBleedDao = new CashierBleedDAO();
-        CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
         IndividualSale individualSale = new IndividualSale();
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
 
-        public FrmCashierBleed() {
+        public FrmCashierBleed()
+        {
             InitializeComponent();
         }
 
-        private void FrmCashierBleed_Load(object sender, EventArgs e) {
-
+        private void FrmCashierBleed_Load(object sender, EventArgs e)
+        {
+            AutoFillBoxes();
+        }
+        public void AutoFillBoxes() 
+        {
+            txtCashier.Text = cashierOpenDAO.ReturnCashierNumber().ToString();
+            txtResponsible.Text = cashierOpenDAO.ReturnResponsibleName();
         }
 
-        private void btnOpenCashier_Click(object sender, EventArgs e) {
-            DialogResult dialogResult= new DialogResult();
+        private void btnOpenCashier_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = new DialogResult();
             dialogResult = MessageBox.Show("Confirma movimentação do caixa?", "Confirmar realização", MessageBoxButtons.OKCancel);
-            if (dialogResult == DialogResult.OK) {
-                if (comboBleed.Text != "") {
-                    if (cashierDAO.IsCashierOpen() == true) {
+            if (dialogResult == DialogResult.OK)
+            {
+                if (comboBleed.Text != "")
+                {
+                    if (cashierOpenDAO.IsCashierOpen() == true)
+                    {
                         cashierBleed.Number = int.Parse(txtCashier.Text);
                         cashierBleed.Date = DateTime.Now;
                         cashierBleed.Responsible = txtResponsible.Text;
@@ -36,11 +49,13 @@ namespace EasyPDV.UI {
                         cashierBleed.Description = txtDescription.Text;
                         cashierBleedDao.BeginMovimentation(cashierBleed);
                         individualSale.SaleDate = DateTime.Now.ToString("d");
-                        if (comboBleed.Text == "Reforço") {
+                        if (comboBleed.Text == "Reforço")
+                        {
                             individualSale.SalePrice = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
                         }
-                        else {
-                            individualSale.SalePrice = - double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
+                        else
+                        {
+                            individualSale.SalePrice = -double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
                         }
                         individualSale.Product = comboBleed.Text;
                         individualSale.PaymentMethod = string.Empty;
@@ -56,25 +71,32 @@ namespace EasyPDV.UI {
                               "\nDescrição: " + txtDescription.Text +
                               "\nValor: R$" + txtValue.Text
                               );
-                    } else {
+                    }
+                    else
+                    {
                         MessageBox.Show("O caixa se encontra fechado! Abra-o para concluir a operação",
                             "Abra o caixa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
-                } else {
+                }
+                else
+                {
                     MessageBox.Show("Escolha o tipo de movimentação");
                 }
                 Dispose();
-            } 
+            }
         }
-        public void Print(string s) {
+        public void Print(string s)
+        {
             PrintDialog pd = new PrintDialog();
             pd.PrinterSettings = new PrinterSettings();
-            if (DialogResult.OK == pd.ShowDialog(this)) {
+            if (DialogResult.OK == pd.ShowDialog(this))
+            {
                 RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
             }
         }
 
-        private void label4_Click(object sender, EventArgs e) {
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }

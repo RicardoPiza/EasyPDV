@@ -1,6 +1,8 @@
 ﻿
-namespace EasyPDV.Entities {
-    public class Product {
+namespace EasyPDV.Entities
+{
+    public class Product
+    {
         public int ID { get; set; }
         public double Price { get; set; }
         public string Name { get; set; }
@@ -8,7 +10,8 @@ namespace EasyPDV.Entities {
         public int StockQuantity { get; set; }
         public string Status { get; set; }
         public string Description { get; set; }
-        public Product() { 
+        public Product()
+        {
         }
     }
 }

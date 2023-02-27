@@ -123,6 +123,12 @@
     <Compile Include="Entities\RegularSale.cs" />
     <Compile Include="Entities\CancelledSale.cs" />
     <Compile Include="Entities\IndividualSale.cs" />
+    <Compile Include="UI\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </Compile>
     <Compile Include="Utils\RawPrinterHelper.cs" />
     <Compile Include="Utils\TypeHelper.cs" />
+    <EmbeddedResource Include="UI\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmApp.resx">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmCancelledSale.resx">
       <DependentUpon>FrmCancelledSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\MyMessageBox.resx">
+      <DependentUpon>MyMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -280,6 +292,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\012 Tempting Azure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\easydev-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\easydev-logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\easydev-logo3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

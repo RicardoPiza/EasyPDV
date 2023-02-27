@@ -1,9 +1,12 @@
 ﻿
 
-namespace EasyPDV.Entities {
-    internal class IndividualSale : Sale {
+namespace EasyPDV.Entities
+{
+    internal class IndividualSale : Sale
+    {
         public string Product { get; set; }
-        public IndividualSale() {
+        public IndividualSale()
+        {
 
         }
     }

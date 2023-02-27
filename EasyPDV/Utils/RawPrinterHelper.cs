@@ -2,10 +2,12 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-public class RawPrinterHelper {
+public class RawPrinterHelper
+{
     // Structure and API declarions:
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public class DOCINFOA {
+    public class DOCINFOA
+    {
         [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
         [MarshalAs(UnmanagedType.LPStr)] public string pOutputFile;
         [MarshalAs(UnmanagedType.LPStr)] public string pDataType;
@@ -35,7 +37,8 @@ public class RawPrinterHelper {
     // When the function is given a printer name and an unmanaged array
     // of bytes, the function sends those bytes to the print queue.
     // Returns true on success, false on failure.
-    public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, Int32 dwCount) {
+    public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, Int32 dwCount)
+    {
         Int32 dwError = 0, dwWritten = 0;
         IntPtr hPrinter = new IntPtr(0);
         DOCINFOA di = new DOCINFOA();
@@ -44,11 +47,14 @@ public class RawPrinterHelper {
         di.pDataType = "TEXT";
 
         // Open the printer.
-        if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero)) {
+        if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))
+        {
             // Start a document.
-            if (StartDocPrinter(hPrinter, 1, di)) {
+            if (StartDocPrinter(hPrinter, 1, di))
+            {
                 // Start a page.
-                if (StartPagePrinter(hPrinter)) {
+                if (StartPagePrinter(hPrinter))
+                {
                     // Write your bytes.
                     bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out dwWritten);
                     EndPagePrinter(hPrinter);
@@ -59,13 +65,15 @@ public class RawPrinterHelper {
         }
         // If you did not succeed, GetLastError may give more information
         // about why not.
-        if (bSuccess == false) {
+        if (bSuccess == false)
+        {
             dwError = Marshal.GetLastWin32Error();
         }
         return bSuccess;
     }
 
-    public static bool SendFileToPrinter(string szPrinterName, string szFileName) {
+    public static bool SendFileToPrinter(string szPrinterName, string szFileName)
+    {
         // Open the file.
         FileStream fs = new FileStream(szFileName, FileMode.Open);
         // Create a BinaryReader on the file.
@@ -90,7 +98,8 @@ public class RawPrinterHelper {
         Marshal.FreeCoTaskMem(pUnmanagedBytes);
         return bSuccess;
     }
-    public static bool SendStringToPrinter(string szPrinterName, string szString) {
+    public static bool SendStringToPrinter(string szPrinterName, string szString)
+    {
         IntPtr pBytes;
         Int32 dwCount;
         // How many characters are in the string?
