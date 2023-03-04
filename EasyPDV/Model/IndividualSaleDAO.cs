@@ -22,7 +22,7 @@ namespace EasyPDV.Model
                     "INSERT INTO venda_individual(data, produto, valor, meio_pagamento)" +
                     " VALUES (@dv, @p, @v, @mp)", connection);
                 cmd.Parameters.AddWithValue("v", individualSale.SalePrice);
-                cmd.Parameters.AddWithValue("dv", DateTime.Parse(individualSale.SaleDate));
+                cmd.Parameters.AddWithValue("dv", individualSale.SaleDate);
                 cmd.Parameters.AddWithValue("p", individualSale.Product);
                 cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
@@ -91,6 +91,35 @@ namespace EasyPDV.Model
                 connection.Close();
             }
             return value;
+        }
+        public double ReadSumByPaymentMethod(string paymentMethod)
+        {
+            double total = 0;
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"select sum(valor) from venda_individual where meio_pagamento = '{paymentMethod}'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        total = reader.GetDouble(0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return total;
         }
 
         public void DeleteAllIndividualSales()

@@ -1,4 +1,5 @@
 ﻿
+using System;
 
 namespace EasyPDV.Entities
 {
@@ -6,7 +7,7 @@ namespace EasyPDV.Entities
     {
         public int ID { get; set; }
         public double SalePrice { get; set; }
-        public string SaleDate { get; set; }
+        public DateTime SaleDate { get; set; } = DateTime.MaxValue;
         public string PaymentMethod { get; set; }
     }
 }

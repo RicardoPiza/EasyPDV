@@ -35,7 +35,7 @@ namespace EasyPDV.UI
             adpt.Fill(dt);
             vendasGridView1.DataSource = dt;
             vendasGridView1.MultiSelect = true;
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 5; i++)
             {
                 vendasGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }

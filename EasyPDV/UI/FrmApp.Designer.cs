@@ -40,6 +40,8 @@
             this.sangriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.retiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.históricoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -75,8 +77,6 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -100,9 +100,11 @@
             // 
             // produtosToolStripMenuItem
             // 
+            this.produtosToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.produtosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarToolStripMenuItem});
             this.produtosToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.produtosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
             this.produtosToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.produtosToolStripMenuItem.Text = "Produtos";
@@ -116,11 +118,13 @@
             // 
             // vendasToolStripMenuItem
             // 
+            this.vendasToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarVendaToolStripMenuItem,
             this.visualizarVendasToolStripMenuItem,
             this.trocaDeFichaEstornoToolStripMenuItem});
             this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vendasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
             this.vendasToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
             this.vendasToolStripMenuItem.Text = "Vendas";
@@ -150,9 +154,11 @@
             // 
             // faturaToolStripMenuItem
             // 
+            this.faturaToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.faturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.conferirFaturaToolStripMenuItem});
             this.faturaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.faturaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.faturaToolStripMenuItem.Name = "faturaToolStripMenuItem";
             this.faturaToolStripMenuItem.Size = new System.Drawing.Size(81, 26);
             this.faturaToolStripMenuItem.Text = "Fatura";
@@ -166,12 +172,14 @@
             // 
             // caixaToolStripMenuItem
             // 
+            this.caixaToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.caixaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.relatórioToolStripMenuItem,
             this.abrirCaixaToolStripMenuItem,
             this.fecharCaixaToolStripMenuItem,
             this.sangriaToolStripMenuItem});
             this.caixaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.caixaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
             this.caixaToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
             this.caixaToolStripMenuItem.Text = "Caixa";
@@ -219,6 +227,24 @@
             this.históricoToolStripMenuItem.Size = new System.Drawing.Size(308, 26);
             this.históricoToolStripMenuItem.Text = "Histórico ";
             this.históricoToolStripMenuItem.Click += new System.EventHandler(this.históricoToolStripMenuItem_Click);
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sobreToolStripMenuItem});
+            this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ajudaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -779,7 +805,7 @@
             // 
             this._listViewProducts.Anchor = System.Windows.Forms.AnchorStyles.None;
             this._listViewProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._listViewProducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._listViewProducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._listViewProducts.ForeColor = System.Drawing.Color.Black;
             this._listViewProducts.GridLines = true;
             this._listViewProducts.HideSelection = false;
@@ -977,22 +1003,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
-            // 
-            // ajudaToolStripMenuItem
-            // 
-            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem});
-            this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
-            // 
-            // sobreToolStripMenuItem
-            // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.sobreToolStripMenuItem.Text = "Sobre";
-            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // FrmApp
             // 

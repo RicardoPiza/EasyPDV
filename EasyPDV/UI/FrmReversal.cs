@@ -73,7 +73,7 @@ namespace EasyPDV.UI
                     string[] splitProductChange = comboProductChange.Text.Split('|');
                     string[] splitProduct = comboProduct.Text.Split('|');
                     individualSale.Product = splitProductChange[0].Trim();
-                    individualSale.SaleDate = DateTime.Now.ToString("d");
+                    individualSale.SaleDate = DateTime.Now;
                     individualSale.SalePrice = double.Parse(splitProductChange[1].Trim());
                     individualSale.PaymentMethod = "Troca ou estorno";
                     individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim());

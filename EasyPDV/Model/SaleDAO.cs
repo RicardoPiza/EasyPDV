@@ -1,4 +1,5 @@
-﻿using EasyPDV.Entities;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using EasyPDV.Entities;
 using Npgsql;
 using System;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace EasyPDV.Model
                     "INSERT INTO venda(valor_venda, data_venda, produtos, meio_pagamento)" +
                     " VALUES (@vv, @dv, @p, @mp)", connection);
                 cmd.Parameters.AddWithValue("vv", sale.SalePrice);
-                cmd.Parameters.AddWithValue("dv", DateTime.Parse(sale.SaleDate));
+                cmd.Parameters.AddWithValue("dv", sale.SaleDate);
                 cmd.Parameters.AddWithValue("p", sale.Products);
                 cmd.Parameters.AddWithValue("mp", sale.PaymentMethod);
                 cmd.ExecuteNonQuery();
@@ -44,9 +45,9 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    "SELECT id AS ID, data_venda AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
-                    "to_char(valor_venda, '9999999999999999D99') AS \"Valor total da venda (R$)\", meio_pagamento as \"Meio de pagamento\" " +
-                    "FROM venda " +
+                    "SELECT v.id AS ID, TO_char(data_venda,'dd/mm/yyyy hh24:mi') AS \"Data da venda\", array_to_string(produtos, ',') AS \"Produtos\", " +
+                    "to_char(valor_venda, '9999999999999999D99') AS \"Valor total da venda (R$)\", meio_pagamento as \"Meio de pagamento\", numero as \"Numero Caixa\" " +
+                    "FROM venda v, caixa c where c.status = 'true' " +
                     "ORDER BY id", connection);
             }
             catch (Exception ex)

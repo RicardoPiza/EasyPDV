@@ -40,38 +40,32 @@ namespace EasyPDV.UI
             {
                 if (dialogResult == DialogResult.OK)
                 {
-                    if (cashierDAO.IsCashierOpen() == false)
-                    {
-                        cashier.Number = int.Parse(txtCashier.Text);
-                        cashier.InitialBalance = double.Parse(txtBalance.Text.ToString(CultureInfo.InvariantCulture));
-                        cashier.Responsible = txtResponsible.Text;
-                        cashier.EventName = txtEventName.Text;
-                        cashier.Date = DateTime.Now;
-                        cashier.Status = true;
-                        cashierDAO.OpenCashier(cashier);
-                        individualSale.SaleDate = DateTime.Now.ToString("d");
-                        individualSale.SalePrice = double.Parse(txtBalance.Text.ToString(CultureInfo.InvariantCulture));
-                        individualSale.Product = "Valor abertura caixa";
-                        individualSale.PaymentMethod = string.Empty;
-                        individualSaleDAO.InsertIndividualSale(individualSale);
-                        MessageBox.Show("Caixa aberto");
-                        Print(txtEventName.Text +
-                              "\n -----------------" +
-                              "\n ABERTURA DE CAIXA\n" +
-                              " -----------------\n" +
-                              "\n\nCaixa: " + txtCashier.Text +
-                              "\nData: " + DateTime.Now.ToString("d") +
-                              "\nResp.: " + txtResponsible.Text +
-                              "\nSaldo: " + txtBalance.Text
-                              );
-                        this.Dispose();
-                        Application.Restart();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Caixa já se encontra aberto!");
 
-                    }
+                    cashier.Number = int.Parse(txtCashier.Text);
+                    cashier.InitialBalance = double.Parse(txtBalance.Text.ToString(CultureInfo.InvariantCulture));
+                    cashier.Responsible = txtResponsible.Text;
+                    cashier.EventName = txtEventName.Text;
+                    cashier.Date = DateTime.Now;
+                    cashier.Status = true;
+                    cashierDAO.OpenCashier(cashier);
+                    individualSale.SaleDate = DateTime.Now;
+                    individualSale.SalePrice = double.Parse(txtBalance.Text.ToString(CultureInfo.InvariantCulture));
+                    individualSale.Product = "Valor abertura caixa";
+                    individualSale.PaymentMethod = string.Empty;
+                    individualSaleDAO.InsertIndividualSale(individualSale);
+                    MessageBox.Show("Caixa aberto");
+                    Print(txtEventName.Text +
+                          "\n -----------------" +
+                          "\n ABERTURA DE CAIXA\n" +
+                          " -----------------\n" +
+                          "\n\nCaixa: " + txtCashier.Text +
+                          "\nData: " + DateTime.Now.ToString("D") +
+                          "\nResp.: " + txtResponsible.Text +
+                          "\nSaldo: " + txtBalance.Text
+                          );
+                    this.Dispose();
+                    Application.Restart();
+
                 }
             }
             else

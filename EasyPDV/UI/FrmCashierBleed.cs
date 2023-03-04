@@ -48,7 +48,7 @@ namespace EasyPDV.UI
                         cashierBleed.Type = comboBleed.Text;
                         cashierBleed.Description = txtDescription.Text;
                         cashierBleedDao.BeginMovimentation(cashierBleed);
-                        individualSale.SaleDate = DateTime.Now.ToString("d");
+                        individualSale.SaleDate = DateTime.Now;
                         if (comboBleed.Text == "Reforço")
                         {
                             individualSale.SalePrice = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));

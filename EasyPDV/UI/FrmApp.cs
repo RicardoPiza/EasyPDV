@@ -95,26 +95,31 @@ namespace EasyPDV
             Product product = new Product();
             product.Name = name;
             richTextBox3.Text = string.Empty;
-            string saleDescription = name + "........ R$" + price.ToString("F2");
+            string saleDescription = name + "........ R$ " + price.ToString("F2");
+
             if (!_SupportList.Contains(name))
             {
                 _SupportList.Add(name);
                 _listViewProducts.Items.Add(saleDescription);
                 _SoldQuantityList.Add(1);
             }
+
             else
             {
                 for (int i = 0; i < _SupportList.Count; i++)
                 {
                     if (_listViewProducts.Items[i].Text.Substring(0, 10).Equals(saleDescription.Substring(0, 10)))
                     {
+
                         _SoldQuantityList[i] += 1;
                         restingProductsRealNumber = _productDAO.CheckStock(product) - _SoldQuantityList[i];
                         saleDescription = name +
-                        "........ R$" + (price * _SoldQuantityList[i]).ToString("F2") +
+                        "........ R$ " + (price * _SoldQuantityList[i]).ToString("F2") +
                         " | Qtd = x" + _SoldQuantityList[i] + " | Estoque = " + restingProductsRealNumber;
                         _listViewProducts.Items[i].Text = saleDescription;
+
                         if (restingProductsRealNumber <= 0)
+
                         {
                             MessageBox.Show("Não temos mais " + name + " no estoque, se quiser, poderá continuar vendendo mas terá de repor posteriormente!\n\n",
                                 "Acabou no estoque", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
@@ -123,6 +128,7 @@ namespace EasyPDV
                     }
                 }
             }
+
             _SoldProductsList.Add(name + "|" + price.ToString("F2"));
             _SoldProductsListToDB.Add(name);
             _ProductIDList.Add(id);
@@ -135,15 +141,18 @@ namespace EasyPDV
         {
             foreach (int item in _ProductIDList)
             {
+                
                 Product product = new Product();
                 product.ID = item;
                 _productDAO.SubtractStock(product);
+
             }
             _ProductIDList.Clear();
         }
 
         public void Print(string s)
         {
+           
             PrintDialog pd = new PrintDialog();
             pd.PrinterSettings = new PrinterSettings();
             if (DialogResult.OK == pd.ShowDialog(this))
@@ -154,13 +163,16 @@ namespace EasyPDV
 
         private void btnMakeSale_Click_1(object sender, EventArgs e)
         {
+           
             ProductDAO productDAO = new ProductDAO();
-            _sale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            _sale.SaleDate = DateTime.UtcNow;
             _sale.SalePrice = _SaleTotal;
             _sale.Products = _SoldProductsListToDB;
             _sale.PaymentMethod = paymentMethod.Text;
+
             if (_listViewProducts.Text != "" || richTextBox3.Text != "")
             {
+
                 if (paymentMethod.Text != "")
                 {
                     DialogResult res = MessageBox.Show("Confirma a venda?", "Realizar venda", MessageBoxButtons.OKCancel);
@@ -168,6 +180,7 @@ namespace EasyPDV
                     {
                         Product p = new Product();
                         List<string> productsAbouToEnd = new List<string>();
+
                         foreach (string item in _SoldProductsList)
                         {
                             //Aqui será implementado o código de impressão de fichas
@@ -179,20 +192,24 @@ namespace EasyPDV
                                 "\n" + product[0].ToUpper() + "\n\n\n"
                                 );
                             p.Name = product[0];
+
                             if (productDAO.CheckStock(p) <= 20)
                             {
                                 productsAbouToEnd.Add(p.Name);
                             }
                         }
+
                         List<string> products = productsAbouToEnd.Distinct().ToList();
+
                         if (products.Count > 0 && warningProductsAboutToEnd == true)
                         {
                             foreach (string item in products)
                             {
                                 p.Name = item;
-                                MessageBox.Show($"Atenção, restam apenas {restingProductsRealNumber} {p.Name}(s)");
+                                MessageBox.Show($"Atenção, restam apenas {_productDAO.CheckStock(p)} {p.Name}(s)", "Produto acabando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
+                        MessageBox.Show("Venda Realizada com sucesso!");
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
                         AddIndividualProduct();
@@ -204,7 +221,6 @@ namespace EasyPDV
                         richTextBox3.Text = string.Empty;
                         paymentMethod.Text = "";
                         _SaleTotal = 0;
-                        MessageBox.Show("Venda Realizada com sucesso!");
                     }
                 }
                 else
@@ -224,7 +240,7 @@ namespace EasyPDV
             IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
             foreach (string item in _SoldProductsList)
             {
-                individualSale.SaleDate = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+                individualSale.SaleDate = DateTime.Now;
                 string[] prodSplit = item.Split('|');
                 individualSale.Product = prodSplit[0];
                 individualSale.SalePrice = double.Parse(prodSplit[1].Trim());
@@ -317,8 +333,15 @@ namespace EasyPDV
         }
         private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmOpenCashier frmOpenCashier = new FrmOpenCashier();
-            FrmHelper.OpenIfIsNot("Abrir caixa", frmOpenCashier);
+            if (cashierDAO.IsCashierOpen() == false)
+            {
+                FrmOpenCashier frmOpenCashier = new FrmOpenCashier();
+                FrmHelper.OpenIfIsNot("Abrir caixa", frmOpenCashier);
+            }
+            else
+            {
+                MessageBox.Show("Caixa já está aberto!");
+            }
         }
         private void relatórioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -418,7 +441,7 @@ namespace EasyPDV
             {
                 double change = double.Parse(txtChange.Text);
                 double total = double.Parse(richTextBox3.Text);
-                lblChange.Text = "Troco: " + (change - total).ToString("F2");
+                lblChange.Text = "Troco: R$ " + (change - total).ToString("F2");
             }
         }
 

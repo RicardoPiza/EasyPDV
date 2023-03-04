@@ -43,6 +43,10 @@ namespace EasyPDV.UI
         public void ShowTotal()
         {
             lblTotalFatura.Text = individualSaleDAO.ReadTotalIndividualSale().ToString("F2");
+            lblTotalDebito.Text = "R$" + individualSaleDAO.ReadSumByPaymentMethod("Cartão débito").ToString("F2");
+            lblTotalCredito.Text = "R$"+ individualSaleDAO.ReadSumByPaymentMethod("Cartão crédito").ToString("F2");
+            lblTotalDinheiro.Text = "R$" + individualSaleDAO.ReadSumByPaymentMethod("Dinheiro").ToString("F2");
+            lblTotalPix.Text = "R$" + individualSaleDAO.ReadSumByPaymentMethod("Pix").ToString("F2");
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -63,6 +67,10 @@ namespace EasyPDV.UI
                 XLWorkbook wb = new XLWorkbook();
                 var ws = wb.Worksheets.Add(dt, cashierOpenDAO.ReturnEventName());
                 ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSaleDAO.ReadTotalIndividualSale();
+                ws.Cell(1, 5).Value = "Total débito: " + individualSaleDAO.ReadSumByPaymentMethod("Cartão débito").ToString("F2");
+                ws.Cell(2, 5).Value = "Total crédito: " + individualSaleDAO.ReadSumByPaymentMethod("Cartão crédito").ToString("F2");
+                ws.Cell(3, 5).Value = "Total dinheiro: " + individualSaleDAO.ReadSumByPaymentMethod("Dinheiro").ToString("F2");
+                ws.Cell(4, 5).Value = "Total Pix: " + individualSaleDAO.ReadSumByPaymentMethod("Pix").ToString("F2");
                 ws.Columns().AdjustToContents();
                 ws.RangeUsed().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
                 if (path != "")
