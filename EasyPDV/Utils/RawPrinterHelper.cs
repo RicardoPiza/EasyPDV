@@ -1,6 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
+using Zebra.Sdk.Comm;
+using Zebra.Sdk.Printer.Discovery;
 
 public class RawPrinterHelper
 {
@@ -32,11 +36,6 @@ public class RawPrinterHelper
 
     [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
     public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, Int32 dwCount, out Int32 dwWritten);
-
-    // SendBytesToPrinter()
-    // When the function is given a printer name and an unmanaged array
-    // of bytes, the function sends those bytes to the print queue.
-    // Returns true on success, false on failure.
     public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, Int32 dwCount)
     {
         Int32 dwError = 0, dwWritten = 0;

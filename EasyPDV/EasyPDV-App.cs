@@ -1,7 +1,9 @@
-﻿using System;
+﻿using EasyPDV.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace EasyPDV
@@ -16,7 +18,10 @@ namespace EasyPDV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmApp());
+            Application.Run(
+                new FrmSplashScreen()
+                //new FrmApp()
+                );
         }
     }
 }

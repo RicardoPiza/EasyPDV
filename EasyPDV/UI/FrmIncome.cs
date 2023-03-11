@@ -66,7 +66,7 @@ namespace EasyPDV.UI
                 }
                 XLWorkbook wb = new XLWorkbook();
                 var ws = wb.Worksheets.Add(dt, cashierOpenDAO.ReturnEventName());
-                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 3).Value = "Total: " + individualSaleDAO.ReadTotalIndividualSale();
+                ws.Cell(ws.RangeUsed().Rows().Count() + 1, 4).Value = "Total: " + individualSaleDAO.ReadTotalIndividualSale();
                 ws.Cell(1, 5).Value = "Total débito: " + individualSaleDAO.ReadSumByPaymentMethod("Cartão débito").ToString("F2");
                 ws.Cell(2, 5).Value = "Total crédito: " + individualSaleDAO.ReadSumByPaymentMethod("Cartão crédito").ToString("F2");
                 ws.Cell(3, 5).Value = "Total dinheiro: " + individualSaleDAO.ReadSumByPaymentMethod("Dinheiro").ToString("F2");
@@ -127,7 +127,11 @@ namespace EasyPDV.UI
 
         private void chart1_Click(object sender, EventArgs e)
         {
-
+            LoadSales();
+            ShowTotal();
+            Invalidate();
+            ClearChart();
+            SetChart();
         }
     }
 }

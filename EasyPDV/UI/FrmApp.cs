@@ -74,7 +74,7 @@ namespace EasyPDV
                         _btnProducts[i].Image = _productDAO.GrabImage(_product);
                         _btnProducts[i].Text = _Products[i].Name + "\n";
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
+                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description );
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
@@ -115,7 +115,7 @@ namespace EasyPDV
                         restingProductsRealNumber = _productDAO.CheckStock(product) - _SoldQuantityList[i];
                         saleDescription = name +
                         "........ R$ " + (price * _SoldQuantityList[i]).ToString("F2") +
-                        " | Qtd = x" + _SoldQuantityList[i] + " | Estoque = " + restingProductsRealNumber;
+                        " | Qtd = x" + _SoldQuantityList[i];
                         _listViewProducts.Items[i].Text = saleDescription;
 
                         if (restingProductsRealNumber <= 0)
@@ -157,10 +157,9 @@ namespace EasyPDV
             pd.PrinterSettings = new PrinterSettings();
             if (DialogResult.OK == pd.ShowDialog(this))
             {
-                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
+                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, String.Format(s));
             }
         }
-
         private void btnMakeSale_Click_1(object sender, EventArgs e)
         {
            
@@ -186,10 +185,10 @@ namespace EasyPDV
                             //Aqui será implementado o código de impressão de fichas
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
-                            Print(
-                                cashierDAO.ReturnEventName() + "\n\n " +
-                                DateTime.Now.ToString("d") + "\n\n" +
-                                "\n" + product[0].ToUpper() + "\n\n\n"
+                            Print("-------------------\n\n"+
+                                TypeHelper.FormatToCenter(cashierDAO.ReturnEventName().Trim()) + "\n" +
+                                TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
+                                "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n"+ "-------------------"
                                 );
                             p.Name = product[0];
 
@@ -413,7 +412,7 @@ namespace EasyPDV
                 Application.Restart();
             }
         }
-
+        
 
         private void paymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -445,6 +444,9 @@ namespace EasyPDV
             }
         }
 
-
+        private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -35,8 +35,8 @@ namespace EasyPDV.UI
 
         private void btnOpenCashier_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Confirma abertura?", "Abertura Caixa", MessageBoxButtons.OKCancel); int num2;
-            if (int.TryParse(txtCashier.Text, out num2))
+            DialogResult dialogResult = MessageBox.Show("Confirma abertura?", "Abertura Caixa", MessageBoxButtons.OKCancel);
+            if (int.TryParse(txtCashier.Text, out int num2))
             {
                 if (dialogResult == DialogResult.OK)
                 {
@@ -59,7 +59,7 @@ namespace EasyPDV.UI
                           "\n ABERTURA DE CAIXA\n" +
                           " -----------------\n" +
                           "\n\nCaixa: " + txtCashier.Text +
-                          "\nData: " + DateTime.Now.ToString("D") +
+                          "\nData: " + DateTime.Now.ToString("d") +
                           "\nResp.: " + txtResponsible.Text +
                           "\nSaldo: " + txtBalance.Text
                           );

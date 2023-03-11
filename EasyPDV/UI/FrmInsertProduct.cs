@@ -34,17 +34,45 @@ namespace EasyPDV.UI
             product.Status = "ativado";
             double num;
             int num2;
+            bool insert = true;
             if (double.TryParse(textBox2.Text, out num) && textBox1.Text != "" && textBox2.Text != "" && txtImagePath.Text != "")
             {
-                product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));
-                if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "")
+                if (textBox1.Text.Length < 19)
                 {
-                    product.StockQuantity = int.Parse(txtStock.Text);
-                    productDAO.Insert(product);
-                    MessageBox.Show("Cadastro efetuado!");
-                    textBox1.Text = string.Empty;
+                    foreach (Product product in productDAO.ReadActivated())
+                    {
+                        if (product.Name.Length >= 10 && textBox1.Text.Length >= 10)
+                        {
+                            string nameProduct = product.Name.Substring(0, 10).ToLower();
+                            string nameProductBox = textBox1.Text.Substring(0, 10).ToLower();
+                            if (nameProductBox == nameProduct)
+                            {
+                                MessageBox.Show("OS primeiros 10 caractéres do nome do produto," +
+                                    " devem ser diferentes dos 10 primeiros caractéres de produtos já cadastrados. " +
+                                    $"Produto conflitante: {product.Name}");
+                                insert = false;
+
+                            }
+                        }
+                    }
+                    product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));
+                    if (int.TryParse(txtStock.Text, out num2) && txtStock.Text != "" && insert == true)
+                    {
+                        product.StockQuantity = int.Parse(txtStock.Text);
+                        productDAO.Insert(product);
+                        MessageBox.Show("Cadastro efetuado!");
+                        textBox1.Text = string.Empty;
+                    }
+
+
+                }
+                else
+                {
+
+                    MessageBox.Show("O nome do produto deve ter no máximo 19 caractéres!");
                 }
             }
+
             else
             {
                 MessageBox.Show(
@@ -233,5 +261,12 @@ namespace EasyPDV.UI
 
         }
 
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 19)
+            {
+                MessageBox.Show("O nome do produto deve ter no máximo 19 caractéres!");
+            }
+        }
     }
 }

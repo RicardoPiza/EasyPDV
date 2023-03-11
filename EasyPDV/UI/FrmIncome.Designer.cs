@@ -113,7 +113,7 @@
             this.salesGridView1.RowHeadersVisible = false;
             this.salesGridView1.RowHeadersWidth = 60;
             this.salesGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesGridView1.Size = new System.Drawing.Size(867, 526);
+            this.salesGridView1.Size = new System.Drawing.Size(866, 526);
             this.salesGridView1.TabIndex = 20;
             this.salesGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.salesGridView1.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,7 +143,7 @@
             this.lblTotalFatura.AutoSize = true;
             this.lblTotalFatura.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalFatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalFatura.Location = new System.Drawing.Point(1233, 601);
+            this.lblTotalFatura.Location = new System.Drawing.Point(1151, 601);
             this.lblTotalFatura.Name = "lblTotalFatura";
             this.lblTotalFatura.Size = new System.Drawing.Size(0, 37);
             this.lblTotalFatura.TabIndex = 21;
@@ -153,7 +153,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1072, 601);
+            this.label2.Location = new System.Drawing.Point(990, 601);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 37);
             this.label2.TabIndex = 22;
@@ -189,7 +189,7 @@
             series1.ShadowColor = System.Drawing.Color.DimGray;
             series1.ShadowOffset = 10;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(487, 532);
+            this.chart1.Size = new System.Drawing.Size(405, 532);
             this.chart1.TabIndex = 31;
             this.chart1.Text = "chart1";
             title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
@@ -206,8 +206,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.0293F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.9707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.96571F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.03429F));
             this.tableLayoutPanel1.Controls.Add(this.salesGridView1, 0, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 54);
@@ -215,7 +215,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1365, 532);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 532);
             this.tableLayoutPanel1.TabIndex = 32;
             // 
             // btnRefresh
@@ -256,7 +256,7 @@
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 26);
+            this.label3.Size = new System.Drawing.Size(76, 26);
             this.label3.TabIndex = 33;
             this.label3.Text = "Débito:";
             // 
@@ -267,7 +267,7 @@
             this.lblTotalDebito.AutoSize = true;
             this.lblTotalDebito.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalDebito.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDebito.Location = new System.Drawing.Point(86, 0);
+            this.lblTotalDebito.Location = new System.Drawing.Point(85, 0);
             this.lblTotalDebito.Name = "lblTotalDebito";
             this.lblTotalDebito.Size = new System.Drawing.Size(0, 26);
             this.lblTotalDebito.TabIndex = 34;
@@ -279,7 +279,7 @@
             this.lblTotalPix.AutoSize = true;
             this.lblTotalPix.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalPix.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPix.Location = new System.Drawing.Point(680, 0);
+            this.lblTotalPix.Location = new System.Drawing.Point(673, 0);
             this.lblTotalPix.Name = "lblTotalPix";
             this.lblTotalPix.Size = new System.Drawing.Size(0, 26);
             this.lblTotalPix.TabIndex = 36;
@@ -292,9 +292,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(628, 0);
+            this.label5.Location = new System.Drawing.Point(622, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 26);
+            this.label5.Size = new System.Drawing.Size(45, 26);
             this.label5.TabIndex = 35;
             this.label5.Text = "Pix:";
             // 
@@ -305,7 +305,7 @@
             this.lblTotalDinheiro.AutoSize = true;
             this.lblTotalDinheiro.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalDinheiro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDinheiro.Location = new System.Drawing.Point(509, 0);
+            this.lblTotalDinheiro.Location = new System.Drawing.Point(504, 0);
             this.lblTotalDinheiro.Name = "lblTotalDinheiro";
             this.lblTotalDinheiro.Size = new System.Drawing.Size(0, 26);
             this.lblTotalDinheiro.TabIndex = 38;
@@ -318,9 +318,9 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(410, 0);
+            this.label7.Location = new System.Drawing.Point(406, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 26);
+            this.label7.Size = new System.Drawing.Size(92, 26);
             this.label7.TabIndex = 37;
             this.label7.Text = "Dinheiro:";
             // 
@@ -331,7 +331,7 @@
             this.lblTotalCredito.AutoSize = true;
             this.lblTotalCredito.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalCredito.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCredito.Location = new System.Drawing.Point(292, 0);
+            this.lblTotalCredito.Location = new System.Drawing.Point(289, 0);
             this.lblTotalCredito.Name = "lblTotalCredito";
             this.lblTotalCredito.Size = new System.Drawing.Size(0, 26);
             this.lblTotalCredito.TabIndex = 40;
@@ -344,14 +344,15 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(202, 0);
+            this.label9.Location = new System.Drawing.Point(200, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 26);
+            this.label9.Size = new System.Drawing.Size(83, 26);
             this.label9.TabIndex = 39;
             this.label9.Text = "Crédito:";
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 8;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.61381F));
@@ -375,7 +376,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(782, 26);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(781, 26);
             this.tableLayoutPanel2.TabIndex = 41;
             // 
             // FrmIncome
@@ -385,7 +386,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(255)))), ((int)(((byte)(215)))));
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1390, 655);
+            this.ClientSize = new System.Drawing.Size(1308, 655);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnRefresh);

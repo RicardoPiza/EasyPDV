@@ -71,6 +71,40 @@ namespace EasyPDV.Model
             }
             return list;
         }
+        public List<Product> ReadActivated()
+        {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            List<Product> list = new List<Product>();
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        "SELECT id, nome, preco, estoque from produto where status  = 'ativado' order by status", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Product p = new Product();
+                        p.ID = (int)reader.GetInt16(0);
+                        p.Name = reader.GetString(1);
+                        p.Price = (double)reader.GetDouble(2);
+                        list.Add(p);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
         public Image GrabImage(Product product)
         {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);

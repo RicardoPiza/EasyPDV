@@ -38,7 +38,7 @@ namespace EasyPDV.UI
         {
             List<Product> products = new List<Product>();
             List<Product> soldProducts = new List<Product>();
-            products = productDAO.ReadAll();
+            products = productDAO.ReadActivated();
             soldProducts = individualSaleDAO.ReadSoldProducts();
             List<Product> noRepeatSoldProducts = soldProducts.Distinct().ToList();
             foreach (Product product in noRepeatSoldProducts)

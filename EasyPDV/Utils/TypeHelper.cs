@@ -15,4 +15,12 @@ public static class TypeHelper
     {
         return NumericTypes.Contains(Nullable.GetUnderlyingType(myType) ?? myType);
     }
+
+    public static string FormatToCenter(string toFormat)
+    {
+        double midDouble = (19 - toFormat.Length) / 2;
+        int mid = (int) Math.Round(midDouble);
+        toFormat = toFormat.PadLeft(mid + toFormat.Length);
+        return toFormat;
+    }
 }

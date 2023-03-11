@@ -45,9 +45,9 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    "select produto as \"Produto\", count(produto) as \"Total vendido\"," +
-                    "to_char(sum(valor), '9999999999999999D99') AS \"Fatura do produto(R$)\" " +
-                    "from venda_individual group by produto ", connection);
+                    "select produto as \"Produto\", count(produto) as \"Quantidade vendida\", to_char(valor, '9999999999999999D99') as \"Valor unitário(R$)\"," +
+                    "to_char(sum(valor), '9999999999999999D99') AS \"Total faturado(R$)\" " +
+                    "from venda_individual group by valor, produto ", connection);
             }
             catch (Exception ex)
             {
@@ -142,7 +142,7 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
-        public void DeleteIndividualSale(string individualSale)
+        public void DeleteIndividualSale(string product)
         {
             connection = new NpgsqlConnection(connectionString);
             try
@@ -150,7 +150,7 @@ namespace EasyPDV.Model
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
-                    $"delete from venda_individual where id = (Select id from venda_individual where produto = '{individualSale}' LIMIT 1)", connection);
+                    $"delete from venda_individual where id = (Select id from venda_individual where produto = '{product}' LIMIT 1)", connection);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
