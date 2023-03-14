@@ -23,16 +23,6 @@ namespace EasyPDV.UI
         {
 
         }
-        public void Print(string s)
-        {
-            PrintDialog pd = new PrintDialog();
-            pd.PrinterSettings = new PrinterSettings();
-            if (DialogResult.OK == pd.ShowDialog(this))
-            {
-                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
-            }
-        }
-
         private void btnOpenCashier_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Confirma abertura?", "Abertura Caixa", MessageBoxButtons.OKCancel);
@@ -54,7 +44,7 @@ namespace EasyPDV.UI
                     individualSale.PaymentMethod = string.Empty;
                     individualSaleDAO.InsertIndividualSale(individualSale);
                     MessageBox.Show("Caixa aberto");
-                    Print(txtEventName.Text +
+                    RawPrinterHelper.Print(txtEventName.Text +
                           "\n -----------------" +
                           "\n ABERTURA DE CAIXA\n" +
                           " -----------------\n" +

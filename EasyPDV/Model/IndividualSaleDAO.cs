@@ -45,7 +45,8 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    "select produto as \"Produto\", count(produto) as \"Quantidade vendida\", to_char(valor, '9999999999999999D99') as \"Valor unitário(R$)\"," +
+                    "select produto as \"Produto\", count(produto) as \"Quantidade vendida\"," +
+                    "to_char(valor, '9999999999999999D99') as \"Valor unitário(R$)\"," +
                     "to_char(sum(valor), '9999999999999999D99') AS \"Total faturado(R$)\" " +
                     "from venda_individual group by valor, produto ", connection);
             }
@@ -111,7 +112,36 @@ namespace EasyPDV.Model
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return total;
+        }
+        public int ReadTotalIndividualSoldProduct(string productName)
+        {
+            int total = 0;
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"select count(produto) from venda_individual where produto  = '{productName}'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        total = reader.GetInt16(0);
+                    }
+                }
+            }
+            catch (Exception)
             {
                 return 0;
             }

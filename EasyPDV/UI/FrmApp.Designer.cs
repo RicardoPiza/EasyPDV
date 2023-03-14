@@ -63,7 +63,7 @@
             this.button1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneContextMenuStrip1 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.siticoneContextMenuStrip2 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
-            this.richTextBox3 = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.totalBox = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this._listViewProducts = new System.Windows.Forms.ListView();
             this.btnRealizar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,6 +77,7 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.visualizarTrocasEstornosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -122,7 +123,8 @@
             this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarVendaToolStripMenuItem,
             this.visualizarVendasToolStripMenuItem,
-            this.trocaDeFichaEstornoToolStripMenuItem});
+            this.trocaDeFichaEstornoToolStripMenuItem,
+            this.visualizarTrocasEstornosToolStripMenuItem});
             this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
@@ -133,7 +135,7 @@
             // 
             this.cancelarVendaToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelarVendaToolStripMenuItem.Name = "cancelarVendaToolStripMenuItem";
-            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.cancelarVendaToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
             this.cancelarVendaToolStripMenuItem.Text = "Visualizar canceladas";
             this.cancelarVendaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVendaToolStripMenuItem_Click_1);
             // 
@@ -141,15 +143,15 @@
             // 
             this.visualizarVendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visualizarVendasToolStripMenuItem.Name = "visualizarVendasToolStripMenuItem";
-            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.visualizarVendasToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
             this.visualizarVendasToolStripMenuItem.Text = "Visualizar vendas";
             this.visualizarVendasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVendasToolStripMenuItem_Click_1);
             // 
             // trocaDeFichaEstornoToolStripMenuItem
             // 
             this.trocaDeFichaEstornoToolStripMenuItem.Name = "trocaDeFichaEstornoToolStripMenuItem";
-            this.trocaDeFichaEstornoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
-            this.trocaDeFichaEstornoToolStripMenuItem.Text = "Troca de ficha/Estorno";
+            this.trocaDeFichaEstornoToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
+            this.trocaDeFichaEstornoToolStripMenuItem.Text = "Troca de Ficha/Estorno";
             this.trocaDeFichaEstornoToolStripMenuItem.Click += new System.EventHandler(this.trocaDeFichaEstornoToolStripMenuItem_Click);
             // 
             // faturaToolStripMenuItem
@@ -773,33 +775,33 @@
             this.siticoneContextMenuStrip2.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.siticoneContextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // richTextBox3
+            // totalBox
             // 
-            this.richTextBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.richTextBox3.BackColor = System.Drawing.Color.Transparent;
-            this.richTextBox3.BorderColor = System.Drawing.Color.Transparent;
-            this.richTextBox3.BorderRadius = 20;
-            this.richTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox3.DefaultText = "";
-            this.richTextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.richTextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.richTextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.richTextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.richTextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.ForeColor = System.Drawing.Color.Black;
-            this.richTextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.richTextBox3.Location = new System.Drawing.Point(47, 610);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.richTextBox3.Multiline = true;
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.PasswordChar = '\0';
-            this.richTextBox3.PlaceholderText = "";
-            this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.SelectedText = "";
-            this.richTextBox3.Size = new System.Drawing.Size(345, 40);
-            this.richTextBox3.TabIndex = 14;
-            this.richTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.totalBox.BackColor = System.Drawing.Color.Transparent;
+            this.totalBox.BorderColor = System.Drawing.Color.Transparent;
+            this.totalBox.BorderRadius = 20;
+            this.totalBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.totalBox.DefaultText = "";
+            this.totalBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.totalBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.totalBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.totalBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.totalBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalBox.ForeColor = System.Drawing.Color.Black;
+            this.totalBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalBox.Location = new System.Drawing.Point(47, 610);
+            this.totalBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.totalBox.Multiline = true;
+            this.totalBox.Name = "totalBox";
+            this.totalBox.PasswordChar = '\0';
+            this.totalBox.PlaceholderText = "";
+            this.totalBox.ReadOnly = true;
+            this.totalBox.SelectedText = "";
+            this.totalBox.Size = new System.Drawing.Size(345, 40);
+            this.totalBox.TabIndex = 14;
+            this.totalBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _listViewProducts
             // 
@@ -966,7 +968,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.Image = global::EasyPDV.Properties.Resources.dust1;
             this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(332, 495);
+            this.btnCancel.Location = new System.Drawing.Point(332, 498);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(60, 68);
             this.btnCancel.TabIndex = 15;
@@ -1004,6 +1006,13 @@
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
             // 
+            // visualizarTrocasEstornosToolStripMenuItem
+            // 
+            this.visualizarTrocasEstornosToolStripMenuItem.Name = "visualizarTrocasEstornosToolStripMenuItem";
+            this.visualizarTrocasEstornosToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
+            this.visualizarTrocasEstornosToolStripMenuItem.Text = "Visualizar Trocas/Estornos";
+            this.visualizarTrocasEstornosToolStripMenuItem.Click += new System.EventHandler(this.visualizarTrocasEstornosToolStripMenuItem_Click);
+            // 
             // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1016,7 +1025,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this._listViewProducts);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.totalBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -1057,7 +1066,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip siticoneContextMenuStrip1;
         private Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip siticoneContextMenuStrip2;
-        private Siticone.Desktop.UI.WinForms.SiticoneTextBox richTextBox3;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox totalBox;
         private System.Windows.Forms.ListView _listViewProducts;
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelarVendaToolStripMenuItem;
@@ -1099,6 +1108,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visualizarTrocasEstornosToolStripMenuItem;
     }
 }
 

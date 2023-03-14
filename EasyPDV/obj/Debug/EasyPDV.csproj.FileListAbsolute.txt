@@ -123,3 +123,4 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\Newtonsoft.Json.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\SdkApi.Core.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\SdkApi.Desktop.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ZebraPrinterSdk.xml
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmReversalReport.resources

@@ -32,6 +32,7 @@
             this.btnRelatorio = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCancelarVenda = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.vendasGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,6 +162,17 @@
             this.btnCancelarVenda.Text = "Excluir selecionado";
             this.btnCancelarVenda.Click += new System.EventHandler(this.btnSaleCancel_Click);
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
+            // 
             // FrmCancelledSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,5 +205,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneDataGridView vendasGridView1;
         private System.Windows.Forms.Button btnRefresh;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancelarVenda;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

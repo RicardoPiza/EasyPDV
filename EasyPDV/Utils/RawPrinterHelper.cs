@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Drawing.Printing;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
-using Zebra.Sdk.Comm;
-using Zebra.Sdk.Printer.Discovery;
+using System.Windows.Forms;
 
 public class RawPrinterHelper
 {
@@ -110,5 +108,15 @@ public class RawPrinterHelper
         SendBytesToPrinter(szPrinterName, pBytes, dwCount);
         Marshal.FreeCoTaskMem(pBytes);
         return true;
+    }
+    public static void Print(string s)
+    {
+
+        PrintDialog pd = new PrintDialog();
+        pd.PrinterSettings = new PrinterSettings();
+        if (DialogResult.OK == pd.ShowDialog())
+        {
+            SendStringToPrinter(pd.PrinterSettings.PrinterName, String.Format(s));
+        }
     }
 }

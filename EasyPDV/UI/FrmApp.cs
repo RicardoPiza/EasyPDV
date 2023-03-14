@@ -10,6 +10,9 @@ using Color = System.Drawing.Color;
 using System.Drawing.Printing;
 using ToolTip = System.Windows.Forms.ToolTip;
 using EasyPDV.Utils;
+using FluentFTP;
+using Npgsql;
+using ClosedXML.Excel;
 
 namespace EasyPDV
 {
@@ -17,7 +20,9 @@ namespace EasyPDV
     {
         public double _SaleTotal { get; set; }
         public static string EventName { get; set; }
-
+        IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
+        CashierBleed cashierBleed = new CashierBleed();
+        CashierBleedDAO cashierBleedDAO = new CashierBleedDAO();
         SaleDAO _saleDao = new SaleDAO();
         RegularSale _sale = new RegularSale();
         Product _product = new Product();
@@ -28,7 +33,8 @@ namespace EasyPDV
         List<int> _ProductIDList = new List<int>();
         ToolTip toolTip = new ToolTip();
         List<string> _SupportList = new List<string>();
-        CashierOpenDAO cashierDAO = new CashierOpenDAO();
+        CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
+        ReversedSaleDAO reversedSaleDAO = new ReversedSaleDAO();
         public static bool warningProductsAboutToEnd = true;
         int restingProductsRealNumber;
         public FrmApp()
@@ -40,10 +46,17 @@ namespace EasyPDV
             ColorLabels();
             HiddeStuff();
             LoadButtons();
+            NameEvent();
+            ButtonsAnimation();
+        }
+
+
+        private void NameEvent()
+        {
             string[] eventName = txtEventName.Text.Split('-');
             EventName = eventName[0];
-            CursorAnimation();
         }
+
         public void HiddeStuff()
         {
             txtChange.Visible = false;
@@ -56,9 +69,9 @@ namespace EasyPDV
         }
         public void LoadButtons()
         {
-            if (cashierDAO.IsCashierOpen())
+            if (cashierOpenDAO.IsCashierOpen())
             {
-                txtEventName.Text = cashierDAO.ReturnEventName() + " - " + DateTime.Now.ToString("d");
+                txtEventName.Text = cashierOpenDAO.ReturnEventName() + " - " + DateTime.Now.ToString("d");
                 txtEventName.Visible = true;
                 List<SiticoneButton> _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
                 List<Product> _Products = new List<Product>();
@@ -74,7 +87,7 @@ namespace EasyPDV
                         _btnProducts[i].Image = _productDAO.GrabImage(_product);
                         _btnProducts[i].Text = _Products[i].Name + "\n";
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description );
+                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
@@ -94,8 +107,8 @@ namespace EasyPDV
         {
             Product product = new Product();
             product.Name = name;
-            richTextBox3.Text = string.Empty;
-            string saleDescription = name + "........ R$ " + price.ToString("F2");
+            totalBox.Text = string.Empty;
+            string saleDescription = name + "........ R$ " + price.ToString("F2") + " | x1";
 
             if (!_SupportList.Contains(name))
             {
@@ -115,7 +128,7 @@ namespace EasyPDV
                         restingProductsRealNumber = _productDAO.CheckStock(product) - _SoldQuantityList[i];
                         saleDescription = name +
                         "........ R$ " + (price * _SoldQuantityList[i]).ToString("F2") +
-                        " | Qtd = x" + _SoldQuantityList[i];
+                        " | x" + _SoldQuantityList[i];
                         _listViewProducts.Items[i].Text = saleDescription;
 
                         if (restingProductsRealNumber <= 0)
@@ -133,7 +146,7 @@ namespace EasyPDV
             _SoldProductsListToDB.Add(name);
             _ProductIDList.Add(id);
             _SaleTotal += price;
-            richTextBox3.Text += _SaleTotal.ToString("F2");
+            totalBox.Text += "R$ " + _SaleTotal.ToString("F2");
             ChangeToGive();
         }
 
@@ -141,7 +154,7 @@ namespace EasyPDV
         {
             foreach (int item in _ProductIDList)
             {
-                
+
                 Product product = new Product();
                 product.ID = item;
                 _productDAO.SubtractStock(product);
@@ -149,27 +162,16 @@ namespace EasyPDV
             }
             _ProductIDList.Clear();
         }
-
-        public void Print(string s)
-        {
-           
-            PrintDialog pd = new PrintDialog();
-            pd.PrinterSettings = new PrinterSettings();
-            if (DialogResult.OK == pd.ShowDialog(this))
-            {
-                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, String.Format(s));
-            }
-        }
         private void btnMakeSale_Click_1(object sender, EventArgs e)
         {
-           
+
             ProductDAO productDAO = new ProductDAO();
             _sale.SaleDate = DateTime.UtcNow;
             _sale.SalePrice = _SaleTotal;
             _sale.Products = _SoldProductsListToDB;
             _sale.PaymentMethod = paymentMethod.Text;
 
-            if (_listViewProducts.Text != "" || richTextBox3.Text != "")
+            if (_listViewProducts.Text != "" || totalBox.Text != "")
             {
 
                 if (paymentMethod.Text != "")
@@ -185,10 +187,10 @@ namespace EasyPDV
                             //Aqui será implementado o código de impressão de fichas
                             //Para cada item na lista, uma ficha impressa
                             string[] product = item.Split('|');
-                            Print("-------------------\n\n"+
-                                TypeHelper.FormatToCenter(cashierDAO.ReturnEventName().Trim()) + "\n" +
+                            RawPrinterHelper.Print("-------------------\n\n" +
+                                TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
                                 TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
-                                "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n"+ "-------------------"
+                                "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n" + "-------------------"
                                 );
                             p.Name = product[0];
 
@@ -217,7 +219,7 @@ namespace EasyPDV
                         _SupportList.Clear();
                         _SoldProductsList.Clear();
                         _SoldProductsListToDB.Clear();
-                        richTextBox3.Text = string.Empty;
+                        totalBox.Text = string.Empty;
                         paymentMethod.Text = "";
                         _SaleTotal = 0;
                     }
@@ -248,24 +250,13 @@ namespace EasyPDV
             }
         }
 
-        private void CursorAnimation()
+        private void ButtonsAnimation()
         {
-            button1.Cursor = Cursors.Hand;
-            button2.Cursor = Cursors.Hand;
-            button3.Cursor = Cursors.Hand;
-            button4.Cursor = Cursors.Hand;
-            button5.Cursor = Cursors.Hand;
-            button6.Cursor = Cursors.Hand;
-            button7.Cursor = Cursors.Hand;
-            button8.Cursor = Cursors.Hand;
-            button9.Cursor = Cursors.Hand;
-            button10.Cursor = Cursors.Hand;
-            button11.Cursor = Cursors.Hand;
-            button12.Cursor = Cursors.Hand;
-            button13.Cursor = Cursors.Hand;
-            button14.Cursor = Cursors.Hand;
-            button15.Cursor = Cursors.Hand;
-            button16.Cursor = Cursors.Hand;
+            toolTip.SetToolTip(btnCancel, "Limpar Visor");
+            foreach (SiticoneButton _btn in tableLayoutPanel1.Controls.OfType<SiticoneButton>())
+            {
+                _btn.Cursor = Cursors.Hand;
+            }
         }
         private void button12_MouseMove(object sender, MouseEventArgs e)
         {
@@ -290,7 +281,7 @@ namespace EasyPDV
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            richTextBox3.Text = string.Empty;
+            totalBox.Text = string.Empty;
             _listViewProducts.Clear();
             _SoldQuantityList.Clear();
             _SupportList.Clear();
@@ -332,7 +323,7 @@ namespace EasyPDV
         }
         private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cashierDAO.IsCashierOpen() == false)
+            if (cashierOpenDAO.IsCashierOpen() == false)
             {
                 FrmOpenCashier frmOpenCashier = new FrmOpenCashier();
                 FrmHelper.OpenIfIsNot("Abrir caixa", frmOpenCashier);
@@ -381,20 +372,17 @@ namespace EasyPDV
 
         private void fecharCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Certifique-se de tirar todos os relatórios antes de fechar o caixa.\n\nConfirma fechamento?",
+            DialogResult dialogResult = MessageBox.Show("Será gerado um relatório Geral com vendas, faturas e vendas canceladas." +
+                "\n\nApós confirmação, selecione onde irá salva-lo",
                 "Fechar caixa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.OK)
             {
-                IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
-                CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
-                CashierBleed cashierBleed = new CashierBleed();
-                CashierBleedDAO cashierBleedDAO = new CashierBleedDAO();
-                SaleDAO saleDAO = new SaleDAO();
+
                 CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
                 cashierOpenDAO.ReadSome(cashierBleed);
                 double totalSales = individualSaleDAO.ReadTotalIndividualSale();
                 double initialBalance = cashierOpenDAO.InitialBalance();
-                Print(EventName +
+                RawPrinterHelper.Print(EventName +
                           "\n ------------------" +
                           "\n  FECHAMENTO CAIXA\n" +
                           " ------------------\n" +
@@ -404,15 +392,16 @@ namespace EasyPDV
                           "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
                           "\nSaldo final:\nR$" + (totalSales).ToString("F2")
                           );
+                ReportHelper.FinalReport(individualSaleDAO, cashierOpenDAO, _saleDao, cancelledSaleDAO, reversedSaleDAO);
                 cashierOpenDAO.CloseCashier();
-                saleDAO.DeleteAllSales();
+                _saleDao.DeleteAllSales();
                 cancelledSaleDAO.DeleteAllCancelledSales();
                 cashierBleedDAO.DeleteAllBleedCashier();
                 individualSaleDAO.DeleteAllIndividualSales();
+                reversedSaleDAO.DeleteAllReversedSales();
                 Application.Restart();
             }
         }
-        
 
         private void paymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -436,10 +425,10 @@ namespace EasyPDV
         }
         public void ChangeToGive()
         {
-            if (richTextBox3.Text != "" && txtChange.Text != "")
+            if (totalBox.Text != "" && txtChange.Text != "")
             {
                 double change = double.Parse(txtChange.Text);
-                double total = double.Parse(richTextBox3.Text);
+                double total = double.Parse(totalBox.Text.Substring(2));
                 lblChange.Text = "Troco: R$ " + (change - total).ToString("F2");
             }
         }
@@ -447,6 +436,17 @@ namespace EasyPDV
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void darkModeSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void visualizarTrocasEstornosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReversalReport frmReversalReport = new FrmReversalReport();
+            FrmHelper.OpenIfIsNot("Troca/Estorno", frmReversalReport);
         }
     }
 }

@@ -370,7 +370,7 @@ namespace EasyPDV.Model
             }
             return desc;
         }
-        public double GetPrice(Product p)
+        public double GetPrice(string name)
         {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             double price = 0;
@@ -379,7 +379,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                        $"SELECT preco from produto where nome = '{p.Name}' limit 1", connection);
+                        $"SELECT preco from produto where nome = '{name}' limit 1", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {

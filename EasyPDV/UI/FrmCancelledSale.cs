@@ -105,5 +105,10 @@ namespace EasyPDV.UI
                 ListCancelledSales();
             }
         }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

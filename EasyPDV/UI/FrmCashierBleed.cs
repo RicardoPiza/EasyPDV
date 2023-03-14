@@ -61,7 +61,7 @@ namespace EasyPDV.UI
                         individualSale.PaymentMethod = string.Empty;
                         individualSaleDAO.InsertIndividualSale(individualSale);
                         MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        Print(FrmApp.EventName +
+                        RawPrinterHelper.Print(FrmApp.EventName +
                               "\n -----------------" +
                               "\n     " + comboBleed.Text.ToUpper() + "\n" +
                               " -----------------\n" +
@@ -85,16 +85,6 @@ namespace EasyPDV.UI
                 Dispose();
             }
         }
-        public void Print(string s)
-        {
-            PrintDialog pd = new PrintDialog();
-            pd.PrinterSettings = new PrinterSettings();
-            if (DialogResult.OK == pd.ShowDialog(this))
-            {
-                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, s);
-            }
-        }
-
         private void label4_Click(object sender, EventArgs e)
         {
 

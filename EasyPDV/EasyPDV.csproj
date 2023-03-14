@@ -171,9 +171,11 @@
     <Compile Include="Entities\Cashier.cs" />
     <Compile Include="Entities\CashierOpen.cs" />
     <Compile Include="Entities\CashierBleed.cs" />
+    <Compile Include="Entities\ReversedSale.cs" />
     <Compile Include="Entities\Sale.cs" />
     <Compile Include="Model\CashierBleedDAO.cs" />
     <Compile Include="Model\CashierOpenDAO.cs" />
+    <Compile Include="Model\ReversedSaleDAO.cs" />
     <Compile Include="Model\DAO.cs" />
     <Compile Include="Model\ProductDAO.cs" />
     <Compile Include="Model\CancelledSaleDAO.cs" />
@@ -239,6 +241,12 @@
     <Compile Include="UI\FrmReversal.Designer.cs">
       <DependentUpon>FrmReversal.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmReversalReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReversalReport.Designer.cs">
+      <DependentUpon>FrmReversalReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +273,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\RawPrinterHelper.cs" />
+    <Compile Include="Utils\ReportHelper.cs" />
     <Compile Include="Utils\TypeHelper.cs" />
     <EmbeddedResource Include="UI\FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
@@ -302,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmReversal.resx">
       <DependentUpon>FrmReversal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmReversalReport.resx">
+      <DependentUpon>FrmReversalReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>
