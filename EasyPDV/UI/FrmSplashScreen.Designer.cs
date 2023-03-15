@@ -63,7 +63,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "EasyPDV - Ponto de Vendas - v0.9.3.6";
+            this.label1.Text = "EasyPDV - Ponto de Vendas - v0.9.4.0";
             // 
             // label2
             // 

@@ -392,7 +392,7 @@ namespace EasyPDV
                           "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
                           "\nSaldo final:\nR$" + (totalSales).ToString("F2")
                           );
-                ReportHelper.FinalReport(individualSaleDAO, cashierOpenDAO, _saleDao, cancelledSaleDAO, reversedSaleDAO);
+                ReportHelper.FinalReport(individualSaleDAO, cashierOpenDAO, _saleDao, cancelledSaleDAO, reversedSaleDAO, cashierBleedDAO);
                 cashierOpenDAO.CloseCashier();
                 _saleDao.DeleteAllSales();
                 cancelledSaleDAO.DeleteAllCancelledSales();

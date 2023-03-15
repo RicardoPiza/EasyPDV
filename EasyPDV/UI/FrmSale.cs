@@ -61,7 +61,7 @@ namespace EasyPDV.UI
                         string[] itemsInList = row.Cells[2].Value.ToString().Split(',');
                         for (int i = 0; i < itemsInList.Length; i++)
                         {
-                            individualSaleDAO.DeleteIndividualSale(itemsInList[i]);
+                            individualSaleDAO.DeleteIndividualSale(itemsInList[i], row.Cells[4].Value.ToString());
                         }
                     }
                 }

@@ -77,52 +77,62 @@ namespace EasyPDV.UI
             DialogResult dialogResult = MessageBox.Show("Confirma ação?", "Realizar Troca/Estorno", MessageBoxButtons.OKCancel);
             if (actionCombo.Text == "Trocar")
             {
-                if (SoldProductsCount.Value > 0 && ToChangeProductsCount.Value > 0)
+                if (SoldProductsCount.Value > 0 && ToChangeProductsCount.Value > 0
+                    && comboProductChange.Text != "" && comboProduct.Text != ""
+                    && paymentMethod.Text != "")
                 {
-                    if (dialogResult == DialogResult.OK && comboProductChange.Text != "" && comboProduct.Text != "")
+                    if (dialogResult == DialogResult.OK)
                     {
-
-                        for (int i = 0; i < SoldProductsCount.Value; i++)
+                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), paymentMethod.Text) == true)
                         {
+                            for (int i = 0; i < SoldProductsCount.Value; i++)
+                            {
 
-                            individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim());
-                            product.Name = splitProduct[0].Trim();
-                            changeSale.ProductChangeFrom = splitProduct[0].Trim() + " x" + SoldProductsCount.Value.ToString();
-                            productDAO.SumStock(product);
+                                individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim(), paymentMethod.Text);
+                                product.Name = splitProduct[0].Trim();
+                                changeSale.ProductChangeFrom = splitProduct[0].Trim() + " x" + SoldProductsCount.Value.ToString();
+                                productDAO.SumStock(product);
 
+                            }
+
+                            for (int i = 0; i < ToChangeProductsCount.Value; i++)
+                            {
+
+                                product.Name = splitProductChange[0].Trim();
+                                changeSale.ProductChangeTo = splitProductChange[0].Trim() + " x" + ToChangeProductsCount.Value.ToString();
+                                product.ID = productDAO.GetID(product);
+                                productDAO.SubtractStock(product);
+                                individualSale.Product = splitProductChange[0].Trim();
+                                individualSale.SaleDate = DateTime.Now;
+                                individualSale.SalePrice = double.Parse(splitProductChange[1].Trim());
+                                individualSale.PaymentMethod = "Troca ou estorno";
+                                individualSale.PaymentMethod = paymentMethod.Text;
+                                individualSaleDAO.InsertIndividualSale(individualSale);
+                                RawPrinterHelper.Print(
+                                       "-------------------\n\n" +
+                                       TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
+                                       TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
+                                       "\n" + TypeHelper.FormatToCenter(product.Name.ToUpper().Trim()) + "\n\n" +
+                                       "-------------------"
+                                       );
+                            }
+                            changeSale.ChangeType = "Troca";
+                            changeSale.SaleDate = DateTime.Now;
+                            FromProduct = double.Parse(splitProduct[1]) * (int)SoldProductsCount.Value;
+                            ToProduct = double.Parse(splitProductChange[1]) * (int)ToChangeProductsCount.Value;
+                            changeSale.Balance = ToProduct - FromProduct;
+                            changeSale.PaymentMethod = paymentMethod.Text;
+                            changeSaleDAO.InsertChangedSale(changeSale);
+
+                            comboProduct.Items.Clear();
+                            comboProductChange.Items.Clear();
+                            PopulateCombos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Esse produto não foi vendido com esse meio de pagamento");
                         }
 
-                        for (int i = 0; i < ToChangeProductsCount.Value; i++)
-                        {
-
-                            product.Name = splitProductChange[0].Trim();
-                            changeSale.ProductChangeTo = splitProductChange[0].Trim() + " x" + ToChangeProductsCount.Value.ToString();
-                            product.ID = productDAO.GetID(product);
-                            productDAO.SubtractStock(product);
-                            individualSale.Product = splitProductChange[0].Trim();
-                            individualSale.SaleDate = DateTime.Now;
-                            individualSale.SalePrice = double.Parse(splitProductChange[1].Trim());
-                            individualSale.PaymentMethod = "Troca ou estorno";
-                            individualSaleDAO.InsertIndividualSale(individualSale);
-                            RawPrinterHelper.Print(
-                                   "-------------------\n\n" +
-                                   TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
-                                   TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
-                                   "\n" + TypeHelper.FormatToCenter(product.Name.ToUpper().Trim()) + "\n\n" +
-                                   "-------------------"
-                                   );
-                        }
-
-                        changeSale.ChangeType = "Troca";
-                        changeSale.SaleDate = DateTime.Now;
-                        FromProduct = double.Parse(splitProduct[1]) * (int)SoldProductsCount.Value;
-                        ToProduct = double.Parse(splitProductChange[1]) * (int)ToChangeProductsCount.Value;
-                        changeSale.Balance = ToProduct - FromProduct;
-                        changeSaleDAO.InsertChangedSale(changeSale);
-
-                        comboProduct.Items.Clear();
-                        comboProductChange.Items.Clear();
-                        PopulateCombos();
 
                     }
                 }
@@ -132,30 +142,39 @@ namespace EasyPDV.UI
                     MessageBox.Show("Preencha todos os campos corretamente!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            if (actionCombo.Text == "Estornar")
+            else if (actionCombo.Text == "Estornar")
             {
-                if (SoldProductsCount.Value > 0)
+                if (SoldProductsCount.Value > 0 && comboProduct.Text != "" && paymentMethod.Text != "")
                 {
-                    if (dialogResult == DialogResult.OK && comboProduct.Text != "")
+                    if (dialogResult == DialogResult.OK)
                     {
-                        for (int i = 0; i < SoldProductsCount.Value; i++)
+                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), paymentMethod.Text) == true)
                         {
-                            changeSale.ProductChangeFrom = splitProduct[0].Trim() + " x" + SoldProductsCount.Value.ToString();
-                            individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim());
-                            product.Name = splitProduct[0].Trim();
-                            productDAO.SumStock(product);
+                            for (int i = 0; i < SoldProductsCount.Value; i++)
+                            {
+                                changeSale.ProductChangeFrom = splitProduct[0].Trim() + " x" + SoldProductsCount.Value.ToString();
+                                individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim(), paymentMethod.Text);
+                                product.Name = splitProduct[0].Trim();
+                                productDAO.SumStock(product);
+                            }
+
+                            changeSale.ProductChangeTo = " - ";
+                            changeSale.ChangeType = "Estorno";
+                            changeSale.SaleDate = DateTime.Now;
+                            FromProduct = double.Parse(splitProduct[1]) * (int)SoldProductsCount.Value;
+                            changeSale.Balance = FromProduct * -1;
+                            changeSale.PaymentMethod = paymentMethod.Text;
+                            changeSaleDAO.InsertChangedSale(changeSale);
+
+
+                            comboProduct.Items.Clear();
+                            comboProductChange.Items.Clear();
+                            PopulateCombos();
                         }
-
-                        changeSale.ProductChangeTo = " - ";
-                        changeSale.ChangeType = "Estorno";
-                        changeSale.SaleDate = DateTime.Now;
-                        FromProduct = double.Parse(splitProduct[1]) * (int)SoldProductsCount.Value;
-                        changeSale.Balance = FromProduct * -1;
-                        changeSaleDAO.InsertChangedSale(changeSale);
-
-                        comboProduct.Items.Clear();
-                        comboProductChange.Items.Clear();
-                        PopulateCombos();
+                        else
+                        {
+                            MessageBox.Show("Esse produto não foi vendido com esse meio de pagamento");
+                        }
                     }
                 }
 

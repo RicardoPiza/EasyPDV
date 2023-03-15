@@ -52,7 +52,14 @@ namespace EasyPDV.Utils
                 System.Diagnostics.Process.Start(@path + fileName + ".xlsx");
             }
         }
-        public static void FinalReport(IndividualSaleDAO individualSaleDAO, CashierOpenDAO cashierOpenDAO, SaleDAO saleDAO, CancelledSaleDAO cancelledSaleDAO, ReversedSaleDAO saleReversalDAO)
+        public static void FinalReport(
+            IndividualSaleDAO individualSaleDAO,
+            CashierOpenDAO cashierOpenDAO,
+            SaleDAO saleDAO,
+            CancelledSaleDAO cancelledSaleDAO,
+            ReversedSaleDAO saleReversalDAO,
+            CashierBleedDAO cashierBleedDAO
+            )
         {
             List<NpgsqlCommand> cmdList = new List<NpgsqlCommand>();
             List<string> wsList = new List<string>();
@@ -60,10 +67,12 @@ namespace EasyPDV.Utils
             wsList.Add("Vendas Canceladas");
             wsList.Add("Fatura");
             wsList.Add("Troca-Estorno");
+            wsList.Add("Sangria-Reforço");
             cmdList.Add(saleDAO.ReadSale());
             cmdList.Add(cancelledSaleDAO.ReadCancelledSale());
             cmdList.Add(individualSaleDAO.ReadIndividualSale());
             cmdList.Add(saleReversalDAO.ReadSaleReversal());
+            cmdList.Add(cashierBleedDAO.ReadAll());
             MakeReport(cmdList, "\\Relarório Geral Caixa nº " +
                 cashierOpenDAO.ReturnCashierNumber() + " - " + DateTime.Now.ToString("dd-MM-yyyy"), wsList);
         }

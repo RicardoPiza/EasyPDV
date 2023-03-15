@@ -32,6 +32,11 @@ namespace EasyPDV.UI
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
+            MakeReport();
+        }
+
+        private void MakeReport()
+        {
             string fileName = "\\Relatório movimentações do caixa " + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx";
             string path = "";
             if (fbd.ShowDialog() == DialogResult.OK)

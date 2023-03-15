@@ -1,13 +1,6 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using EasyPDV.Entities;
+﻿using EasyPDV.Entities;
 using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls.WebParts;
 using System.Windows.Forms;
 
 namespace EasyPDV.Model
@@ -24,14 +17,15 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand("" +
-                    "INSERT INTO troca(produto_de, produto_para, tipo_troca, data, saldo)" +
-                    " VALUES (@pd, @pp, @tt, @d, @s)", connection);
+                cmd = new NpgsqlCommand(
+                    "INSERT INTO troca(produto_de, produto_para, tipo_troca, data, saldo, meio_pagamento)" +
+                    " VALUES (@pd, @pp, @tt, @d, @s,@m)", connection);
                 cmd.Parameters.AddWithValue("pd", changeSale.ProductChangeFrom);
                 cmd.Parameters.AddWithValue("pp", changeSale.ProductChangeTo);
                 cmd.Parameters.AddWithValue("tt", changeSale.ChangeType);
                 cmd.Parameters.AddWithValue("d", changeSale.SaleDate);
                 cmd.Parameters.AddWithValue("s", changeSale.Balance);
+                cmd.Parameters.AddWithValue("m", changeSale.PaymentMethod);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -53,7 +47,8 @@ namespace EasyPDV.Model
                 connection.Open();
                 cmd = new NpgsqlCommand(
                     "SELECT id AS ID, produto_de as \"Troca De\", produto_para as \"Troca Para\","+ 
-                    "TO_char(data, 'dd/mm/yyyy hh24:mi') AS \"Data e Hora\", to_char(saldo, '9999999999999999D99') AS \"Saldo\" "+
+                    "TO_char(data, 'dd/mm/yyyy hh24:mi') AS \"Data e Hora\", to_char(saldo, '9999999999999999D99') AS \"Saldo\"," +
+                    "meio_pagamento as \"Meio de pagamento\" "+
                     "FROM troca ORDER BY id", connection);
             }
             catch (Exception ex)

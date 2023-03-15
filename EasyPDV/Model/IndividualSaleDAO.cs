@@ -36,6 +36,36 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
+        public bool HasProduct(string product, string paymentMethod)
+        {
+            bool hasProduct = false;
+            connection = new NpgsqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"select * from venda_individual where meio_pagamento = '{paymentMethod}' and produto = '{product}' limit 1", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader.GetString(2) != "")
+                    {
+                        hasProduct = true; 
+                        break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return hasProduct;
+        }
 
         public NpgsqlCommand ReadIndividualSale()
         {
@@ -172,7 +202,7 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
-        public void DeleteIndividualSale(string product)
+        public void DeleteIndividualSale(string product, string paymentMethod)
         {
             connection = new NpgsqlConnection(connectionString);
             try
@@ -180,7 +210,8 @@ namespace EasyPDV.Model
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
-                    $"delete from venda_individual where id = (Select id from venda_individual where produto = '{product}' LIMIT 1)", connection);
+                    $"delete from venda_individual where id = (select id from venda_individual where meio_pagamento " +
+                    $"= '{paymentMethod}' and produto = '{product}' limit 1)", connection);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
