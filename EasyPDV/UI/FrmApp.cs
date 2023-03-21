@@ -372,10 +372,12 @@ namespace EasyPDV
 
         private void fecharCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Será gerado um relatório Geral com vendas, faturas e vendas canceladas." +
+            DialogResult dialogResult = MessageBox.Show(
+                "Deseja fechar o caixa? \n\n" +
+                "Será gerado um relatório Geral com vendas, faturas e vendas canceladas." +
                 "\n\nApós confirmação, selecione onde irá salva-lo",
                 "Fechar caixa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK && cashierOpenDAO.IsCashierOpen())
             {
 
                 CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
@@ -400,6 +402,10 @@ namespace EasyPDV
                 individualSaleDAO.DeleteAllIndividualSales();
                 reversedSaleDAO.DeleteAllReversedSales();
                 Application.Restart();
+            }
+            else
+            {
+                MessageBox.Show("Caixa já está fechado");
             }
         }
 

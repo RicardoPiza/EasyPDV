@@ -31,6 +31,7 @@
             this.cancelarVendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trocaDeFichaEstornoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarTrocasEstornosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferirFaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,6 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.visualizarTrocasEstornosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -153,6 +153,13 @@
             this.trocaDeFichaEstornoToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
             this.trocaDeFichaEstornoToolStripMenuItem.Text = "Troca de Ficha/Estorno";
             this.trocaDeFichaEstornoToolStripMenuItem.Click += new System.EventHandler(this.trocaDeFichaEstornoToolStripMenuItem_Click);
+            // 
+            // visualizarTrocasEstornosToolStripMenuItem
+            // 
+            this.visualizarTrocasEstornosToolStripMenuItem.Name = "visualizarTrocasEstornosToolStripMenuItem";
+            this.visualizarTrocasEstornosToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
+            this.visualizarTrocasEstornosToolStripMenuItem.Text = "Visualizar Trocas/Estornos";
+            this.visualizarTrocasEstornosToolStripMenuItem.Click += new System.EventHandler(this.visualizarTrocasEstornosToolStripMenuItem_Click);
             // 
             // faturaToolStripMenuItem
             // 
@@ -1005,13 +1012,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
-            // 
-            // visualizarTrocasEstornosToolStripMenuItem
-            // 
-            this.visualizarTrocasEstornosToolStripMenuItem.Name = "visualizarTrocasEstornosToolStripMenuItem";
-            this.visualizarTrocasEstornosToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
-            this.visualizarTrocasEstornosToolStripMenuItem.Text = "Visualizar Trocas/Estornos";
-            this.visualizarTrocasEstornosToolStripMenuItem.Click += new System.EventHandler(this.visualizarTrocasEstornosToolStripMenuItem_Click);
             // 
             // FrmApp
             // 

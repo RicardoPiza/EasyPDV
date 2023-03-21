@@ -107,23 +107,10 @@ namespace EasyPDV.Model
             try
             {
                 connection.Open();
-                if (IsCashierOpen() == true)
-                {
-                    NpgsqlCommand cmd;
-                    try
-                    {
-                        cmd = new NpgsqlCommand("Update caixa set status = false where id =" + cashier.ID, connection);
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception)
-                    {
-                        throw;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Caixa já está fechado!");
-                }
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand("Update caixa set status = false where id =" + cashier.ID, connection);
+                cmd.ExecuteNonQuery();
+
             }
             catch (Exception)
             {
