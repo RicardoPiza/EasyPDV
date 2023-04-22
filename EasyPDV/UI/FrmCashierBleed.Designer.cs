@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCashierBleed));
             this.btnOpenCashier = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDescription = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
@@ -94,7 +95,7 @@
             this.txtDescription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDescription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Location = new System.Drawing.Point(203, 170);
             this.txtDescription.Multiline = true;
@@ -135,7 +136,7 @@
             this.comboBleed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBleed.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.comboBleed.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.comboBleed.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboBleed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBleed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.comboBleed.ItemHeight = 30;
             this.comboBleed.Items.AddRange(new object[] {
@@ -157,7 +158,7 @@
             this.txtValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtValue.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtValue.Location = new System.Drawing.Point(203, 88);
             this.txtValue.Name = "txtValue";
@@ -166,6 +167,7 @@
             this.txtValue.SelectedText = "";
             this.txtValue.Size = new System.Drawing.Size(129, 36);
             this.txtValue.TabIndex = 5;
+            this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
             // 
             // label3
             // 
@@ -210,12 +212,13 @@
             this.txtCashier.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCashier.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCashier.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCashier.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtCashier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCashier.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCashier.Location = new System.Drawing.Point(203, 3);
             this.txtCashier.Name = "txtCashier";
             this.txtCashier.PasswordChar = '\0';
             this.txtCashier.PlaceholderText = "";
+            this.txtCashier.ReadOnly = true;
             this.txtCashier.SelectedText = "";
             this.txtCashier.Size = new System.Drawing.Size(97, 36);
             this.txtCashier.TabIndex = 1;
@@ -230,12 +233,13 @@
             this.txtResponsible.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtResponsible.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtResponsible.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtResponsible.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtResponsible.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResponsible.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtResponsible.Location = new System.Drawing.Point(203, 45);
             this.txtResponsible.Name = "txtResponsible";
             this.txtResponsible.PasswordChar = '\0';
             this.txtResponsible.PlaceholderText = "";
+            this.txtResponsible.ReadOnly = true;
             this.txtResponsible.SelectedText = "";
             this.txtResponsible.Size = new System.Drawing.Size(200, 36);
             this.txtResponsible.TabIndex = 3;
@@ -250,6 +254,7 @@
             this.Controls.Add(this.btnOpenCashier);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCashierBleed";
             this.Text = "Sangria de caixa";
             this.Load += new System.EventHandler(this.FrmCashierBleed_Load);

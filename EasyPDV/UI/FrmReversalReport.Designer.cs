@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReversalReport));
             this.gridReversal = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
@@ -165,6 +166,7 @@
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.gridReversal);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmReversalReport";
             this.Text = "Troca/Estorno";
             this.Load += new System.EventHandler(this.FrmReversalReport_Load);

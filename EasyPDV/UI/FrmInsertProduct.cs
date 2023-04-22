@@ -41,18 +41,15 @@ namespace EasyPDV.UI
                 {
                     foreach (Product product in productDAO.ReadActivated())
                     {
-                        if (product.Name.Length >= 10 && textBox1.Text.Length >= 10)
+                        string nameProduct = product.Name.Substring(0, product.Name.Length).ToLower();
+                        string nameProductTextBox = textBox1.Text.Substring(0, textBox1.Text.Length).ToLower();
+                        if (nameProductTextBox == nameProduct)
                         {
-                            string nameProduct = product.Name.Substring(0, 10).ToLower();
-                            string nameProductBox = textBox1.Text.Substring(0, 10).ToLower();
-                            if (nameProductBox == nameProduct)
-                            {
-                                MessageBox.Show("OS primeiros 10 caractéres do nome do produto," +
-                                    " devem ser diferentes dos 10 primeiros caractéres de produtos já cadastrados. " +
-                                    $"Produto conflitante: {product.Name}");
-                                insert = false;
 
-                            }
+                            MessageBox.Show("Esse produto está confiltando com um produto já cadastrado. \n" +
+                                $"Produto conflitante: {product.Name}", "Conflito de produtos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            insert = false;
+
                         }
                     }
                     product.Price = double.Parse(textBox2.Text.ToString(CultureInfo.InvariantCulture));

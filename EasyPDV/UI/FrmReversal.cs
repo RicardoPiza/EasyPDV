@@ -29,6 +29,11 @@ namespace EasyPDV.UI
         {
             HideStuff();
             PopulateCombos();
+            ButtonCursor();
+        }
+        public void ButtonCursor()
+        {
+            btnChange.Cursor = Cursors.Hand;
         }
         public void HideStuff()
         {

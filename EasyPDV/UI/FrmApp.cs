@@ -10,9 +10,6 @@ using Color = System.Drawing.Color;
 using System.Drawing.Printing;
 using ToolTip = System.Windows.Forms.ToolTip;
 using EasyPDV.Utils;
-using FluentFTP;
-using Npgsql;
-using ClosedXML.Excel;
 
 namespace EasyPDV
 {
@@ -296,6 +293,7 @@ namespace EasyPDV
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Application.Restart();
+            toolTip.SetToolTip(btnRefresh, "Reiniciar o programa");
         }
         private void btnRefresh_MouseMove(object sender, MouseEventArgs e)
         {
@@ -377,31 +375,34 @@ namespace EasyPDV
                 "Será gerado um relatório Geral com vendas, faturas e vendas canceladas." +
                 "\n\nApós confirmação, selecione onde irá salva-lo",
                 "Fechar caixa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.OK && cashierOpenDAO.IsCashierOpen())
+            if (cashierOpenDAO.IsCashierOpen())
             {
+                if (dialogResult == DialogResult.OK)
+                {
 
-                CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
-                cashierOpenDAO.ReadSome(cashierBleed);
-                double totalSales = individualSaleDAO.ReadTotalIndividualSale();
-                double initialBalance = cashierOpenDAO.InitialBalance();
-                RawPrinterHelper.Print(EventName +
-                          "\n ------------------" +
-                          "\n  FECHAMENTO CAIXA\n" +
-                          " ------------------\n" +
-                          "\n\nCaixa: " + cashierBleed.Number +
-                          "\nData: " + DateTime.Now.ToString("d") +
-                          "\nResp.: " + cashierBleed.Responsible +
-                          "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
-                          "\nSaldo final:\nR$" + (totalSales).ToString("F2")
-                          );
-                ReportHelper.FinalReport(individualSaleDAO, cashierOpenDAO, _saleDao, cancelledSaleDAO, reversedSaleDAO, cashierBleedDAO);
-                cashierOpenDAO.CloseCashier();
-                _saleDao.DeleteAllSales();
-                cancelledSaleDAO.DeleteAllCancelledSales();
-                cashierBleedDAO.DeleteAllBleedCashier();
-                individualSaleDAO.DeleteAllIndividualSales();
-                reversedSaleDAO.DeleteAllReversedSales();
-                Application.Restart();
+                    CancelledSaleDAO cancelledSaleDAO = new CancelledSaleDAO();
+                    cashierOpenDAO.ReadSome(cashierBleed);
+                    double totalSales = individualSaleDAO.ReadTotalIndividualSale();
+                    double initialBalance = cashierOpenDAO.InitialBalance();
+                    RawPrinterHelper.Print(EventName +
+                              "\n ------------------" +
+                              "\n  FECHAMENTO CAIXA\n" +
+                              " ------------------\n" +
+                              "\n\nCaixa: " + cashierBleed.Number +
+                              "\nData: " + DateTime.Now.ToString("d") +
+                              "\nResp.: " + cashierBleed.Responsible +
+                              "\nSaldo inicial:\nR$" + initialBalance.ToString("F2") +
+                              "\nSaldo final:\nR$" + (totalSales).ToString("F2")
+                              );
+                    ReportHelper.FinalReport(individualSaleDAO, cashierOpenDAO, _saleDao, cancelledSaleDAO, reversedSaleDAO, cashierBleedDAO);
+                    cashierOpenDAO.CloseCashier();
+                    _saleDao.DeleteAllSales();
+                    cancelledSaleDAO.DeleteAllCancelledSales();
+                    cashierBleedDAO.DeleteAllBleedCashier();
+                    individualSaleDAO.DeleteAllIndividualSales();
+                    reversedSaleDAO.DeleteAllReversedSales();
+                    Application.Restart();
+                }
             }
             else
             {

@@ -26,6 +26,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCashierReport));
             this.cashierGridView = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
@@ -134,6 +135,7 @@
             this.button1.Size = new System.Drawing.Size(35, 45);
             this.button1.TabIndex = 31;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmCashierReport
@@ -148,6 +150,7 @@
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.cashierGridView);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCashierReport";
             this.Text = "Relatório de aberturas";
             this.Load += new System.EventHandler(this.FrmCashierReport_Load);

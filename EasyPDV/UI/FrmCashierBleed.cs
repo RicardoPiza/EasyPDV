@@ -24,7 +24,7 @@ namespace EasyPDV.UI
         {
             AutoFillBoxes();
         }
-        public void AutoFillBoxes() 
+        public void AutoFillBoxes()
         {
             txtCashier.Text = cashierOpenDAO.ReturnCashierNumber().ToString();
             txtResponsible.Text = cashierOpenDAO.ReturnResponsibleName();
@@ -34,58 +34,79 @@ namespace EasyPDV.UI
         {
             DialogResult dialogResult = new DialogResult();
             dialogResult = MessageBox.Show("Confirma movimentação do caixa?", "Confirmar realização", MessageBoxButtons.OKCancel);
+
             if (dialogResult == DialogResult.OK)
             {
-                if (comboBleed.Text != "")
+                MakeTransaction();
+            }
+        }
+
+        private void MakeTransaction()
+        {
+            if (comboBleed.Text != "")
+            {
+                if (cashierOpenDAO.IsCashierOpen() == true)
                 {
-                    if (cashierOpenDAO.IsCashierOpen() == true)
+                    cashierBleed.Number = int.Parse(txtCashier.Text);
+                    cashierBleed.Date = DateTime.Now;
+                    cashierBleed.Responsible = txtResponsible.Text;
+                    cashierBleed.Value = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
+                    cashierBleed.EventName = FrmApp.EventName;
+                    cashierBleed.Type = comboBleed.Text;
+                    cashierBleed.Description = txtDescription.Text;
+                    cashierBleedDao.BeginMovimentation(cashierBleed);
+                    individualSale.SaleDate = DateTime.Now;
+
+                    if (comboBleed.Text == "Reforço")
                     {
-                        cashierBleed.Number = int.Parse(txtCashier.Text);
-                        cashierBleed.Date = DateTime.Now;
-                        cashierBleed.Responsible = txtResponsible.Text;
-                        cashierBleed.Value = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
-                        cashierBleed.EventName = FrmApp.EventName;
-                        cashierBleed.Type = comboBleed.Text;
-                        cashierBleed.Description = txtDescription.Text;
-                        cashierBleedDao.BeginMovimentation(cashierBleed);
-                        individualSale.SaleDate = DateTime.Now;
-                        if (comboBleed.Text == "Reforço")
-                        {
-                            individualSale.SalePrice = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
-                        }
-                        else
-                        {
-                            individualSale.SalePrice = -double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
-                        }
-                        individualSale.Product = comboBleed.Text;
-                        individualSale.PaymentMethod = string.Empty;
-                        individualSaleDAO.InsertIndividualSale(individualSale);
-                        MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        RawPrinterHelper.Print(FrmApp.EventName +
-                              "\n -----------------" +
-                              "\n     " + comboBleed.Text.ToUpper() + "\n" +
-                              " -----------------\n" +
-                              "\n\nCaixa: " + txtCashier.Text +
-                              "\nData: " + DateTime.Now.ToString("d") +
-                              "\nResp.: " + txtResponsible.Text +
-                              "\nDescrição: " + txtDescription.Text +
-                              "\nValor: R$" + txtValue.Text
-                              );
+                        individualSale.SalePrice = double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
                     }
+
+                    else if (individualSaleDAO.ReadTotalIndividualSale() >= double.Parse(txtValue.Text) && comboBleed.Text == "Retirada")
+                    {
+                        individualSale.SalePrice = -double.Parse(txtValue.Text.ToString(CultureInfo.InvariantCulture));
+                    }
+
                     else
                     {
-                        MessageBox.Show("O caixa se encontra fechado! Abra-o para concluir a operação",
-                            "Abra o caixa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Sem dinheiro suficiente no caixa");
+                        return;
                     }
+                    individualSale.Product = comboBleed.Text;
+                    individualSale.PaymentMethod = string.Empty;
+                    individualSaleDAO.InsertIndividualSale(individualSale);
+                    MessageBox.Show("Movimentação realizada", "Sangria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    RawPrinterHelper.Print(FrmApp.EventName +
+                          "\n -----------------" +
+                          "\n     " + comboBleed.Text.ToUpper() + "\n" +
+                          " -----------------\n" +
+                          "\n\nCaixa: " + txtCashier.Text +
+                          "\nData: " + DateTime.Now.ToString("d") +
+                          "\nResp.: " + txtResponsible.Text +
+                          "\nDescrição: " + txtDescription.Text +
+                          "\nValor: R$" + txtValue.Text
+                          );
                 }
                 else
                 {
-                    MessageBox.Show("Escolha o tipo de movimentação");
+                    MessageBox.Show("O caixa se encontra fechado! Abra-o para concluir a operação",
+                        "Abra o caixa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                Dispose();
             }
+            else
+            {
+                MessageBox.Show("Escolha o tipo de movimentação");
+            }
+
+            Dispose();
         }
+
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValue_TextChanged(object sender, EventArgs e)
         {
 
         }

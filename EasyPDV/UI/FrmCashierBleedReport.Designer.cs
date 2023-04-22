@@ -26,6 +26,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCashierBleedReport));
             this.reportBleedGridView = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
@@ -132,6 +133,7 @@
             this.button1.Size = new System.Drawing.Size(35, 45);
             this.button1.TabIndex = 32;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmCashierBleedReport
@@ -146,6 +148,7 @@
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.reportBleedGridView);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCashierBleedReport";
             this.Text = "Histórico de movimentação";
             this.Load += new System.EventHandler(this.FrmCashierBleedReport_Load);

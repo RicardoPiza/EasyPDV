@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOpenCashier));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.txtEventName = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
@@ -216,6 +217,7 @@
             this.Controls.Add(this.btnOpenCashier);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmOpenCashier";
             this.Text = "Abrir caixa";
             this.Load += new System.EventHandler(this.FrmOpenCashier_Load);

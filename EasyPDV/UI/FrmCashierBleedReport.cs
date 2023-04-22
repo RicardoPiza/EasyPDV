@@ -21,6 +21,8 @@ namespace EasyPDV.UI
         private void FrmCashierBleedReport_Load(object sender, EventArgs e)
         {
             LoadBleedCashier();
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRelatorio.Cursor = Cursors.Hand;
         }
         public void LoadBleedCashier()
         {

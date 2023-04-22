@@ -30,6 +30,13 @@ namespace EasyPDV.UI
         private void FrmReversalReport_Load(object sender, EventArgs e)
         {
             ShowReversals();
+            ButtonCursors();
+        }
+        public void ButtonCursors()
+        {
+            btnRefresh.Cursor = Cursors.Hand;
+            btnDelete.Cursor = Cursors.Hand;
+            btnReport.Cursor = Cursors.Hand;
         }
         public void ShowReversals()
         {
