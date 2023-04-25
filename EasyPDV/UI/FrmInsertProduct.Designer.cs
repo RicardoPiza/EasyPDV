@@ -413,8 +413,8 @@
             this.productStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.productStatus.ItemHeight = 30;
             this.productStatus.Items.AddRange(new object[] {
-            "Ativado",
-            "Desativado"});
+            "Ativados",
+            "Desativados"});
             this.productStatus.Location = new System.Drawing.Point(689, 23);
             this.productStatus.MaxLength = 2;
             this.productStatus.Name = "productStatus";
