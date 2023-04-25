@@ -78,6 +78,7 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pesquisarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -124,7 +125,8 @@
             this.cancelarVendaToolStripMenuItem,
             this.visualizarVendasToolStripMenuItem,
             this.trocaDeFichaEstornoToolStripMenuItem,
-            this.visualizarTrocasEstornosToolStripMenuItem});
+            this.visualizarTrocasEstornosToolStripMenuItem,
+            this.pesquisarVendasToolStripMenuItem});
             this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
@@ -1013,6 +1015,13 @@
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
             // 
+            // pesquisarVendasToolStripMenuItem
+            // 
+            this.pesquisarVendasToolStripMenuItem.Name = "pesquisarVendasToolStripMenuItem";
+            this.pesquisarVendasToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
+            this.pesquisarVendasToolStripMenuItem.Text = "Pesquisar vendas";
+            this.pesquisarVendasToolStripMenuItem.Click += new System.EventHandler(this.pesquisarVendasToolStripMenuItem_Click);
+            // 
             // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1109,6 +1118,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarTrocasEstornosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pesquisarVendasToolStripMenuItem;
     }
 }
 

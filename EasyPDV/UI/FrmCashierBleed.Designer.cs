@@ -97,13 +97,14 @@
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(203, 170);
+            this.txtDescription.Location = new System.Drawing.Point(204, 171);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PasswordChar = '\0';
             this.txtDescription.PlaceholderText = "";
             this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(237, 117);
+            this.txtDescription.Size = new System.Drawing.Size(235, 116);
             this.txtDescription.TabIndex = 12;
             // 
             // label4
@@ -160,12 +161,13 @@
             this.txtValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtValue.Location = new System.Drawing.Point(203, 88);
+            this.txtValue.Location = new System.Drawing.Point(204, 89);
+            this.txtValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtValue.Name = "txtValue";
             this.txtValue.PasswordChar = '\0';
             this.txtValue.PlaceholderText = "";
             this.txtValue.SelectedText = "";
-            this.txtValue.Size = new System.Drawing.Size(129, 36);
+            this.txtValue.Size = new System.Drawing.Size(129, 35);
             this.txtValue.TabIndex = 5;
             this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
             // 
@@ -214,13 +216,14 @@
             this.txtCashier.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCashier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCashier.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCashier.Location = new System.Drawing.Point(203, 3);
+            this.txtCashier.Location = new System.Drawing.Point(204, 4);
+            this.txtCashier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCashier.Name = "txtCashier";
             this.txtCashier.PasswordChar = '\0';
             this.txtCashier.PlaceholderText = "";
             this.txtCashier.ReadOnly = true;
             this.txtCashier.SelectedText = "";
-            this.txtCashier.Size = new System.Drawing.Size(97, 36);
+            this.txtCashier.Size = new System.Drawing.Size(97, 34);
             this.txtCashier.TabIndex = 1;
             // 
             // txtResponsible
@@ -235,13 +238,14 @@
             this.txtResponsible.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtResponsible.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResponsible.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtResponsible.Location = new System.Drawing.Point(203, 45);
+            this.txtResponsible.Location = new System.Drawing.Point(204, 46);
+            this.txtResponsible.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtResponsible.Name = "txtResponsible";
             this.txtResponsible.PasswordChar = '\0';
             this.txtResponsible.PlaceholderText = "";
             this.txtResponsible.ReadOnly = true;
             this.txtResponsible.SelectedText = "";
-            this.txtResponsible.Size = new System.Drawing.Size(200, 36);
+            this.txtResponsible.Size = new System.Drawing.Size(200, 35);
             this.txtResponsible.TabIndex = 3;
             // 
             // FrmCashierBleed

@@ -19,12 +19,14 @@ namespace EasyPDV.Model
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand("" +
-                    "INSERT INTO venda_individual(data, produto, valor, meio_pagamento)" +
-                    " VALUES (@dv, @p, @v, @mp)", connection);
+                    "INSERT INTO venda_individual(data, produto, valor, meio_pagamento, id_venda)" +
+                    " VALUES (@dv, @p, @v, @mp, @idv)", connection);
+
                 cmd.Parameters.AddWithValue("v", individualSale.SalePrice);
                 cmd.Parameters.AddWithValue("dv", individualSale.SaleDate);
                 cmd.Parameters.AddWithValue("p", individualSale.Product);
                 cmd.Parameters.AddWithValue("mp", individualSale.PaymentMethod);
+                cmd.Parameters.AddWithValue("idv", individualSale.ExternalSaleID);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
@@ -152,6 +154,27 @@ namespace EasyPDV.Model
             }
             return total;
         }
+        public NpgsqlCommand ReadBySaleId(int id)
+        {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                        $"SELECT id_venda, produto, valor, meio_pagamento from venda_individual where id_venda  = {id} order by produto", connection);
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return cmd;
+        }
         public int ReadTotalIndividualSoldProduct(string productName)
         {
             int total = 0;
@@ -180,6 +203,35 @@ namespace EasyPDV.Model
                 connection.Close();
             }
             return total;
+        }
+        public int GetExternalSaleId()
+        {
+            int value = 0;
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"select id from venda order by data_venda desc limit 1", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetInt16(0);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return value;
         }
 
         public void DeleteAllIndividualSales()

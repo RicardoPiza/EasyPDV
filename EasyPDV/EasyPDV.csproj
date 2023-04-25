@@ -259,6 +259,12 @@
     <Compile Include="UI\FrmCancelledSale.Designer.cs">
       <DependentUpon>FrmCancelledSale.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmSaleSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmSaleSearch.Designer.cs">
+      <DependentUpon>FrmSaleSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmCancelledSale.resx">
       <DependentUpon>FrmCancelledSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmSaleSearch.resx">
+      <DependentUpon>FrmSaleSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSplashScreen.resx">
       <DependentUpon>FrmSplashScreen.cs</DependentUpon>

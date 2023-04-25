@@ -167,6 +167,7 @@ namespace EasyPDV
             _sale.SalePrice = _SaleTotal;
             _sale.Products = _SoldProductsListToDB;
             _sale.PaymentMethod = paymentMethod.Text;
+            var _id = individualSaleDAO.GetExternalSaleId() + 1;
 
             if (_listViewProducts.Text != "" || totalBox.Text != "")
             {
@@ -187,7 +188,9 @@ namespace EasyPDV
                             RawPrinterHelper.Print("-------------------\n\n" +
                                 TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
                                 TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
-                                "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n" + "-------------------"
+                                "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n" +
+                                "Pagamento:\n"+_sale.PaymentMethod + "\nId venda: "+_id
+                                +"\n" + "-------------------"
                                 );
                             p.Name = product[0];
 
@@ -236,8 +239,10 @@ namespace EasyPDV
         {
             IndividualSale individualSale = new IndividualSale();
             IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
+            var externalSaleId = individualSaleDAO.GetExternalSaleId();
             foreach (string item in _SoldProductsList)
             {
+                individualSale.ExternalSaleID = externalSaleId;
                 individualSale.SaleDate = DateTime.Now;
                 string[] prodSplit = item.Split('|');
                 individualSale.Product = prodSplit[0];
@@ -454,6 +459,12 @@ namespace EasyPDV
         {
             FrmReversalReport frmReversalReport = new FrmReversalReport();
             FrmHelper.OpenIfIsNot("Troca/Estorno", frmReversalReport);
+        }
+
+        private void pesquisarVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSaleSearch frmSaleSearch = new FrmSaleSearch();
+            FrmHelper.OpenIfIsNot("Pesquisar vendas", frmSaleSearch);
         }
     }
 }

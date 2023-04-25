@@ -21,6 +21,13 @@ namespace EasyPDV.UI
         {
             InitializeComponent();
         }
+        private void FrmInsertProduct_Load(object sender, EventArgs e)
+        {
+            ShowProductList();
+            dataGridView1.MultiSelect = true;
+            WarningCheckBox();
+            BlockProductId();
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -81,7 +88,7 @@ namespace EasyPDV.UI
         }
         public void ShowProductList()
         {
-            _adpt = new NpgsqlDataAdapter(productDAO.Read(productStatus.Text.ToLower()));
+            _adpt = new NpgsqlDataAdapter(productDAO.Read(productStatus.Text.ToLower().Remove(productStatus.Text.Length -1,1)));
             _dt = new DataTable();
             _adpt.Fill(_dt);
             dataGridView1.DataSource = _dt;
@@ -95,12 +102,10 @@ namespace EasyPDV.UI
                 dataGridView1.AutoResizeRow(row.Index);
             }
         }
-
-        private void FrmInsertProduct_Load(object sender, EventArgs e)
+        public void BlockProductId()
         {
-            ShowProductList();
-            dataGridView1.MultiSelect = true;
-            WarningCheckBox();
+            dataGridView1.Columns[0].ReadOnly = true;
+
         }
         public void WarningCheckBox()
         {
@@ -207,7 +212,7 @@ namespace EasyPDV.UI
         private void siticoneButton1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = new DialogResult();
-            if (productStatus.Text == "Desativado")
+            if (productStatus.Text == "Desativados")
             {
                 dialogResult = MessageBox.Show("Ativar Produto?", "Ativar", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
@@ -226,7 +231,7 @@ namespace EasyPDV.UI
                     ShowProductList();
                 }
             }
-            else if (productStatus.Text == "Ativado")
+            else if (productStatus.Text == "Ativados")
             {
                 dialogResult = MessageBox.Show("Desativar Produto?", "Desativar", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)

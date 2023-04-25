@@ -160,6 +160,7 @@
             this.btnCancelarVenda.Size = new System.Drawing.Size(246, 45);
             this.btnCancelarVenda.TabIndex = 28;
             this.btnCancelarVenda.Text = "Excluir selecionado";
+            this.btnCancelarVenda.Visible = false;
             this.btnCancelarVenda.Click += new System.EventHandler(this.btnSaleCancel_Click);
             // 
             // printPreviewDialog1
