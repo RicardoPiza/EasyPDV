@@ -133,5 +133,10 @@ namespace EasyPDV.UI
             ClearChart();
             SetChart();
         }
+
+        private void salesGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

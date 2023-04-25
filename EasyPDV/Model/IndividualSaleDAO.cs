@@ -38,7 +38,7 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
-        public bool HasProduct(string product, string paymentMethod)
+        public bool HasProduct(string product, int id)
         {
             bool hasProduct = false;
             connection = new NpgsqlConnection(connectionString);
@@ -47,7 +47,7 @@ namespace EasyPDV.Model
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
-                    $"select * from venda_individual where meio_pagamento = '{paymentMethod}' and produto = '{product}' limit 1", connection);
+                    $"select * from venda_individual where id_venda = '{id}' and produto = '{product}' limit 1", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -175,7 +175,7 @@ namespace EasyPDV.Model
             }
             return cmd;
         }
-        public int ReadTotalIndividualSoldProduct(string productName)
+        public int ReadTotalIndividualSoldProduct(string productName, int id)
         {
             int total = 0;
             connection = new NpgsqlConnection(connectionString);
@@ -184,7 +184,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    $"select count(produto) from venda_individual where produto  = '{productName}'", connection);
+                    $"select count(produto) from venda_individual where produto  = '{productName}' and id_venda = {id}", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -233,6 +233,35 @@ namespace EasyPDV.Model
             }
             return value;
         }
+        public string GetPaymentMethod(int id)
+        {
+            string value = "";
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"select meio_pagamento from venda_individual where id_venda = {id} order by data desc limit 1", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetString(0);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return value;
+        }
 
         public void DeleteAllIndividualSales()
         {
@@ -254,7 +283,7 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
-        public void DeleteIndividualSale(string product, string paymentMethod)
+        public void DeleteIndividualSale(string product, int id)
         {
             connection = new NpgsqlConnection(connectionString);
             try
@@ -262,8 +291,8 @@ namespace EasyPDV.Model
                 connection.Open();
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
-                    $"delete from venda_individual where id = (select id from venda_individual where meio_pagamento " +
-                    $"= '{paymentMethod}' and produto = '{product}' limit 1)", connection);
+                    $"delete from venda_individual where id = (select id from venda_individual where id_venda " +
+                    $"= '{id}' and produto = '{product}' limit 1)", connection);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -275,7 +304,7 @@ namespace EasyPDV.Model
                 connection.Close();
             }
         }
-        public List<Product> ReadSoldProducts()
+        public List<Product> ReadSoldProducts(int saleId)
         {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             List<Product> list = new List<Product>();
@@ -284,7 +313,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                        "select produto from venda_individual group by produto ", connection);
+                        $"select produto from venda_individual where id_venda = {saleId} group by produto ", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {

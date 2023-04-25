@@ -136,6 +136,7 @@
             this.salesGridView1.ThemeStyle.RowsStyle.Height = 22;
             this.salesGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.salesGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.salesGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.salesGridView1_CellContentClick);
             // 
             // lblTotalFatura
             // 
