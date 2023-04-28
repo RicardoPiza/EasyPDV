@@ -78,10 +78,14 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneButton2 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneButton3 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneButton4 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+=======
+            this.pesquisarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> 629ac5ecaf3838e43e98063d326c5c61ab09f132
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -128,7 +132,8 @@
             this.cancelarVendaToolStripMenuItem,
             this.visualizarVendasToolStripMenuItem,
             this.trocaDeFichaEstornoToolStripMenuItem,
-            this.visualizarTrocasEstornosToolStripMenuItem});
+            this.visualizarTrocasEstornosToolStripMenuItem,
+            this.pesquisarVendasToolStripMenuItem});
             this.vendasToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
@@ -1018,6 +1023,7 @@
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
             // 
+<<<<<<< HEAD
             // siticoneButton1
             // 
             this.siticoneButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1121,6 +1127,14 @@
             this.siticoneButton4.Size = new System.Drawing.Size(150, 107);
             this.siticoneButton4.TabIndex = 33;
             this.siticoneButton4.Tile = true;
+=======
+            // pesquisarVendasToolStripMenuItem
+            // 
+            this.pesquisarVendasToolStripMenuItem.Name = "pesquisarVendasToolStripMenuItem";
+            this.pesquisarVendasToolStripMenuItem.Size = new System.Drawing.Size(323, 26);
+            this.pesquisarVendasToolStripMenuItem.Text = "Pesquisar vendas";
+            this.pesquisarVendasToolStripMenuItem.Click += new System.EventHandler(this.pesquisarVendasToolStripMenuItem_Click);
+>>>>>>> 629ac5ecaf3838e43e98063d326c5c61ab09f132
             // 
             // FrmApp
             // 
@@ -1218,10 +1232,14 @@
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarTrocasEstornosToolStripMenuItem;
+<<<<<<< HEAD
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton4;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
+=======
+        private System.Windows.Forms.ToolStripMenuItem pesquisarVendasToolStripMenuItem;
+>>>>>>> 629ac5ecaf3838e43e98063d326c5c61ab09f132
     }
 }
 
