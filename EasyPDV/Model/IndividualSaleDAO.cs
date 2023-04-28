@@ -175,11 +175,7 @@ namespace EasyPDV.Model
             }
             return cmd;
         }
-<<<<<<< HEAD
         public int ReadTotalIndividualSoldProduct(string productName, int id)
-=======
-        public int ReadTotalIndividualSoldProduct(string productName)
->>>>>>> 629ac5ecaf3838e43e98063d326c5c61ab09f132
         {
             int total = 0;
             connection = new NpgsqlConnection(connectionString);
@@ -237,7 +233,6 @@ namespace EasyPDV.Model
             }
             return value;
         }
-<<<<<<< HEAD
         public string GetPaymentMethod(int id)
         {
             string value = "";
@@ -267,8 +262,6 @@ namespace EasyPDV.Model
             }
             return value;
         }
-=======
->>>>>>> 629ac5ecaf3838e43e98063d326c5c61ab09f132
 
         public void DeleteAllIndividualSales()
         {
