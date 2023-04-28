@@ -18,6 +18,7 @@ namespace EasyPDV.UI
         CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
         ReversedSale changeSale = new ReversedSale();
         ReversedSaleDAO changeSaleDAO = new ReversedSaleDAO();
+        SaleDAO saleDAO = new SaleDAO();
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         string[] splitProduct;

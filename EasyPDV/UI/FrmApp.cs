@@ -81,6 +81,7 @@ namespace EasyPDV
                     _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;
                     if (_productDAO.ReadStatus(_product) == "ativado")
                     {
+                        _btnProducts[i].TabIndex = i;
                         _btnProducts[i].Image = _productDAO.GrabImage(_product);
                         _btnProducts[i].Text = _Products[i].Name + "\n";
                         _btnProducts[i].TextAlign = HorizontalAlignment.Center;
@@ -89,6 +90,7 @@ namespace EasyPDV
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
                         _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
+                        tableLayoutPanel1.Controls.Add(_btnProducts[i]);
                     }
                 }
 

@@ -61,7 +61,38 @@ namespace EasyPDV.Model
             }
             return cmd;
         }
-
+        public Sale Get(int id)
+        {
+            connection = new NpgsqlConnection(connectionString);
+            RegularSale sale = new RegularSale();
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"SELECT *from venda where id = {id} " , connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Product p = new Product();
+                        sale.ID = (int)reader.GetInt16(0);
+                        sale.SaleDate = reader.GetDateTime(1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sale;
+        }
         public void DeleteSale(RegularSale v)
         {
             connection = new NpgsqlConnection(connectionString);
