@@ -2,6 +2,7 @@
 using EasyPDV.Entities;
 using Npgsql;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace EasyPDV.Model
@@ -70,7 +71,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    $"SELECT *from venda where id = {id} " , connection);
+                    $"SELECT *from venda where id = {id} ", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -133,6 +134,80 @@ namespace EasyPDV.Model
             {
                 connection.Close();
             }
+        }
+        public void Update(List<string> products, int id, double valor)
+        {
+            connection = new NpgsqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand($"update venda set produtos = @p, valor_venda = @vv where id = @id", connection);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.Parameters.AddWithValue("p", products);
+                cmd.Parameters.AddWithValue("vv", valor);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public List<string> GetSaleProducts(int id)
+        {
+            List<string> productsName = new List<string>();
+            connection = new NpgsqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(
+                    $"select produtos from venda where id = {id}", connection))
+                {
+
+                    string[] textArray = (string[])cmd.ExecuteScalar();
+                    productsName.AddRange(textArray);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return productsName;
+        }
+
+        public double GetSaleValue(int id)
+        {
+            double total = 0;
+            connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                cmd = new NpgsqlCommand(
+                    $"select valor_venda from venda where id = {id}", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        total = reader.GetDouble(0);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return total;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using EasyPDV.Entities;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using EasyPDV.Entities;
 using EasyPDV.Model;
 using Npgsql;
 using System;
@@ -15,10 +16,11 @@ namespace EasyPDV.UI
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         IndividualSale individualSale = new IndividualSale();
         Product product = new Product();
+        SaleDAO saleDAO = new SaleDAO();
         CashierOpenDAO cashierOpenDAO = new CashierOpenDAO();
         ReversedSale changeSale = new ReversedSale();
         ReversedSaleDAO changeSaleDAO = new ReversedSaleDAO();
-        SaleDAO saleDAO = new SaleDAO();
+        List<string> productsName = new List<string>();
         NpgsqlDataAdapter _adpt;
         DataTable _dt;
         string[] splitProduct;
@@ -99,12 +101,14 @@ namespace EasyPDV.UI
                 {
                     if (dialogResult == DialogResult.OK)
                     {
-                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), int.Parse(txtValue.Text)) == true)
+                        int saleId = int.Parse(txtValue.Text);
+                        productsName = saleDAO.GetSaleProducts(saleId);
+                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), saleId) == true)
                         {
                             for (int i = 0; i < SoldProductsCount.Value; i++)
                             {
 
-                                individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim(), int.Parse(txtValue.Text));
+                                individualSaleDAO.DeleteIndividualSale(splitProduct[0].Trim(), saleId);
                                 product.Name = splitProduct[0].Trim();
                                 changeSale.ProductChangeFrom = splitProduct[0].Trim() + " x" + SoldProductsCount.Value.ToString();
                                 productDAO.SumStock(product);
@@ -113,7 +117,6 @@ namespace EasyPDV.UI
 
                             for (int i = 0; i < ToChangeProductsCount.Value; i++)
                             {
-
                                 product.Name = splitProductChange[0].Trim();
                                 changeSale.ProductChangeTo = splitProductChange[0].Trim() + " x" + ToChangeProductsCount.Value.ToString();
                                 product.ID = productDAO.GetID(product);
@@ -124,6 +127,11 @@ namespace EasyPDV.UI
                                 individualSale.PaymentMethod = paymentMethod.Text;
                                 individualSale.ExternalSaleID = int.Parse(txtValue.Text);
                                 individualSaleDAO.InsertIndividualSale(individualSale);
+
+                                string name = splitProduct[0];
+                                productsName.Remove(name.Trim());
+                                productsName.Add(splitProductChange[0].Trim());
+
                                 RawPrinterHelper.Print(
                                     "-------------------\n\n" +
                                 TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
@@ -140,6 +148,8 @@ namespace EasyPDV.UI
                             changeSale.Balance = ToProduct - FromProduct;
                             changeSale.PaymentMethod = paymentMethod.Text;
                             changeSaleDAO.InsertChangedSale(changeSale);
+                            saleDAO.Update(productsName, saleId, changeSale.Balance + saleDAO.GetSaleValue(saleId));
+
 
                             comboProduct.Items.Clear();
                             comboProductChange.Items.Clear();
@@ -164,7 +174,8 @@ namespace EasyPDV.UI
                 {
                     if (dialogResult == DialogResult.OK)
                     {
-                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), int.Parse(txtValue.Text)) == true)
+                        int saleId = int.Parse(txtValue.Text);
+                        if (individualSaleDAO.HasProduct(splitProduct[0].Trim(), saleId) == true)
                         {
                             for (int i = 0; i < SoldProductsCount.Value; i++)
                             {
@@ -182,6 +193,12 @@ namespace EasyPDV.UI
                             changeSale.PaymentMethod = paymentMethod.Text;
                             changeSaleDAO.InsertChangedSale(changeSale);
 
+                            productsName = saleDAO.GetSaleProducts(saleId);
+                            double value = saleDAO.GetSaleValue(saleId);
+                            double discounted = double.Parse(splitProduct[1]);
+                            string name = splitProduct[0];
+                            productsName.Remove(name.Trim());
+                            saleDAO.Update(productsName, saleId, value -  discounted);
 
                             comboProduct.Items.Clear();
                             comboProductChange.Items.Clear();
@@ -231,6 +248,11 @@ namespace EasyPDV.UI
         }
         private void txtValue_TextChanged(object sender, EventArgs e)
         {
+            comboProduct.Items.Clear();
+            comboProductChange.Items.Clear();
+            SoldProductsCount.Value = 0;
+            ToChangeProductsCount.Value = 0;
+            paymentMethod.Items.Clear();
             PopulateForm();
         }
 

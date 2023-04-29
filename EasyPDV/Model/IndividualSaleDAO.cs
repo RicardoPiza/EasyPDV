@@ -154,6 +154,7 @@ namespace EasyPDV.Model
             }
             return total;
         }
+
         public NpgsqlCommand ReadBySaleId(int id)
         {
             NpgsqlConnection connection = new NpgsqlConnection(connectionString);

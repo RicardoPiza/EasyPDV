@@ -16,6 +16,7 @@ namespace EasyPDV
     public partial class FrmApp : Form
     {
         public double _SaleTotal { get; set; }
+        Product product;
         public static string EventName { get; set; }
         IndividualSaleDAO individualSaleDAO = new IndividualSaleDAO();
         CashierBleed cashierBleed = new CashierBleed();
@@ -66,31 +67,58 @@ namespace EasyPDV
         }
         public void LoadButtons()
         {
+            List<SiticoneButton> buttons = new List<SiticoneButton>();
+            buttons.Add(button1);
+            buttons.Add(button2);
+            buttons.Add(button3);
+            buttons.Add(button4);
+            buttons.Add(button5);
+            buttons.Add(button6);
+            buttons.Add(button7);
+            buttons.Add(button8);
+            buttons.Add(button9);
+            buttons.Add(button10);
+            buttons.Add(button11);
+            buttons.Add(button12);
+            buttons.Add(button13);
+            buttons.Add(button14);
+            buttons.Add(button15);
+            buttons.Add(button16);
+            buttons.Add(button17);
+            buttons.Add(button18);
+            buttons.Add(button19);
+            buttons.Add(button20);
+            buttons.Add(button21);
+            buttons.Add(button22);
+            buttons.Add(button23);
+            buttons.Add(button24);
+            buttons.Add(button25);
+
             if (cashierOpenDAO.IsCashierOpen())
             {
                 txtEventName.Text = cashierOpenDAO.ReturnEventName() + " - " + DateTime.Now.ToString("d");
                 txtEventName.Visible = true;
-                List<SiticoneButton> _btnProducts = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
+                //List<SiticoneButton> buttons = tableLayoutPanel1.Controls.OfType<SiticoneButton>().ToList();
                 List<Product> _Products = new List<Product>();
-                int totalBotoes = _btnProducts.Count();
-                _btnProducts.Reverse();
-                _Products = _productDAO.ReadAll();
+                //int totalBotoes = _btnProducts.Count();
+                //_btnProducts.Reverse();
+                _Products = _productDAO.ReadActivated().Distinct().ToList();
                 for (int i = 0; i < _Products.Count; i++)
                 {
                     _product.ID = _Products[i].ID;
                     _Products[i].Description = _productDAO.GetDesc(_product); string buttontooltip = "R$ " + _Products[i].Price + " " + _Products[i].Description;
                     if (_productDAO.ReadStatus(_product) == "ativado")
                     {
-                        _btnProducts[i].TabIndex = i;
-                        _btnProducts[i].Image = _productDAO.GrabImage(_product);
-                        _btnProducts[i].Text = _Products[i].Name + "\n";
-                        _btnProducts[i].TextAlign = HorizontalAlignment.Center;
-                        toolTip.SetToolTip(_btnProducts[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
+                        buttons[i].TabIndex = i;
+                        buttons[i].Image = _productDAO.GrabImage(_product);
+                        buttons[i].Text = _Products[i].Name + "\n";
+                        buttons[i].TextAlign = HorizontalAlignment.Center;
+                        toolTip.SetToolTip(buttons[i], "R$ " + _Products[i].Price.ToString("F2") + " " + _Products[i].Description);
                         int id = _product.ID;
                         string name = _Products[i].Name;
                         double price = _Products[i].Price;
-                        _btnProducts[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
-                        tableLayoutPanel1.Controls.Add(_btnProducts[i]);
+                        buttons[i].Click += (s2, e2) => ProductSum(s2, e2, name, price, id);
+                        tableLayoutPanel1.Controls.Add(buttons[i]);
                     }
                 }
 
@@ -102,9 +130,11 @@ namespace EasyPDV
                 frmOpenCashier.ShowDialog();
             }
         }
+
+
         public void ProductSum(object sender, EventArgs e, string name, double price, int id)
         {
-            Product product = new Product();
+            product = new Product();
             product.Name = name;
             totalBox.Text = string.Empty;
             string saleDescription = name + "........ R$ " + price.ToString("F2") + " | x1";
@@ -191,7 +221,8 @@ namespace EasyPDV
                                 TypeHelper.FormatToCenter(cashierOpenDAO.ReturnEventName().Trim()) + "\n" +
                                 TypeHelper.FormatToCenter(DateTime.Now.ToString("d").Trim()) + "\n" +
                                 "\n" + TypeHelper.FormatToCenter(product[0].ToUpper().Trim()) + "\n\n" +
-                                "Pagamento:\n"+_sale.PaymentMethod + "\nId venda: "+_id
+                                "Pagamento:\n"+_sale.PaymentMethod + "\nId venda: "+_id+"\n" +
+                                "Caixa: " + cashierOpenDAO.ReturnCashierNumber().ToString()
                                 +"\n" + "-------------------"
                                 );
                             p.Name = product[0];
@@ -468,5 +499,7 @@ namespace EasyPDV
             FrmSaleSearch frmSaleSearch = new FrmSaleSearch();
             FrmHelper.OpenIfIsNot("Pesquisar vendas", frmSaleSearch);
         }
+
+        
     }
 }

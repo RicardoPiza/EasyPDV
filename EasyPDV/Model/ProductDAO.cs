@@ -46,7 +46,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                        "SELECT id, nome, preco, estoque from produto order by status", connection);
+                        "SELECT id, nome, preco, estoque from produto order by nome", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -80,7 +80,7 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                        "SELECT id, nome, preco, estoque from produto where status  = 'ativado' order by status", connection);
+                        "SELECT id, nome, preco, estoque from produto where status  = 'ativado' order by nome", connection);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
