@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.salesGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
+            this.lblFillId = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToChangeProductsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoldProductsCount)).BeginInit();
@@ -59,7 +60,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.15461F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.84539F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
             this.tableLayoutPanel1.Controls.Add(this.txtValue, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.ToChangeProductsCount, 2, 2);
@@ -73,6 +74,7 @@
             this.tableLayoutPanel1.Controls.Add(this.SoldProductsCount, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.paymentMethod, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblFillId, 3, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 78);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -95,9 +97,9 @@
             this.txtValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtValue.Location = new System.Drawing.Point(645, 162);
+            this.txtValue.Location = new System.Drawing.Point(644, 162);
             this.txtValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtValue.Name = "txtValue";
             this.txtValue.PasswordChar = '\0';
@@ -124,7 +126,7 @@
             this.ToChangeProductsCount.BackColor = System.Drawing.Color.Transparent;
             this.ToChangeProductsCount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.ToChangeProductsCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToChangeProductsCount.Location = new System.Drawing.Point(459, 106);
+            this.ToChangeProductsCount.Location = new System.Drawing.Point(458, 106);
             this.ToChangeProductsCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ToChangeProductsCount.Name = "ToChangeProductsCount";
             this.ToChangeProductsCount.Size = new System.Drawing.Size(81, 38);
@@ -252,7 +254,7 @@
             this.SoldProductsCount.BackColor = System.Drawing.Color.Transparent;
             this.SoldProductsCount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.SoldProductsCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoldProductsCount.Location = new System.Drawing.Point(459, 55);
+            this.SoldProductsCount.Location = new System.Drawing.Point(458, 55);
             this.SoldProductsCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SoldProductsCount.Name = "SoldProductsCount";
             this.SoldProductsCount.Size = new System.Drawing.Size(81, 38);
@@ -279,10 +281,10 @@
             "Cartão débito",
             "Dinheiro",
             "Pix"});
-            this.paymentMethod.Location = new System.Drawing.Point(644, 54);
+            this.paymentMethod.Location = new System.Drawing.Point(643, 54);
             this.paymentMethod.MaxLength = 2;
             this.paymentMethod.Name = "paymentMethod";
-            this.paymentMethod.Size = new System.Drawing.Size(200, 36);
+            this.paymentMethod.Size = new System.Drawing.Size(201, 36);
             this.paymentMethod.TabIndex = 19;
             // 
             // label5
@@ -291,7 +293,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(502, 167);
+            this.label5.Location = new System.Drawing.Point(501, 167);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 24);
             this.label5.TabIndex = 25;
@@ -372,6 +374,18 @@
             this.salesGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.salesGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // lblFillId
+            // 
+            this.lblFillId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFillId.AutoSize = true;
+            this.lblFillId.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFillId.ForeColor = System.Drawing.Color.Red;
+            this.lblFillId.Location = new System.Drawing.Point(643, 141);
+            this.lblFillId.Name = "lblFillId";
+            this.lblFillId.Size = new System.Drawing.Size(86, 12);
+            this.lblFillId.TabIndex = 37;
+            this.lblFillId.Text = "Preencha o ID:";
+            // 
             // FrmReversal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,5 +431,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtValue;
         private System.Windows.Forms.Label label5;
         private Siticone.Desktop.UI.WinForms.SiticoneDataGridView salesGridView1;
+        private System.Windows.Forms.Label lblFillId;
     }
 }

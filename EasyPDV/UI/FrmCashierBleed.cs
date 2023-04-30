@@ -23,6 +23,7 @@ namespace EasyPDV.UI
         private void FrmCashierBleed_Load(object sender, EventArgs e)
         {
             AutoFillBoxes();
+            btnOpenCashier.Cursor = Cursors.Hand;
         }
         public void AutoFillBoxes()
         {

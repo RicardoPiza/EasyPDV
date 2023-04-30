@@ -71,7 +71,7 @@ namespace EasyPDV.UI
 
         private void FrmOpenCashier_Load(object sender, EventArgs e)
         {
-
+            btnOpenCashier.Cursor = Cursors.Hand;
         }
     }
 }

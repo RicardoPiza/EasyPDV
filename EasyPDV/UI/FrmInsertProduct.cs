@@ -23,10 +23,12 @@ namespace EasyPDV.UI
         }
         private void FrmInsertProduct_Load(object sender, EventArgs e)
         {
+            
             ShowProductList();
             dataGridView1.MultiSelect = true;
             WarningCheckBox();
             BlockProductId();
+            siticoneButton1.Cursor = Cursors.Hand;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

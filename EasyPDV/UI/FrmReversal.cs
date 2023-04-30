@@ -148,6 +148,7 @@ namespace EasyPDV.UI
                             changeSale.Balance = ToProduct - FromProduct;
                             changeSale.PaymentMethod = paymentMethod.Text;
                             changeSaleDAO.InsertChangedSale(changeSale);
+
                             saleDAO.Update(productsName, saleId, changeSale.Balance + saleDAO.GetSaleValue(saleId));
 
 
@@ -195,7 +196,7 @@ namespace EasyPDV.UI
 
                             productsName = saleDAO.GetSaleProducts(saleId);
                             double value = saleDAO.GetSaleValue(saleId);
-                            double discounted = double.Parse(splitProduct[1]);
+                            double discounted = double.Parse(splitProduct[1]) * (int)SoldProductsCount.Value;
                             string name = splitProduct[0];
                             productsName.Remove(name.Trim());
                             saleDAO.Update(productsName, saleId, value -  discounted);
@@ -260,6 +261,7 @@ namespace EasyPDV.UI
         {
             if (txtValue.Text != "")
             {
+                lblFillId.Visible = false;
                 ShowSales(int.Parse(txtValue.Text));
                 PopulateCombos();
             }
