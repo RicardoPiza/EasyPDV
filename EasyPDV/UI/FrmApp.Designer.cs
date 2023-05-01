@@ -43,10 +43,16 @@
             this.históricoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button20 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button22 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button21 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button23 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button25 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button24 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.button4 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.button3 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.button2 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
@@ -66,6 +72,7 @@
             this.button17 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.button18 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.button19 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.button20 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneContextMenuStrip1 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.siticoneContextMenuStrip2 = new Siticone.Desktop.UI.WinForms.SiticoneContextMenuStrip();
             this.totalBox = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
@@ -82,11 +89,8 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button24 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button25 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button23 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button21 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.button22 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.txtLoggedUser = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -100,7 +104,8 @@
             this.vendasToolStripMenuItem,
             this.faturaToolStripMenuItem,
             this.caixaToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
+            this.ajudaToolStripMenuItem,
+            this.configuraçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -264,6 +269,22 @@
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
+            // configuraçõesToolStripMenuItem
+            // 
+            this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usuáriosToolStripMenuItem});
+            this.configuraçõesToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.configuraçõesToolStripMenuItem.Text = "Configurações";
+            // 
+            // usuáriosToolStripMenuItem
+            // 
+            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.usuáriosToolStripMenuItem.Text = "Usuários";
+            this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -336,33 +357,145 @@
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // button20
+            // button22
             // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.Animated = true;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.BorderRadius = 15;
-            this.button20.BorderThickness = 1;
-            this.button20.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button20.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button20.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button20.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button20.FillColor = System.Drawing.Color.Transparent;
-            this.button20.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.ForeColor = System.Drawing.Color.Black;
-            this.button20.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button20.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button20.ImageSize = new System.Drawing.Size(44, 44);
-            this.button20.Location = new System.Drawing.Point(480, 309);
-            this.button20.Margin = new System.Windows.Forms.Padding(0);
-            this.button20.Name = "button20";
-            this.button20.PressedDepth = 50;
-            this.button20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button20.Size = new System.Drawing.Size(121, 103);
-            this.button20.TabIndex = 33;
-            this.button20.Tile = true;
+            this.button22.Animated = true;
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button22.BorderRadius = 15;
+            this.button22.BorderThickness = 1;
+            this.button22.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button22.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button22.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button22.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button22.FillColor = System.Drawing.Color.Transparent;
+            this.button22.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button22.ForeColor = System.Drawing.Color.Black;
+            this.button22.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button22.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button22.ImageSize = new System.Drawing.Size(44, 44);
+            this.button22.Location = new System.Drawing.Point(120, 412);
+            this.button22.Margin = new System.Windows.Forms.Padding(0);
+            this.button22.Name = "button22";
+            this.button22.PressedDepth = 50;
+            this.button22.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button22.Size = new System.Drawing.Size(120, 107);
+            this.button22.TabIndex = 40;
+            this.button22.Tile = true;
+            // 
+            // button21
+            // 
+            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button21.Animated = true;
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.BorderRadius = 15;
+            this.button21.BorderThickness = 1;
+            this.button21.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button21.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button21.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button21.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button21.FillColor = System.Drawing.Color.Transparent;
+            this.button21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button21.ForeColor = System.Drawing.Color.Black;
+            this.button21.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button21.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button21.ImageSize = new System.Drawing.Size(44, 44);
+            this.button21.Location = new System.Drawing.Point(0, 412);
+            this.button21.Margin = new System.Windows.Forms.Padding(0);
+            this.button21.Name = "button21";
+            this.button21.PressedDepth = 50;
+            this.button21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button21.Size = new System.Drawing.Size(120, 107);
+            this.button21.TabIndex = 39;
+            this.button21.Tile = true;
+            // 
+            // button23
+            // 
+            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button23.Animated = true;
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button23.BorderRadius = 15;
+            this.button23.BorderThickness = 1;
+            this.button23.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button23.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button23.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button23.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button23.FillColor = System.Drawing.Color.Transparent;
+            this.button23.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.ForeColor = System.Drawing.Color.Black;
+            this.button23.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button23.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button23.ImageSize = new System.Drawing.Size(44, 44);
+            this.button23.Location = new System.Drawing.Point(240, 412);
+            this.button23.Margin = new System.Windows.Forms.Padding(0);
+            this.button23.Name = "button23";
+            this.button23.PressedDepth = 50;
+            this.button23.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button23.Size = new System.Drawing.Size(120, 107);
+            this.button23.TabIndex = 38;
+            this.button23.Tile = true;
+            // 
+            // button25
+            // 
+            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button25.Animated = true;
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button25.BorderRadius = 15;
+            this.button25.BorderThickness = 1;
+            this.button25.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button25.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button25.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button25.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button25.FillColor = System.Drawing.Color.Transparent;
+            this.button25.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button25.ForeColor = System.Drawing.Color.Black;
+            this.button25.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button25.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button25.ImageSize = new System.Drawing.Size(44, 44);
+            this.button25.Location = new System.Drawing.Point(480, 412);
+            this.button25.Margin = new System.Windows.Forms.Padding(0);
+            this.button25.Name = "button25";
+            this.button25.PressedDepth = 50;
+            this.button25.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button25.Size = new System.Drawing.Size(121, 107);
+            this.button25.TabIndex = 37;
+            this.button25.Tile = true;
+            // 
+            // button24
+            // 
+            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button24.Animated = true;
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.BorderRadius = 15;
+            this.button24.BorderThickness = 1;
+            this.button24.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button24.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button24.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button24.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button24.FillColor = System.Drawing.Color.Transparent;
+            this.button24.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button24.ForeColor = System.Drawing.Color.Black;
+            this.button24.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button24.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button24.ImageSize = new System.Drawing.Size(44, 44);
+            this.button24.Location = new System.Drawing.Point(360, 412);
+            this.button24.Margin = new System.Windows.Forms.Padding(0);
+            this.button24.Name = "button24";
+            this.button24.PressedDepth = 50;
+            this.button24.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button24.Size = new System.Drawing.Size(120, 107);
+            this.button24.TabIndex = 36;
+            this.button24.Tile = true;
             // 
             // button4
             // 
@@ -913,6 +1046,34 @@
             this.button19.TabIndex = 34;
             this.button19.Tile = true;
             // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.Animated = true;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.BorderRadius = 15;
+            this.button20.BorderThickness = 1;
+            this.button20.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button20.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button20.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button20.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button20.FillColor = System.Drawing.Color.Transparent;
+            this.button20.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.ForeColor = System.Drawing.Color.Black;
+            this.button20.HoverState.BorderColor = System.Drawing.Color.White;
+            this.button20.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.button20.ImageSize = new System.Drawing.Size(44, 44);
+            this.button20.Location = new System.Drawing.Point(480, 309);
+            this.button20.Margin = new System.Windows.Forms.Padding(0);
+            this.button20.Name = "button20";
+            this.button20.PressedDepth = 50;
+            this.button20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button20.Size = new System.Drawing.Size(121, 103);
+            this.button20.TabIndex = 33;
+            this.button20.Tile = true;
+            // 
             // siticoneContextMenuStrip1
             // 
             this.siticoneContextMenuStrip1.Name = "siticoneContextMenuStrip1";
@@ -1173,145 +1334,28 @@
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
             // 
-            // button24
+            // txtLoggedUser
             // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button24.Animated = true;
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.BorderRadius = 15;
-            this.button24.BorderThickness = 1;
-            this.button24.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button24.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button24.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button24.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button24.FillColor = System.Drawing.Color.Transparent;
-            this.button24.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.ForeColor = System.Drawing.Color.Black;
-            this.button24.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button24.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button24.ImageSize = new System.Drawing.Size(44, 44);
-            this.button24.Location = new System.Drawing.Point(360, 412);
-            this.button24.Margin = new System.Windows.Forms.Padding(0);
-            this.button24.Name = "button24";
-            this.button24.PressedDepth = 50;
-            this.button24.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button24.Size = new System.Drawing.Size(120, 107);
-            this.button24.TabIndex = 36;
-            this.button24.Tile = true;
+            this.txtLoggedUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtLoggedUser.AutoSize = true;
+            this.txtLoggedUser.BackColor = System.Drawing.Color.Transparent;
+            this.txtLoggedUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoggedUser.Location = new System.Drawing.Point(131, 703);
+            this.txtLoggedUser.Name = "txtLoggedUser";
+            this.txtLoggedUser.Size = new System.Drawing.Size(0, 15);
+            this.txtLoggedUser.TabIndex = 26;
             // 
-            // button25
+            // label4
             // 
-            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button25.Animated = true;
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button25.BorderRadius = 15;
-            this.button25.BorderThickness = 1;
-            this.button25.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button25.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button25.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button25.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button25.FillColor = System.Drawing.Color.Transparent;
-            this.button25.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.ForeColor = System.Drawing.Color.Black;
-            this.button25.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button25.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button25.ImageSize = new System.Drawing.Size(44, 44);
-            this.button25.Location = new System.Drawing.Point(480, 412);
-            this.button25.Margin = new System.Windows.Forms.Padding(0);
-            this.button25.Name = "button25";
-            this.button25.PressedDepth = 50;
-            this.button25.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button25.Size = new System.Drawing.Size(121, 107);
-            this.button25.TabIndex = 37;
-            this.button25.Tile = true;
-            // 
-            // button23
-            // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.Animated = true;
-            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button23.BorderRadius = 15;
-            this.button23.BorderThickness = 1;
-            this.button23.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button23.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button23.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button23.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button23.FillColor = System.Drawing.Color.Transparent;
-            this.button23.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.Color.Black;
-            this.button23.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button23.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button23.ImageSize = new System.Drawing.Size(44, 44);
-            this.button23.Location = new System.Drawing.Point(240, 412);
-            this.button23.Margin = new System.Windows.Forms.Padding(0);
-            this.button23.Name = "button23";
-            this.button23.PressedDepth = 50;
-            this.button23.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button23.Size = new System.Drawing.Size(120, 107);
-            this.button23.TabIndex = 38;
-            this.button23.Tile = true;
-            // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.Animated = true;
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.BorderRadius = 15;
-            this.button21.BorderThickness = 1;
-            this.button21.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button21.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button21.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button21.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button21.FillColor = System.Drawing.Color.Transparent;
-            this.button21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.Color.Black;
-            this.button21.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button21.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button21.ImageSize = new System.Drawing.Size(44, 44);
-            this.button21.Location = new System.Drawing.Point(0, 412);
-            this.button21.Margin = new System.Windows.Forms.Padding(0);
-            this.button21.Name = "button21";
-            this.button21.PressedDepth = 50;
-            this.button21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button21.Size = new System.Drawing.Size(120, 107);
-            this.button21.TabIndex = 39;
-            this.button21.Tile = true;
-            // 
-            // button22
-            // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button22.Animated = true;
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button22.BorderRadius = 15;
-            this.button22.BorderThickness = 1;
-            this.button22.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button22.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button22.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button22.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button22.FillColor = System.Drawing.Color.Transparent;
-            this.button22.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.ForeColor = System.Drawing.Color.Black;
-            this.button22.HoverState.BorderColor = System.Drawing.Color.White;
-            this.button22.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.button22.ImageSize = new System.Drawing.Size(44, 44);
-            this.button22.Location = new System.Drawing.Point(120, 412);
-            this.button22.Margin = new System.Windows.Forms.Padding(0);
-            this.button22.Name = "button22";
-            this.button22.PressedDepth = 50;
-            this.button22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button22.Size = new System.Drawing.Size(120, 107);
-            this.button22.TabIndex = 40;
-            this.button22.Tile = true;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 703);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 15);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Usuário Logado:";
             // 
             // FrmApp
             // 
@@ -1320,6 +1364,8 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1075, 727);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtLoggedUser);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtEventName);
             this.Controls.Add(this.btnCancel);
@@ -1418,6 +1464,10 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton button23;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button25;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button24;
+        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
+        private System.Windows.Forms.Label txtLoggedUser;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -134,7 +134,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneProgressBar siticoneProgressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -125,3 +125,5 @@ C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\SdkApi.Desktop.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\bin\Debug\ZebraPrinterSdk.xml
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmReversalReport.resources
 C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmSaleSearch.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmUser.resources
+C:\Users\aewvs\source\repos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmLoginScreen.resources

@@ -35,6 +35,7 @@ namespace EasyPDV
         ReversedSaleDAO reversedSaleDAO = new ReversedSaleDAO();
         public static bool warningProductsAboutToEnd = true;
         int restingProductsRealNumber;
+        User user = LoginInfo.GetUser();
         public FrmApp()
         {
             InitializeComponent();
@@ -46,9 +47,21 @@ namespace EasyPDV
             LoadButtons();
             NameEvent();
             ButtonsAnimation();
+            GetUserInfo();
+            SetPermissions();
         }
 
-
+        public void GetUserInfo()
+        {
+            txtLoggedUser.Text = user.Login;
+        }
+        public void SetPermissions()
+        {
+            if (!user.Admin)
+            {
+                configuraçõesToolStripMenuItem.Visible = false;
+            }
+        }
         private void NameEvent()
         {
             string[] eventName = txtEventName.Text.Split('-');
@@ -500,6 +513,10 @@ namespace EasyPDV
             FrmHelper.OpenIfIsNot("Pesquisar vendas", frmSaleSearch);
         }
 
-        
+        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUser frmUser = new FrmUser();
+            FrmHelper.OpenIfIsNot("Cadastro de usuários", frmUser);
+        }
     }
 }

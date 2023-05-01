@@ -171,8 +171,10 @@
     <Compile Include="Entities\Cashier.cs" />
     <Compile Include="Entities\CashierOpen.cs" />
     <Compile Include="Entities\CashierBleed.cs" />
+    <Compile Include="Entities\LoginInfo.cs" />
     <Compile Include="Entities\ReversedSale.cs" />
     <Compile Include="Entities\Sale.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Model\CashierBleedDAO.cs" />
     <Compile Include="Model\CashierOpenDAO.cs" />
     <Compile Include="Model\ReversedSaleDAO.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="Entities\RegularSale.cs" />
     <Compile Include="Entities\CancelledSale.cs" />
     <Compile Include="Entities\IndividualSale.cs" />
+    <Compile Include="Model\UserDAO.cs" />
     <Compile Include="UI\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +232,12 @@
     <Compile Include="UI\FrmIncome.Designer.cs">
       <DependentUpon>FrmIncome.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmLoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmLoginScreen.Designer.cs">
+      <DependentUpon>FrmLoginScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmOpenCashier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +280,12 @@
     <Compile Include="UI\FrmSplashScreen.Designer.cs">
       <DependentUpon>FrmSplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmUser.Designer.cs">
+      <DependentUpon>FrmUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -312,6 +327,9 @@
     <EmbeddedResource Include="UI\FrmIncome.resx">
       <DependentUpon>FrmIncome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmLoginScreen.resx">
+      <DependentUpon>FrmLoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmOpenCashier.resx">
       <DependentUpon>FrmOpenCashier.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSplashScreen.resx">
       <DependentUpon>FrmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmUser.resx">
+      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\MyMessageBox.resx">
       <DependentUpon>MyMessageBox.cs</DependentUpon>

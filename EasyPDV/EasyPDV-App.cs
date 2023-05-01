@@ -19,7 +19,8 @@ namespace EasyPDV
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(
-                new FrmSplashScreen()
+                new FrmLoginScreen()
+                //new FrmSplashScreen()
                 //new FrmApp()
                 );
         }
