@@ -51,7 +51,7 @@ namespace EasyPDV.UI
 
         private void FrmLoginScreen_Load(object sender, EventArgs e)
         {
-
+            btnChange.Cursor = Cursors.Hand;
         }
     }
 }

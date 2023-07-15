@@ -18,6 +18,7 @@ namespace EasyPDV.UI
         public FrmUser()
         {
             InitializeComponent();
+            btnChange.Cursor = Cursors.Hand;
         }
 
         private void btnChange_Click(object sender, EventArgs e)
@@ -31,15 +32,43 @@ namespace EasyPDV.UI
             user.Login = txtUserLogin.Text.Trim().ToLower();
             user.Name = txtUserName.Text;
 
-            if (!userDao.CheckLogin(user.Login))
+            if (txtUserLogin.Text != "" && txtUserName.Text != "" && txtUserPassword.Text != "")
             {
-                userDao.CreateUser(user);
-                MessageBox.Show("Usuário criado com sucesso.");
+                if (!txtUserLogin.Text.Any(x => char.IsWhiteSpace(x)))
+                {
+                    if (txtUserPassword.Text.Length >= 8)
+                    {
+                        if (!userDao.CheckLogin(user.Login))
+                        {
+                            userDao.CreateUser(user);
+                            MessageBox.Show("Usuário criado com sucesso.");
+                            this.Dispose();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nome de usuário ja existente.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha deve ter no mínimo 8 caractéres.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nome de login não deve conter espaços.");
+                }
             }
             else
             {
-                MessageBox.Show("Nome de usuário ja existente.");
+                MessageBox.Show("Preencha todos os campos.");
             }
+            
+        }
+
+        private void FrmUser_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

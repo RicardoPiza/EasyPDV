@@ -258,6 +258,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmUser";
             this.Text = "Cadastro de usuários";
+            this.Load += new System.EventHandler(this.FrmUser_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

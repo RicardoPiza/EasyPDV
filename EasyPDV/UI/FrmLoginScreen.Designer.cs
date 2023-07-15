@@ -45,8 +45,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.15461F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.84539F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.88889F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.11111F));
             this.tableLayoutPanel1.Controls.Add(this.txtUserPassword, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblChange, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtUserLogin, 1, 0);
@@ -60,7 +60,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(481, 168);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 164);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txtUserPassword
@@ -77,14 +77,14 @@
             this.txtUserPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUserPassword.Location = new System.Drawing.Point(187, 66);
+            this.txtUserPassword.Location = new System.Drawing.Point(76, 63);
             this.txtUserPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserPassword.Name = "txtUserPassword";
             this.txtUserPassword.PasswordChar = '*';
             this.txtUserPassword.PlaceholderText = "";
             this.txtUserPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtUserPassword.SelectedText = "";
-            this.txtUserPassword.Size = new System.Drawing.Size(290, 35);
+            this.txtUserPassword.Size = new System.Drawing.Size(224, 35);
             this.txtUserPassword.TabIndex = 40;
             // 
             // lblChange
@@ -92,7 +92,7 @@
             this.lblChange.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblChange.AutoSize = true;
             this.lblChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(123, 19);
+            this.lblChange.Location = new System.Drawing.Point(12, 18);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(57, 18);
             this.lblChange.TabIndex = 1;
@@ -112,13 +112,13 @@
             this.txtUserLogin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserLogin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUserLogin.Location = new System.Drawing.Point(187, 10);
+            this.txtUserLogin.Location = new System.Drawing.Point(76, 9);
             this.txtUserLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserLogin.Name = "txtUserLogin";
             this.txtUserLogin.PasswordChar = '\0';
             this.txtUserLogin.PlaceholderText = "";
             this.txtUserLogin.SelectedText = "";
-            this.txtUserLogin.Size = new System.Drawing.Size(290, 35);
+            this.txtUserLogin.Size = new System.Drawing.Size(224, 35);
             this.txtUserLogin.TabIndex = 39;
             // 
             // btnChange
@@ -134,7 +134,7 @@
             this.btnChange.FillColor = System.Drawing.Color.Transparent;
             this.btnChange.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChange.ForeColor = System.Drawing.Color.Black;
-            this.btnChange.Location = new System.Drawing.Point(186, 115);
+            this.btnChange.Location = new System.Drawing.Point(75, 111);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(220, 49);
             this.btnChange.TabIndex = 40;
@@ -146,7 +146,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(116, 75);
+            this.label4.Location = new System.Drawing.Point(5, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 41;
@@ -158,7 +158,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(505, 192);
+            this.ClientSize = new System.Drawing.Size(328, 188);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
