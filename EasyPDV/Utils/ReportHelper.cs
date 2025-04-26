@@ -49,7 +49,6 @@ namespace EasyPDV.Utils
             {
                 wb.SaveAs(@path + fileName + ".xlsx");
                 MessageBox.Show($"Relatório Salvo em {path}");
-                System.Diagnostics.Process.Start(@path + fileName + ".xlsx");
             }
         }
         public static void FinalReport(

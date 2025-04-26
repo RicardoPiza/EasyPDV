@@ -77,8 +77,7 @@ namespace EasyPDV.UI
                 {
                     wb.SaveAs(path + fileName);
                     MessageBox.Show($"Relatório Salvo em {path}");
-                    this.Close();
-                    System.Diagnostics.Process.Start(@path + fileName);
+                    Close();
                 }
             }
             catch (Exception ex)

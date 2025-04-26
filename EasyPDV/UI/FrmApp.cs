@@ -10,6 +10,7 @@ using Color = System.Drawing.Color;
 using System.Drawing.Printing;
 using ToolTip = System.Windows.Forms.ToolTip;
 using EasyPDV.Utils;
+using System.Threading.Tasks;
 
 namespace EasyPDV
 {
@@ -234,15 +235,6 @@ namespace EasyPDV
                         }
 
                         List<string> products = productsAbouToEnd.Distinct().ToList();
-
-                        if (products.Count > 0 && warningProductsAboutToEnd == true)
-                        {
-                            foreach (string item in products)
-                            {
-                                p.Name = item;
-                                MessageBox.Show($"Atenção, restam apenas {_productDAO.CheckStock(p)} {p.Name}(s)", "Produto acabando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
                         MessageBox.Show("Venda Realizada com sucesso!");
                         _saleDao.InsertSale(_sale);
                         SubtractStockProduct();
@@ -255,6 +247,15 @@ namespace EasyPDV
                         totalBox.Text = string.Empty;
                         paymentMethod.Text = "";
                         _SaleTotal = 0;
+
+                        if (products.Count > 0 && warningProductsAboutToEnd == true)
+                        {
+                            foreach (string item in products)
+                            {
+                                p.Name = item;
+                                MessageBox.Show($"Atenção, restam apenas {_productDAO.CheckStock(p)} {p.Name}(s)", "Produto acabando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
                     }
                 }
                 else
@@ -322,6 +323,7 @@ namespace EasyPDV
             _SupportList.Clear();
             _SoldProductsList.Clear();
             _SoldProductsListToDB.Clear();
+            _ProductIDList.Clear();
             _SaleTotal = 0;
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

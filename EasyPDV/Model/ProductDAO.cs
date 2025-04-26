@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace EasyPDV.Model
 {
@@ -267,7 +268,7 @@ namespace EasyPDV.Model
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     $"SELECT estoque from produto where nome = '{product.Name}'", connection);
-                NpgsqlDataReader reader = cmd.ExecuteReader();
+                NpgsqlDataReader reader =  cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())

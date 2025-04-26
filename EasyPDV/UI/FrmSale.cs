@@ -88,8 +88,7 @@ namespace EasyPDV.UI
             {
                 wb.SaveAs(@path + fileName);
                 MessageBox.Show($"Relatório Salvo em {path}");
-                System.Diagnostics.Process.Start(@path + fileName);
-                this.Close();
+                Close();
             }
         }
 
