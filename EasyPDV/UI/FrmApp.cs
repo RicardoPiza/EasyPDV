@@ -502,6 +502,9 @@ namespace EasyPDV
             FrmHelper.OpenIfIsNot("Pesquisar vendas", frmSaleSearch);
         }
 
-        
+        private void _listViewProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
