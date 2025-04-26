@@ -159,7 +159,8 @@ namespace EasyPDV.UI
                     product.Name = row.Cells[1].Value.ToString();
                     product.Price = double.Parse(row.Cells[2].Value.ToString());
                     product.StockQuantity = int.Parse(row.Cells[4].Value.ToString());
-                    product.Description = row.Cells[5].Value.ToString();
+                    product.StockSecurity = int.Parse(row.Cells[5].Value.ToString());
+                    product.Description = row.Cells[6].Value.ToString();
                     productDAO.Update(product);
                 }
                 MessageBox.Show("Produto alterado com sucesso");

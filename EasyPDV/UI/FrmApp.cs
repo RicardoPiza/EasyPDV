@@ -228,7 +228,7 @@ namespace EasyPDV
                                 );
                             p.Name = product[0];
 
-                            if (productDAO.CheckStock(p) <= 20)
+                            if (productDAO.CheckStock(p) <= productDAO.CheckStockSecurity(p))
                             {
                                 productsAbouToEnd.Add(p.Name);
                             }

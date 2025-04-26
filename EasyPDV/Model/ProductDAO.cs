@@ -21,11 +21,16 @@ namespace EasyPDV.Model
             {
                 connection.Open();
                 cmd = new NpgsqlCommand(
-                    "SELECT id AS \"ID\", nome AS \"Nome do produto\", " +
-                    "to_char(preco, '9999999999999999D99') AS \"Preço\", imagem as \"Imagem\", estoque AS \"Estoque\", descricao as \"Descrição\" " +
-                    "FROM produto " +
-                   $"WHERE status  = '{status}' " +
-                    "ORDER by id", connection);
+                    $@"SELECT id AS ID,
+                       nome AS ""Nome do produto"", 
+                    to_char(preco, '9999999999999999D99') AS ""Preço"",
+                    imagem as ""Imagem"", 
+                    estoque AS ""Estoque"",
+                    coalesce(estoque_seguranca, 0) AS ""Estoque segurança"", 
+                    descricao as ""Descrição""
+                    FROM produto 
+                    WHERE status  = 'ativado'
+                    ORDER by id", connection);
             }
             catch (Exception)
             {
@@ -176,11 +181,12 @@ namespace EasyPDV.Model
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(
                     "UPDATE produto " +
-                    "SET nome = @n, preco = @p, estoque = @e, descricao = @d" +
+                    "SET nome = @n, preco = @p, estoque = @e, estoque_seguranca = @es, descricao = @d" +
                     $" WHERE id = {product.ID}", connection);
                 cmd.Parameters.AddWithValue("n", product.Name);
                 cmd.Parameters.AddWithValue("p", product.Price);
                 cmd.Parameters.AddWithValue("e", product.StockQuantity);
+                cmd.Parameters.AddWithValue("es", product.StockSecurity);
                 cmd.Parameters.AddWithValue("d", product.Description);
                 cmd.ExecuteNonQuery();
             }
@@ -269,6 +275,36 @@ namespace EasyPDV.Model
                 cmd = new NpgsqlCommand(
                     $"SELECT estoque from produto where nome = '{product.Name}'", connection);
                 NpgsqlDataReader reader =  cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        productStockQuantity = reader.GetInt32(0);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return productStockQuantity;
+        }
+
+        public int CheckStockSecurity(Product product)
+        {
+            int productStockQuantity = 0;
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(
+                    $"SELECT estoque_seguranca from produto where nome = '{product.Name}'", connection);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
