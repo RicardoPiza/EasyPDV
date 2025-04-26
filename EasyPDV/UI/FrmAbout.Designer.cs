@@ -73,6 +73,7 @@
             this.MinimumSize = new System.Drawing.Size(607, 411);
             this.Name = "FrmAbout";
             this.Text = "Sobre";
+            this.Load += new System.EventHandler(this.FrmAbout_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

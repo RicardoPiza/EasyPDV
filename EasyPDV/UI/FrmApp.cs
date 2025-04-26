@@ -506,5 +506,12 @@ namespace EasyPDV
         {
 
         }
+
+        private void siticoneButton1_Click(object sender, EventArgs e)
+        {
+            FrmCancellSelected frmSaleSearch = new FrmCancellSelected(_SoldProductsListToDB);
+            FrmHelper.OpenIfIsNot("Cancelar selecionados", frmSaleSearch);
+
+        }
     }
 }

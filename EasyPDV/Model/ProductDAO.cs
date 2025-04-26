@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EasyPDV.Model
@@ -30,6 +31,36 @@ namespace EasyPDV.Model
                     descricao as ""Descrição""
                     FROM produto 
                     WHERE status  = 'ativado'
+                    ORDER by id", connection);
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return cmd;
+        }
+        public NpgsqlCommand ReadList(List<string> products)
+        {
+            NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            NpgsqlCommand cmd;
+            try
+            {
+                connection.Open();
+                products = products.Select(x => $"'{x}'").ToList();
+                cmd = new NpgsqlCommand(
+                    $@"SELECT id AS ID,
+                       nome AS ""Nome do produto"", 
+                    to_char(preco, '9999999999999999D99') AS ""Preço"",
+                    estoque AS ""Estoque"",
+                    coalesce(estoque_seguranca, 0) AS ""Estoque segurança"", 
+                    descricao as ""Descrição""
+                    FROM produto 
+                    WHERE nome  in ({string.Join("," , products)})
                     ORDER by id", connection);
             }
             catch (Exception)

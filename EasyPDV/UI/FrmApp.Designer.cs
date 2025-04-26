@@ -87,6 +87,7 @@
             this.txtEventName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -1314,6 +1315,28 @@
             this.label6.Size = new System.Drawing.Size(158, 131);
             this.label6.TabIndex = 0;
             // 
+            // siticoneButton1
+            // 
+            this.siticoneButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.siticoneButton1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneButton1.BorderRadius = 10;
+            this.siticoneButton1.BorderThickness = 1;
+            this.siticoneButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.siticoneButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.siticoneButton1.FillColor = System.Drawing.Color.Transparent;
+            this.siticoneButton1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneButton1.ForeColor = System.Drawing.Color.Black;
+            this.siticoneButton1.Image = global::EasyPDV.Properties.Resources.delete;
+            this.siticoneButton1.ImageSize = new System.Drawing.Size(40, 40);
+            this.siticoneButton1.Location = new System.Drawing.Point(266, 498);
+            this.siticoneButton1.Name = "siticoneButton1";
+            this.siticoneButton1.Size = new System.Drawing.Size(60, 68);
+            this.siticoneButton1.TabIndex = 26;
+            this.siticoneButton1.Visible = false;
+            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
+            // 
             // FrmApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1321,6 +1344,7 @@
             this.BackgroundImage = global::EasyPDV.Properties.Resources._012_Tempting_Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1075, 727);
+            this.Controls.Add(this.siticoneButton1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtEventName);
             this.Controls.Add(this.btnCancel);
@@ -1419,6 +1443,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton button23;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button25;
         private Siticone.Desktop.UI.WinForms.SiticoneButton button24;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
     }
 }
 

@@ -13,5 +13,10 @@ namespace EasyPDV.UI
         {
             System.Diagnostics.Process.Start("https://github.com/RicardoPiza/EasyPDV");
         }
+
+        private void FrmAbout_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

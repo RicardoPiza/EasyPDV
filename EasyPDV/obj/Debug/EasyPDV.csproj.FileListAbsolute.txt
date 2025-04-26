@@ -189,3 +189,4 @@ C:\Projetos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.CoreCompileInputs.cache
 C:\Projetos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.exe
 C:\Projetos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.pdb
 C:\Projetos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.csproj.Up2Date
+C:\Projetos\EasyPDV\EasyPDV\obj\Debug\EasyPDV.UI.FrmCancellSelected.resources
