@@ -37,24 +37,24 @@ namespace EasyPDV.UI
             HideStuff();
             ButtonCursor();
         }
-        public void ButtonCursor()
+        private void ButtonCursor()
         {
             btnChange.Cursor = Cursors.Hand;
         }
-        public void HideStuff()
+        private void HideStuff()
         {
             lblChange.Visible = false;
             comboProductChange.Visible = false;
             ToChangeProductsCount.Visible = false;
         }
-        public void UnhideStuff()
+        private void UnhideStuff()
         {
             lblChange.Visible = true;
             comboProductChange.Visible = true;
             ToChangeProductsCount.Visible = true;
         }
 
-        public void PopulateCombos()
+        private void PopulateCombos()
         {
             List<Product> products = new List<Product>();
             List<Product> soldProducts = new List<Product>();
