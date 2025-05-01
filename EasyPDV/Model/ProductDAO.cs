@@ -30,7 +30,7 @@ namespace EasyPDV.Model
                     coalesce(estoque_seguranca, 0) AS ""Estoque segurança"", 
                     descricao as ""Descrição""
                     FROM produto 
-                    WHERE status  = 'ativado'
+                    WHERE status  = '{status}'
                     ORDER by id", connection);
             }
             catch (Exception)
